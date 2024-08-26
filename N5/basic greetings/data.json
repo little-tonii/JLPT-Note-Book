@@ -1,0 +1,107 @@
+[
+    {
+        "meaning": "Chào buổi sáng",
+        "word": "おはよう",
+        "romanji": "ohayou"
+    },
+    {
+        "meaning": "Chào buổi sáng (lịch sự)",
+        "word": "おはようございます",
+        "romanji": "ohayou gozaimasu"
+    },
+    {
+        "meaning": "Xin chào (buổi trưa, buổi chiều)",
+        "word": "こんにちは",
+        "romanji": "konnichiwa"
+    },
+    {
+        "meaning": "Chào buổi tối",
+        "word": "こんばんは",
+        "romanji": "konbanwa"
+    },
+    {
+        "meaning": "Cảm ơn",
+        "word": "ありがとう",
+        "romanji": "arigatou"
+    },
+    {
+        "meaning": "Cảm ơn (lịch sự)",
+        "word": "ありがとうございます",
+        "romanji": "arigatou gozaimasu"
+    },
+    {
+        "meaning": "Xin lỗi (không dùng trong trường hợp xin lỗi)",
+        "word": "すみません",
+        "romanji": "sumimasen"
+    },
+    {
+        "meaning": "Xin lỗi (lịch sự)",
+        "word": "ごめんなさい",
+        "romanji": "gomen nasai"
+    },
+    {
+        "meaning": "Xin lỗi",
+        "word": "ごめんね",
+        "romanji": "gomen ne"
+    },
+    {
+        "meaning": "Tôi đi rồi về, hẹn gặp lại (người đi nói)",
+        "word": "いってきます",
+        "romanji": "itte kimasu"
+    },
+    {
+        "meaning": "Đi cẩn thận nhé (người ở nhà nói)",
+        "word": "いってらっしゃい",
+        "romanji": "itterasshai"
+    },
+    {
+        "meaning": "Tôi về rồi đây (người đi nói)",
+        "word": "ただいま",
+        "romanji": "tadaima"
+    },
+    {
+        "meaning": "Chào mừng trở về (người ở nhà nói)",
+        "word": "おかえり",
+        "romanji": "okaeri"
+    },
+    {
+        "meaning": "Chúc ngon miệng",
+        "word": "いただきます",
+        "romanji": "itadakimasu"
+    },
+    {
+        "word": "おひさしぶりですね",
+        "meaning": "Lâu rồi không gặp",
+        "romanji": "ohisashiburi desu ne"
+    },
+    {
+        "word": "おげんきですか",
+        "meaning": "Bạn có khỏe không?",
+        "romanji": "ogenki desu ka"
+    },
+    {
+        "meaning": "Vâng, tôi khoẻ (câu trả lời cho おげんきですか)",
+        "word": "はい、げんきです",
+        "romanji": "hai, genki desu"
+    },
+    {
+        "meaning": "Không, tôi không khoẻ (câu trả lời cho おげんきですか)",
+        "word": "いいえ、げんきじゃありません",
+        "romanji": "iie, genki ja arimasen"
+    },
+    {
+        "meaning": "Bình thường, tàm tạm (câu trả lời cho おげんきですか)",
+        "word": "まあまあ",
+        "romanji": "maamaa"
+    },
+    {
+        "meaning": "おたんじょうびおめでとうございます",
+        "word": "Chúc mừng sinh nhật",
+        "romanji": "otanjoubi omedetou gozaimasu"
+    },
+    {
+        "meaning": "さようなら",
+        "word": "Tạm biệt",
+        "romanji": "sayounara"
+    }
+]
