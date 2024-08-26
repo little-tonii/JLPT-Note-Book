@@ -5,9 +5,9 @@
         "romanji": "oto"
     },
     {
-        "meaning":"Bố",
-        "word":"おとうさん",
-        "romanji":"otousan"
+        "meaning": "Bố",
+        "word": "おとうさん",
+        "romanji": "otousan"
     },
     {
         "meaning": "Người lớn",
@@ -43,5 +43,185 @@
         "meaning": "Bao nhiêu tiền",
         "word": "いくら",
         "romanji": "ikura"
+    },
+    {
+        "meaning": "Con ma",
+        "word": "おばけ",
+        "romanji": "obake"
+    },
+    {
+        "meaning": "Bê đê",
+        "word": "おかま",
+        "romanji": "okama"
+    },
+    {
+        "meaning": "Mày",
+        "word": "おまえ",
+        "romanji": "omae"
+    },
+    {
+        "meaning": "Ngọn đồi",
+        "word": "おか",
+        "romanji": "oka"
+    },
+    {
+        "meaning": "Khuôn mặt",
+        "word": "かお",
+        "romanji": "kao"
+    },
+    {
+        "meaning": "Mẹ",
+        "word": "おかあさん",
+        "romanji": "okaasan"
+    },
+    {
+        "meaning": "Kẹo",
+        "word": "おかし",
+        "romanji": "okashi"
+    },
+    {
+        "meaning": "Kẹo của mẹ",
+        "word": "おかあさんのおかし",
+        "romanji": "okaasan no okashi"
+    },
+    {
+        "meaning": "Có vấn đề, làm sao ấy",
+        "romanji": "okashii",
+        "word": "おかしい"
+    },
+    {
+        "meaning": "Khuôn mặt của mẹ có vấn đề",
+        "word": "おかあさんのかおはおかしい",
+        "romanji": "okaasan no kao wa okashii"
+    },
+    {
+        "meaning": "Tiền",
+        "word": "おかね",
+        "romanji": "okane"
+    },
+    {
+        "meaning": "Cháo",
+        "word": "おかゆ",
+        "romanji": "okayu"
+    },
+    {
+        "meaning": "Ngứa",
+        "word": "かゆい",
+        "romanji": "kayui"
+    },
+    {
+        "meaning": "Con chó",
+        "word": "いぬ",
+        "romanji": "inu"
+    },
+    {
+        "meaning": "Con mèo",
+        "word": "ねこ",
+        "romanji": "neko"
+    },
+    {
+        "meaning": "Con chim",
+        "word": "とり",
+        "romanji": "tori"
+    },
+    {
+        "meaning": "Con lợn",
+        "word": "ぶた",
+        "romanji": "buta"
+    },
+    {
+        "meaning": "Con gà",
+        "word": "にわとり",
+        "romanji": "niwatori"
+    },
+    {
+        "meaning": "Con muỗi",
+        "word": "か",
+        "romanji": "ka"
+    },
+    {
+        "meaning": "Con rùa",
+        "word": "かめ",
+        "romanji": "kame"
+    },
+    {
+        "meaning": "Con kiến",
+        "word": "あり",
+        "romanji": "ari"
+    },
+    {
+        "meaning": "Con hổ",
+        "word": "とら",
+        "romanji": "tora"
+    },
+    {
+        "meaning": "Đầu",
+        "word": "あたま",
+        "romanji": "atama"
+    },
+    {
+        "meaning": "Tai",
+        "word": "みみ",
+        "romanji": "mimi"
+    },
+    {
+        "meaning": "Tóc",
+        "word": "かみ",
+        "romanji": "kami"
+    },
+    {
+        "meaning": "Mắt",
+        "word": "め",
+        "romanji": "me"
+    },
+    {
+        "meaning": "Mũi",
+        "word": "はな",
+        "romanji": "hana"
+    },
+    {
+        "meaning": "Miệng",
+        "word": "くち",
+        "romanji": "kuchi"
+    },
+    {
+        "meaning": "Cổ",
+        "word": "くび",
+        "romanji": "kubi"
+    },
+    {
+        "meaning": "Tay",
+        "word": "て",
+        "romanji": "te"
+    },
+    {
+        "meaning": "Ngực",
+        "word": "おっぱい",
+        "romanji": "oppai"
+    },
+    {
+        "meaning": "Bụng",
+        "word": "おなか",
+        "romanji": "onaka"
+    },
+    {
+        "meaning": "Chân",
+        "word": "あし",
+        "romanji": "ashi"
+    },
+    {
+        "meaning": "Cơ thể",
+        "word": "からだ",
+        "romanji": "karada"
+    },
+    {
+        "meaning": "Bộ phận sinh dục nữ",
+        "word": "まんこ",
+        "romanji": "manko"
+    },
+    {
+        "meaning": "Bộ phận sinh dục nam",
+        "word": "ちんこ",
+        "romanji": "chinko"
     }
 ]
