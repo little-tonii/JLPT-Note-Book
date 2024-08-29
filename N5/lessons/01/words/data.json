@@ -9,7 +9,7 @@
         "romanji": "Watashitachi",
         "meaning": "Chúng tôi, chúng ta",
         "word": "わたしたち",
-        "kanji":"私たち"
+        "kanji": "私たち"
     },
     {
         "romanji": "Kare",
@@ -20,6 +20,217 @@
     {
         "romanji": "Kanojo",
         "meaning": "Cô ấy",
-        "word": ""
+        "word": "かのじょ",
+        "kanji": "彼女"
+    },
+    {
+        "romanji": "Minasan",
+        "meaning": "Các anh chị, các ông bà, các bạn, quý vị",
+        "word": "みなさん",
+        "kanji": "皆さん"
+    },
+    {
+        "romanji": "Anata",
+        "meaning": "Anh/chị, ông/bà, bạn (ngôi thứ II số ít)",
+        "word": "あなた",
+        "kanji": null
+    },
+    {
+        "romanji": "Anohito",
+        "meaning": "Người đó, anh kia, chị kia",
+        "word": "あのひと",
+        "kanji": "あの人"
+    },
+    {
+        "romanji": "Anokata",
+        "meaning": "Vị kia (cách nói lịch sự của あのひと)",
+        "word": "あのかた",
+        "kanji": "あの方"
+    },
+    {
+        "romanji": "Kyoushi",
+        "meaning": "Giáo viên",
+        "word": "きょうし",
+        "kanji": "教師"
+    },
+    {
+        "romanji": "Sensei",
+        "meaning": "Thầy/cô",
+        "word": "せんせい",
+        "kanji": "先生"
+    },
+    {
+        "romanji": "Gakusei",
+        "meaning": "Học sinh",
+        "word": "がくせい",
+        "kanji": "学生"
+    },
+    {
+        "romanji": "Untenshu",
+        "meaning": "Tài xế",
+        "word": "うんてんしゅ",
+        "kanji": "運転手"
+    },
+    {
+        "romanji": "Kaishain",
+        "meaning": "Nhân viên công ty",
+        "word": "かいしゃいん",
+        "kanji": "会社員"
+    },
+    {
+        "romanji": "Gencouin",
+        "meaning": "Nhân viên ngân hàng",
+        "word": "ぎんこういん",
+        "kanji": "銀行員"
+    },
+    {
+        "romanji": "Isha",
+        "meaning": "Bác sĩ",
+        "word": "いしゃ",
+        "kanji": "医者"
+    },
+    {
+        "romanji": "Enjinia",
+        "meaning": "Kỹ sư",
+        "word": "エンジニア",
+        "kanji": null
+    },
+    {
+        "romanji": "Kenkyuusha",
+        "meaning": "Nhà nghiên cứu",
+        "word": "けんきゅうしゃ",
+        "kanji": "研究者"
+    },
+    {
+        "meaning": "Du học sinh",
+        "word": "りゅうがくせい",
+        "kanji": "留学生",
+        "romanji": "Ryuugakusei"
+    },
+    {
+        "meaning": "Ai",
+        "romanji": "Dare",
+        "word": "だれ",
+        "kanji": null
+    },
+    {
+        "meaning": "Vị nào (cách nói lịch sử của だれ)",
+        "word": "どなた",
+        "kanji": null,
+        "romanji": "Donata"
+    },
+    {
+        "romanji": "Daigaku",
+        "meaning": "Đại học",
+        "word": "だいがく",
+        "kanji": "大学"
+    },
+    {
+        "meaning": "Bệnh viện",
+        "word": "びょういん",
+        "kanji": "病院",
+        "romanji": "Byouin"
+    },
+    {
+        "meaning": "Nhật Bản",
+        "word": "にほん",
+        "kanji": "日本",
+        "romanji": "Nihon"
+    },
+    {
+        "meaning": "Việt Nam",
+        "word": "ベトナム",
+        "kanji": null,
+        "romanji": "Betonamu"
+    },
+    {
+        "meaning": "Hàn Quốc",
+        "word": "かんこく",
+        "kanji": "韓国",
+        "romanji": "Kankoku"
+    },
+    {
+        "meaning": "Trung Quốc",
+        "word": "ちゅうごく",
+        "kanji": "中国",
+        "romanji": "Chuugoku"
+    },
+    {
+        "meaning": "Mỹ",
+        "word": "アメリカ",
+        "kanji": null,
+        "romanji": "Amerika"
+    },
+    {
+        "meaning": "Anh",
+        "word": "イギリス",
+        "kanji": null,
+        "romanji": "Igirisu"
+    },
+    {
+        "meaning": "Người (nước nào)",
+        "word": "~じん",
+        "kanji": "~人",
+        "romanji": "~jin"
+    },
+    {
+        "meaning": "Tiếng (ngôn ngữ nào)",
+        "word": "~ご",
+        "kanji": "~語",
+        "romanji": "~go"
+    },
+    {
+        "meaning": "Xuất thân, quê quán",
+        "word": "しゅっしん",
+        "kanji": "出身",
+        "romanji": "Shusshin"
+    },
+    {
+        "meaning": "(tôi) đến từ",
+        "word": "~からきました",
+        "kanji": "~から来ました",
+        "romanji": "~kara kimashita"
+    },
+    {
+        "meaning": "Vâng, dạ",
+        "word": "はい",
+        "kanji": null,
+        "romanji": "Hai"
+    },
+    {
+        "meaning": "Không",
+        "word": "いいえ",
+        "kanji": null,
+        "romanji": "Iie"
+    },
+    {
+        "meaning": "Xin lỗi, ...(dùng để hỏi ai đó về thông tin cá nhân như là tên hoặc địa chỉ của họ)",
+        "word": "しつれいですが",
+        "kanji": "失礼ですが",
+        "romanji": "Shitsurei desu ga"
+    },
+    {
+        "meaning": "Anh/chị vui lòng nhắc lại tên một lần nữa được không ạ?",
+        "word": "おなまえをもういちどおねがいします",
+        "kanji": "お名前をもう一度お願いします",
+        "romanji": "Onamae o mou ichido onegai shimasu"
+    },
+    {
+        "meaning": "Rất mong nhận nđược sự giúp đỡ của anh/chị!",
+        "word": "どうぞよろしくおねがいします",
+        "kanji": "どうぞよろしくお願いします",
+        "romanji": "Douzo yoroshiku onegai shimasu"
+    },
+    {
+        "meaning": "Vậy à/thế à?",
+        "word": "そうですか",
+        "kanji": null,
+        "romanji": "Sou desu ka"
+    },
+    {
+        "meaning": "Công việc của anh/chị là gì thế?",
+        "word": "おしごとはなんですか",
+        "kanji": "お仕事は何ですか",
+        "romanji": "Oshigoto wa nan desu ka"
     }
 ]
