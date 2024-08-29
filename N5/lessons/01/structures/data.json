@@ -1,0 +1,63 @@
+[
+    {
+        "type": "Câu khẳng định danh từ",
+        "struct": "N1はN2です。",
+        "meaning": "N1 là N2.",
+        "examples": [
+            {
+                "example": "わたしはもりです。",
+                "meaning": "Tôi là Mori."
+            },
+            {
+                "example": "あのひとはかんこくじんです。",
+                "meaning": "Người kia là người Hàn Quốc."
+            },
+            {
+                "example": "キムさんはいしゃです。",
+                "meaning": "Kim là bác sĩ."
+            },
+            {
+                "example": "かれは２５さいです。",
+                "meaning": "Anh ấy 25 tuổi."
+            }
+        ]
+    },
+    {
+        "type": "Câu phủ định danh từ",
+        "struct": "N1はN2じゃありません/N1はN2ではありません。",
+        "meaning": "N1 không phải là N2.",
+        "examples": [
+            {
+                "example": "わたしはぎんこういんじゃありません。",
+                "meaning": "Tôi không phải là nhân viên ngân hàng."
+            },
+            {
+                "example": "あのひとはチャンさんじゃありません。",
+                "meaning": "Người kia không phải là Chan."
+            },
+            {
+                "example": "かのじょはアメリカじんじゃありません。",
+                "meaning": "Cô ấy không phải là người Mỹ."
+            },
+            {
+                "example": "マリアさんははたちじゃありません。",
+                "meaning": "Maria không phải là 20 tuổi."
+            }
+        ]
+    },
+    {
+        "type": "Câu nghi vấn (câu hỏi có không)",
+        "struct": "N1はN2ですか。",
+        "meaning": "N1 có phải là N2 không?",
+        "examples": [
+            {
+                "example": "ﾐﾝさんはベトナムじんですか。はい、ベトナムじんです。・いいえ、ベトナムじんじゃありません。",
+                "meaning": "Minh có phải là người Việt Nam không? Có, anh ấy là người Việt Nam. / Không, anh ấy không phải là người Việt Nam."
+            },
+            {
+                "example": "かれはエンジニアですか。はい、エンジニアです。・いいえ、エンジニアじゃありません。けんきゅうしゃです。",
+                "meaning": "Anh ấy có phải là kỹ sư không? Có, là kỹ sư. / Không, không phải là kỹ sư. Là nhà nghiên cứu."
+            }
+        ]
+    }
+]
