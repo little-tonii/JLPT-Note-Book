@@ -47,16 +47,77 @@
     },
     {
         "type": "Câu nghi vấn (câu hỏi có không)",
-        "struct": "N1はN2ですか。",
+        "struct": "N1はN2ですか。\nはい、N2です。\nいいえ、N2じゃありません。(N3です。)",
         "meaning": "N1 có phải là N2 không?",
         "examples": [
             {
-                "example": "ﾐﾝさんはベトナムじんですか。はい、ベトナムじんです。・いいえ、ベトナムじんじゃありません。",
-                "meaning": "Minh có phải là người Việt Nam không? Có, anh ấy là người Việt Nam. / Không, anh ấy không phải là người Việt Nam."
+                "example": "ﾐﾝさんはベトナムじんですか。\nはい、ベトナムじんです。\nいいえ、ベトナムじんじゃありません。",
+                "meaning": "Minh có phải là người Việt Nam không?\nCó, anh ấy là người Việt Nam.\nKhông, anh ấy không phải là người Việt Nam."
             },
             {
-                "example": "かれはエンジニアですか。はい、エンジニアです。・いいえ、エンジニアじゃありません。けんきゅうしゃです。",
-                "meaning": "Anh ấy có phải là kỹ sư không? Có, là kỹ sư. / Không, không phải là kỹ sư. Là nhà nghiên cứu."
+                "example": "かれはエンジニアですか。\nはい、エンジニアです。\nいいえ、エンジニアじゃありません。けんきゅうしゃです。",
+                "meaning": "Anh ấy có phải là kỹ sư không?\nCó, là kỹ sư.\nKhông, không phải là kỹ sư. Là nhà nghiên cứu."
+            }
+        ]
+    },
+    {
+        "type": "Câu có từ để hỏi",
+        "struct": "N1 は Từ để hỏi ですか。",
+        "meaning": null,
+        "examples": [
+            {
+                "example": "しつれいですが、おなまえは？\nもりです。",
+                "meaning": "Xin lỗi, tên là gì?\nLà Mori."
+            },
+            {
+                "example": "あのひとはだれですか。\nキムさんです。",
+                "meaning": "Người kia là ai?\nLà Kim."
+            },
+            {
+                "example": "リンせんせいはおいくつですか。\n４５さいです。",
+                "meaning": "Cô Lin bao nhiêu tuổi?\n45 tuổi."
+            }
+        ]
+    },
+    {
+        "type": "N1 cũng là N2",
+        "struct": "N1もN2です。",
+        "meaning": "N1 cũng là N2.",
+        "examples": [
+            {
+                "example": "わたしはがくせいです。チャンさんもがくせいです。",
+                "meaning": "Tôi là học sinh. Chan cũng là học sinh."
+            },
+            {
+                "example": "キムさんはかんこくじんです。パクさんもかんこくじんです。",
+                "meaning": "Kim là người Hàn Quốc. Park cũng là người Hàn Quốc."
+            },
+            {
+                "example": "スズキさんもりゅうがくせいですか。\nはい、スズキさんもりゅうがくせいです。\nいいえ、スズキさんはりゅうがくせいじゃありません。",
+                "meaning": "Suzuki cũng là du học sinh phải không?\nVâng, Suzuki cũng là du học sinh.\nKhông, Suzuki không phải là du học sinh."
+            }
+        ]
+    },
+    {
+        "type": "N2 của N1",
+        "meaning": "N2 của N1 (N1 là các cơ quan, tổ chức, đoàn thể... mà N2 thuộc về.",
+        "struct": "N1のN2",
+        "examples": [
+            {
+                "example": "わたしはベトナムのランです。",
+                "meaning": "Tôi là Lan đến từ Việt Nam."
+            },
+            {
+                "example": "わたしはハノイだいがくのがくせいです。",
+                "meaning": "Tôi là sinh viên của Đại học Hà Nội."
+            },
+            {
+                "example": "ヤマダさんはアメリカのりゅうがくせいです。",
+                "meaning": "Yamada là du học sinh của Mỹ."
+            },
+            {
+                "example": "キムラさんはパナソニックのエンジニアです。",
+                "meaning": "Kimura là kỹ sư của Panasonic."
             }
         ]
     }
