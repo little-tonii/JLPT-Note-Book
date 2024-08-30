@@ -1,123 +1,194 @@
 [
     {
-        "type": "Câu khẳng định danh từ",
-        "struct": "N1はN2です。",
-        "meaning": "N1 là N2.",
+        "type": "Cái này/Cái đó/Cái kia là N",
+        "struct": "これ/それ/あれはNです。",
+        "meaning": "Cái này/Cái đó/Cái kia là N.",
         "examples": [
             {
-                "example": "わたしはもりです。",
-                "meaning": "Tôi là Mori."
+                "example": "これはほんです。",
+                "meaning": "Cái này là sách."
             },
             {
-                "example": "あのひとはかんこくじんです。",
-                "meaning": "Người kia là người Hàn Quốc."
+                "example": "それはつくえです。",
+                "meaning": "Cái đó là bàn."
             },
             {
-                "example": "キムさんはいしゃです。",
-                "meaning": "Kim là bác sĩ."
+                "example": "あれはテレビです。",
+                "meaning": "Cái kia là tivi."
             },
             {
-                "example": "かれは２５さいです。",
-                "meaning": "Anh ấy 25 tuổi."
+                "example": "これはボールペンです。",
+                "meaning": "Cái này là bút bi."
+            },
+            {
+                "example": "それはノートです。",
+                "meaning": "Cái đó là vở."
+            },
+            {
+                "example": "あれはシャープペンシルです。",
+                "meaning": "Cái kia là bút chì kim."
             }
         ]
     },
     {
-        "type": "Câu phủ định danh từ",
-        "struct": "N1はN2じゃありません/N1はN2ではありません。",
-        "meaning": "N1 không phải là N2.",
+        "type": "Dùng khi hỏi về đồ vật, sử dụng từ để hỏi 「なん」",
+        "struct": "これ/それ/あれはなんですか。",
+        "meaning": "Cái này/Cái đó/Cái kia là cái gì?",
         "examples": [
             {
-                "example": "わたしはぎんこういんじゃありません。",
-                "meaning": "Tôi không phải là nhân viên ngân hàng."
+                "example": "これはなんですか。\nそれはとけいです。",
+                "meaning": "Cái này là cái gì?\nCái đó là đồng hồ."
             },
             {
-                "example": "あのひとはチャンさんじゃありません。",
-                "meaning": "Người kia không phải là Chan."
+                "example": "それはなんですか。\nこれはえんぴつです。",
+                "meaning": "Cái đó là cái gì?\nCái này là bút chì."
             },
             {
-                "example": "かのじょはアメリカじんじゃありません。",
-                "meaning": "Cô ấy không phải là người Mỹ."
-            },
-            {
-                "example": "マリアさんははたちじゃありません。",
-                "meaning": "Maria không phải là 20 tuổi."
+                "example": "あれはなんですか。\nあれはしんぶんです。",
+                "meaning": "Cái kia là cái gì?\nCái kia là báo."
             }
         ]
     },
     {
-        "type": "Câu nghi vấn (câu hỏi có không)",
-        "struct": "N1はN2ですか。\nはい、N2です。\nいいえ、N2じゃありません。(N3です。)",
-        "meaning": "N1 có phải là N2 không?",
+        "type": "Dùng khi muốn nhấn mạnh vào 1 đồ vật hay 1 người nào đó hiện hữu ngay trước mắt chúng ta.",
+        "struct": "このN/そのN/あのN",
+        "meaning": "Cái N này/Cái N đó/Cái N kia",
         "examples": [
             {
-                "example": "ﾐﾝさんはベトナムじんですか。\nはい、ベトナムじんです。\nいいえ、ベトナムじんじゃありません。",
-                "meaning": "Minh có phải là người Việt Nam không?\nCó, anh ấy là người Việt Nam.\nKhông, anh ấy không phải là người Việt Nam."
+                "example": "このひと",
+                "meaning": "Người này"
             },
             {
-                "example": "かれはエンジニアですか。\nはい、エンジニアです。\nいいえ、エンジニアじゃありません。けんきゅうしゃです。",
-                "meaning": "Anh ấy có phải là kỹ sư không?\nCó, là kỹ sư.\nKhông, không phải là kỹ sư. Là nhà nghiên cứu."
+                "example": "そのでんわ",
+                "meaning": "Cái điện thoại đó"
+            },
+            {
+                "example": "あのじしょ",
+                "meaning": "Quyển từ điển kia"
+            },
+            {
+                "example": "あのひとはミンさんです。",
+                "meaning": "Người kia là anh Minh."
+            },
+            {
+                "example": "あのかたはホアせんせいです。",
+                "meaning": "Vị kia là thầy Hoa."
             }
         ]
     },
     {
-        "type": "Câu có từ để hỏi",
-        "struct": "N1 は Từ để hỏi ですか。",
-        "meaning": null,
+        "type": "Sử dụng để trả lời câu hỏi nghi vấn mà tận cùng là danh từ",
+        "struct": "そうです。/そうじゃありません。",
+        "meaning": "Đúng vậy./Không đúng như vậy.",
         "examples": [
             {
-                "example": "しつれいですが、おなまえは？\nもりです。",
-                "meaning": "Xin lỗi, tên là gì?\nLà Mori."
+                "example": "これはざっしですか。\nはい、そうです。ざっしです。",
+                "meaning": "Cái này là tạp chí phải không?\nVâng, đúng vậy. Là tạp chí."
             },
             {
-                "example": "あのひとはだれですか。\nキムさんです。",
-                "meaning": "Người kia là ai?\nLà Kim."
+                "meaning": "それはパソコンですか。\nいいえ、そうじゃありません。",
+                "example": "Cái đó là máy tính phải không?\nKhông, không phải."
             },
             {
-                "example": "リンせんせいはおいくつですか。\n４５さいです。",
-                "meaning": "Cô Lin bao nhiêu tuổi?\n45 tuổi."
+                "example": "あれはけしゴムですか。\nいいえ、ちがいます。カードです。",
+                "meaning": "Cái kia là cục tẩy phải không?\nKhông, là một cái khác. Là thẻ."
             }
         ]
     },
     {
-        "type": "N1 cũng là N2",
-        "struct": "N1もN2です。",
-        "meaning": "N1 cũng là N2.",
+        "type": "Câu hỏi lựa chọn dùng khi phân vân không biết rõ đối tượng là cái gì.",
+        "struct": "N1ですか。N2ですか。",
+        "meaning": "N1 hay N2?",
         "examples": [
             {
-                "example": "わたしはがくせいです。チャンさんもがくせいです。",
-                "meaning": "Tôi là học sinh. Chan cũng là học sinh."
+                "example": "これはボールペンですか。シャープペンシルですか。\nそれはボールペンです。",
+                "meaning": "Cái này là bút bi hay bút chì kim?\nCái đó là bút bi."
             },
             {
-                "example": "キムさんはかんこくじんです。パクさんもかんこくじんです。",
-                "meaning": "Kim là người Hàn Quốc. Park cũng là người Hàn Quốc."
+                "example": "それはめいしですか。クレジットカードですか。\nこれはクレジットカードです。",
+                "meaning": "Cái đó là danh thiếp hay thẻ tín dụng?\nCái này là thẻ tín dụng."
             },
             {
-                "example": "スズキさんもりゅうがくせいですか。\nはい、スズキさんもりゅうがくせいです。\nいいえ、スズキさんはりゅうがくせいじゃありません。",
-                "meaning": "Suzuki cũng là du học sinh phải không?\nVâng, Suzuki cũng là du học sinh.\nKhông, Suzuki không phải là du học sinh."
+                "example": "あのひとはミンさんですか。ソンさんですか。\nあのひとはミンさんです。",
+                "meaning": "Người kia là anh Minh hay anh Sơn?\nNgười kia là anh Minh."
             }
         ]
     },
     {
         "type": "N2 của N1",
-        "meaning": "N2 của N1 (N1 là các cơ quan, tổ chức, đoàn thể... mà N2 thuộc về.",
+        "meaning": "N2 thuộc sở hữu của N1.\nTrợ từ「の」mang ý nghĩa chỉ sự sở hữu.\nCâu hỏi: だれのN2ですか。(N2 của ai?)",
         "struct": "N1のN2",
         "examples": [
             {
-                "example": "わたしはベトナムのランです。",
-                "meaning": "Tôi là Lan đến từ Việt Nam."
+                "example": "わたしのかぎ",
+                "meaning": "Chìa khóa của tôi"
             },
             {
-                "example": "わたしはハノイだいがくのがくせいです。",
-                "meaning": "Tôi là sinh viên của Đại học Hà Nội."
+                "example": "キムラさんのかさ",
+                "meaning": "Ô của anh Kimura"
             },
             {
-                "example": "ヤマダさんはアメリカのりゅうがくせいです。",
-                "meaning": "Yamada là du học sinh của Mỹ."
+                "example": "あのひとのけいたい",
+                "meaning": "Điện thoại của người kia"
             },
             {
-                "example": "キムラさんはパナソニックのエンジニアです。",
-                "meaning": "Kimura là kỹ sư của Panasonic."
+                "example": "これはわたしのペンです。",
+                "meaning": "Cái này là bút của tôi."
+            },
+            {
+                "example": "そのカメラはたかはしさんのです。",
+                "meaning": "Cái máy ảnh đó là của anh Takahashi."
+            },
+            {
+                "example": "それはだれのスリッパです。\nたなかせんせいのスリッパです。",
+                "meaning": "Dép đi trong nhà kia là của ai?\nLà của cô Tanaka."
+            },
+            {
+                "example": "あのくるまはだれのですか。\nハンさんのくるまです。",
+                "meaning": "Chiếc xe kia là của ai?\nLà của anh Han."
+            },
+            {
+                "example": "このパソコンはチャンさんのですか。\nはい、チャンさんのです。",
+                "meaning": "Cái máy tính này là của anh Chan phải không?\nVâng, là của anh Chan."
+            }
+        ]
+    },
+    {
+        "type": "N1 là lĩnh vực, chuyên ngành của N2",
+        "meaning": "N1 là lĩnh vực, chuyên ngành của N2\nTrợ từ「の」dùng khi nói về thuộc tính của đồ vật, thuộc lĩnh vực gì, về chuyên ngành nào, tiếng nước nào...\nCâu hỏi: なんのN2ですか。(N2 về cái gì?)",
+        "struct": "N1のN2",
+        "examples": [
+            {
+                "example": "にほんごのほん",
+                "meaning": "Sách tiếng Nhật"
+            },
+            {
+                "example": "くるまのざっし",
+                "meaning": "Tạp chí về ô tô"
+            },
+            {
+                "example": "コンピューターのしんぶん",
+                "meaning": "Báo về máy tính"
+            },
+            {
+                "example": "これはサッカーのしんぶんです。",
+                "meaning": "Cái này là báo về bóng đá."
+            },
+            {
+                "example": "それはにほんごのじしょです。",
+                "meaning": "Cái đó là từ điển tiếng Nhật."
+            },
+            {
+                "example": "あれはなんのかぎですか。\nくるまのかぎです。",
+                "meaning": "Chìa khóa kia là của cái gì?\nLà chìa khóa của xe ô tô."
+            },
+            {
+                "example": "あのざっしはなんのざっしですか。\nけいたいのざっしです。",
+                "meaning": "Tạp chí kia là tạp chí về cái gì?\nLà tạp chí về điện thoại."
+            },
+            {
+                "example": "これはパソコンのしんぶんですか。\nはい、そうです。",
+                "meaning": "Cái này là báo về máy tính phải không?\nVâng, đúng vậy."
             }
         ]
     }
