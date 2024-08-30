@@ -1,0 +1,272 @@
+[
+    {
+        "meaning": "Cái này, đây (vật ở gần người nói)",
+        "word": "これ",
+        "kanji": null,
+        "romanji": "Kore"
+    },
+    {
+        "meaning": "Cái đó, đó (vật ở gần người nghe)",
+        "word": "それ",
+        "kanji": null,
+        "romanji": "Sore"
+    },
+    {
+        "meaning": "Cái kia, kia (vật ở xa cả người nói và người nghe)",
+        "word": "あれ",
+        "kanji": null,
+        "romanji": "Are"
+    },
+    {
+        "meaning": "~này",
+        "kanji": null,
+        "word": "この~",
+        "romanji": "Kono~"
+    },
+    {
+        "meaning": "~đó",
+        "kanji": null,
+        "word": "その~",
+        "romanji": "Sono~"
+    },
+    {
+        "meaning": "~kia",
+        "kanji": null,
+        "word": "あの~",
+        "romanji": "Ano~"
+    },
+    {
+        "meaning": "Máy tính cá nhân",
+        "kanji": null,
+        "word": "パソコン",
+        "romanji": "Pasokon"
+    },
+    {
+        "meaning": "Điện thoại di động",
+        "romanji": "Keitai",
+        "word": "けいたい",
+        "kanji": "携帯"
+    },
+    {
+        "meaning": "Điện thoại",
+        "romanji": "Denwa",
+        "word": "でんわ",
+        "kanji": "電話"
+    },
+    {
+        "meaning": "Iphone",
+        "romanji": "Aifon",
+        "word": "アイフォン",
+        "kanji": null
+    },
+    {
+        "meaning": "Sạc pin",
+        "romanji": "Juudenki",
+        "word": "じゅうでんき",
+        "kanji": "充電器"
+    },
+    {
+        "meaning": "Tai nghe",
+        "romanji": "Heddofon",
+        "word": "ヘッドフォン",
+        "kanji": null
+    },
+    {
+        "meaning": "Máy ảnh",
+        "romanji": "Kamera",
+        "word": "カメラ",
+        "kanji": null
+    },
+    {
+        "meaning": "Tivi",
+        "romanji": "Terebi",
+        "word": "テレビ",
+        "kanji": null
+    },
+    {
+        "meaning": "Ô tô, xe hơi",
+        "romanji": "Kuruma",
+        "word": "くるま",
+        "kanji": "車"
+    },
+    {
+        "meaning": "Đồng hồ",
+        "romanji": "Tokei",
+        "word": "とけい",
+        "kanji": "時計"
+    },
+    {
+        "meaning": "Bút",
+        "romanji": "Pen",
+        "word": "ペン",
+        "kanji": null
+    },
+    {
+        "meaning": "Bút bi",
+        "romanji": "Boorupen",
+        "word": "ボールペン",
+        "kanji": null
+    },
+    {
+        "meaning": "Bút chì",
+        "romanji": "Enpitsu",
+        "word": "えんぴつ",
+        "kanji": "鉛筆"
+    },
+    {
+        "meaning": "Bút chì kim",
+        "romanji": "Shaabupenshiru",
+        "word": "シャープペンシル",
+        "kanji": null
+    },
+    {
+        "meaning": "Tẩy",
+        "romanji": "Keshigomu",
+        "word": "けしゴム",
+        "kanji": "消しゴム"
+    },
+    {
+        "meaning": "Sách",
+        "romanji": "Hon",
+        "word": "ほん",
+        "kanji": "本"
+    },
+    {
+        "meaning": "Vở",
+        "romanji": "Nooto",
+        "word": "ノート",
+        "kanji": null
+    },
+    {
+        "meaning": "Sổ tay",
+        "romanji": "Techou",
+        "word": "てちょう",
+        "kanji": "手帳"
+    },
+    {
+        "meaning": "Từ điển",
+        "romanji": "Jisho",
+        "word": "じしょ",
+        "kanji": "辞書"
+    },
+    {
+        "meaning": "Báo",
+        "romanji": "Shinbun",
+        "word": "しんぶん",
+        "kanji": "新聞"
+    },
+    {
+        "meaning": "Tạp chí",
+        "romanji": "Zasshi",
+        "word": "ざっし",
+        "kanji": "雑誌"
+    },
+    {
+        "meaning": "Danh thiếp",
+        "romanji": "Meishi",
+        "word": "めいし",
+        "kanji": "名刺"
+    },
+    {
+        "meaning": "thẻ, cạc",
+        "romanji": "Kaado",
+        "word": "カード",
+        "kanji": null
+    },
+    {
+        "meaning": "Thẻ tín dụng",
+        "romanji": "Kurejitto Kaado",
+        "word": "クレジットカード",
+        "kanji": null
+    },
+    {
+        "meaning": "Mũ",
+        "romanji": "Boushi",
+        "word": "ぼうし",
+        "kanji": "帽子"
+    },
+    {
+        "meaning": "Ví",
+        "romanji": "Saifu",
+        "word": "さいふ",
+        "kanji": "財布"
+    },
+    {
+        "meaning": "Cặp sách, túi sách",
+        "romanji": "Kaban",
+        "word": "かばん",
+        "kanji": null
+    },
+    {
+        "meaning": "Giày",
+        "romanji": "Kutsu",
+        "word": "くつ",
+        "kanji": "靴"
+    },
+    {
+        "meaning": "Dép đi trong nhà",
+        "romanji": "Surippa",
+        "word": "スリッパ",
+        "kanji": null
+    },
+    {
+        "meaning": "Tất",
+        "romanji": "Kutsushita",
+        "word": "くつした",
+        "kanji": "靴下"
+    },
+    {
+        "meaning": "Chìa khoá",
+        "romanji": "Kagi",
+        "word": "かぎ",
+        "kanji": "鍵"
+    },
+    {
+        "meaning": "Ô, dù",
+        "romanji": "Kasa",
+        "word": "かさ",
+        "kanji": "傘"
+    },
+    {
+        "meaning": "Bàn",
+        "romanji": "Tsukue",
+        "word": "つくえ",
+        "kanji": "机"
+    },
+    {
+        "meaning": "Cái ghế",
+        "romanji": "Isu",
+        "word": "いす",
+        "kanji": "椅子"
+    },
+    {
+        "meaning": "Tiếng Anh",
+        "romanji": "Eigo",
+        "word": "えいご",
+        "kanji": "英語"
+    },
+    {
+        "meaning": "Cái gì (dùng để hỏi)",
+        "romanji": "Nan",
+        "word": "なん",
+        "kanji": "何"
+    },
+    {
+        "meaning": "Đúng, phải, đúng vậy",
+        "romanji": "Sou",
+        "word": "そう",
+        "kanji": null
+    },
+    {
+        "meaning": "Không phải, sai rồi",
+        "romanji": "Chigau / Chigaimasu",
+        "word": "ちがう / ちがいます",
+        "kanji": "違う / 違います"
+    },
+    {
+        "meaning": "Đây là chút lòng thành của tôi",
+        "romanji": "Hon no kimochi",
+        "word": "ほんのきもち",
+        "kanji": "ほんの気持ち"
+    }
+]
