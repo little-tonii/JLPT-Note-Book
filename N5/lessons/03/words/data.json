@@ -1,0 +1,290 @@
+[
+    {
+        "meaning": "Chỗ này, đây",
+        "word": "ここ",
+        "kanji": null,
+        "romanji": "Koko"
+    },
+    {
+        "meaning": "Chỗ đó, kia",
+        "word": "そこ",
+        "kanji": null,
+        "romanji": "Soko"
+    },
+    {
+        "meaning": "Chỗ kia, kia",
+        "word": "あそこ",
+        "kanji": null,
+        "romanji": "Asoko"
+    },
+    {
+        "meaning": "Chỗ nào, đâu",
+        "word": "どこ",
+        "kanji": null,
+        "romanji": "Doko"
+    },
+    {
+        "meaning": "Phía này (cách nói lịch sự của ここ)",
+        "word": "こちら",
+        "kanji": null,
+        "romanji": "Kochira"
+    },
+    {
+        "meaning": "Phía đó (cách nói lịch sự của そこ)",
+        "word": "そちら",
+        "kanji": null,
+        "romanji": "Sochira"
+    },
+    {
+        "meaning": "Phía kia (cách nói lịch sự của あそこ)",
+        "word": "あちら",
+        "kanji": null,
+        "romanji": "Achira"
+    },
+    {
+        "meaning": "Phía nào (cách nói lịch sự của どこ)",
+        "word": "どちら",
+        "kanji": null,
+        "romanji": "Dochira"
+    },
+    {
+        "meaning": "Quầy lễ tân (dùng cho công ty, cơ quan)",
+        "word": "うけつけ",
+        "kanji": "受付",
+        "romanji": "Uketsuke"
+    },
+    {
+        "meaning": "Quầy lễ tân (dùng cho khách sạn)",
+        "word": "フロント",
+        "kanji": null,
+        "romanji": "Furonto"
+    },
+    {
+        "meaning": "Cầu thang",
+        "word": "かいだん",
+        "kanji": "階段",
+        "romanji": "Kaidan"
+    },
+    {
+        "meaning": "Thang máy",
+        "word": "エレベーター",
+        "kanji": null,
+        "romanji": "Erebetaa"
+    },
+    {
+        "meaning": "Thang cuốn",
+        "word": "エスカレーター",
+        "kanji": null,
+        "romanji": "Esukareetaa"
+    },
+    {
+        "meaning": "Phòng vệ sinh",
+        "word": "トイレ",
+        "kanji": null,
+        "romanji": "Toire"
+    },
+    {
+        "meaning": "Phòng vệ sinh",
+        "word": "おてあらい",
+        "kanji": "お手洗い",
+        "romanji": "Otearai"
+    },
+    {
+        "meaning": "Nhà",
+        "word": "いえ",
+        "kanji": null,
+        "romanji": "Ie"
+    },
+    {
+        "meaning": "Nhà",
+        "word": "うち",
+        "kanji": null,
+        "romanji": "Uchi"
+    },
+    {
+        "meaning": "Căn phòng",
+        "word": "へや",
+        "kanji": "部屋",
+        "romanji": "Heya"
+    },
+    {
+        "meaning": "Phòng học",
+        "word": "きょうしつ",
+        "kanji": "教室",
+        "romanji": "Kyoushitsu"
+    },
+    {
+        "meaning": "Văn phòng",
+        "word": "じむしょ",
+        "kanji": "事務所",
+        "romanji": "Jimusho"
+    },
+    {
+        "meaning": "Phòng họp",
+        "word": "かいぎしつ",
+        "kanji": "会議室",
+        "romanji": "Kaigishitsu"
+    },
+    {
+        "meaning": "Nhà ăn",
+        "word": "しょくどう",
+        "kanji": "食堂",
+        "romanji": "Shokudou"
+    },
+    {
+        "meaning": "Cuộc họp",
+        "word": "かいぎ",
+        "kanji": "会議",
+        "romanji": "Kaigi"
+    },
+    {
+        "meaning": "Phòng rửa tay (toilet)",
+        "word": "おてあらい",
+        "kanji": "お手洗い",
+        "romanji": "Otearai"
+    },
+    {
+        "meaning": "Toà nhà",
+        "word": "ビル",
+        "kanji": null,
+        "romanji": "Biru"
+    },
+    {
+        "meaning": "Trung tâm thương mại",
+        "word": "デパート",
+        "kanji": null,
+        "romanji": "Depaato"
+    },
+    {
+        "meaning": "Siêu thị",
+        "word": "スーパー",
+        "kanji": null,
+        "romanji": "Suupaa"
+    },
+    {
+        "meaning": "Trung tâm",
+        "word": "センター",
+        "kanji": null,
+        "romanji": "Sentaa"
+    },
+    {
+        "meaning": "Rạp chiếu phim",
+        "word": "えいがかん",
+        "kanji": "映画館",
+        "romanji": "Eigakan"
+    },
+    {
+        "meaning": "Quán trà, cà phê",
+        "word": "きっさてん",
+        "kanji": "喫茶店",
+        "romanji": "Kissaten"
+    },
+    {
+        "meaning": "Thư viện",
+        "word": "としょかん",
+        "kanji": "図書館",
+        "romanji": "Toshokan"
+    },
+    {
+        "meaning": "Công ty",
+        "word": "かいしゃ",
+        "kanji": "会社",
+        "romanji": "Kaisha"
+    },
+    {
+        "meaning": "Trường học",
+        "word": "がっこう",
+        "kanji": "学校",
+        "romanji": "Gakkou"
+    },
+    {
+        "meaning": "Bưu điện",
+        "word": "ゆうびんきょく",
+        "kanji": "郵便局",
+        "romanji": "Yuubinkyoku"
+    },
+    {
+        "meaning": "Ngân hàng",
+        "word": "ぎんこう",
+        "kanji": "銀行",
+        "romanji": "Ginkou"
+    },
+    {
+        "meaning": "Trạm xe bus",
+        "word": "バスてい",
+        "kanji": null,
+        "romanji": "Basutei"
+    },
+    {
+        "meaning": "Nhà ga",
+        "word": "えき",
+        "kanji": "駅",
+        "romanji": "Eki"
+    },
+    {
+        "meaning": "Đất nước (của anh/chị)",
+        "word": "[お]くに",
+        "kanji": "[お]国",
+        "romanji": "[O]kuni"
+    },
+    {
+        "meaning": "Bao nhiêu tiền",
+        "word": "いくら",
+        "kanji": null,
+        "romanji": "Ikura"
+    },
+    {
+        "meaning": "Yên",
+        "word": "えん",
+        "kanji": "円",
+        "romanji": "En"
+    },
+    {
+        "meaning": "Hành lang, sảnh đợi",
+        "word": "ロビー",
+        "kanji": null,
+        "romanji": "Robii"
+    },
+    {
+        "meaning": "Máy bán hàng tự động",
+        "word": "じどうはんばいき",
+        "kanji": "自動販売機",
+        "romanji": "Jidouhanbaiki"
+    },
+    {
+        "meaning": "Quán cà phê",
+        "word": "カフェ",
+        "kanji": null,
+        "romanji": "Kafe"
+    },
+    {
+        "meaning": "Cà vạt",
+        "word": "ネクタイ",
+        "kanji": null,
+        "romanji": "Nekutai"
+    },
+    {
+        "meaning": "Rượu tây, rượu vang",
+        "word": "ワイン",
+        "kanji": null,
+        "romanji": "Wain"
+    },
+    {
+        "meaning": "Quầy bán",
+        "word": "うりば",
+        "kanji": "売り場",
+        "romanji": "Uriba"
+    },
+    {
+        "meaning": "Dưới lòng đất, tầng hầm",
+        "word": "ちか",
+        "kanji": "地下",
+        "romanji": "Chika"
+    },
+    {
+        "meaning": "Tàu điện ngầm",
+        "word": "ちかてつ",
+        "kanji": "地下鉄",
+        "romanji": "Chikatetsu"
+    }
+]
