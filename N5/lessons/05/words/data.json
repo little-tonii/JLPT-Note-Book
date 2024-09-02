@@ -1,0 +1,152 @@
+[
+    {
+        "meaning": "Thứ hai",
+        "word": "げつようび",
+        "kanji": "月曜日",
+        "romanji": "Getsuyoubi"
+    },
+    {
+        "meaning": "Thứ ba",
+        "word": "かようび",
+        "kanji": "火曜日",
+        "romanji": "Kayoubi"
+    },
+    {
+        "meaning": "Thứ tư",
+        "word": "すいようび",
+        "kanji": "水曜日",
+        "romanji": "Suiyoubi"
+    },
+    {
+        "meaning": "Thứ năm",
+        "word": "もくようび",
+        "kanji": "木曜日",
+        "romanji": "Mokuyoubi"
+    },
+    {
+        "meaning": "Thứ sáu",
+        "word": "きんようび",
+        "kanji": "金曜日",
+        "romanji": "Kinyoubi"
+    },
+    {
+        "meaning": "Thứ bảy",
+        "word": "どようび",
+        "kanji": "土曜日",
+        "romanji": "Doyoubi"
+    },
+    {
+        "meaning": "Chủ nhật",
+        "word": "にちようび",
+        "kanji": "日曜日",
+        "romanji": "Nichiyoubi"
+    },
+    {
+        "meaning": "Thứ mấy",
+        "word": "なんようび",
+        "kanji": "何曜日",
+        "romanji": "Nanyoubi"
+    },
+    {
+        "meaning": "Bây giờ",
+        "word": "いま",
+        "kanji": "今",
+        "romanji": "Ima"
+    },
+    {
+        "meaning": "Sáng, trước 12 giờ trưa",
+        "word": "ごぜん",
+        "kanji": "午前",
+        "romanji": "Gozen"
+    },
+    {
+        "meaning": "Chiều, sau 12 giờ trưa",
+        "word": "ごご",
+        "kanji": "午後",
+        "romanji": "Gogo"
+    },
+    {
+        "meaning": "Rưỡi, nửa",
+        "word": "はん",
+        "kanji": "半",
+        "romanji": "Han"
+    },
+    {
+        "meaning": "Buổi sáng, sáng",
+        "word": "あさ",
+        "kanji": "朝",
+        "romanji": "Asa"
+    },
+    {
+        "meaning": "Buổi trưa, trưa",
+        "word": "ひる",
+        "kanji": "昼",
+        "romanji": "Hiru"
+    },
+    {
+        "meaning": "Buổi chiều, chiều",
+        "word": "ゆうがた",
+        "kanji": "夕方",
+        "romanji": "Yuugata"
+    },
+    {
+        "meaning": "Buổi tối, tối",
+        "word": "ばん",
+        "kanji": "晩",
+        "romanji": "Ban"
+    },
+    {
+        "meaning": "Đêm, khuya",
+        "word": "よる",
+        "kanji": "夜",
+        "romanji": "Yoru"
+    },
+    {
+        "meaning": "Hôm kia",
+        "word": "おととい",
+        "kanji": "ー昨日",
+        "romanji": "Ototoi"
+    },
+    {
+        "meaning": "Hôm qua",
+        "word": "きのう",
+        "kanji": "昨日",
+        "romanji": "Kinou"
+    },
+    {
+        "meaning": "Hôm nay",
+        "word": "きょう",
+        "kanji": "今日",
+        "romanji": "Kyou"
+    },
+    {
+        "meaning": "Ngày mai",
+        "word": "あした",
+        "kanji": "明日",
+        "romanji": "Ashita"
+    },
+    {
+        "meaning": "Ngày kia",
+        "word": "あさって",
+        "kanji": "明後日",
+        "romanji": "Asatte"
+    },
+    {
+        "meaning": "Sáng nay",
+        "word": "けさ",
+        "kanji": "今朝",
+        "romanji": "Kesa"
+    },
+    {
+        "meaning": "Tối nay",
+        "word": "こんばん",
+        "kanji": "今晩",
+        "romanji": "Konban"
+    },
+    {
+        "meaning": "Đêm nay",
+        "word": "こんや",
+        "kanji": "今夜",
+        "romanji": "Konya"
+    }
+]
