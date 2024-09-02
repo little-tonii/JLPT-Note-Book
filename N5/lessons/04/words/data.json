@@ -1,0 +1,404 @@
+[
+    {
+        "meaning": "Đẹp trai",
+        "word": "イケメン「な」/ ハンサム",
+        "kanji": null,
+        "romanji": "Ikemen / Hansamu"
+    },
+    {
+        "meaning": "Xinh, đẹp, sạch",
+        "word": "きれい「な」",
+        "kanji": "綺麗",
+        "romanji": "Kirei"
+    },
+    {
+        "meaning": "Tốt bụng",
+        "word": "しんせつ「な」",
+        "romanji": "Shinsetsu",
+        "kanji": "親切"
+    },
+    {
+        "meaning": "Khoẻ mạnh",
+        "word": "げんき「な」",
+        "kanji": "元気",
+        "romanji": "Genki"
+    },
+    {
+        "meaning": "Yên tĩnh",
+        "word": "しずか「な」",
+        "romanji": "Shizuka",
+        "kanji": "静か"
+    },
+    {
+        "meaning": "Náo nhiệt",
+        "kanji": "賑やか",
+        "romanji": "Nigiyaka",
+        "word": "にぎやか「な」"
+    },
+    {
+        "kanji": "有名",
+        "word": "ゆうめい「な」",
+        "romanji": "Yuumei",
+        "meaning": "Nổi tiếng"
+    },
+    {
+        "meaning": "Tiện lợi",
+        "kanji": "便利",
+        "romanji": "Benri",
+        "word": "べんり「な」"
+    },
+    {
+        "word": "たいせつ「な」",
+        "kanji": "大切",
+        "meaning": "Quan trọng",
+        "romanji": "Taisetsu"
+    },
+    {
+        "meaning": "Rảnh rỗi",
+        "romanji": "Hima",
+        "word": "ひま「な」",
+        "kanji": "暇"
+    },
+    {
+        "meaning": "Bận rộn",
+        "romanji": "Isogashii",
+        "word": "いそがしい",
+        "kanji": "忙しい"
+    },
+    {
+        "meaning": "To, lớn",
+        "word": "おおきい",
+        "kanji": "大きい",
+        "romanji": "Ookii"
+    },
+    {
+        "meaning": "Nhỏ, bé",
+        "word": "ちいさい",
+        "kanji": "小さい",
+        "romanji": "Chiisai"
+    },
+    {
+        "meaning": "Mới",
+        "word": "あたらしい",
+        "kanji": "新しい",
+        "romanji": "Atarashii"
+    },
+    {
+        "meaning": "Cũ",
+        "word": "ふるい",
+        "kanji": "古い",
+        "romanji": "Furui"
+    },
+    {
+        "meaning": "Tốt",
+        "word": "いい (よい)",
+        "kanji": null,
+        "romanji": "Ii (Yoi)"
+    },
+    {
+        "meaning": "Xấu",
+        "word": "わるい",
+        "kanji": "悪い",
+        "romanji": "Warui"
+    },
+    {
+        "meaning": "Nóng (dùng cho thời tiết)",
+        "word": "あつい",
+        "kanji": "暑い",
+        "romanji": "Atsui"
+    },
+    {
+        "meaning": "Lạnh, rét (dùng cho thời tiết)",
+        "word": "さむい",
+        "kanji": "寒い",
+        "romanji": "Samui"
+    },
+    {
+        "meaning": "Nóng (dùng cho cảm giác)",
+        "word": "あつい",
+        "kanji": "熱い",
+        "romanji": "Atsui"
+    },
+    {
+        "meaning": "Lạnh, buốt (dùng cho cảm giác)",
+        "word": "つめたい",
+        "kanji": "冷たい",
+        "romanji": "Tsumetai"
+    },
+    {
+        "meaning": "Khó",
+        "word": "むずかしい",
+        "kanji": "難しい",
+        "romanji": "Muzukashii"
+    },
+    {
+        "meaning": "Dễ, hiền lành",
+        "word": "やさしい",
+        "kanji": "易しい / 優しい",
+        "romanji": "Yasashii"
+    },
+    {
+        "meaning": "Đắt, cao (せがたかい: Chiều cao)",
+        "word": "たかい",
+        "kanji": "高い",
+        "romanji": "Takai"
+    },
+    {
+        "meaning": "Rẻ",
+        "word": "やすい",
+        "kanji": "安い",
+        "romanji": "Yasui"
+    },
+    {
+        "meaning": "Thấp",
+        "word": "ひくい",
+        "kanji": "低い",
+        "romanji": "Hikui"
+    },
+    {
+        "meaning": "Sáng sủa, tươi sáng",
+        "word": "あかるい",
+        "kanji": "明るい",
+        "romanji": "Akarui"
+    },
+    {
+        "meaning": "Tối, u ám",
+        "word": "くらい",
+        "kanji": "暗い",
+        "romanji": "Kurai"
+    },
+    {
+        "meaning": "Thú vị",
+        "word": "おもしろい",
+        "kanji": "面白い",
+        "romanji": "Omoshiroi"
+    },
+    {
+        "meaning": "Dễ thương",
+        "word": "かわいい",
+        "kanji": "可愛い",
+        "romanji": "Kawaii"
+    },
+    {
+        "meaning": "Ngon",
+        "word": "おいしい",
+        "kanji": "美味しい",
+        "romanji": "Oishii"
+    },
+    {
+        "meaning": "Vui vẻ",
+        "word": "たのしい",
+        "kanji": "楽しい",
+        "romanji": "Tanoshii"
+    },
+    {
+        "meaning": "Trắng",
+        "word": "しろい",
+        "kanji": "白い",
+        "romanji": "Shiroi"
+    },
+    {
+        "meaning": "Đỏ",
+        "word": "あかい",
+        "kanji": "赤い",
+        "romanji": "Akai"
+    },
+    {
+        "meaning": "Xanh",
+        "word": "あおい",
+        "kanji": "青い",
+        "romanji": "Aoi"
+    },
+    {
+        "meaning": "Đen",
+        "word": "くろい",
+        "kanji": "黒い",
+        "romanji": "Kuroi"
+    },
+    {
+        "meaning": "Cô đơn",
+        "word": "さびしい",
+        "kanji": "寂しい",
+        "romanji": "Sabishii"
+    },
+    {
+        "meaning": "Hoa",
+        "word": "はな",
+        "kanji": "花",
+        "romanji": "Hana"
+    },
+    {
+        "meaning": "Hoa anh đào",
+        "word": "さくら",
+        "kanji": "桜",
+        "romanji": "Sakura"
+    },
+    {
+        "meaning": "Núi",
+        "word": "やま",
+        "kanji": "山",
+        "romanji": "Yama"
+    },
+    {
+        "meaning": "Núi Phú Sĩ",
+        "word": "ふじさん",
+        "kanji": "富士山",
+        "romanji": "Fujisan"
+    },
+    {
+        "meaning": "Thị trấn, thành phố",
+        "word": "まち",
+        "kanji": "町",
+        "romanji": "Machi"
+    },
+    {
+        "meaning": "Đồ ăn",
+        "word": "たべもの",
+        "kanji": "食べ物",
+        "romanji": "Tabemono"
+    },
+    {
+        "meaning": "Kimono",
+        "word": "きもの",
+        "kanji": "着物",
+        "romanji": "Kimono"
+    },
+    {
+        "meaning": "Máy móc",
+        "word": "きかい",
+        "kanji": "機械",
+        "romanji": "Kikai"
+    },
+    {
+        "meaning": "Nơi, chỗ",
+        "word": "ところ",
+        "kanji": "所",
+        "romanji": "Tokoro"
+    },
+    {
+        "meaning": "Học, việc học",
+        "word": "べんきょう",
+        "kanji": "勉強",
+        "romanji": "Benkyou"
+    },
+    {
+        "meaning": "Cuộc sống, sinh hoạt, đời sống",
+        "word": "せいかつ",
+        "kanji": "生活",
+        "romanji": "Seikatsu"
+    },
+    {
+        "meaning": "Vật giá",
+        "word": "ぶっか",
+        "kanji": "物価",
+        "romanji": "Bukka"
+    },
+    {
+        "meaning": "Công việc",
+        "word": "「お」しごと",
+        "kanji": "お仕事",
+        "romanji": "Oshigoto"
+    },
+    {
+        "meaning": "Món ăn",
+        "word": "りょうり",
+        "kanji": "料理",
+        "romanji": "Ryouri"
+    },
+    {
+        "meaning": "Hộ chiếu",
+        "word": "パスポート",
+        "kanji": null,
+        "romanji": "Pasupooto"
+    },
+    {
+        "meaning": "Thế nào",
+        "word": "どう",
+        "kanji": null,
+        "romanji": "Dou"
+    },
+    {
+        "meaning": "Như thế nào",
+        "word": "どんな",
+        "kanji": null,
+        "romanji": "Donna"
+    },
+    {
+        "meaning": "Cái nào",
+        "word": "どれ",
+        "kanji": null,
+        "romanji": "Dore"
+    },
+    {
+        "meaning": "Rất",
+        "word": "とても",
+        "kanji": null,
+        "romanji": "Totemo"
+    },
+    {
+        "meaning": "Không ~ lắm (dùng với thể phủ định)",
+        "word": "あまり",
+        "kanji": null,
+        "romanji": "Amari"
+    },
+    {
+        "meaning": "Hơn nữa, và (dùng để nối 2 câu)",
+        "word": "そして",
+        "kanji": null,
+        "romanji": "Soshite"
+    },
+    {
+        "meaning": "~ Nhưng ~",
+        "word": "～が、～",
+        "kanji": null,
+        "romanji": "~ Ga, ~"
+    },
+    {
+        "meaning": "Vất vả",
+        "word": "たいへん",
+        "kanji": "大変",
+        "romanji": "Taihen"
+    },
+    {
+        "meaning": "Tiếng nước ngoài",
+        "word": "がいこくご",
+        "kanji": "外国語",
+        "romanji": "Gaikokugo"
+    },
+    {
+        "meaning": "Xinh xắn, đẹp đẽ",
+        "word": "すてき「な」",
+        "kanji": "素敵",
+        "romanji": "Suteki"
+    },
+    {
+        "meaning": "Đắng",
+        "word": "にがい",
+        "kanji": "苦い",
+        "romanji": "Nigai"
+    },
+    {
+        "meaning": "Cay",
+        "word": "からい",
+        "kanji": "辛い",
+        "romanji": "Karai"
+    },
+    {
+        "meaning": "Nhẹ",
+        "word": "かるい",
+        "kanji": "軽い",
+        "romanji": "Karui"
+    },
+    {
+        "meaning": "Nặng",
+        "word": "おもい",
+        "kanji": "重い",
+        "romanji": "Omoi"
+    },
+    {
+        "meaning": "Ngầu",
+        "word": "かっこいい",
+        "kanji": "格好いい",
+        "romanji": "Kakkoii"
+    }
+]
