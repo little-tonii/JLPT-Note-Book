@@ -148,5 +148,113 @@
         "word": "こんや",
         "kanji": "今夜",
         "romanji": "Konya"
+    },
+    {
+        "meaning": "Nghỉ, nghỉ phép, ngày nghỉ",
+        "word": "やすみ",
+        "kanji": "休み",
+        "romanji": "Yasumi"
+    },
+    {
+        "meaning": "Nghỉ trưa",
+        "word": "ひるやすみ",
+        "kanji": "昼休み",
+        "romanji": "Hiruyasumi"
+    },
+    {
+        "meaning": "Mỗi sáng",
+        "word": "まいあさ",
+        "kanji": "毎朝",
+        "romanji": "Maiasa"
+    },
+    {
+        "meaning": "Mỗi tối",
+        "word": "まいばん",
+        "kanji": "毎晩",
+        "romanji": "Maiban"
+    },
+    {
+        "meaning": "Mỗi ngày",
+        "word": "まいにち",
+        "kanji": "毎日",
+        "romanji": "Mainichi"
+    },
+    {
+        "meaning": "Mấy giờ",
+        "word": "なんじ",
+        "kanji": "何時",
+        "romanji": "Nanji"
+    },
+    {
+        "meaning": "Mấy phút",
+        "word": "なんぷん",
+        "kanji": "何分",
+        "romanji": "Nanpun"
+    },
+    {
+        "meaning": "Làm việc",
+        "word": "はたらく",
+        "kanji": "働く",
+        "romanji": "Hataraku"
+    },
+    {
+        "meaning": "Nghỉ, nghỉ ngơi",
+        "word": "やすむ",
+        "kanji": "休む",
+        "romanji": "Yasumu"
+    },
+    {
+        "meaning": "Hết, kết thúc, xong",
+        "word": "おわる",
+        "kanji": "終わる",
+        "romanji": "Owaru"
+    },
+    {
+        "meaning": "Thức dậy",
+        "word": "おきる",
+        "kanji": "起きる",
+        "romanji": "Okiru"
+    },
+    {
+        "meaning": "Ngủ",
+        "word": "ねる",
+        "kanji": "寝る",
+        "romanji": "Neru"
+    },
+    {
+        "meaning": "Học",
+        "word": "べんきょうする",
+        "kanji": "勉強する",
+        "romanji": "Benkyousuru"
+    },
+    {
+        "meaning": "Từ ~",
+        "word": "～から",
+        "kanji": null,
+        "romanji": "~Kara"
+    },
+    {
+        "meaning": "Đến ~",
+        "word": "～まで",
+        "kanji": null,
+        "romanji": "~Made"
+    },
+    {
+        "meaning": "~ và (dùng để nối hai danh từ)",
+        "word": "～と～",
+        "kanji": null,
+        "romanji": "~To~"
+    },
+    {
+        "meaning": "Kỳ thi",
+        "word": "しけん",
+        "kanji": "試験",
+        "romanji": "Shiken"
+    },
+    {
+        "meaning": "Cuộc họp",
+        "word": "かいぎ",
+        "kanji": "会議",
+        "romanji": "Kaigi"
     }
 ]
