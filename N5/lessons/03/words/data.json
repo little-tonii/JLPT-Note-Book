@@ -286,5 +286,59 @@
         "word": "ちかてつ",
         "kanji": "地下鉄",
         "romanji": "Chikatetsu"
+    },
+    {
+        "meaning": "Thuốc lá",
+        "word": "たばこ",
+        "kanji": null,
+        "romanji": "Tabako"
+    },
+    {
+        "meaning": "Tầng thứ -",
+        "word": "～かい (～がい)",
+        "kanji": "～階",
+        "romanji": "~Kai (~Gai)"
+    },
+    {
+        "meaning": "Tầng mấy",
+        "word": "なんがい",
+        "kanji": "何階",
+        "romanji": "Nangai"
+    },
+    {
+        "meaning": "Cách nói lịch sự của 「です」",
+        "word": "～でございます",
+        "kanji": null,
+        "romanji": "De gozaimasu"
+    },
+    {
+        "meaning": "Cho tôi xem [~]",
+        "word": "[~を]みせてください",
+        "kanji": "[~を]見せてください",
+        "romanji": "[~O]Misetekudasai"
+    },
+    {
+        "meaning": "Thế thì, vậy thì",
+        "word": "じゃ",
+        "kanji": null,
+        "romanji": "Ja"
+    },
+    {
+        "meaning": "Cho tôi [~]",
+        "word": "[~を]ください",
+        "kanji": null,
+        "romanji": "[~O]Kudasai"
+    },
+    {
+        "meaning": "Nước Ý",
+        "word": "イタリア",
+        "kanji": null,
+        "romanji": "Itaria"
+    },
+    {
+        "meaning": "Nước Thuỵ Sĩ",
+        "word": "スイス",
+        "kanji": null,
+        "romanji": "Suisu"
     }
 ]
