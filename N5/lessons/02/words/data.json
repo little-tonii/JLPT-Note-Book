@@ -268,5 +268,107 @@
         "romanji": "Hon no kimochi",
         "word": "ほんのきもち",
         "kanji": "ほんの気持ち"
+    },
+    {
+        "meaning": "Thẻ điện thoại",
+        "word": "テレホンカード",
+        "kanji": null,
+        "romanji": "Terehonkaado"
+    },
+    {
+        "meaning": "Băng [cát-xét]",
+        "word": "[カセット］テープ",
+        "kanji": null,
+        "romanji": "[Kasetto] Teepu"
+    },
+    {
+        "meaning": "Máy ghi âm",
+        "word": "テープレコーダー",
+        "kanji": null,
+        "romanji": "Teepurekoodaa"
+    },
+    {
+        "meaning": "Radio",
+        "word": "ラジオ",
+        "kanji": null,
+        "romanji": "Rajio"
+    },
+    {
+        "meaning": "Máy vi tính",
+        "word": "コンピューター",
+        "kanji": null,
+        "romanji": "Konpyuutaa"
+    },
+    {
+        "meaning": "Ô tô, xe hơi",
+        "word": "じどうしゃ",
+        "kanji": "自動車",
+        "romanji": "Jidousha"
+    },
+    {
+        "meaning": "Cảm ơn",
+        "word": "どうも",
+        "kanji": null,
+        "romanji": "Doumo"
+    },
+    {
+        "meaning": "[Xin][chân thành] cảm ơn / Xin cảm ơn [rất nhiều]",
+        "word": "[どうも]ありがとう[ございます]",
+        "kanji": null,
+        "romanji": "[Doumo] Arigatou [gozaimasu]"
+    },
+    {
+        "meaning": "Sô cô la",
+        "word": "チョコレート",
+        "kanji": null,
+        "romanji": "Chokoreeto"
+    },
+    {
+        "meaning": "Từ nay rất mong nhận được sự giúp đỡ của anh/chị",
+        "word": "これからおせわになります",
+        "kanji": "これからお世話になります",
+        "romanji": "Korekara osewa ni narimasu"
+    },
+    {
+        "meaning": "Chính tôi cũng mong nhận được sự giúp đỡ của anh/chị (đáp lại câu 「どうぞよろしく」)",
+        "word": "こちらこそよろしく",
+        "kanji": null,
+        "romanji": "Kochira koso yoroshiku"
+    },
+    {
+        "meaning": "Cà phê",
+        "word": "コーヒー",
+        "kanji": null,
+        "romanji": "Koohii"
+    },
+    {
+        "meaning": "Tiếng Nhật",
+        "word": "にほんご",
+        "kanji": "日本語",
+        "romanji": "Nihongo"
+    },
+    {
+        "meaning": "Tiếng ~",
+        "word": "~ご",
+        "kanji": "~語",
+        "romanji": "~go"
+    },
+    {
+        "meaning": "Thế à, vậy à",
+        "word": "そうですか",
+        "kanji": null,
+        "romanji": "Sou desu ka"
+    },
+    {
+        "meaning": "À, ờ (dùng để biểu thị sự ngập ngừng, do dự)",
+        "word": "あのう",
+        "kanji": null,
+        "romanji": "Anou"
+    },
+    {
+        "meaning": "Xin mời (dùng khi mời ai đó cái gì)",
+        "word": "どうぞ",
+        "kanji": null,
+        "romanji": "Douzo"
     }
 ]
