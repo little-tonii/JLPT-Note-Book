@@ -412,5 +412,59 @@
         "word": "そうですね",
         "kanji": null,
         "romanji": "Sou desu ne"
+    },
+    {
+        "meaning": "Anh/Chị đã quen với cuộc sống ở Nhật chưa?",
+        "word": "にほんのせいかつになれましたか",
+        "kanji": "日本の生活に慣れましたか",
+        "romanji": "Nihon no seikatsu ni naremashita ka"
+    },
+    {
+        "meaning": "Anh/Chị dùng thêm một chén [~] nữa được không ạ?",
+        "word": "[～、]もういっぱいいかがですか",
+        "kanji": "[～、]もう一杯いかがですか",
+        "romanji": "[~], Mou ippai ikaga desu ka"
+    },
+    {
+        "meaning": "Không, đủ rồi ạ.",
+        "word": "いいえ、けっこうです",
+        "kanji": null,
+        "romanji": "Iie, kekkou desu"
+    },
+    {
+        "meaning": "Đã ~ rồi nhỉ./Đã ~ rồi, đúng không ạ?",
+        "word": "もう～です[ね]",
+        "kanji": null,
+        "romanji": "Mou ~ desu [ne]"
+    },
+    {
+        "meaning": "Sắp đến lúc tôi phải xin phép rồi./Đã đến lúc tôi phải về.",
+        "word": "そろそろしつれいします",
+        "kanji": "そろそろ失礼します",
+        "romanji": "Sorosoro shitsurei shimasu"
+    },
+    {
+        "meaning": "Lần sau anh/chị lại đến chơi nhé.",
+        "word": "またいらっしゃってください",
+        "kanji": null,
+        "romanji": "Mata irasshatte kudasai"
+    },
+    {
+        "meaning": "Hồ Biwa",
+        "word": "びわこ",
+        "kanji": "琵琶湖",
+        "romanji": "Biwako"
+    },
+    {
+        "meaning": "Thượng Hải",
+        "word": "シャンハイ",
+        "kanji": null,
+        "romanji": "Shanghai"
+    },
+    {
+        "meaning": "Chùa Kinkaku-ji",
+        "word": "きんかくじ",
+        "kanji": "金閣寺",
+        "romanji": "Kinkakuji"
     }
 ]
