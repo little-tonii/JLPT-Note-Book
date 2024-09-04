@@ -160,8 +160,27 @@
                 "meaning": "Công ty SAMSUNG sản xuất sản phẩm gì? Công ty sản xuất điện thoại."
             },
             {
-                "example": "Dung Moriはなんのかいしゃですか。",
-                "meaning":""
+                "example": "Dung Moriはなんのかいしゃですか。\nにほんごのセンターです。",
+                "meaning": "Công ty Dung Mori làm về lĩnh vực gì? Công ty làm về trung tâm tiếng Nhật."
+            }
+        ]
+    },
+    {
+        "type": "N thì bao nhiêu tiền?",
+        "meaning": "Dùng khi hỏi giá tiền đồ vật",
+        "struct": "Nはいくらですか。",
+        "examples": [
+            {
+                "example": "これはいくらですか。\nそれは1000えんです。",
+                "meaning": "Cái này bao nhiêu tiền?\nCái đó 1000 yên."
+            },
+            {
+                "example": "このぼうしはいくらですか。\nそのぼうしは200.000ドンです。",
+                "meaning": "Cái mũ này bao nhiêu tiền?\nCái mũ đó 200.000 đồng."
+            },
+            {
+                "example": "タナカさんのくるまはいくらですか。\nタナカさんのくるまは2.500.000えんです。",
+                "meaning": "Ô tô của Tanaka bao nhiêu tiền?\nÔ tô của Tanaka 2.500.000 yên."
             }
         ]
     }
