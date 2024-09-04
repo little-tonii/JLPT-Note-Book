@@ -1,8 +1,168 @@
 [
     {
-        "type": "",
-        "struct": "",
-        "meaning": "",
-        "examples": []
+        "type": "Chỗ này / chỗ đó / chỗ kia là N",
+        "struct": "ここ・そこ・あそこ / こちら・そちら・あちら",
+        "meaning": "Chỗ này / chỗ đó / chỗ kia là N",
+        "examples": [
+            {
+                "example": "ここはきょうしつです。",
+                "meaning": "Đây là phòng học."
+            },
+            {
+                "example": "そこはかいぎしつです。",
+                "meaning": "Đó là phòng họp."
+            },
+            {
+                "example": "あそこはABCぎんこうです。",
+                "meaning": "Kia là ngân hàng ABC."
+            },
+            {
+                "example": "こちらはえいがかんです。",
+                "meaning": "Phía này là rạp chiếu phim."
+            },
+            {
+                "example": "そちらはわたしのだいがくです。",
+                "meaning": "Phía đó là trường đại học của tôi."
+            },
+            {
+                "example": "あちらはズンせんせいのじむしょです。",
+                "meaning": "Phía kia là văn phòng của thầy Dũng."
+            }
+        ]
+    },
+    {
+        "type": "N1 ở N2",
+        "meaning": "Dùng khi muốn nói vè địa điểm tồn tại của người, vật, địa điểm",
+        "struct": "N1(người, vật, địa điểm)はN2(địa điểm)です。",
+        "examples": [
+            {
+                "example": "ヤマダさんはじむしょです。",
+                "meaning": "Anh Yamada ở văn phòng."
+            },
+            {
+                "example": "タナカ先生は３がいのきょうしつです。",
+                "meaning": "Thầy Tanaka ở phòng học tầng 3"
+            },
+            {
+                "example": "リンさんはあちらです。",
+                "meaning": "Chị Linh ở phía kia."
+            },
+            {
+                "example": "スーパーはこちらです。",
+                "meaning": "Siêu thị ở phía này."
+            },
+            {
+                "example": "しょくどうは２かいです。",
+                "meaning": "Nhà ăn ở tầng 2."
+            },
+            {
+                "example": "でんわはうけつけです。",
+                "meaning": "Điện thoại ở quầy lễ tân."
+            },
+            {
+                "example": "かさはそこです。",
+                "meaning": "Cái ô ở đó."
+            },
+            {
+                "example": "トイレはそこです。",
+                "meaning": "Phòng vệ sinh ở đó."
+            }
+        ]
+    },
+    {
+        "type": "N1 ở đâu?",
+        "meaning": "Dùng khi muốn hỏi vị trí của người, vật, địa điểm",
+        "struct": "N1はどこ/どちらですか。",
+        "examples": [
+            {
+                "example": "キムラさんはどちらですか。\nキムラさんは5かいです。",
+                "meaning": "Chị Kimura ở đâu?\nChị Kimura ở tầng 5."
+            },
+            {
+                "example": "かいだんはどこですか。\nかいだんはあそこです。",
+                "meaning": "Cầu thang ở đâu?\nCầu thang ở kia."
+            },
+            {
+                "example": "パソコンはどこですか。\nパソコンはかいぎしつです。",
+                "meaning": "Laptop ở đâu?\nLaptop ở phòng họp."
+            },
+            {
+                "example": "ゆうびんきょくはどこですか。\nゆうびんきょくはそこです。",
+                "meaning": "Bưu điện ở đâu?\nBưu điện ở đó."
+            }
+        ]
+    },
+    {
+        "type": "Trường học, đất nước, công ty (của bạn) tên là gì?",
+        "meaning": "Dùng để hỏi tên đất nước, trường đại học, công ty, bệnh viện, quê quán nơi chúng ta đang sinh sống, học tập, làm việc.",
+        "struct": "がっこう・おくに・かいしゃはどちらですか。",
+        "examples": [
+            {
+                "example": "おくにはどちらですか。\nベトナムです。",
+                "meaning": "Nước bạn tên là gì?\nViệt Nam."
+            },
+            {
+                "example": "ミンさんのだいがくはどちらですか。ハノイだいがくです。",
+                "meaning": "Trường đại học của Minh tên là gì?\nTrường đại học Hà Nội."
+            },
+            {
+                "example": "アンさんのかいしゃはどちらですか。PANASONICです。",
+                "meaning": "Công ty của An tên là gì?\nPANASONIC."
+            },
+            {
+                "example": "タナカさんのびょういんはどちらですか。MORIびょういんです。",
+                "meaning": "Bệnh viện của Tanaka tên là gì?\nBệnh viện MORI."
+            }
+        ]
+    },
+    {
+        "type": "N2 được sản xuất ở đâu? N2 sản xuất tại N1",
+        "meaning": "Dùng khi nói xuất xứ của sản phẩm từ đất nước, công ty nào đó.",
+        "struct": "どこのN2ですか。\nN1のN2",
+        "examples": [
+            {
+                "example": "にほんのくるま",
+                "meaning": "Ô tô được sản xuất tại Nhật Bản."
+            },
+            {
+                "example": "SAMSUNGのけいたい",
+                "meaning": "Điện thoại sản xuất tại SAMSUNG."
+            },
+            {
+                "example": "そのかばんはイギリスのです。",
+                "meaning": "Cái túi đó sản xuất tại Anh."
+            },
+            {
+                "example": "チャンさんのくつはイタリアのです。",
+                "meaning": "Đôi giày của Trang sản xuất tại Ý."
+            },
+            {
+                "example": "あれはどこのとけいですか。\nイギリスのとけいです。",
+                "meaning": "Cái kia là đồng hồ sản xuất ở đâu?\nĐồng hồ sản xuất tại Anh."
+            },
+            {
+                "example": "そのかさはどこのですか。\nかんこくのかさです。",
+                "meaning": "Cái ô đó được sản xuất ở đâu?\nCái ô sản xuất tại Hàn Quốc."
+            },
+            {
+                "example": "それはベトナムのバイクです。",
+                "meaning": "Đó là xe máy sản xuất tại Việt Nam."
+            }
+        ]
+    },
+    {
+        "type": "N là công ty làm về lĩnh vực gì, sản xuất gì",
+        "struct": "N1(tên công ty)はなんのかいしゃですか?\nN2(tên sản phẩm, lĩnh vực)のN1(tên công ty)です。",
+        "meaning": "Khi muốn hỏi về công ty nào đó làm về lĩnh vực gì, sản xuất sản phẩm gì",
+        "examples": [
+            {
+                "example": "SAMSUNGはなんのかいしゃですか。\nけいたいのかいしゃです。",
+                "meaning": "Công ty SAMSUNG sản xuất sản phẩm gì? Công ty sản xuất điện thoại."
+            },
+            {
+                "example": "Dung Moriはなんのかいしゃですか。",
+                "meaning":""
+            }
+        ]
     }
 ]
