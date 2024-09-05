@@ -1,0 +1,201 @@
+[
+    {
+        "type": "Tính từ",
+        "struct": "Aい/Aな",
+        "meaning": "Tính từ đuôi い (có đuôi tận cùng là い), và tính từ đuôi な (có đuôi tận cùng là な)",
+        "examples": [
+            {
+                "example": "ちいさい",
+                "meaning": "Nhỏ"
+            },
+            {
+                "example": "おおきい",
+                "meaning": "To"
+            },
+            {
+                "meaning": "Đẹp trai",
+                "example": "ハンスム「な」"
+            },
+            {
+                "meaning": "Nổi tiếng",
+                "example": "ゆうめい「な」"
+            }
+        ]
+    },
+    {
+        "type": "Câu khẳng định với tính từ",
+        "struct": "Nは(とても/めっちゃ/ちょう/すげえ)Aい/Aな(bỏ な）です。",
+        "meaning": "N (rất) ... (N (rất)",
+        "examples": [
+            {
+                "meaning": "Chị Trang thú vị.",
+                "example": "チャンさんはおもしろいです。"
+            },
+            {
+                "example": "ヤマダさんはイケメンです。",
+                "meaning": "Anh Yamada đẹp trai."
+            },
+            {
+                "example": "ハノイはにぎやかです。",
+                "meaning": "Hà Nội náo nhiệt."
+            },
+            {
+                "example": "Bun chaはおいしいです。",
+                "meaning": "Bún chả ngon."
+            },
+            {
+                "example": ""
+            },
+            {
+                "example": "かのじょはとてもかわいいです。",
+                "meaning": "Cô ấy rất dễ thương."
+            },
+            {
+                "example": "このくるまはとてもたかいですね。",
+                "meaning": "Chiếc xe này rất đắt đấy."
+            },
+            {
+                "example": "かれのへやはとてもちいさいです。",
+                "meaning": "Phòng của anh ấy rất nhỏ."
+            }
+        ]
+    },
+    {
+        "type": "Câu phủ định với tính từ",
+        "meaning": "N (không) ... (lắm)",
+        "struct": "Nは(あまり)A(tính từ đuôi な, bỏ な)くないです。/N(あまり)A(tính từ đuôi い, bỏ い)じゃありません。",
+        "examples": [
+            {
+                "example": "ベトナムはさむくないです。",
+                "meaning": "Việt Nam không lạnh."
+            },
+            {
+                "example": "ミンさんはげんきじゃありません。",
+                "meaning": "Anh Minh không khỏe."
+            },
+            {
+                "example": "ハイズオンはにぎやかじゃありません。",
+                "meaning": "Hải Dương không náo nhiệt."
+            },
+            {
+                "example": "わたしのへやはやすくないです。",
+                "meaning": "Căn phòng của tôi không rẻ."
+            },
+            {
+                "example": "このすしはあまりおいしくないです。",
+                "meaning": "Cái sushi này không ngon lắm."
+            },
+            {
+                "example": "ハノイはあまりさむくないです。",
+                "meaning": "Hà Nội không lạnh lắm."
+            },
+            {
+                "example": "このひとはあまりイケメンじゃありません。",
+                "meaning": "Người này không đẹp trai lắm."
+            }
+        ]
+    },
+    {
+        "type": "Tính từ bổ nghĩa cho danh từ",
+        "meaning": "N1 là N2 ...",
+        "struct": "N1はAい/AなN2です。",
+        "examples": [
+            {
+                "example": "ふじさんはたかいやまです。",
+                "meaning": "Núi Phú Sĩ là ngọn núi cao."
+            },
+            {
+                "example": "ミカさんはきれいなひとです。",
+                "meaning": "Mika là người xinh đẹp."
+            },
+            {
+                "example": "テレビはべんりなきかいです。",
+                "meaning": "Tivi là thiết bị tiện lợi."
+            },
+            {
+                "example": "きょうとはしずかなまちです。",
+                "meaning": "Kyoto là thành phố yên tĩnh."
+            }
+        ]
+    },
+    {
+        "type": "Từ nối",
+        "meaning": "Và, hơn nữa/Nhưng, tuy nhiên",
+        "struct": "S1。そして、S2。/S1が、S2。",
+        "examples": [
+            {
+                "example": "にほんのたべものはおいしいですが、たかいです。",
+                "meaning": "Đồ ăn Nhật Bản ngon nhưng đắt."
+            },
+            {
+                "example": "しごとはたのしいですが、めっちゃいそがしいです。",
+                "meaning": "Công việc vui nhưng rất bận."
+            },
+            {
+                "example": "Hieuさんはせがたかいですが、イケメンなひとじゃありません。",
+                "meaning": "Hiếu cao nhưng không phải người đẹp trai."
+            }
+        ]
+    },
+    {
+        "type": "N thì như thế nào?",
+        "meaning": "N thì như thế nào?",
+        "struct": "N1はどうですか。",
+        "examples": [
+            {
+                "example": "ミンさんはどうですか。\nおもしろいです。",
+                "meaning": "Minh như thế nào?\nThú vị."
+            },
+            {
+                "example": "にほんのせいかつはどうですか。\nにほんのせいかつはべんりですが、さびしいです。",
+                "meaning": "Cuộc sống ở Nhật Bản như thế nào?\nCuộc sống ở Nhật Bản tiện lợi nhưng cô đơn."
+            },
+            {
+                "example": "ベトナムのバインミーはどうですか。\nおいしいです。そしてやすいです。",
+                "meaning": "Bánh mì Việt Nam như thế nào?\nNgon. Và rẻ."
+            }
+        ]
+    },
+    {
+        "type": "N1 là N2 như thế nào?",
+        "meaning": "N1 là N2 như thế nào?",
+        "struct": "N1はどんなN2ですか。",
+        "examples": [
+            {
+                "example": "ミンさんはどんなひとですか。\nおもしろいひとです。",
+                "meaning": "Minh là người như thế nào?\nNgười thú vị."
+            },
+            {
+                "example": "ハノイはどんなまちですか。\nハノイはにぎやかですが、ふるいまちです。",
+                "meaning": "Hà Nội là thành phố như thế nào?\nHà Nội náo nhiệt nhưng thành phố cũ."
+            },
+            {
+                "example": "キムラさんはどんなひとですか。\nキムラさんはしんせつなひとです。そして、やさしいひとです。",
+                "meaning": "Kimura là người như thế nào?\nKimura là người tốt bụng và là người hiền lành"
+            }
+        ]
+    },
+    {
+        "type": "N1 là cái nào?",
+        "meaning": "N1 là cái nào?",
+        "struct": "N1はどれですか。",
+        "examples": [
+            {
+                "example": "",
+                "meaning": ""
+            },
+            {
+                "example": "",
+                "meaning": ""
+            },
+            {
+                "example": "",
+                "meaning": ""
+            },
+            {
+                "example": "",
+                "meaning": ""
+            }
+        ]
+    }
+]
