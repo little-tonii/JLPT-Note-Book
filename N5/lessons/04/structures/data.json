@@ -181,20 +181,20 @@
         "struct": "N1はどれですか。",
         "examples": [
             {
-                "example": "",
-                "meaning": ""
+                "example": "ミンさんのくるまはどれですか。\nくろいくるまです。",
+                "meaning": "Ô tô của Minh là cái nào?\nLà cái ô tô màu đen."
             },
             {
-                "example": "",
-                "meaning": ""
+                "example": "やまかわさんのかばんはどれですか。\nあのちいさいかばんです。",
+                "meaning": "Cái túi của Yamakawa là cái nào?\nLà cái túi nhỏ kia."
             },
             {
-                "example": "",
-                "meaning": ""
+                "example": "キムラさんのパスポートはどれですか。\nそのあたらしいパスポートです。",
+                "meaning": "Hộ chiếu của Kimura là cái nào?\nLà cái hộ chiếu mới đó."
             },
             {
-                "example": "",
-                "meaning": ""
+                "example": "いとうせんせいのじしょはどれですか。\nあのにほんごのじしょです。",
+                "meaning": "Từ điển của thầy Idou là cái nào?\nLà cuốn từ điển tiếng Nhật kia."
             }
         ]
     }
