@@ -1,8 +1,348 @@
 [
     {
+        "type": "Cách đếm giờ",
+        "meaning": "Cách đếm giờ",
+        "struct": "Số đếm + じ",
+        "examples": [
+            {
+                "example": "れいじ",
+                "meaning": "0 giờ"
+            },
+            {
+                "example": "いちじ",
+                "meaning": "1 giờ"
+            },
+            {
+                "example": "にじ",
+                "meaning": "2 giờ"
+            },
+            {
+                "example": "さんじ",
+                "meaning": "3 giờ"
+            },
+            {
+                "example": "よじ",
+                "meaning": "4 giờ"
+            },
+            {
+                "example": "ごじ",
+                "meaning": "5 giờ"
+            },
+            {
+                "example": "ろくじ",
+                "meaning": "6 giờ"
+            },
+            {
+                "example": "しちじ",
+                "meaning": "7 giờ"
+            },
+            {
+                "example": "はちじ",
+                "meaning": "8 giờ"
+            },
+            {
+                "example": "くじ",
+                "meaning": "9 giờ"
+            },
+            {
+                "example": "じゅうじ",
+                "meaning": "10 giờ"
+            },
+            {
+                "example": "じゅういちじ",
+                "meaning": "11 giờ"
+            },
+            {
+                "example": "じゅうにじ",
+                "meaning": "12 giờ"
+            },
+            {
+                "example": "じゅうよじ",
+                "meaning": "14 giờ"
+            },
+            {
+                "example": "じゅうくじ",
+                "meaning": "19 giờ"
+            },
+            {
+                "example": "にじゅうじ",
+                "meaning": "20 giờ"
+            },
+            {
+                "example": "にじゅういちじ",
+                "meaning": "21 giờ"
+            },
+            {
+                "example": "にじゅうよじ",
+                "meaning": "24 giờ"
+            }
+        ]
+    },
+    {
+        "type": "Cách đếm phút",
+        "meaning": "Cách đếm phút",
+        "struct": "Số đếm + ふん/ぷん",
+        "examples": [
+            {
+                "example": "いっぷん",
+                "meaning": "1 phút"
+            },
+            {
+                "example": "にふん",
+                "meaning": "2 phút"
+            },
+            {
+                "example": "さんぷん",
+                "meaning": "3 phút"
+            },
+            {
+                "example": "よんぷん",
+                "meaning": "4 phút"
+            },
+            {
+                "example": "ごふん",
+                "meaning": "5 phút"
+            },
+            {
+                "example": "ろっぷん",
+                "meaning": "6 phút"
+            },
+            {
+                "example": "ななふん",
+                "meaning": "7 phút"
+            },
+            {
+                "example": "はっぷん",
+                "meaning": "8 phút"
+            },
+            {
+                "example": "きゅうふん",
+                "meaning": "9 phút"
+            },
+            {
+                "example": "じゅっぷん",
+                "meaning": "10 phút"
+            },
+            {
+                "example": "じゅうごふん",
+                "meaning": "15 phút"
+            },
+            {
+                "example": "にじゅっぷん",
+                "meaning": "20 phút"
+            },
+            {
+                "example": "にじゅうごふん",
+                "meaning": "25 phút"
+            },
+            {
+                "example": "さんじゅっぷん",
+                "meaning": "30 phút"
+            },
+            {
+                "example": "さんじゅうごふん",
+                "meaning": "35 phút"
+            },
+            {
+                "example": "よんじゅっぷん",
+                "meaning": "40 phút"
+            },
+            {
+                "example": "よんじゅうごふん",
+                "meaning": "45 phút"
+            },
+            {
+                "example": "ごじゅっぷん",
+                "meaning": "50 phút"
+            },
+            {
+                "example": "ごじゅうごふん",
+                "meaning": "55 phút"
+            }
+        ]
+    },
+    {
+        "type": "Cách hỏi giờ",
+        "meaning": "Bây giờ là mấy giờ?\nBây giờ là ~ giờ ~ phút.",
+        "struct": "いまなんじですか。いま～じ～分です。",
+        "examples": [
+            {
+                "example": "いまあさ５じ３０分です。",
+                "meaning": "Bây giờ là 5 giờ 30 phút sáng."
+            },
+            {
+                "example": "いまなんじですか。\nいまごぜん８じ１５ふんです。\nいまあさ９じ４０ぷんです。\nいまよる７じ１０ぷんまえです。",
+                "meaning": "Bây giờ là mấy giờ?\nBây giờ là 8 giờ 15 phút sáng.\nBây giờ là 9 giờ 40 phút sáng.\nBây giờ là 7 giờ 10 phút tối."
+            },
+            {
+                "example": "いまにほんはごご４じです",
+                "meaning": "Bây giờ ở Nhật là 4 giờ chiều."
+            }
+        ]
+    },
+    {
+        "type": "Cách nói thứ trong tuần",
+        "meaning": "Hôm ~ là thứ mấy?\nHôm ~ là thứ ~.",
+        "struct": "Nはなんようびですか。\nNは～ようびです。",
+        "examples": [
+            {
+                "example": "にちようび",
+                "meaning": "Chủ nhật"
+            },
+            {
+                "example": "げつようび",
+                "meaning": "Thứ hai"
+            },
+            {
+                "example": "かようび",
+                "meaning": "Thứ ba"
+            },
+            {
+                "example": "すいようび",
+                "meaning": "Thứ tư"
+            },
+            {
+                "example": "もくようび",
+                "meaning": "Thứ năm"
+            },
+            {
+                "example": "きんようび",
+                "meaning": "Thứ sáu"
+            },
+            {
+                "example": "どようび",
+                "meaning": "Thứ bảy"
+            },
+            {
+                "example": "きょうはげつようびです。",
+                "meaning": "Hôm nay là thứ hai."
+            },
+            {
+                "example": "あしたはかようびです。",
+                "meaning": "Ngày mai là thứ ba."
+            },
+            {
+                "example": "あさってはすいようびです。",
+                "meaning": "Ngày kia là thứ tư."
+            },
+            {
+                "example": "やすみのひはさんようびですか。\nどようびとにちようびです。",
+                "meaning": "Ngày nghỉ là thứ ba phải không?\nLà thứ bảy và chủ nhật."
+            }
+        ]
+    },
+    {
+        "type": "Động từ thể ます",
+        "meaning": "Động từ ở dạng lịch sự",
+        "struct": "Vます",
+        "examples": [
+            {
+                "example": "べんきょうします",
+                "meaning": "Học"
+            },
+            {
+                "example": "はたらきます",
+                "meaning": "Làm việc"
+            },
+            {
+                "example": "ねます",
+                "meaning": "Ngủ"
+            },
+            {
+                "example": "おきます",
+                "meaning": "Thức dậy"
+            },
+            {
+                "example": "やすみます",
+                "meaning": "Nghỉ ngơi"
+            }
+        ]
+    },
+    {
+        "type": "Thì động từ hiện tại, tương lai",
+        "meaning": "Thể khẳng định/Thể phụ định",
+        "struct": "Vます/Vません",
+        "examples": [
+            {
+                "example": "べんきょうします/べんきょうしません",
+                "meaning": "Học/Không học"
+            },
+            {
+                "example": "はたらきます/はたらきません",
+                "meaning": "Làm việc/Không làm việc"
+            },
+            {
+                "example": "ねます/ねません",
+                "meaning": "Ngủ/Không ngủ"
+            },
+            {
+                "example": "おきます/おきません",
+                "meaning": "Thức dậy/Không thức dậy"
+            },
+            {
+                "example": "やすみます/やすみません",
+                "meaning": "Nghỉ ngơi/Không nghỉ ngơi"
+            }
+        ]
+    },
+    {
+        "type": "Thì đồng từ quá khứ",
+        "meaning": "Thể khẳng định/Thể phủ định",
+        "struct": "Vました/Vませんでした",
+        "examples": [
+            {
+                "example": "べんきょうしました/べんきょうしませんでした",
+                "meaning": "Đã học/đã không học"
+            },
+            {
+                "example": "はたらきました/はたらきませんでした",
+                "meaning": "Đã làm việc/đã không làm việc"
+            },
+            {
+                "example": "ねました/ねませんでした",
+                "meaning": "Đã ngủ/đã không ngủ"
+            },
+            {
+                "example": "おきました/おきませんでした",
+                "meaning": "Đã thức dậy/đã không thức dậy"
+            },
+            {
+                "example": "やすみました/やすみませんでした",
+                "meaning": "Đã nghỉ ngơi/đã không nghỉ ngơi"
+            }
+        ]
+    },
+    {
+        "type": "Câu hỏi với động từ và ví dụ với thì động từ",
+        "meaning": "Lúc N đã làm V chưa?\nCó, đã làm V.\nKhông, chưa làm V.",
+        "struct": "N(Thời gian)(は)Vますか。\nはい、Vます。\nいいえ、Vません。",
+        "examples": [
+            {
+                "example": "きょうはたらきます。",
+                "meaning": "Hôm nay làm việc."
+            },
+            {
+                "example": "あしたべんきょうしません。",
+                "meaning": "Ngày mai không học."
+            },
+            {
+                "example": "きのうやすみました。",
+                "meaning": "Hôm qua đã nghỉ."
+            },
+            {
+                "example": "おとといねませんでした。",
+                "meaning": "Hôm kia đã không ngủ."
+            },
+            {
+                "example": "あさってはたらきますか。\nはい、はたらきます。\nいいえ、はたらきません。",
+                "meaning": "Ngày kia làm việc không?\nCó, sẽ làm việc.\nKhông, sẽ không làm việc."
+            }
+        ]
+    },
+    {
         "type": "",
-        "meaning": "",
         "struct": "",
+        "meaning": "",
         "examples": [
             {
                 "example": "",
@@ -12,74 +352,8 @@
     },
     {
         "type": "",
-        "meaning": "",
         "struct": "",
-        "examples": [
-            {
-                "example": "",
-                "meaning": ""
-            }
-        ]
-    },
-    {
-        "type": "",
         "meaning": "",
-        "struct": "",
-        "examples": [
-            {
-                "example": "",
-                "meaning": ""
-            }
-        ]
-    },
-    {
-        "type": "",
-        "meaning": "",
-        "struct": "",
-        "examples": [
-            {
-                "example": "",
-                "meaning": ""
-            }
-        ]
-    },
-    {
-        "type": "",
-        "meaning": "",
-        "struct": "",
-        "examples": [
-            {
-                "example": "",
-                "meaning": ""
-            }
-        ]
-    },
-    {
-        "type": "",
-        "meaning": "",
-        "struct": "",
-        "examples": [
-            {
-                "example": "",
-                "meaning": ""
-            }
-        ]
-    },
-    {
-        "type": "",
-        "meaning": "",
-        "struct": "",
-        "examples": [
-            {
-                "example": "",
-                "meaning": ""
-            }
-        ]
-    },
-    {
-        "type": "",
-        "meaning": "",
-        "struct": "",
         "examples": [
             {
                 "example": "",
