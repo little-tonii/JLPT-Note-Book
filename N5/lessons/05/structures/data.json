@@ -340,12 +340,36 @@
         ]
     },
     {
-        "type": "",
-        "struct": "",
-        "meaning": "",
+        "type": "Làm V vào lúc ~ giờ",
+        "struct": "たんじにVますか。\n～じにVます。",
+        "meaning": "Làm V vào lúc mấy giờ?\nLàm V vào lúc ~ giờ.",
         "examples": [
             {
-                "example": "",
+                "example": "まいあさ６じにおきます。",
+                "meaning": ""
+            },
+            {
+                "example": "まいにちごご８じにべんきょうします。",
+                "meaning": ""
+            },
+            {
+                "example": "けさ６じ３０分におきました。",
+                "meaning": ""
+            },
+            {
+                "example": "きのうのばん１１じ２０分にねました。",
+                "meaning": ""
+            },
+            {
+                "example": "にほんごのもりセンターごご４じ３０分におわります。",
+                "meaning": ""
+            },
+            {
+                "example": "きのうなんじにやすみましたか。\nごご７じにやすみました。",
+                "meaning": ""
+            },
+            {
+                "example": "ABCぎんこうはなんじにおわりますか。\nごご５じにおわります。",
                 "meaning": ""
             }
         ]
@@ -355,6 +379,30 @@
         "struct": "",
         "meaning": "",
         "examples": [
+            {
+                "example": "",
+                "meaning": ""
+            },
+            {
+                "example": "",
+                "meaning": ""
+            },
+            {
+                "example": "",
+                "meaning": ""
+            },
+            {
+                "example": "",
+                "meaning": ""
+            },
+            {
+                "example": "",
+                "meaning": ""
+            },
+            {
+                "example": "",
+                "meaning": ""
+            },
             {
                 "example": "",
                 "meaning": ""
