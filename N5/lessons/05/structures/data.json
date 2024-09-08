@@ -346,66 +346,62 @@
         "examples": [
             {
                 "example": "まいあさ６じにおきます。",
-                "meaning": ""
+                "meaning": "Mỗi sánh thức dậy lúc 6 giờ."
             },
             {
                 "example": "まいにちごご８じにべんきょうします。",
-                "meaning": ""
+                "meaning": "Mỗi ngày học vào lúc 8 giờ tối."
             },
             {
                 "example": "けさ６じ３０分におきました。",
-                "meaning": ""
+                "meaning": "Sáng nay thức dậy lúc 6 giờ 30 phút."
             },
             {
                 "example": "きのうのばん１１じ２０分にねました。",
-                "meaning": ""
+                "meaning": "Tối qua ngủ lúc 11 giờ 20 phút."
             },
             {
                 "example": "にほんごのもりセンターごご４じ３０分におわります。",
-                "meaning": ""
+                "meaning": "Trung tâm Mori tiếng Nhật kết thúc vào lúc 4 giờ 30 phút chiều."
             },
             {
                 "example": "きのうなんじにやすみましたか。\nごご７じにやすみました。",
-                "meaning": ""
+                "meaning": "Hôm qua nghỉ vào lúc mấy giờ?\nKết thúc vào lúc 7 giờ tối."
             },
             {
                 "example": "ABCぎんこうはなんじにおわりますか。\nごご５じにおわります。",
-                "meaning": ""
+                "meaning": "Ngân hàng ABC kết thúc vào lúc mấy giờ?\nKết thúc vào lúc 5 giờ chiều."
             }
         ]
     },
     {
-        "type": "",
-        "struct": "",
-        "meaning": "",
+        "type": "Từ ~ đến ~",
+        "struct": "～から～まで",
+        "meaning": "Từ ~ đến ~ (から biểu thị sự bắt đầu của thời gian hoặc nơi chốn, まで biểu thị sự kết thúc của thời gian hoặc nơi chốn, から～まで không nhất thiết phải đi cùng nhau)",
         "examples": [
             {
-                "example": "",
-                "meaning": ""
+                "example": "にほんごのもりセンターごぜん７じ２０分からごご５じまでです。",
+                "meaning": "Trung tâm tiếng nhật Dũng Mori mở cửa từ 7 giờ 20 phút sáng đến 5 giờ chiều."
             },
             {
-                "example": "",
-                "meaning": ""
+                "example": "としょかんはなんじからなんじまでですか。\nごぜん９じからごご６じまでです。",
+                "meaning": "Thư viện mở cửa từ mấy giờ đến mấy giờ? \nTừ 9 giờ sáng đến 6 giờ chiều."
             },
             {
-                "example": "",
-                "meaning": ""
+                "example": "げつようびからきんじょうびまでべんきょうします。",
+                "meaning": "Hoc từ thứ hai đến thứ sáu."
             },
             {
-                "example": "",
-                "meaning": ""
+                "example": "きのうあさからなんじょうびまでやすみますか。",
+                "meaning": "Nghỉ từ sáng hôm qua đến thứ mấy?"
             },
             {
-                "example": "",
-                "meaning": ""
+                "example": "なんじょうびからなんじょうびまでやすみますか。",
+                "meaning": "Nghỉ từ thứ mấy đến thứ mấy?"
             },
             {
-                "example": "",
-                "meaning": ""
-            },
-            {
-                "example": "",
-                "meaning": ""
+                "example": "おとといなんじからなんじまでべんきょうしましたか。８じから１０じまでです。",
+                "meaning": "Hôm kia học từ mấy giờ đến mấy giờ? Từ 8 giờ đến 10 giờ."
             }
         ]
     }
