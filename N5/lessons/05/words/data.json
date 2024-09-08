@@ -193,39 +193,39 @@
     },
     {
         "meaning": "Làm việc",
-        "word": "はたらく",
-        "kanji": "働く",
-        "romanji": "Hataraku"
+        "word": "はたらきます",
+        "kanji": "働きます",
+        "romanji": "Hatarakimasu"
     },
     {
         "meaning": "Nghỉ, nghỉ ngơi",
-        "word": "やすむ",
-        "kanji": "休む",
-        "romanji": "Yasumu"
+        "word": "やすみます",
+        "kanji": "休みます",
+        "romanji": "Yasumimasu"
     },
     {
         "meaning": "Hết, kết thúc, xong",
-        "word": "おわる",
-        "kanji": "終わる",
-        "romanji": "Owaru"
+        "word": "おわります",
+        "kanji": "終わります",
+        "romanji": "Owarimasu"
     },
     {
         "meaning": "Thức dậy",
-        "word": "おきる",
-        "kanji": "起きる",
-        "romanji": "Okiru"
+        "word": "おきます",
+        "kanji": "起きます",
+        "romanji": "Okimasu"
     },
     {
         "meaning": "Ngủ",
-        "word": "ねる",
-        "kanji": "寝る",
-        "romanji": "Neru"
+        "word": "ねます",
+        "kanji": "寝ます",
+        "romanji": "Nemasu"
     },
     {
         "meaning": "Học",
-        "word": "べんきょうする",
-        "kanji": "勉強する",
-        "romanji": "Benkyousuru"
+        "word": "べんきょうします",
+        "kanji": "勉強します",
+        "romanji": "Benkyoushimasu"
     },
     {
         "meaning": "Từ ~",
