@@ -3,11 +3,11 @@ import 'package:note_book_app/domain/entities/level_entity.dart';
 import 'package:note_book_app/domain/repositories/level_repository.dart';
 
 class GetAllLevelsUsecase {
-  final LevelRepository _levelRepository;
+  final LevelRepository levelRepository;
 
-  const GetAllLevelsUsecase(this._levelRepository);
+  const GetAllLevelsUsecase({required this.levelRepository});
 
   Future<Either<Exception, List<LevelEntity>>> call() async {
-    return await _levelRepository.getAllLevels();
+    return await levelRepository.getAllLevels();
   }
 }
