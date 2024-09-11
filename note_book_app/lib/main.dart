@@ -7,7 +7,9 @@ import 'package:note_book_app/core/services/get_it_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setUrlStrategy(PathUrlStrategy());
+  if (kIsWeb) {
+    setUrlStrategy(PathUrlStrategy());
+  }
   await initializeDependencies();
   runApp(const NoteBookApp());
 }
