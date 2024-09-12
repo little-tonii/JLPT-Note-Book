@@ -1,9 +1,9 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:note_book_app/presentation/web/home/pages/home_page_web.dart';
-import 'package:note_book_app/presentation/web/level/pages/level_page_web.dart';
-import 'package:note_book_app/presentation/web/not_found/pages/not_found_page_web.dart';
+import 'package:note_book_app/presentation/web_version/home/pages/home_page_web.dart';
+import 'package:note_book_app/presentation/web_version/level/pages/level_page_web.dart';
+import 'package:note_book_app/presentation/web_version/not_found/pages/not_found_page_web.dart';
 
 abstract class AppRoutes {
   static GoRouter goRouterConfig() {
