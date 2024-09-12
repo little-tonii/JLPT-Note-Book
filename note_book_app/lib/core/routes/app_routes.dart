@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:note_book_app/presentation/web/home/pages/home_page_web.dart';
 import 'package:note_book_app/presentation/web/level/pages/level_page_web.dart';
+import 'package:note_book_app/presentation/web/not_found/pages/not_found_page_web.dart';
 
 abstract class AppRoutes {
   static GoRouter goRouterConfig() {
@@ -30,6 +31,7 @@ abstract class AppRoutes {
           ],
         ),
       ],
+      errorBuilder: (context, state) => const NotFoundPageWeb(),
     );
   }
 }
