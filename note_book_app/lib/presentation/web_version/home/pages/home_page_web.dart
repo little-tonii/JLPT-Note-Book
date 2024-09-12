@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
-import 'package:note_book_app/presentation/web_version/home/cubits/home_page_cubit.dart';
-import 'package:note_book_app/presentation/web_version/home/cubits/home_page_state.dart';
+import 'package:note_book_app/presentation/web_version/home/cubits/home_page_web_cubit.dart';
+import 'package:note_book_app/presentation/web_version/home/cubits/home_page_web_state.dart';
 import 'package:note_book_app/presentation/web_version/home/widgets/level_card.dart';
 
 class HomePageWeb extends StatefulWidget {
@@ -17,15 +17,15 @@ class HomePageWeb extends StatefulWidget {
 class _HomePageWebState extends State<HomePageWeb> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<HomePageCubit>(
-      create: (context) => getIt<HomePageCubit>()..getAllLevels(),
+    return BlocProvider<HomePageWebCubit>(
+      create: (context) => getIt<HomePageWebCubit>()..getAllLevels(),
       child: Scaffold(
-        body: BlocConsumer<HomePageCubit, HomePageState>(
+        body: BlocConsumer<HomePageWebCubit, HomePageWebState>(
           listener: (context, state) {
             if (state is GetAllLevelsFailure) {}
           },
           builder: (context, state) {
-            if (state is HomePageLoading) {
+            if (state is HomePageWebLoading) {
               return const Center(
                 child: CircularProgressIndicator(
                   color: AppColors.kDFD3C3,

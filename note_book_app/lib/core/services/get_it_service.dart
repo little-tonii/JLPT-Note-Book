@@ -9,7 +9,7 @@ import 'package:note_book_app/domain/repositories/level_details_repository.dart'
 import 'package:note_book_app/domain/repositories/level_repository.dart';
 import 'package:note_book_app/domain/usecases/get_all_level_details_usecase.dart';
 import 'package:note_book_app/domain/usecases/get_all_levels_usecase.dart';
-import 'package:note_book_app/presentation/web_version/home/cubits/home_page_cubit.dart';
+import 'package:note_book_app/presentation/web_version/home/cubits/home_page_web_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
@@ -47,7 +47,7 @@ Future<void> initializeDependencies() async {
   ));
 
   getIt.registerFactory(
-    () => HomePageCubit(
+    () => HomePageWebCubit(
       getAllLevelsUsecase: getIt<GetAllLevelsUsecase>(),
     ),
   );

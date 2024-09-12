@@ -4,22 +4,6 @@ abstract class DataRaw {
       "id": "N5",
       "name": "N5",
     },
-    {
-      "id": "N4",
-      "name": "N4",
-    },
-    {
-      "id": "N3",
-      "name": "N3",
-    },
-    {
-      "id": "N2",
-      "name": "N2",
-    },
-    {
-      "id": "N1",
-      "name": "N1",
-    }
   ];
 
   static const Map<String, dynamic> levelDetails = {
