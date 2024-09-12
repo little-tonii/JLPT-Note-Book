@@ -31,7 +31,10 @@ abstract class AppRoutes {
           ],
         ),
       ],
-      errorBuilder: (context, state) => const NotFoundPageWeb(),
+      errorPageBuilder: (context, state) => NoTransitionPage(
+        child: const NotFoundPageWeb(),
+        key: state.pageKey,
+      ),
     );
   }
 }
