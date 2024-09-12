@@ -24,6 +24,7 @@ class LevelCard extends StatelessWidget {
           child: Text(
             levelEntity.name,
             style: TextStyle(
+              fontWeight: FontWeight.bold,
               fontSize: 24,
               color: AppColors.black.withOpacity(0.4),
             ),
