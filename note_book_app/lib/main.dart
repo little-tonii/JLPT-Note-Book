@@ -1,15 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:note_book_app/common/themes/app_themes.dart';
 import 'package:note_book_app/core/routes/app_routes.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (kIsWeb) {
-    setUrlStrategy(PathUrlStrategy());
-  }
   await initializeDependencies();
   runApp(const NoteBookApp());
 }
