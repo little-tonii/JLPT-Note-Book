@@ -13,6 +13,7 @@ abstract class AppRoutes {
         ),
         GoRoute(
           path: "/home",
+          name: "home",
           pageBuilder: (context, state) => NoTransitionPage(
             child: HomePageWeb(),
             key: state.pageKey,
