@@ -2,7 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_book_app/presentation/web_version/home/pages/home_page_web.dart';
-import 'package:note_book_app/presentation/web_version/level_details/pages/level_details_page_web.dart';
+import 'package:note_book_app/presentation/web_version/level/pages/level_page_web.dart';
 import 'package:note_book_app/presentation/web_version/not_found/pages/not_found_page_web.dart';
 
 abstract class AppRoutes {
@@ -33,16 +33,18 @@ abstract class AppRoutes {
         GoRoute(
           path: "/home/:level",
           pageBuilder: (context, state) {
-            final level = state.pathParameters['level'];
+            final level = state.pathParameters['level']!;
             WidgetsBinding.instance.addPostFrameCallback((_) {
               SystemChrome.setApplicationSwitcherDescription(
                 ApplicationSwitcherDescription(
-                  label: "$level",
+                  label: level,
                 ),
               );
             });
             return NoTransitionPage(
-              child: const LevelDetailsPageWeb(),
+              child: LevelDetailsPageWeb(
+                level: level,
+              ),
               key: state.pageKey,
             );
           },

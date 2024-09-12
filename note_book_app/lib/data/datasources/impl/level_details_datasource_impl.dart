@@ -15,6 +15,7 @@ class LevelDetailsDatasourceImpl implements LevelDetailsDatasource {
     }
     return (raw as List<dynamic>)
         .map((detail) => LevelDetailsModel(
+              level: level,
               name: detail['name'],
               id: detail['id'],
             ))
