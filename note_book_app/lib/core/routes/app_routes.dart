@@ -5,7 +5,6 @@ import 'package:note_book_app/presentation/web/level/pages/level_page_web.dart';
 abstract class AppRoutes {
   static GoRouter goRouterConfig() {
     return GoRouter(
-      routerNeglect: true,
       initialLocation: "/",
       routes: [
         GoRoute(
