@@ -1,16 +1,23 @@
-# note_book_app
+1. Phần "core" thường chứa:
 
-A new Flutter project.
+- Các lớp trừu tượng và interface cốt lõi
+- Các hằng số và cấu hình toàn cục
+- Các tiện ích và helper functions sử dụng xuyên suốt ứng dụng
+- Các service chung (như logging, analytics, error handling)
+- Các extension methods
+- Các middleware
+- Các interceptor cho network requests
+- Các custom exceptions
 
-## Getting Started
+2. Phần "common" thường chứa:
 
-This project is a starting point for a Flutter application.
+- Các widget dùng chung
+- Các styles và theme chung
+- Các assets (hình ảnh, fonts, etc.) dùng chung
+- Các translations và localization resources
+- Các constants dùng chung (như string constants, color constants)
+- Các utility functions không thuộc về logic nghiệp vụ cốt lõi
+- Các custom animations dùng chung
+- Các mixins dùng chung
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+"core" tập trung vào các thành phần cốt lõi và trừu tượng của ứng dụng, trong khi "common" chứa các thành phần dùng chung nhưng có thể cụ thể hơn và liên quan đến UI/UX.
