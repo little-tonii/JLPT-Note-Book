@@ -38,9 +38,9 @@ class _HomePageWebState extends State<HomePageWeb> {
                     ? const EdgeInsets.symmetric(horizontal: 320, vertical: 32)
                     : ResponsiveUtil.isTablet(context)
                         ? const EdgeInsets.symmetric(
-                            horizontal: 200, vertical: 32)
+                            horizontal: 100, vertical: 32)
                         : const EdgeInsets.symmetric(
-                            horizontal: 100, vertical: 16),
+                            horizontal: 32, vertical: 24),
                 itemCount: state.levels.length,
                 itemBuilder: (context, index) {
                   if (index != state.levels.length - 1) {
