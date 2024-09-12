@@ -1,28 +1,28 @@
 import 'package:equatable/equatable.dart';
 import 'package:note_book_app/domain/entities/level_entity.dart';
 
-abstract class HomePageState extends Equatable {
-  const HomePageState();
+abstract class HomePageWebState extends Equatable {
+  const HomePageWebState();
 
   @override
   List<Object> get props => [];
 }
 
-class HomePageInitial extends HomePageState {
-  const HomePageInitial();
+class HomePageWebInitial extends HomePageWebState {
+  const HomePageWebInitial();
 
   @override
   List<Object> get props => [];
 }
 
-class HomePageLoading extends HomePageState {
-  const HomePageLoading();
+class HomePageWebLoading extends HomePageWebState {
+  const HomePageWebLoading();
 
   @override
   List<Object> get props => [];
 }
 
-class GetAllLevelsSuccess extends HomePageState {
+class GetAllLevelsSuccess extends HomePageWebState {
   final List<LevelEntity> levels;
 
   const GetAllLevelsSuccess({required this.levels});
@@ -31,7 +31,7 @@ class GetAllLevelsSuccess extends HomePageState {
   List<Object> get props => [levels];
 }
 
-class GetAllLevelsFailure extends HomePageState {
+class GetAllLevelsFailure extends HomePageWebState {
   final String message;
 
   const GetAllLevelsFailure({required this.message});

@@ -2,7 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_book_app/presentation/web_version/home/pages/home_page_web.dart';
-import 'package:note_book_app/presentation/web_version/level/pages/level_page_web.dart';
+import 'package:note_book_app/presentation/web_version/level_details/pages/level_details_page_web.dart';
 import 'package:note_book_app/presentation/web_version/not_found/pages/not_found_page_web.dart';
 
 abstract class AppRoutes {
@@ -29,25 +29,23 @@ abstract class AppRoutes {
               key: state.pageKey,
             );
           },
-          routes: [
-            GoRoute(
-              path: ":level",
-              pageBuilder: (context, state) {
-                final level = state.pathParameters['level'];
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  SystemChrome.setApplicationSwitcherDescription(
-                    ApplicationSwitcherDescription(
-                      label: "$level",
-                    ),
-                  );
-                });
-                return NoTransitionPage(
-                  child: const LevelPageWeb(),
-                  key: state.pageKey,
-                );
-              },
-            ),
-          ],
+        ),
+        GoRoute(
+          path: "/home/:level",
+          pageBuilder: (context, state) {
+            final level = state.pathParameters['level'];
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              SystemChrome.setApplicationSwitcherDescription(
+                ApplicationSwitcherDescription(
+                  label: "$level",
+                ),
+              );
+            });
+            return NoTransitionPage(
+              child: const LevelDetailsPageWeb(),
+              key: state.pageKey,
+            );
+          },
         ),
       ],
       errorPageBuilder: (context, state) {

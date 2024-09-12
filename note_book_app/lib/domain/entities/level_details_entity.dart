@@ -1,8 +1,8 @@
-class LevelEntity {
+class LevelDetailsEntity {
   final String id;
   final String name;
 
-  const LevelEntity({
+  const LevelDetailsEntity({
     required this.name,
     required this.id,
   });

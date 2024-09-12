@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/domain/entities/level_entity.dart';
 
@@ -7,7 +8,9 @@ class LevelCard extends StatelessWidget {
 
   const LevelCard({super.key, required this.levelEntity});
 
-  void _handleOnTapLevelCard(BuildContext context) {}
+  void _handleOnTapLevelCard(BuildContext context) {
+    context.go('/home/${levelEntity.id}');
+  }
 
   @override
   Widget build(BuildContext context) {

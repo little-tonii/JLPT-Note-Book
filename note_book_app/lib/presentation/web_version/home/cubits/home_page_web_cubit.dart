@@ -1,15 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/domain/usecases/get_all_levels_usecase.dart';
-import 'package:note_book_app/presentation/web_version/home/cubits/home_page_state.dart';
+import 'package:note_book_app/presentation/web_version/home/cubits/home_page_web_state.dart';
 
-class HomePageCubit extends Cubit<HomePageState> {
+class HomePageWebCubit extends Cubit<HomePageWebState> {
   final GetAllLevelsUsecase getAllLevelsUsecase;
 
-  HomePageCubit({required this.getAllLevelsUsecase})
-      : super(const HomePageInitial());
+  HomePageWebCubit({required this.getAllLevelsUsecase})
+      : super(const HomePageWebInitial());
 
   void getAllLevels() async {
-    emit(const HomePageLoading());
+    emit(const HomePageWebLoading());
     final levels = await getAllLevelsUsecase.call();
     levels.fold(
       (failure) {
