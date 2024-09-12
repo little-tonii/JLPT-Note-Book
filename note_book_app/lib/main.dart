@@ -23,6 +23,6 @@ class NoteBookApp extends StatelessWidget {
         routerConfig: AppRoutes.goRouterConfig(),
       );
     }
-    return MaterialApp();
+    return const MaterialApp();
   }
 }

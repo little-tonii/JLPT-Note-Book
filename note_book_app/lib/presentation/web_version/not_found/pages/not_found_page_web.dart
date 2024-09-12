@@ -6,7 +6,7 @@ class NotFoundPageWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.kD0B8A8,
     );
   }

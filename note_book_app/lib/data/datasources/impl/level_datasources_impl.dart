@@ -7,11 +7,11 @@ class LevelDatasourcesImpl implements LevelDatasource {
   @override
   Future<List<LevelModel>> getAllLevels() async {
     return [
-      LevelModel(name: "N5"),
-      LevelModel(name: "N4"),
-      LevelModel(name: "N3"),
-      LevelModel(name: "N2"),
-      LevelModel(name: "N1"),
+      const LevelModel(name: "N5"),
+      const LevelModel(name: "N4"),
+      const LevelModel(name: "N3"),
+      const LevelModel(name: "N2"),
+      const LevelModel(name: "N1"),
     ];
   }
 }
