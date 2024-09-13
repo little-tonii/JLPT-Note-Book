@@ -33,7 +33,7 @@ abstract class AppRoutes {
         GoRoute(
           path: "/home/:level",
           pageBuilder: (context, state) {
-            final level = state.pathParameters['level']!;
+            final level = state.pathParameters['level'];
             WidgetsBinding.instance.addPostFrameCallback((_) {
               SystemChrome.setApplicationSwitcherDescription(
                 ApplicationSwitcherDescription(
@@ -42,8 +42,8 @@ abstract class AppRoutes {
               );
             });
             return NoTransitionPage(
-              child: LevelDetailsPageWeb(
-                level: level,
+              child: LevelPageWeb(
+                level: level!,
               ),
               key: state.pageKey,
             );
