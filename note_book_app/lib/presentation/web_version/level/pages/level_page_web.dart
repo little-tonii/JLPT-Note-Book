@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
-import 'package:note_book_app/presentation/web_version/level/blocs/level_page_web_cubit.dart';
-import 'package:note_book_app/presentation/web_version/level/blocs/level_page_web_state.dart';
+import 'package:note_book_app/presentation/web_version/level/cubits/level_page_web_cubit.dart';
+import 'package:note_book_app/presentation/web_version/level/cubits/level_page_web_state.dart';
 import 'package:note_book_app/presentation/web_version/level/widgets/detail_card.dart';
 
 class LevelPageWeb extends StatefulWidget {
@@ -46,15 +46,15 @@ class _LevelPageWebState extends State<LevelPageWeb> {
                             horizontal: 100, vertical: 32)
                         : const EdgeInsets.symmetric(
                             horizontal: 32, vertical: 24),
-                itemCount: state.levelDetails.length,
+                itemCount: state.lessons.length,
                 itemBuilder: (context, index) {
-                  if (index != state.levelDetails.length - 1) {
+                  if (index != state.lessons.length - 1) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 16),
-                      child: DetailCard(detail: state.levelDetails[index]),
+                      child: DetailCard(lesson: state.lessons[index]),
                     );
                   }
-                  return DetailCard(detail: state.levelDetails[index]);
+                  return DetailCard(lesson: state.lessons[index]);
                 },
               );
             }

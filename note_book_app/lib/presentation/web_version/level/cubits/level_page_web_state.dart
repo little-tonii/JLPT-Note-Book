@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:note_book_app/domain/entities/level_details_entity.dart';
+import 'package:note_book_app/domain/entities/lesson_entity.dart';
 
 abstract class LevelPageWebState extends Equatable {
   const LevelPageWebState();
@@ -23,12 +23,12 @@ class LevelPageWebLoading extends LevelPageWebState {
 }
 
 class LevelPageWebLoaded extends LevelPageWebState {
-  final List<LevelDetailsEntity> levelDetails;
+  final List<LessonEntity> lessons;
 
-  const LevelPageWebLoaded({required this.levelDetails});
+  const LevelPageWebLoaded({required this.lessons});
 
   @override
-  List<Object> get props => [levelDetails];
+  List<Object> get props => [lessons];
 }
 
 class LevelPageWebError extends LevelPageWebState {
