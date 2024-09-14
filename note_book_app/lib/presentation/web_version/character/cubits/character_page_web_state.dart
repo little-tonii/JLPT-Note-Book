@@ -34,7 +34,7 @@ class CharacterPageWebLoaded extends CharacterPageWebState {
 class CharacterPageWebError extends CharacterPageWebState {
   final String message;
 
-  const CharacterPageWebError(this.message);
+  const CharacterPageWebError({required this.message});
 
   @override
   List<Object> get props => [message];

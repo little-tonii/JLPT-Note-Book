@@ -49,8 +49,8 @@ abstract class DataRaw {
         "lesson": "Bài 5: Sáng nay, anh dậy lúc mấy giờ?",
       },
       {
-        "id":"lesson-06",
-        "lesson":"Bài 6: Hôm nay là sinh nhật của cô",
+        "id": "lesson-06",
+        "lesson": "Bài 6: Hôm nay là sinh nhật của cô",
       }
     ]
   };
@@ -92,7 +92,9 @@ abstract class DataRaw {
     {"romanji": "me", "hiragana": "め", "katakana": "メ"},
     {"romanji": "mo", "hiragana": "も", "katakana": "モ"},
     {"romanji": "ya", "hiragana": "や", "katakana": "ヤ"},
+    {"romanji": " ", "hiragana": " ", "katakana": " "},
     {"romanji": "yu", "hiragana": "ゆ", "katakana": "ユ"},
+    {"romanji": " ", "hiragana": " ", "katakana": " "},
     {"romanji": "yo", "hiragana": "よ", "katakana": "ヨ"},
     {"romanji": "ra", "hiragana": "ら", "katakana": "ラ"},
     {"romanji": "ri", "hiragana": "り", "katakana": "リ"},
@@ -100,7 +102,9 @@ abstract class DataRaw {
     {"romanji": "re", "hiragana": "れ", "katakana": "レ"},
     {"romanji": "ro", "hiragana": "ろ", "katakana": "ロ"},
     {"romanji": "wa", "hiragana": "わ", "katakana": "ワ"},
+    {"romanji": " ", "hiragana": " ", "katakana": " "},
     {"romanji": "wo", "hiragana": "を", "katakana": "ヲ"},
+    {"romanji": " ", "hiragana": " ", "katakana": " "},
     {"romanji": "n", "hiragana": "ん", "katakana": "ン"}
   ];
 }

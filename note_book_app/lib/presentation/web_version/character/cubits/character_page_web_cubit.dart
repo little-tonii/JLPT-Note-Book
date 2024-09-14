@@ -6,8 +6,25 @@ import 'package:note_book_app/presentation/web_version/character/cubits/characte
 class CharacterPageWebCubit extends Cubit<CharacterPageWebState> {
   final GetAllCharactersUsecase getAllCharactersUsecase =
       getIt<GetAllCharactersUsecase>();
+  bool showHigarana = true;
 
   CharacterPageWebCubit() : super(const CharacterPageWebInitial());
 
-  void getAllCharacters() async {}
+  void getAllCharacters() async {
+    emit(const CharacterPageWebLoading());
+    final result = await getAllCharactersUsecase.call();
+    result.fold(
+      (failure) => emit(CharacterPageWebError(message: failure.message)),
+      (characters) => emit(CharacterPageWebLoaded(characters: characters)),
+    );
+  }
+
+  void changeCharacterType({required String type}) async {
+    if (type == 'Hiragana') {
+      showHigarana = true;
+    } else {
+      showHigarana = false;
+    }
+    getAllCharacters();
+  }
 }
