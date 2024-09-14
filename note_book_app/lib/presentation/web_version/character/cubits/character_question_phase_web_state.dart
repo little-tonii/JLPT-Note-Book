@@ -39,3 +39,26 @@ class CharacterQuestionPhaseWebLoaded extends CharacterQuestionPhaseWebState {
   @override
   List<Object> get props => [question];
 }
+
+class CharacterQuestionPhaseWebCorrectAnswer
+    extends CharacterQuestionPhaseWebState {
+  const CharacterQuestionPhaseWebCorrectAnswer();
+
+  @override
+  List<Object> get props => [];
+}
+
+class CharacterQuestionPhaseWebWrongAnswer
+    extends CharacterQuestionPhaseWebState {
+  const CharacterQuestionPhaseWebWrongAnswer();
+
+  @override
+  List<Object> get props => [];
+}
+
+class CharacterQuestionPhaseWebEnd extends CharacterQuestionPhaseWebState {
+  const CharacterQuestionPhaseWebEnd();
+
+  @override
+  List<Object> get props => [];
+}

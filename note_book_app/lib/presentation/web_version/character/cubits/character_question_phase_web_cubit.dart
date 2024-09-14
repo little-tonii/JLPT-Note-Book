@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/question_entity.dart';
@@ -12,6 +10,8 @@ class CharacterQuestionPhaseWebCubit
       getIt<CreateCharacterQuestionUsecase>();
 
   List<QuestionEntity> questions = [];
+  int correctAnswers = 0;
+  int currentQuestion = 0;
 
   CharacterQuestionPhaseWebCubit()
       : super(const CharacterQuestionPhaseWebInitial());
@@ -27,6 +27,7 @@ class CharacterQuestionPhaseWebCubit
       questionType: questionType,
       answerType: answerType,
     );
+    currentQuestion++;
     result.fold(
       (failure) =>
           emit(CharacterQuestionPhaseWebError(message: failure.message)),
@@ -35,14 +36,31 @@ class CharacterQuestionPhaseWebCubit
         emit(CharacterQuestionPhaseWebLoaded(question: questions.first));
       },
     );
-    for (var element in questions) {
-      log(element.question);
+  }
+
+  void nextQuestion() {
+    if (currentQuestion <= questions.length) {
+      currentQuestion++;
+      emit(
+        CharacterQuestionPhaseWebLoaded(
+          question: questions[currentQuestion - 1],
+        ),
+      );
+    } else {
+      endPhase();
     }
   }
 
-  void nextQuestion() {}
+  void answerQuestion({required String answer}) {
+    if (questions[currentQuestion - 1].correctAnswer == answer) {
+      correctAnswers++;
+      emit(const CharacterQuestionPhaseWebCorrectAnswer());
+    } else {
+      emit(const CharacterQuestionPhaseWebWrongAnswer());
+    }
+  }
 
-  void answerQuestion() {}
-
-  void endPhase() {}
+  void endPhase() {
+    emit(const CharacterQuestionPhaseWebEnd());
+  }
 }
