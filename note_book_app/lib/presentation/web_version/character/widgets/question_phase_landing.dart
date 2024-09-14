@@ -28,6 +28,50 @@ class _QuestionPhaseLandingState extends State<QuestionPhaseLanding> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: 32),
+        BlocBuilder<CharacterQuestionPhaseWebCubit,
+            CharacterQuestionPhaseWebState>(
+          builder: (context, state) {
+            int currentQuestion =
+                context.read<CharacterQuestionPhaseWebCubit>().currentQuestion;
+            int maxQuestion =
+                context.read<CharacterQuestionPhaseWebCubit>().questions.length;
+            return Text(
+              'Câu $currentQuestion/$maxQuestion',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: ResponsiveUtil.isDesktop(context)
+                    ? 24
+                    : ResponsiveUtil.isTablet(context)
+                        ? 20
+                        : 12,
+                color: AppColors.kF8EDE3.withOpacity(0.8),
+              ),
+            );
+          },
+        ),
+        BlocBuilder<CharacterQuestionPhaseWebCubit,
+            CharacterQuestionPhaseWebState>(
+          builder: (context, state) {
+            int correctQuestions =
+                context.read<CharacterQuestionPhaseWebCubit>().correctAnswers;
+            int maxQuestion =
+                context.read<CharacterQuestionPhaseWebCubit>().questions.length;
+            return Text(
+              'Số câu đúng $correctQuestions/$maxQuestion',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: ResponsiveUtil.isDesktop(context)
+                    ? 24
+                    : ResponsiveUtil.isTablet(context)
+                        ? 20
+                        : 12,
+                color: AppColors.kF8EDE3.withOpacity(0.8),
+              ),
+            );
+          },
+        ),
+        const SizedBox(height: 8),
         BlocConsumer<CharacterQuestionPhaseWebCubit,
             CharacterQuestionPhaseWebState>(
           listener: (context, state) {
@@ -46,7 +90,8 @@ class _QuestionPhaseLandingState extends State<QuestionPhaseLanding> {
                   ),
                 ),
               );
-            } else if (state is CharacterQuestionPhaseWebLoaded) {
+            }
+            if (state is CharacterQuestionPhaseWebLoaded) {
               return Container(
                 padding: const EdgeInsets.all(32),
                 decoration: BoxDecoration(
@@ -54,7 +99,6 @@ class _QuestionPhaseLandingState extends State<QuestionPhaseLanding> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 margin: EdgeInsets.only(
-                  top: 64,
                   left: ResponsiveUtil.isMobile(context) ? 16 : 0,
                   right: ResponsiveUtil.isMobile(context) ? 16 : 0,
                 ),
@@ -156,6 +200,7 @@ class _QuestionPhaseLandingState extends State<QuestionPhaseLanding> {
                 ),
               );
             }
+            if (state is CharacterQuestionPhaseWebEnd) {}
             return const SizedBox();
           },
         ),
@@ -163,22 +208,64 @@ class _QuestionPhaseLandingState extends State<QuestionPhaseLanding> {
             CharacterQuestionPhaseWebState>(
           builder: (context, state) {
             if (state is CharacterQuestionPhaseWebCorrectAnswer ||
-                state is CharacterQuestionPhaseWebWrongAnswer) {
+                state is CharacterQuestionPhaseWebWrongAnswer ||
+                state is CharacterQuestionPhaseWebEnd) {
               return Padding(
                 padding: EdgeInsets.only(
                   top: ResponsiveUtil.isMobile(context) ? 16 : 32,
                 ),
                 child: ElevatedButton(
+                  style: ButtonStyle(
+                    padding: const WidgetStatePropertyAll<EdgeInsetsGeometry>(
+                      EdgeInsets.symmetric(
+                        horizontal: 32,
+                        vertical: 16,
+                      ),
+                    ),
+                    shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                    ),
+                    overlayColor: WidgetStatePropertyAll(
+                        AppColors.black.withOpacity(0.08)),
+                    backgroundColor:
+                        const WidgetStatePropertyAll(AppColors.kF8EDE3),
+                  ),
                   onPressed: () {
+                    if (state is CharacterQuestionPhaseWebEnd) {
+                      context.read<CharacterQuestionPhaseWebCubit>().startPhase(
+                            answerType: "Romanji",
+                            numberOfQuestions: 10,
+                            questionType: "Hiragana",
+                          );
+                      return;
+                    }
                     context
                         .read<CharacterQuestionPhaseWebCubit>()
                         .nextQuestion();
                   },
-                  child: const Text('Next'),
+                  child: Text(
+                    context.read<CharacterQuestionPhaseWebCubit>().currentQuestion ==
+                            context
+                                .read<CharacterQuestionPhaseWebCubit>()
+                                .questions
+                                .length
+                        ? "Làm lại"
+                        : "Câu tiếp theo",
+                    style: TextStyle(
+                      fontSize: ResponsiveUtil.isDesktop(context)
+                          ? 24
+                          : ResponsiveUtil.isTablet(context)
+                              ? 20
+                              : 12,
+                      color: AppColors.black.withOpacity(0.4),
+                    ),
+                  ),
                 ),
               );
             }
-            return SizedBox();
+            return const SizedBox();
           },
         ),
       ],

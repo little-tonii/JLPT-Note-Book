@@ -12,7 +12,7 @@ class CharacterQuestionPhaseWebCubit
   List<QuestionEntity> questions = [];
   int correctAnswers = 0;
   int currentQuestion = 0;
-  bool isCurrentQuestionAnswered = false;
+  String currentAnswer = '';
 
   CharacterQuestionPhaseWebCubit()
       : super(const CharacterQuestionPhaseWebInitial());
@@ -22,6 +22,10 @@ class CharacterQuestionPhaseWebCubit
     required String questionType,
     required String answerType,
   }) async {
+    questions = [];
+    correctAnswers = 0;
+    currentQuestion = 0;
+    currentAnswer = '';
     emit(const CharacterQuestionPhaseWebLoading());
     final result = await _createCharacterQuestionUsecase.call(
       numberOfQuestions: numberOfQuestions,
@@ -41,25 +45,32 @@ class CharacterQuestionPhaseWebCubit
 
   void nextQuestion() {
     if (currentQuestion <= questions.length) {
+      if (currentQuestion == questions.length) {
+        endPhase();
+        return;
+      }
       currentQuestion++;
-      isCurrentQuestionAnswered = false;
+      currentAnswer = '';
       emit(
         CharacterQuestionPhaseWebLoaded(
           question: questions[currentQuestion - 1],
         ),
       );
-    } else {
-      endPhase();
     }
   }
 
   void answerQuestion({required String answer}) {
-    if (isCurrentQuestionAnswered) return;
+    if (currentAnswer.isNotEmpty) return;
+    currentAnswer = answer;
     if (questions[currentQuestion - 1].correctAnswer == answer) {
       correctAnswers++;
-      emit(const CharacterQuestionPhaseWebCorrectAnswer());
+      emit(CharacterQuestionPhaseWebCorrectAnswer(
+          correctAnswer: questions[currentQuestion - 1].correctAnswer));
     } else {
-      emit(const CharacterQuestionPhaseWebWrongAnswer());
+      emit(
+        CharacterQuestionPhaseWebWrongAnswer(
+            correctAnswer: questions[currentQuestion - 1].correctAnswer),
+      );
     }
   }
 
