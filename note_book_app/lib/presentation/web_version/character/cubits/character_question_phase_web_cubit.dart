@@ -12,6 +12,7 @@ class CharacterQuestionPhaseWebCubit
   List<QuestionEntity> questions = [];
   int correctAnswers = 0;
   int currentQuestion = 0;
+  bool isCurrentQuestionAnswered = false;
 
   CharacterQuestionPhaseWebCubit()
       : super(const CharacterQuestionPhaseWebInitial());
@@ -41,6 +42,7 @@ class CharacterQuestionPhaseWebCubit
   void nextQuestion() {
     if (currentQuestion <= questions.length) {
       currentQuestion++;
+      isCurrentQuestionAnswered = false;
       emit(
         CharacterQuestionPhaseWebLoaded(
           question: questions[currentQuestion - 1],
@@ -52,6 +54,7 @@ class CharacterQuestionPhaseWebCubit
   }
 
   void answerQuestion({required String answer}) {
+    if (isCurrentQuestionAnswered) return;
     if (questions[currentQuestion - 1].correctAnswer == answer) {
       correctAnswers++;
       emit(const CharacterQuestionPhaseWebCorrectAnswer());
