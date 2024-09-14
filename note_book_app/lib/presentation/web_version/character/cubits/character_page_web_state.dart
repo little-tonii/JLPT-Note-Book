@@ -39,3 +39,10 @@ class CharacterPageWebError extends CharacterPageWebState {
   @override
   List<Object> get props => [message];
 }
+
+class QuestionPhase extends CharacterPageWebState {
+  const QuestionPhase();
+
+  @override
+  List<Object> get props => [];
+}

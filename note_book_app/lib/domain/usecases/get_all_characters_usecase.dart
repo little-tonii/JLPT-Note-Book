@@ -6,7 +6,7 @@ import 'package:note_book_app/domain/repositories/character_repository.dart';
 class GetAllCharactersUsecase {
   final CharacterRepository characterRepository;
 
-  GetAllCharactersUsecase({required this.characterRepository});
+  const GetAllCharactersUsecase({required this.characterRepository});
 
   Future<Either<Failure, List<CharacterEntity>>> call() async {
     return await characterRepository.getAllCharacters();

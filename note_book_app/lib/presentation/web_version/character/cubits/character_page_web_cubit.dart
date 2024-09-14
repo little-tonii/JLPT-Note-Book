@@ -27,4 +27,8 @@ class CharacterPageWebCubit extends Cubit<CharacterPageWebState> {
     }
     getAllCharacters();
   }
+
+  void startQuestionsPhase() {
+    emit(const QuestionPhase());
+  }
 }
