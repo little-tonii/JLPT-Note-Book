@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/common/utils/responsive_util.dart';
@@ -12,6 +13,13 @@ class NotFoundPageWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      SystemChrome.setApplicationSwitcherDescription(
+        const ApplicationSwitcherDescription(
+          label: "Page Not Found",
+        ),
+      );
+    });
     return Scaffold(
       body: Center(
         child: Column(

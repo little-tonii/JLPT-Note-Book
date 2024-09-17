@@ -1,11 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:note_book_app/common/themes/app_themes.dart';
 import 'package:note_book_app/core/routes/app_routes.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
+import 'package:note_book_app/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await initializeDependencies();
   runApp(const NoteBookApp());
 }

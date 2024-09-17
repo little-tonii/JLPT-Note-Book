@@ -1,24 +1,49 @@
-import 'package:note_book_app/core/failures/updating_failure.dart';
-import 'package:note_book_app/data/datasources/data_raw/data_raw.dart';
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:note_book_app/core/failures/firestore_failure.dart';
 import 'package:note_book_app/data/datasources/lesson_datasource.dart';
 import 'package:note_book_app/data/models/lesson_model.dart';
 
 class LessonDatasourceImpl implements LessonDatasource {
-  const LessonDatasourceImpl();
+  final FirebaseFirestore firebaseFirestore;
+
+  const LessonDatasourceImpl({required this.firebaseFirestore});
 
   @override
   Future<List<LessonModel>> getAllLessonsByLevel(
       {required String level}) async {
-    final raw = DataRaw.lessons[level];
-    if (raw == null) {
-      throw UpdatingFailure(message: 'Dữ liệu đang được cập nhật');
+    try {
+      final lessons = await firebaseFirestore
+          .collection('lessons')
+          .where('level', isEqualTo: level)
+          .get();
+      return lessons.docs
+          .map((lesson) => LessonModel.fromJson({
+                'id': lesson.id,
+                'lesson': lesson.data()['lesson'],
+                'level': lesson.data()['level'],
+              }))
+          .toList();
+    } on FirebaseException catch (e) {
+      log(e.message.toString());
+      throw FirestoreFailure(message: e.message.toString());
     }
-    return (raw as List<dynamic>)
-        .map((lesson) => LessonModel(
-              level: level,
-              lesson: lesson['lesson'],
-              id: lesson['id'],
-            ))
-        .toList();
+  }
+
+  @override
+  Future<LessonModel> getLessonById({required String id}) async {
+    try {
+      final lesson =
+          await firebaseFirestore.collection('lessons').doc(id).get();
+      return LessonModel.fromJson({
+        'id': lesson.id,
+        'lesson': lesson.data()!['lesson'],
+        'level': lesson.data()!['level'],
+      });
+    } on FirebaseException catch (e) {
+      log(e.message.toString());
+      throw FirestoreFailure(message: e.message.toString());
+    }
   }
 }

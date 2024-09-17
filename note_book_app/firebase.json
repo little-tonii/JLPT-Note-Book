@@ -1,0 +1,23 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "jnpt-note-book",
+                    "appId": "1:776948573167:android:bfb6bcb2d226df604ccc1a",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "jnpt-note-book",
+                    "configurations": {
+                        "android": "1:776948573167:android:bfb6bcb2d226df604ccc1a",
+                        "web": "1:776948573167:web:d34e48e3a43419224ccc1a",
+                        "windows": "1:776948573167:web:c5a92128c87bdc214ccc1a"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -5,37 +5,27 @@ abstract class HomePageWebState extends Equatable {
   const HomePageWebState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
-class HomePageWebInitial extends HomePageWebState {
-  const HomePageWebInitial();
+class HomePageWebInitial extends HomePageWebState {}
 
-  @override
-  List<Object> get props => [];
-}
+class HomePageWebLoading extends HomePageWebState {}
 
-class HomePageWebLoading extends HomePageWebState {
-  const HomePageWebLoading();
-
-  @override
-  List<Object> get props => [];
-}
-
-class GetAllLevelsSuccess extends HomePageWebState {
+class HomePageWebLoaded extends HomePageWebState {
   final List<LevelEntity> levels;
 
-  const GetAllLevelsSuccess({required this.levels});
+  const HomePageWebLoaded({required this.levels});
 
   @override
-  List<Object> get props => [levels];
+  List<Object?> get props => [levels];
 }
 
-class GetAllLevelsFailure extends HomePageWebState {
-  final String message;
+class HomePageWebFailure extends HomePageWebState {
+  final String failureMessage;
 
-  const GetAllLevelsFailure({required this.message});
+  const HomePageWebFailure({required this.failureMessage});
 
   @override
-  List<Object> get props => [message];
+  List<Object?> get props => [failureMessage];
 }

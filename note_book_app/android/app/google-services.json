@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "776948573167",
+    "firebase_url": "https://jnpt-note-book-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "jnpt-note-book",
+    "storage_bucket": "jnpt-note-book.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776948573167:android:bfb6bcb2d226df604ccc1a",
+        "android_client_info": {
+          "package_name": "com.example.note_bo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY2OJywDIOd7f3kimUpm9P5yxbLZyDNtU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

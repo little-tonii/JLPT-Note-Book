@@ -5,22 +5,12 @@ abstract class LevelPageWebState extends Equatable {
   const LevelPageWebState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
-class LevelPageWebInitial extends LevelPageWebState {
-  const LevelPageWebInitial();
+class LevelPageWebInitial extends LevelPageWebState {}
 
-  @override
-  List<Object> get props => [];
-}
-
-class LevelPageWebLoading extends LevelPageWebState {
-  const LevelPageWebLoading();
-
-  @override
-  List<Object> get props => [];
-}
+class LevelPageWebLoading extends LevelPageWebState {}
 
 class LevelPageWebLoaded extends LevelPageWebState {
   final List<LessonEntity> lessons;
@@ -28,14 +18,23 @@ class LevelPageWebLoaded extends LevelPageWebState {
   const LevelPageWebLoaded({required this.lessons});
 
   @override
-  List<Object> get props => [lessons];
+  List<Object?> get props => [lessons];
 }
 
-class LevelPageWebError extends LevelPageWebState {
-  final String message;
+class LevelPageWebFailure extends LevelPageWebState {
+  final String failureMessage;
 
-  const LevelPageWebError({required this.message});
+  const LevelPageWebFailure({required this.failureMessage});
 
   @override
-  List<Object> get props => [message];
+  List<Object?> get props => [failureMessage];
+}
+
+class LevelPageWebTitle extends LevelPageWebState {
+  final String title;
+
+  const LevelPageWebTitle({required this.title});
+
+  @override
+  List<Object?> get props => [title];
 }

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/domain/entities/character_entity.dart';
-import 'package:note_book_app/presentation/web_version/character/cubits/character_page_web_cubit.dart';
-import 'package:note_book_app/presentation/web_version/character/widgets/character_item.dart';
+import 'package:note_book_app/presentation/web_version/lesson/widgets/character_page_web/character_item.dart';
 
 class CharacterTable extends StatelessWidget {
   final List<CharacterEntity> characters;
+  final String characterType;
 
   const CharacterTable({
     super.key,
     required this.characters,
+    required this.characterType,
   });
 
   @override
@@ -63,10 +63,7 @@ class CharacterTable extends StatelessWidget {
           ),
           child: CharacterItem(
             character: characters[index],
-            defaultDisplayCharacter:
-                context.read<CharacterPageWebCubit>().showHigarana
-                    ? 'Hiragana'
-                    : 'Katakana',
+            defaultDisplayCharacter: characterType,
           ),
         );
       },

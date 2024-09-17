@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/common/utils/responsive_util.dart';
@@ -16,14 +17,24 @@ class HomePageWeb extends StatefulWidget {
 
 class _HomePageWebState extends State<HomePageWeb> {
   @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      SystemChrome.setApplicationSwitcherDescription(
+        const ApplicationSwitcherDescription(
+          label: "Levels",
+        ),
+      );
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider<HomePageWebCubit>(
+    return BlocProvider(
       create: (context) => getIt<HomePageWebCubit>()..getAllLevels(),
       child: Scaffold(
         body: BlocConsumer<HomePageWebCubit, HomePageWebState>(
-          listener: (context, state) {
-            if (state is GetAllLevelsFailure) {}
-          },
+          buildWhen: (previous, current) => current is! HomePageWebFailure,
           builder: (context, state) {
             if (state is HomePageWebLoading) {
               return const Center(
@@ -32,7 +43,7 @@ class _HomePageWebState extends State<HomePageWeb> {
                 ),
               );
             }
-            if (state is GetAllLevelsSuccess) {
+            if (state is HomePageWebLoaded) {
               return ListView.builder(
                 padding: ResponsiveUtil.isDesktop(context)
                     ? const EdgeInsets.symmetric(horizontal: 320, vertical: 32)
@@ -54,6 +65,9 @@ class _HomePageWebState extends State<HomePageWeb> {
               );
             }
             return const SizedBox();
+          },
+          listener: (context, state) {
+            if (state is HomePageWebFailure) {}
           },
         ),
       ),
