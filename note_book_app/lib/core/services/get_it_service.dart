@@ -12,11 +12,14 @@ import 'package:note_book_app/data/repositories/level_repository_impl.dart';
 import 'package:note_book_app/domain/repositories/character_repository.dart';
 import 'package:note_book_app/domain/repositories/lesson_repository.dart';
 import 'package:note_book_app/domain/repositories/level_repository.dart';
-import 'package:note_book_app/domain/usecases/create_character_question_usecase.dart';
-import 'package:note_book_app/domain/usecases/get_all_characters_usecase.dart';
-import 'package:note_book_app/domain/usecases/get_all_lessons_by_level_usecase.dart';
-import 'package:note_book_app/domain/usecases/get_all_levels_usecase.dart';
+import 'package:note_book_app/domain/usecases/characters/create_character_question_usecase.dart';
+import 'package:note_book_app/domain/usecases/characters/get_all_characters_usecase.dart';
+import 'package:note_book_app/domain/usecases/lessons/get_all_lessons_by_level_usecase.dart';
+import 'package:note_book_app/domain/usecases/lessons/get_lesson_by_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/levels/get_all_levels_usecase.dart';
+import 'package:note_book_app/domain/usecases/levels/get_level_by_id_usecase.dart';
 import 'package:note_book_app/presentation/web_version/home/cubits/home_page_web_cubit.dart';
+import 'package:note_book_app/presentation/web_version/levels/cubits/level_page_web_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
@@ -37,7 +40,7 @@ Future<void> initializeDependencies() async {
   );
 
   getIt.registerSingleton<LessonDatasource>(
-    const LessonDatasourceImpl(),
+    LessonDatasourceImpl(firebaseFirestore: getIt<FirebaseFirestore>()),
   );
 
   getIt.registerSingleton<CharacterDatasource>(
@@ -78,5 +81,15 @@ Future<void> initializeDependencies() async {
         characterRepository: getIt<CharacterRepository>()),
   );
 
+  getIt.registerSingleton<GetLevelByIdUsecase>(
+    GetLevelByIdUsecase(levelRepository: getIt<LevelRepository>()),
+  );
+
+  getIt.registerSingleton<GetLessonByIdUsecase>(
+    GetLessonByIdUsecase(lessonRepository: getIt<LessonRepository>()),
+  );
+
   getIt.registerFactory(() => HomePageWebCubit());
+
+  getIt.registerFactory(() => LevelPageWebCubit());
 }

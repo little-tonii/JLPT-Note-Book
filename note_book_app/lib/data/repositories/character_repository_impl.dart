@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:dartz/dartz.dart';
 import 'package:note_book_app/core/failures/failure.dart';
-import 'package:note_book_app/core/failures/too_many_question_failure.dart';
 import 'package:note_book_app/core/failures/unknown_failure.dart';
 import 'package:note_book_app/data/datasources/character_datasource.dart';
 import 'package:note_book_app/domain/entities/character_entity.dart';
@@ -36,11 +35,11 @@ class CharacterRepositoryImpl implements CharacterRepository {
           .where((character) => character.romanji.trim().isNotEmpty)
           .toList();
       if (numberOfQuestions > characters.length) {
-        return Left(
-          TooManyQuestionFailure(
-              message:
-                  "Hãy chọn bằng hoặc ít hơn ${characters.length} câu hỏi"),
-        );
+        return Left(UnknownFailure());
+            // TooManyQuestionFailure(
+            //     message:
+            //         "Hãy chọn bằng hoặc ít hơn ${characters.length} câu hỏi"),
+            // );
       }
       List<QuestionEntity> questions = [];
       final random = Random();

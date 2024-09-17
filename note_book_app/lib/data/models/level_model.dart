@@ -4,7 +4,10 @@ class LevelModel {
   final String level;
   final String id;
 
-  const LevelModel({required this.level, required this.id});
+  const LevelModel({
+    required this.level,
+    required this.id,
+  });
 
   factory LevelModel.fromJson(Map<String, dynamic> json) {
     return LevelModel(

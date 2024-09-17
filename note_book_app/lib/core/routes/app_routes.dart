@@ -1,7 +1,6 @@
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_book_app/presentation/web_version/home/home_page_web.dart';
+import 'package:note_book_app/presentation/web_version/levels/level_page_web.dart';
 import 'package:note_book_app/presentation/web_version/not_found/pages/not_found_page_web.dart';
 
 abstract class AppRoutes {
@@ -22,15 +21,17 @@ abstract class AppRoutes {
             );
           },
         ),
+        GoRoute(
+          path: '/home/:levelId',
+          pageBuilder: (context, state) {
+            return NoTransitionPage(
+              child: const LevelPageWeb(),
+              key: state.pageKey,
+            );
+          },
+        ),
       ],
       errorPageBuilder: (context, state) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          SystemChrome.setApplicationSwitcherDescription(
-            const ApplicationSwitcherDescription(
-              label: "Page Not Found",
-            ),
-          );
-        });
         return NoTransitionPage(
           child: const NotFoundPageWeb(),
           key: state.pageKey,
