@@ -5,9 +5,9 @@ import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
-import 'package:note_book_app/presentation/web_version/levels/cubits/level_page_web_cubit.dart';
-import 'package:note_book_app/presentation/web_version/levels/cubits/level_page_web_state.dart';
-import 'package:note_book_app/presentation/web_version/levels/widgets/lesson_card.dart';
+import 'package:note_book_app/presentation/web_version/level/cubits/level_page_web_cubit.dart';
+import 'package:note_book_app/presentation/web_version/level/cubits/level_page_web_state.dart';
+import 'package:note_book_app/presentation/web_version/level/widgets/lesson_card.dart';
 
 class LevelPageWeb extends StatefulWidget {
   const LevelPageWeb({super.key});

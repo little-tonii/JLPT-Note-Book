@@ -19,7 +19,8 @@ import 'package:note_book_app/domain/usecases/lessons/get_lesson_by_id_usecase.d
 import 'package:note_book_app/domain/usecases/levels/get_all_levels_usecase.dart';
 import 'package:note_book_app/domain/usecases/levels/get_level_by_id_usecase.dart';
 import 'package:note_book_app/presentation/web_version/home/cubits/home_page_web_cubit.dart';
-import 'package:note_book_app/presentation/web_version/levels/cubits/level_page_web_cubit.dart';
+import 'package:note_book_app/presentation/web_version/lesson/cubits/decision_render/decision_render_cubit.dart';
+import 'package:note_book_app/presentation/web_version/level/cubits/level_page_web_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
@@ -92,4 +93,6 @@ Future<void> initializeDependencies() async {
   getIt.registerFactory(() => HomePageWebCubit());
 
   getIt.registerFactory(() => LevelPageWebCubit());
+
+  getIt.registerFactory(() => DecisionRenderCubit());
 }

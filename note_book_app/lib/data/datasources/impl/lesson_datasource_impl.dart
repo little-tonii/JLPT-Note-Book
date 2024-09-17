@@ -32,8 +32,18 @@ class LessonDatasourceImpl implements LessonDatasource {
   }
 
   @override
-  Future<LessonModel> getLessonById({required String id}) {
-    // TODO: implement getLessonById
-    throw UnimplementedError();
+  Future<LessonModel> getLessonById({required String id}) async {
+    try {
+      final lesson =
+          await firebaseFirestore.collection('lessons').doc(id).get();
+      return LessonModel.fromJson({
+        'id': lesson.id,
+        'lesson': lesson.data()!['lesson'],
+        'level': lesson.data()!['level'],
+      });
+    } on FirebaseException catch (e) {
+      log(e.message.toString());
+      throw FirestoreFailure(message: e.message.toString());
+    }
   }
 }
