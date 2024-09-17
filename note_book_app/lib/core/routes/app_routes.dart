@@ -1,10 +1,7 @@
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:note_book_app/data/datasources/data_raw/data_raw.dart';
-import 'package:note_book_app/presentation/web_version/character/pages/character_page_web.dart';
-import 'package:note_book_app/presentation/web_version/home/pages/home_page_web.dart';
-import 'package:note_book_app/presentation/web_version/level/pages/level_page_web.dart';
+import 'package:note_book_app/presentation/web_version/home/home_page_web.dart';
+import 'package:note_book_app/presentation/web_version/lesson/decision_render.dart';
+import 'package:note_book_app/presentation/web_version/level/level_page_web.dart';
 import 'package:note_book_app/presentation/web_version/not_found/pages/not_found_page_web.dart';
 
 abstract class AppRoutes {
@@ -19,13 +16,6 @@ abstract class AppRoutes {
         GoRoute(
           path: "/home",
           pageBuilder: (context, state) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              SystemChrome.setApplicationSwitcherDescription(
-                const ApplicationSwitcherDescription(
-                  label: "JNPT Note Book",
-                ),
-              );
-            });
             return NoTransitionPage(
               child: const HomePageWeb(),
               key: state.pageKey,
@@ -33,59 +23,25 @@ abstract class AppRoutes {
           },
         ),
         GoRoute(
-          path: "/home/:level",
+          path: '/home/:levelId',
           pageBuilder: (context, state) {
-            final level = state.pathParameters['level'];
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              SystemChrome.setApplicationSwitcherDescription(
-                ApplicationSwitcherDescription(
-                  label: level,
-                ),
-              );
-            });
             return NoTransitionPage(
-              child: LevelPageWeb(
-                level: level!,
-              ),
+              child: const LevelPageWeb(),
               key: state.pageKey,
             );
           },
         ),
         GoRoute(
-          path: "/home/:level/:lesson",
+          path: '/home/:levelId/:lessonId',
           pageBuilder: (context, state) {
-            final level = state.pathParameters['level'];
-            final lesson = DataRaw.lessons[level!].firstWhere(
-              (element) => element['id'] == state.pathParameters['lesson'],
-            )['lesson'];
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              SystemChrome.setApplicationSwitcherDescription(
-                ApplicationSwitcherDescription(
-                  label: "$level - $lesson",
-                ),
-              );
-            });
-            if (state.pathParameters['lesson'] == 'hiragana-&-katakana') {
-              return NoTransitionPage(
-                key: state.pageKey,
-                child: const CharacterPageWeb(),
-              );
-            }
             return NoTransitionPage(
+              child: const DecisionRender(),
               key: state.pageKey,
-              child: const SizedBox(),
             );
           },
         ),
       ],
       errorPageBuilder: (context, state) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          SystemChrome.setApplicationSwitcherDescription(
-            const ApplicationSwitcherDescription(
-              label: "Page Not Found",
-            ),
-          );
-        });
         return NoTransitionPage(
           child: const NotFoundPageWeb(),
           key: state.pageKey,

@@ -26,7 +26,7 @@ class LevelCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
-            levelEntity.name,
+            levelEntity.level,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: ResponsiveUtil.isDesktop(context)

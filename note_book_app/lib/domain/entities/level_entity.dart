@@ -1,9 +1,9 @@
 class LevelEntity {
   final String id;
-  final String name;
+  final String level;
 
   const LevelEntity({
-    required this.name,
+    required this.level,
     required this.id,
   });
 }

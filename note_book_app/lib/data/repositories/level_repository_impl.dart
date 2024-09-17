@@ -15,6 +15,21 @@ class LevelRepositoryImpl implements LevelRepository {
     try {
       final result = await levelDatasource.getAllLevels();
       return Right(result.map((level) => level.toEntity()).toList());
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, LevelEntity>> getLevelById(
+      {required String id}) async {
+    try {
+      final result = await levelDatasource.getLevelById(id: id);
+      return Right(result.toEntity());
+    } on Failure catch (e) {
+      return Left(e);
     } on Exception {
       return Left(UnknownFailure());
     }

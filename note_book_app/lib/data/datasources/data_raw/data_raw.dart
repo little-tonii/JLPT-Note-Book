@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 abstract class DataRaw {
   static const List<dynamic> levels = [
     {
@@ -56,36 +58,6 @@ abstract class DataRaw {
   };
 
   static const List<Map<String, dynamic>> characters = [
-    {"romanji": "a", "hiragana": "あ", "katakana": "ア"},
-    {"romanji": "i", "hiragana": "い", "katakana": "イ"},
-    {"romanji": "u", "hiragana": "う", "katakana": "ウ"},
-    {"romanji": "e", "hiragana": "え", "katakana": "エ"},
-    {"romanji": "o", "hiragana": "お", "katakana": "オ"},
-    {"romanji": "ka", "hiragana": "か", "katakana": "カ"},
-    {"romanji": "ki", "hiragana": "き", "katakana": "キ"},
-    {"romanji": "ku", "hiragana": "く", "katakana": "ク"},
-    {"romanji": "ke", "hiragana": "け", "katakana": "ケ"},
-    {"romanji": "ko", "hiragana": "こ", "katakana": "コ"},
-    {"romanji": "sa", "hiragana": "さ", "katakana": "サ"},
-    {"romanji": "shi", "hiragana": "し", "katakana": "シ"},
-    {"romanji": "su", "hiragana": "す", "katakana": "ス"},
-    {"romanji": "se", "hiragana": "せ", "katakana": "セ"},
-    {"romanji": "so", "hiragana": "そ", "katakana": "ソ"},
-    {"romanji": "ta", "hiragana": "た", "katakana": "タ"},
-    {"romanji": "chi", "hiragana": "ち", "katakana": "チ"},
-    {"romanji": "tsu", "hiragana": "つ", "katakana": "ツ"},
-    {"romanji": "te", "hiragana": "て", "katakana": "テ"},
-    {"romanji": "to", "hiragana": "と", "katakana": "ト"},
-    {"romanji": "na", "hiragana": "な", "katakana": "ナ"},
-    {"romanji": "ni", "hiragana": "に", "katakana": "ニ"},
-    {"romanji": "nu", "hiragana": "ぬ", "katakana": "ヌ"},
-    {"romanji": "ne", "hiragana": "ね", "katakana": "ネ"},
-    {"romanji": "no", "hiragana": "の", "katakana": "ノ"},
-    {"romanji": "ha", "hiragana": "は", "katakana": "ハ"},
-    {"romanji": "hi", "hiragana": "ひ", "katakana": "ヒ"},
-    {"romanji": "fu", "hiragana": "ふ", "katakana": "フ"},
-    {"romanji": "he", "hiragana": "へ", "katakana": "ヘ"},
-    {"romanji": "ho", "hiragana": "ほ", "katakana": "ホ"},
     {"romanji": "ma", "hiragana": "ま", "katakana": "マ"},
     {"romanji": "mi", "hiragana": "み", "katakana": "ミ"},
     {"romanji": "mu", "hiragana": "む", "katakana": "ム"},
@@ -107,4 +79,17 @@ abstract class DataRaw {
     {"romanji": " ", "hiragana": " ", "katakana": " "},
     {"romanji": "n", "hiragana": "ん", "katakana": "ン"}
   ];
+
+  static void main() {
+    for (var character in characters) {
+      Future.delayed(const Duration(seconds: 1), () {
+        FirebaseFirestore.instance.collection('levels').add({
+          'romanji': character['romanji'],
+          'hiragana': character['hiragana'],
+          'katakana': character['katakana'],
+          'createdAt': Timestamp.now(),
+        });
+      });
+    }
+  }
 }
