@@ -43,9 +43,9 @@ Future<void> initializeDependencies() async {
     LessonDatasourceImpl(firebaseFirestore: getIt<FirebaseFirestore>()),
   );
 
-  getIt.registerSingleton<CharacterDatasource>(
-    const CharacterDatasourceImpl(),
-  );
+  getIt.registerSingleton<CharacterDatasource>(CharacterDatasourceImpl(
+    firebaseFirestore: getIt<FirebaseFirestore>(),
+  ));
 
   getIt.registerSingleton<LevelRepository>(
     LevelRepositoryImpl(
