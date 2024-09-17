@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
 import 'package:note_book_app/data/datasources/character_datasource.dart';
 import 'package:note_book_app/data/datasources/impl/character_datasource_impl.dart';
@@ -15,21 +16,24 @@ import 'package:note_book_app/domain/usecases/create_character_question_usecase.
 import 'package:note_book_app/domain/usecases/get_all_characters_usecase.dart';
 import 'package:note_book_app/domain/usecases/get_all_lessons_by_level_usecase.dart';
 import 'package:note_book_app/domain/usecases/get_all_levels_usecase.dart';
-import 'package:note_book_app/presentation/web_version/character/cubits/character_page_web_cubit.dart';
-import 'package:note_book_app/presentation/web_version/character/cubits/character_question_phase_web_cubit.dart';
 import 'package:note_book_app/presentation/web_version/home/cubits/home_page_web_cubit.dart';
-import 'package:note_book_app/presentation/web_version/level/cubits/level_page_web_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> initializeDependencies() async {
+  getIt.registerSingleton<FirebaseFirestore>(
+    FirebaseFirestore.instance,
+  );
+
   getIt.registerSingleton<SharedPreferences>(
     await SharedPreferences.getInstance(),
   );
 
   getIt.registerSingleton<LevelDatasource>(
-    const LevelDatasourcesImpl(),
+    LevelDatasourcesImpl(
+      firebaseFirestore: getIt<FirebaseFirestore>(),
+    ),
   );
 
   getIt.registerSingleton<LessonDatasource>(
@@ -75,10 +79,4 @@ Future<void> initializeDependencies() async {
   );
 
   getIt.registerFactory(() => HomePageWebCubit());
-
-  getIt.registerFactory(() => LevelPageWebCubit());
-
-  getIt.registerFactory(() => CharacterPageWebCubit());
-
-  getIt.registerFactory(() => CharacterQuestionPhaseWebCubit());
 }

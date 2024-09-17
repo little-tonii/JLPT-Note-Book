@@ -17,44 +17,39 @@ class HomePageWeb extends StatefulWidget {
 class _HomePageWebState extends State<HomePageWeb> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<HomePageWebCubit>(
+    return BlocProvider(
       create: (context) => getIt<HomePageWebCubit>()..getAllLevels(),
       child: Scaffold(
         body: BlocConsumer<HomePageWebCubit, HomePageWebState>(
-          listener: (context, state) {
-            if (state is GetAllLevelsFailure) {}
-          },
           builder: (context, state) {
-            if (state is HomePageWebLoading) {
+            if (state is HomePageWebLoadingState) {
               return const Center(
                 child: CircularProgressIndicator(
                   color: AppColors.kDFD3C3,
                 ),
               );
             }
-            if (state is GetAllLevelsSuccess) {
-              return ListView.builder(
-                padding: ResponsiveUtil.isDesktop(context)
-                    ? const EdgeInsets.symmetric(horizontal: 320, vertical: 32)
-                    : ResponsiveUtil.isTablet(context)
-                        ? const EdgeInsets.symmetric(
-                            horizontal: 100, vertical: 32)
-                        : const EdgeInsets.symmetric(
-                            horizontal: 32, vertical: 24),
-                itemCount: state.levels.length,
-                itemBuilder: (context, index) {
-                  if (index != state.levels.length - 1) {
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 16),
-                      child: LevelCard(levelEntity: state.levels[index]),
-                    );
-                  }
-                  return LevelCard(levelEntity: state.levels[index]);
-                },
-              );
-            }
-            return const SizedBox();
+            return ListView.builder(
+              padding: ResponsiveUtil.isDesktop(context)
+                  ? const EdgeInsets.symmetric(horizontal: 320, vertical: 32)
+                  : ResponsiveUtil.isTablet(context)
+                      ? const EdgeInsets.symmetric(
+                          horizontal: 100, vertical: 32)
+                      : const EdgeInsets.symmetric(
+                          horizontal: 32, vertical: 24),
+              itemCount: state.levels.length,
+              itemBuilder: (context, index) {
+                if (index != state.levels.length - 1) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: LevelCard(levelEntity: state.levels[index]),
+                  );
+                }
+                return LevelCard(levelEntity: state.levels[index]);
+              },
+            );
           },
+          listener: (context, state) {},
         ),
       ),
     );

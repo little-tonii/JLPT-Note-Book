@@ -1,41 +1,39 @@
 import 'package:equatable/equatable.dart';
 import 'package:note_book_app/domain/entities/level_entity.dart';
 
-abstract class HomePageWebState extends Equatable {
-  const HomePageWebState();
+class HomePageWebState extends Equatable {
+  final List<LevelEntity> levels;
+
+  const HomePageWebState({required this.levels});
+
+  HomePageWebState copyWith({List<LevelEntity>? levels}) {
+    return HomePageWebState(levels: levels ?? this.levels);
+  }
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [levels];
+}
+
+class HomePageWebFailureState extends HomePageWebState {
+  final String failureMessage;
+
+  const HomePageWebFailureState(
+      {required this.failureMessage, required super.levels});
+
+  @override
+  List<Object?> get props => [failureMessage, levels];
+}
+
+class HomePageWebLoadingState extends HomePageWebState {
+  const HomePageWebLoadingState({required super.levels});
+
+  @override
+  List<Object?> get props => [levels];
 }
 
 class HomePageWebInitial extends HomePageWebState {
-  const HomePageWebInitial();
+  HomePageWebInitial() : super(levels: []);
 
   @override
-  List<Object> get props => [];
-}
-
-class HomePageWebLoading extends HomePageWebState {
-  const HomePageWebLoading();
-
-  @override
-  List<Object> get props => [];
-}
-
-class GetAllLevelsSuccess extends HomePageWebState {
-  final List<LevelEntity> levels;
-
-  const GetAllLevelsSuccess({required this.levels});
-
-  @override
-  List<Object> get props => [levels];
-}
-
-class GetAllLevelsFailure extends HomePageWebState {
-  final String message;
-
-  const GetAllLevelsFailure({required this.message});
-
-  @override
-  List<Object> get props => [message];
+  List<Object?> get props => [levels];
 }

@@ -1,17 +1,20 @@
-import 'package:note_book_app/data/datasources/data_raw/data_raw.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:note_book_app/data/datasources/level_datasource.dart';
 import 'package:note_book_app/data/models/level_model.dart';
 
 class LevelDatasourcesImpl implements LevelDatasource {
-  const LevelDatasourcesImpl();
+  final FirebaseFirestore firebaseFirestore;
+
+  const LevelDatasourcesImpl({required this.firebaseFirestore});
 
   @override
   Future<List<LevelModel>> getAllLevels() async {
-    return DataRaw.levels
-        .map((rawLevel) => LevelModel(
-              name: rawLevel['name'],
-              id: rawLevel['id'],
-            ))
-        .toList();
+    final levels = await firebaseFirestore.collection('levels').get();
+    return levels.docs.map((e) {
+      return LevelModel.fromJson({
+        'level': e.data()['level'],
+        'id': e.id,
+      });
+    }).toList();
   }
 }

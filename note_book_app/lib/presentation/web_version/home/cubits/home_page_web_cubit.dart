@@ -6,18 +6,18 @@ import 'package:note_book_app/presentation/web_version/home/cubits/home_page_web
 class HomePageWebCubit extends Cubit<HomePageWebState> {
   final GetAllLevelsUsecase _getAllLevelsUsecase = getIt<GetAllLevelsUsecase>();
 
-  HomePageWebCubit() : super(const HomePageWebInitial());
+  HomePageWebCubit() : super(HomePageWebInitial());
 
   void getAllLevels() async {
-    emit(const HomePageWebLoading());
-    final levels = await _getAllLevelsUsecase.call();
-    levels.fold(
-      (failure) {
-        emit(GetAllLevelsFailure(message: failure.message));
-      },
-      (levels) {
-        emit(GetAllLevelsSuccess(levels: levels));
-      },
-    );
+    emit(const HomePageWebLoadingState(levels: []));
+    final result = await _getAllLevelsUsecase.call();
+    result.fold((failure) {
+      emit(HomePageWebFailureState(
+        failureMessage: failure.message,
+        levels: state.levels,
+      ));
+    }, (levels) {
+      emit(state.copyWith(levels: levels));
+    });
   }
 }
