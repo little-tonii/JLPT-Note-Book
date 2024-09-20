@@ -28,6 +28,8 @@ class LessonDatasourceImpl implements LessonDatasource {
     } on FirebaseException catch (e) {
       log(e.toString());
       throw FirestoreFailure(message: e.message.toString());
+    } on Exception catch (e) {
+      throw Exception(e);
     }
   }
 
@@ -44,6 +46,8 @@ class LessonDatasourceImpl implements LessonDatasource {
     } on FirebaseException catch (e) {
       log(e.toString());
       throw FirestoreFailure(message: e.message.toString());
+    } on Exception catch (e) {
+      throw Exception(e);
     }
   }
 }

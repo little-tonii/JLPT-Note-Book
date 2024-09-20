@@ -27,6 +27,14 @@ class DecisionRenderLessonPageWeb extends DecisionRenderState {
   List<Object?> get props => [lesson];
 }
 
+class DecisionRenderKanjiPageWeb extends DecisionRenderState {
+  final LessonEntity lesson;
+  const DecisionRenderKanjiPageWeb({required this.lesson});
+
+  @override
+  List<Object?> get props => [lesson];
+}
+
 class DecisionRenderFailure extends DecisionRenderState {
   final String failureMessage;
   const DecisionRenderFailure({required this.failureMessage});

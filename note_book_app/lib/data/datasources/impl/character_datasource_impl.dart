@@ -28,6 +28,8 @@ class CharacterDatasourceImpl implements CharacterDatasource {
     } on FirebaseException catch (e) {
       log(e.toString());
       throw FirestoreFailure(message: e.message.toString());
+    } on Exception catch (e) {
+      throw Exception(e);
     }
   }
 }

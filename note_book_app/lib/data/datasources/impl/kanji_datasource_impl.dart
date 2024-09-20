@@ -17,8 +17,11 @@ class KanjiDatasourceImpl implements KanjiDatasource {
           .collection('kanjis')
           .where('level', isEqualTo: level)
           .get();
-      return kanjis.docs.map((kanji) {
-        return KanjiModel.fromJson({
+      List<KanjiModel> kanjiList = [];
+      for (var kanji in kanjis.docs) {
+        final kuns = await kanji.reference.collection('kun').get();
+        final ons = await kanji.reference.collection('on').get();
+        kanjiList.add(KanjiModel.fromJson({
           'id': kanji.id,
           'kanji': kanji.data()['kanji'],
           'kun': kanji.data()['kun'],
@@ -26,33 +29,38 @@ class KanjiDatasourceImpl implements KanjiDatasource {
           'viet': kanji.data()['viet'],
           'level': kanji.data()['level'],
           'createdAt': kanji.data()['createdAt'],
-          'kuns': kanji.reference.collection('kun').get().then((data) {
-            return data.docs.map((e) {
-              return {
-                'id': e.id,
-                'meaning': e.data()['meaning'],
-                'sample': e.data()['sample'],
-                'transform': e.data()['transform'],
-                'createdAt': e.data()['createdAt'],
-              };
-            }).toList();
-          }),
-          'ons': kanji.reference.collection('on').get().then((data) {
-            return data.docs.map((e) {
-              return {
-                'id': e.id,
-                'meaning': e.data()['meaning'],
-                'sample': e.data()['sample'],
-                'transform': e.data()['transform'],
-                'createdAt': e.data()['createdAt'],
-              };
-            }).toList();
-          }),
-        });
-      }).toList();
+          'kuns': kuns.docs.map((kun) {
+            return {
+              'id': kun.id,
+              'meaning': kun.data()['meaning'],
+              'sample': kun.data()['sample'],
+              'transform': kun.data()['transform'],
+              'createdAt': kun.data()['createdAt'],
+            };
+          }).toList(),
+          'ons': ons.docs.map((on) {
+            return {
+              'id': on.id,
+              'meaning': on.data()['meaning'],
+              'sample': on.data()['sample'],
+              'transform': on.data()['transform'],
+              'createdAt': on.data()['createdAt'],
+            };
+          }).toList(),
+        }));
+        kanjiList.last.kunModels
+            .sort((a, b) => a.createdAt.compareTo(b.createdAt));
+        kanjiList.last.onModels
+            .sort((a, b) => a.createdAt.compareTo(b.createdAt));
+      }
+
+      kanjiList.sort((a, b) => a.createdAt.compareTo(b.createdAt));
+      return kanjiList;
     } on FirebaseException catch (e) {
       log(e.toString());
       throw FirestoreFailure(message: e.message.toString());
+    } on Exception catch (e) {
+      throw Exception(e);
     }
   }
 }
