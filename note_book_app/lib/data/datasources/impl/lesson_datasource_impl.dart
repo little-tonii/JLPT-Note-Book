@@ -26,8 +26,10 @@ class LessonDatasourceImpl implements LessonDatasource {
               }))
           .toList();
     } on FirebaseException catch (e) {
-      log(e.message.toString());
+      log(e.toString());
       throw FirestoreFailure(message: e.message.toString());
+    } on Exception catch (e) {
+      throw Exception(e);
     }
   }
 
@@ -42,8 +44,10 @@ class LessonDatasourceImpl implements LessonDatasource {
         'level': lesson.data()!['level'],
       });
     } on FirebaseException catch (e) {
-      log(e.message.toString());
+      log(e.toString());
       throw FirestoreFailure(message: e.message.toString());
+    } on Exception catch (e) {
+      throw Exception(e);
     }
   }
 }

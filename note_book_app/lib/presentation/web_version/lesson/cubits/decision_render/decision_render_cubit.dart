@@ -16,6 +16,8 @@ class DecisionRenderCubit extends Cubit<DecisionRenderState> {
     }, (lesson) {
       if (lesson.lesson == 'Hiragana & Katakana') {
         emit(DecisionRenderCharacterPageWeb(lesson: lesson));
+      } else if (lesson.lesson == 'Kanji') {
+        emit(DecisionRenderKanjiPageWeb(lesson: lesson));
       } else {
         emit(DecisionRenderLessonPageWeb(lesson: lesson));
       }

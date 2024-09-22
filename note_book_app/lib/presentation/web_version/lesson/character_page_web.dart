@@ -37,7 +37,7 @@ class _CharacterPageWebState extends State<CharacterPageWeb> {
   Widget build(BuildContext context) {
     return BlocProvider<CharacterPageWebCubit>(
       create: (context) => getIt<CharacterPageWebCubit>()
-        ..getAllCharacters(characterType: "Higarana"),
+        ..getAllCharacters(characterType: "Hiragana"),
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(

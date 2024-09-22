@@ -7,6 +7,7 @@ import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/presentation/web_version/lesson/character_page_web.dart';
 import 'package:note_book_app/presentation/web_version/lesson/cubits/decision_render/decision_render_cubit.dart';
 import 'package:note_book_app/presentation/web_version/lesson/cubits/decision_render/decision_render_state.dart';
+import 'package:note_book_app/presentation/web_version/lesson/kanji_page_web.dart';
 
 class DecisionRender extends StatefulWidget {
   const DecisionRender({super.key});
@@ -37,6 +38,16 @@ class _DecisionRenderState extends State<DecisionRender> {
               );
             });
             return CharacterPageWeb(lesson: state.lesson);
+          }
+          if (state is DecisionRenderKanjiPageWeb) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              SystemChrome.setApplicationSwitcherDescription(
+                ApplicationSwitcherDescription(
+                  label: '${state.lesson.level} | ${state.lesson.lesson}',
+                ),
+              );
+            });
+            return KanjiPageWeb(lesson: state.lesson);
           }
           if (state is DecisionRenderLessonPageWeb) {}
           return const Scaffold(

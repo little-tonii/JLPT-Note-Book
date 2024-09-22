@@ -24,6 +24,8 @@ class LevelDatasourcesImpl implements LevelDatasource {
     } on FirebaseException catch (e) {
       log(e.toString());
       throw FirestoreFailure(message: e.message.toString());
+    } on Exception catch (e) {
+      throw Exception(e);
     }
   }
 
@@ -42,6 +44,8 @@ class LevelDatasourcesImpl implements LevelDatasource {
     } on FirebaseException catch (e) {
       log(e.toString());
       throw FirestoreFailure(message: e.message!);
+    } on Exception catch (e) {
+      throw Exception(e);
     }
   }
 }
