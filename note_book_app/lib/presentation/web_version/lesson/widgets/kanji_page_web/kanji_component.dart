@@ -125,13 +125,15 @@ class KanjiComponent extends StatelessWidget {
                             ),
                           ),
                         ),
-                        IconButton(
-                          onPressed: () => _handleShowKunSample(context),
-                          icon: Icon(
-                            Icons.rocket_launch_rounded,
-                            color: AppColors.black.withOpacity(0.6),
-                          ),
-                        ),
+                        kanji.kun != 'ーーー'
+                            ? IconButton(
+                                onPressed: () => _handleShowKunSample(context),
+                                icon: Icon(
+                                  Icons.rocket_launch_rounded,
+                                  color: AppColors.black.withOpacity(0.6),
+                                ),
+                              )
+                            : const SizedBox(),
                       ],
                     ),
                   ),
