@@ -14,17 +14,20 @@ class LessonDatasourceImpl implements LessonDatasource {
   Future<List<LessonModel>> getAllLessonsByLevel(
       {required String level}) async {
     try {
-      final lessons = await firebaseFirestore
+      final queryResult = await firebaseFirestore
           .collection('lessons')
           .where('level', isEqualTo: level)
           .get();
-      return lessons.docs
+      final lessons = queryResult.docs
           .map((lesson) => LessonModel.fromJson({
                 'id': lesson.id,
                 'lesson': lesson.data()['lesson'],
                 'level': lesson.data()['level'],
+                'createdAt': lesson.data()['createdAt'],
               }))
           .toList();
+      lessons.sort((a, b) => a.createdAt.compareTo(b.createdAt));
+      return lessons;
     } on FirebaseException catch (e) {
       log(e.toString());
       throw FirestoreFailure(message: e.message.toString());
@@ -42,6 +45,7 @@ class LessonDatasourceImpl implements LessonDatasource {
         'id': lesson.id,
         'lesson': lesson.data()!['lesson'],
         'level': lesson.data()!['level'],
+        'createdAt': lesson.data()!['createdAt'],
       });
     } on FirebaseException catch (e) {
       log(e.toString());
