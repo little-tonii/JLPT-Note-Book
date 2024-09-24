@@ -26,16 +26,6 @@ class CharacterModel {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'romanji': romanji,
-      'hiragana': hiragana,
-      'katakana': katakana,
-      'createdAt': createdAt.toString(),
-    };
-  }
-
   CharacterEntity toEntity() {
     return CharacterEntity(
       id: id,

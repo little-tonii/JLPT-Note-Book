@@ -14,13 +14,16 @@ class LevelDatasourcesImpl implements LevelDatasource {
   @override
   Future<List<LevelModel>> getAllLevels() async {
     try {
-      final levels = await firebaseFirestore.collection('levels').get();
-      return levels.docs.map((e) {
+      final queryResult = await firebaseFirestore.collection('levels').get();
+      final levels = queryResult.docs.map((e) {
         return LevelModel.fromJson({
           'level': e.data()['level'],
           'id': e.id,
+          'createdAt': e.data()['createdAt'],
         });
       }).toList();
+      levels.sort((a, b) => a.createdAt.compareTo(b.createdAt));
+      return levels;
     } on FirebaseException catch (e) {
       log(e.toString());
       throw FirestoreFailure(message: e.message.toString());
@@ -37,6 +40,7 @@ class LevelDatasourcesImpl implements LevelDatasource {
         return LevelModel.fromJson({
           'level': level.data()!['level'],
           'id': level.id,
+          'createdAt': level.data()!['createdAt'],
         });
       } else {
         throw DataNotFoundFailure(message: 'Level not found');
