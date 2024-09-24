@@ -9,14 +9,9 @@ import 'package:note_book_app/presentation/web_version/lesson/cubits/decision_re
 import 'package:note_book_app/presentation/web_version/lesson/cubits/decision_render/decision_render_state.dart';
 import 'package:note_book_app/presentation/web_version/lesson/kanji_page_web.dart';
 
-class DecisionRender extends StatefulWidget {
+class DecisionRender extends StatelessWidget {
   const DecisionRender({super.key});
 
-  @override
-  State<DecisionRender> createState() => _DecisionRenderState();
-}
-
-class _DecisionRenderState extends State<DecisionRender> {
   @override
   Widget build(BuildContext context) {
     final lessonId = GoRouterState.of(context).pathParameters['lessonId']!;

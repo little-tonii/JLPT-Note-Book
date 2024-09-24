@@ -5,23 +5,30 @@ import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/lesson_entity.dart';
 import 'package:note_book_app/presentation/web_version/lesson/cubits/kanji_page_web/kanji_page_web_cubit.dart';
 import 'package:note_book_app/presentation/web_version/lesson/cubits/kanji_page_web/kanji_page_web_state.dart';
+import 'package:note_book_app/presentation/web_version/lesson/cubits/kanji_page_web/kunyomi_dialog_cubit.dart';
+import 'package:note_book_app/presentation/web_version/lesson/cubits/kanji_page_web/onyomi_dialog_cubit.dart';
 import 'package:note_book_app/presentation/web_version/lesson/widgets/kanji_page_web/kanji_component.dart';
 
-class KanjiPageWeb extends StatefulWidget {
+class KanjiPageWeb extends StatelessWidget {
   final LessonEntity lesson;
 
   const KanjiPageWeb({super.key, required this.lesson});
 
   @override
-  State<KanjiPageWeb> createState() => _KanjiPageWebState();
-}
-
-class _KanjiPageWebState extends State<KanjiPageWeb> {
-  @override
   Widget build(BuildContext context) {
-    return BlocProvider<KanjiPageWebCubit>(
-      create: (context) => getIt<KanjiPageWebCubit>()
-        ..getAllKanjisByLevel(levelId: widget.lesson.level),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<KanjiPageWebCubit>(
+          create: (context) => getIt<KanjiPageWebCubit>()
+            ..getAllKanjisByLevel(levelId: lesson.level),
+        ),
+        BlocProvider<KunyomiDialogCubit>(
+          create: (context) => getIt<KunyomiDialogCubit>(),
+        ),
+        BlocProvider<OnyomiDialogCubit>(
+          create: (context) => getIt<OnyomiDialogCubit>(),
+        ),
+      ],
       child: Scaffold(
         body: Center(
           child: BlocConsumer<KanjiPageWebCubit, KanjiPageWebState>(
@@ -46,7 +53,13 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
                               bottom:
                                   index == state.kanjis.length - 1 ? 32 : 16,
                             ),
-                            child: KanjiComponent(kanji: state.kanjis[index]),
+                            child: KanjiComponent(
+                              kanji: state.kanjis[index],
+                              kunyomiDialogCubit:
+                                  context.read<KunyomiDialogCubit>(),
+                              onyomiDialogCubit:
+                                  context.read<OnyomiDialogCubit>(),
+                            ),
                           );
                         },
                         itemCount: state.kanjis.length,

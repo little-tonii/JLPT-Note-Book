@@ -1,79 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/domain/entities/kanji_entity.dart';
-import 'package:note_book_app/presentation/web_version/lesson/widgets/kanji_page_web/close_dialog_button.dart';
+import 'package:note_book_app/presentation/web_version/lesson/cubits/kanji_page_web/kunyomi_dialog_cubit.dart';
+import 'package:note_book_app/presentation/web_version/lesson/cubits/kanji_page_web/onyomi_dialog_cubit.dart';
+import 'package:note_book_app/presentation/web_version/lesson/widgets/kanji_page_web/kunyomi_dialog.dart';
+import 'package:note_book_app/presentation/web_version/lesson/widgets/kanji_page_web/onyomi_dialog.dart';
 
 class KanjiComponent extends StatelessWidget {
   final KanjiEntity kanji;
+  final KunyomiDialogCubit kunyomiDialogCubit;
+  final OnyomiDialogCubit onyomiDialogCubit;
 
-  const KanjiComponent({super.key, required this.kanji});
-
-  void _handleCloseDialog(BuildContext context) {
-    context.pop();
-  }
+  const KanjiComponent({
+    super.key,
+    required this.kanji,
+    required this.kunyomiDialogCubit,
+    required this.onyomiDialogCubit,
+  });
 
   void _handleShowKunSample(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) {
-        return Dialog(
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: AppColors.kF8EDE3,
-            ),
-            width: 600,
-            height: 600,
-            child: Column(
-              children: [
-                SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      ...kanji.kunEntities.map((onSample) {
-                        return Column(
-                          children: [
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "${kanji.kunEntities.indexOf(onSample) + 1}. ${onSample.sample} (${onSample.transform})",
-                                    style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "-> ${onSample.meaning}",
-                                    style: const TextStyle(fontSize: 20),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8),
-                          ],
-                        );
-                      }),
-                    ],
-                  ),
-                ),
-                const Spacer(),
-                SizedBox(
-                  width: double.infinity,
-                  child: CloseDialogButton(
-                    onPressed: _handleCloseDialog,
-                  ),
-                ),
-              ],
-            ),
-          ),
+        return KunyomiDialog(
+          kanji: kanji,
+          kunyomiDialogCubit: kunyomiDialogCubit,
         );
       },
     );
@@ -83,63 +34,9 @@ class KanjiComponent extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) {
-        return Dialog(
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: AppColors.kF8EDE3,
-            ),
-            width: 600,
-            height: 600,
-            child: Column(
-              children: [
-                SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      ...kanji.onEntities.map((onSample) {
-                        return Column(
-                          children: [
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "${kanji.onEntities.indexOf(onSample) + 1}. ${onSample.sample} (${onSample.transform})",
-                                    style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "-> ${onSample.meaning}",
-                                    style: const TextStyle(fontSize: 20),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8),
-                          ],
-                        );
-                      }),
-                    ],
-                  ),
-                ),
-                const Spacer(),
-                SizedBox(
-                  width: double.infinity,
-                  child: CloseDialogButton(
-                    onPressed: _handleCloseDialog,
-                  ),
-                ),
-              ],
-            ),
-          ),
+        return OnyomiDialog(
+          kanji: kanji,
+          onyomiDialogCubit: onyomiDialogCubit,
         );
       },
     );
@@ -228,15 +125,13 @@ class KanjiComponent extends StatelessWidget {
                             ),
                           ),
                         ),
-                        kanji.kunEntities.isNotEmpty
-                            ? IconButton(
-                                onPressed: () => _handleShowKunSample(context),
-                                icon: Icon(
-                                  Icons.rocket_launch_rounded,
-                                  color: AppColors.black.withOpacity(0.6),
-                                ),
-                              )
-                            : const SizedBox(),
+                        IconButton(
+                          onPressed: () => _handleShowKunSample(context),
+                          icon: Icon(
+                            Icons.rocket_launch_rounded,
+                            color: AppColors.black.withOpacity(0.6),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -255,16 +150,14 @@ class KanjiComponent extends StatelessWidget {
                             ),
                           ),
                         ),
-                        kanji.onEntities.isNotEmpty
-                            ? IconButton(
-                                onPressed: () => _handleShowOnSample(context),
-                                color: AppColors.black.withOpacity(0.4),
-                                icon: Icon(
-                                  Icons.rocket_launch_rounded,
-                                  color: AppColors.black.withOpacity(0.6),
-                                ),
-                              )
-                            : const SizedBox(),
+                        IconButton(
+                          onPressed: () => _handleShowOnSample(context),
+                          color: AppColors.black.withOpacity(0.4),
+                          icon: Icon(
+                            Icons.rocket_launch_rounded,
+                            color: AppColors.black.withOpacity(0.6),
+                          ),
+                        ),
                       ],
                     ),
                   ),
