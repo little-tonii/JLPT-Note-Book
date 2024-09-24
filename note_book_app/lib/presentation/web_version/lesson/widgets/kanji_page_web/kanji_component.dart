@@ -38,7 +38,7 @@ class KanjiComponent extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    "${kanji.kunEntities.indexOf(onSample) + 1}. ${onSample.sample} (${onSample.transform})",
+                                    "${kanji.kunEntities.indexOf(onSample) + 1}. ${onSample.sample}",
                                     style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w600,
@@ -51,7 +51,7 @@ class KanjiComponent extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    "-> ${onSample.meaning}",
+                                    "Cách đọc: ${onSample.transform}\nĐịnh nghĩa: ${onSample.meaning}",
                                     style: const TextStyle(fontSize: 20),
                                   ),
                                 ),
@@ -104,7 +104,7 @@ class KanjiComponent extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    "${kanji.onEntities.indexOf(onSample) + 1}. ${onSample.sample} (${onSample.transform})",
+                                    "${kanji.onEntities.indexOf(onSample) + 1}. ${onSample.sample}",
                                     style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w600,
@@ -117,7 +117,7 @@ class KanjiComponent extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    "-> ${onSample.meaning}",
+                                    "Cách đọc: ${onSample.transform}\nĐịnh nghĩa: ${onSample.meaning}",
                                     style: const TextStyle(fontSize: 20),
                                   ),
                                 ),
