@@ -19,6 +19,7 @@ class KunyomiDatasourceImpl implements KunyomiDatasource {
           .collection('kanjis')
           .doc(kanjiId)
           .collection('kun')
+          .orderBy('createdAt')
           .get();
       List<KunyomiModel> kuns = queryResult.docs.map((kun) {
         return KunyomiModel.fromJson({
@@ -29,7 +30,6 @@ class KunyomiDatasourceImpl implements KunyomiDatasource {
           'transform': kun.data()['transform'],
         });
       }).toList();
-      kuns.sort((a, b) => a.createdAt.compareTo(b.createdAt));
       return kuns;
     } on FirebaseException catch (e) {
       log(e.toString());

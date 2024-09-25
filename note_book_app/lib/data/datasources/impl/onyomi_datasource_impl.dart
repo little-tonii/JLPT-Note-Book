@@ -19,6 +19,7 @@ class OnyomiDatasourceImpl implements OnyomiDatasource {
           .collection('kanjis')
           .doc(kanjiId)
           .collection('on')
+          .orderBy('createdAt')
           .get();
       List<OnyomiModel> ons = queryResult.docs.map((on) {
         return OnyomiModel.fromJson({
@@ -29,7 +30,6 @@ class OnyomiDatasourceImpl implements OnyomiDatasource {
           'transform': on.data()['transform'],
         });
       }).toList();
-      ons.sort((a, b) => a.createdAt.compareTo(b.createdAt));
       return ons;
     } on FirebaseException catch (e) {
       log(e.toString());

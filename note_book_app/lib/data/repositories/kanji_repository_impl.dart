@@ -11,10 +11,17 @@ class KanjiRepositoryImpl implements KanjiRepository {
   const KanjiRepositoryImpl({required this.kanjiDatasource});
 
   @override
-  Future<Either<Failure, List<KanjiEntity>>> getAllKanjisByLevel(
-      {required String level}) async {
+  Future<Either<Failure, List<KanjiEntity>>> getAllKanjisByLevel({
+    required String level,
+    required int pageSize,
+    required int pageNumber,
+  }) async {
     try {
-      final kanjis = await kanjiDatasource.getAllKanjisByLevel(level: level);
+      final kanjis = await kanjiDatasource.getAllKanjisByLevel(
+        level: level,
+        pageSize: pageSize,
+        pageNumber: pageNumber,
+      );
       return Right(kanjis.map((kanji) => kanji.toEntity()).toList());
     } on Failure catch (e) {
       return Left(e);

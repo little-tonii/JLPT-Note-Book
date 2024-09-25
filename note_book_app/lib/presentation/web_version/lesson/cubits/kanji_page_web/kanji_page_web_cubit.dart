@@ -11,7 +11,11 @@ class KanjiPageWebCubit extends Cubit<KanjiPageWebState> {
 
   void getAllKanjisByLevel({required String levelId}) async {
     emit(KanjiPageWebLoading());
-    final result = await _getAllKanjisByLevelUsecase.call(level: levelId);
+    final result = await _getAllKanjisByLevelUsecase.call(
+      level: levelId,
+      pageSize: 10,
+      pageNumber: 1,
+    );
     result.fold((failure) {
       emit(KanjiPageWebFailure(failureMessage: failure.message));
     }, (kanjis) {

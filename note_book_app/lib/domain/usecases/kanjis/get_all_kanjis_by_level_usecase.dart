@@ -8,8 +8,15 @@ class GetAllKanjisByLevelUsecase {
 
   const GetAllKanjisByLevelUsecase({required this.kanjiRepository});
 
-  Future<Either<Failure, List<KanjiEntity>>> call(
-      {required String level}) async {
-    return await kanjiRepository.getAllKanjisByLevel(level: level);
+  Future<Either<Failure, List<KanjiEntity>>> call({
+    required String level,
+    required int pageSize,
+    required int pageNumber,
+  }) async {
+    return await kanjiRepository.getAllKanjisByLevel(
+      level: level,
+      pageNumber: pageNumber,
+      pageSize: pageSize,
+    );
   }
 }

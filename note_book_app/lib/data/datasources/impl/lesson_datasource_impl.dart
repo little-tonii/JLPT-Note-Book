@@ -17,6 +17,7 @@ class LessonDatasourceImpl implements LessonDatasource {
       final queryResult = await firebaseFirestore
           .collection('lessons')
           .where('level', isEqualTo: level)
+          .orderBy('createdAt')
           .get();
       final lessons = queryResult.docs
           .map((lesson) => LessonModel.fromJson({
@@ -26,7 +27,6 @@ class LessonDatasourceImpl implements LessonDatasource {
                 'createdAt': lesson.data()['createdAt'],
               }))
           .toList();
-      lessons.sort((a, b) => a.createdAt.compareTo(b.createdAt));
       return lessons;
     } on FirebaseException catch (e) {
       log(e.toString());

@@ -11,12 +11,31 @@ class KanjiDatasourceImpl implements KanjiDatasource {
   const KanjiDatasourceImpl({required this.firebaseFirestore});
 
   @override
-  Future<List<KanjiModel>> getAllKanjisByLevel({required String level}) async {
+  Future<List<KanjiModel>> getAllKanjisByLevel({
+    required String level,
+    required int pageSize,
+    required int pageNumber,
+  }) async {
     try {
-      final kanjis = await firebaseFirestore
+      Query<Map<String, dynamic>> query = firebaseFirestore
           .collection('kanjis')
           .where('level', isEqualTo: level)
-          .get();
+          .orderBy('createdAt')
+          .limit(pageSize);
+      if (pageNumber > 1) {
+        final lastVisibleOfPreviousPage = await firebaseFirestore
+            .collection('kanjis')
+            .where('level', isEqualTo: level)
+            .orderBy('createdAt')
+            .limit((pageNumber - 1) * pageSize)
+            .get();
+
+        if (lastVisibleOfPreviousPage.docs.isNotEmpty) {
+          final lastDoc = lastVisibleOfPreviousPage.docs.last;
+          query = query.startAfter([lastDoc['createdAt']]);
+        }
+      }
+      final kanjis = await query.get();
       List<KanjiModel> kanjiList = kanjis.docs.map((kanji) {
         return KanjiModel.fromJson({
           'id': kanji.id,
@@ -28,7 +47,6 @@ class KanjiDatasourceImpl implements KanjiDatasource {
           'createdAt': kanji.data()['createdAt'],
         });
       }).toList();
-      kanjiList.sort((a, b) => a.createdAt.compareTo(b.createdAt));
       return kanjiList;
     } on FirebaseException catch (e) {
       log(e.toString());
