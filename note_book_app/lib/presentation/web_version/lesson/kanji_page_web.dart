@@ -83,7 +83,8 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
               BlocConsumer<KanjiPageWebCubit, KanjiPageWebState>(
                 builder: (context, state) {
                   if (state is KanjiPageWebLoading) {
-                    return const Expanded(
+                    return const SizedBox(
+                      width: double.infinity,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -95,35 +96,33 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
                     );
                   }
                   if (state is KanjiPageWebLoaded) {
-                    return Expanded(
-                      child: ListView.builder(
-                        controller: _scrollController,
-                        itemBuilder: (context, index) {
-                          if (index < state.kanjis.length) {
-                            return Container(
-                              height: 300,
-                              margin: EdgeInsets.only(
-                                left: 360,
-                                right: 360,
-                                top: index == 0 ? 100 : 16,
-                                bottom:
-                                    index == state.kanjis.length - 1 ? 32 : 16,
-                              ),
-                              child: KanjiComponent(
-                                kanji: state.kanjis[index],
-                                kunyomiDialogCubit:
-                                    context.read<KunyomiDialogCubit>(),
-                                onyomiDialogCubit:
-                                    context.read<OnyomiDialogCubit>(),
-                              ),
-                            );
-                          } else {
-                            return const SizedBox();
-                          }
-                        },
-                        itemCount:
-                            state.kanjis.length + (state.hasReachedMax ? 0 : 1),
-                      ),
+                    return ListView.builder(
+                      controller: _scrollController,
+                      itemBuilder: (context, index) {
+                        if (index < state.kanjis.length) {
+                          return Container(
+                            height: 300,
+                            margin: EdgeInsets.only(
+                              left: 360,
+                              right: 360,
+                              top: index == 0 ? 100 : 16,
+                              bottom:
+                                  index == state.kanjis.length - 1 ? 32 : 16,
+                            ),
+                            child: KanjiComponent(
+                              kanji: state.kanjis[index],
+                              kunyomiDialogCubit:
+                                  context.read<KunyomiDialogCubit>(),
+                              onyomiDialogCubit:
+                                  context.read<OnyomiDialogCubit>(),
+                            ),
+                          );
+                        } else {
+                          return const SizedBox();
+                        }
+                      },
+                      itemCount:
+                          state.kanjis.length + (state.hasReachedMax ? 0 : 1),
                     );
                   }
                   return const SizedBox();
