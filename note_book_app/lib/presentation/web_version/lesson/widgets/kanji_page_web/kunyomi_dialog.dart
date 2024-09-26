@@ -24,7 +24,6 @@ class KunyomiDialog extends StatelessWidget {
       child: BlocProvider.value(
         value: kunyomiDialogCubit..getAllKunyomisByKanjiId(kanjiId: kanji.id),
         child: Container(
-          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             color: AppColors.kF8EDE3,
@@ -33,81 +32,99 @@ class KunyomiDialog extends StatelessWidget {
           height: 600,
           child: Column(
             children: [
-              BlocBuilder<KunyomiDialogCubit, KunyomiDialogState>(
-                builder: (context, state) {
-                  if (state is KunyomiDialogLoading) {
-                    return const Spacer();
-                  }
-                  return const SizedBox();
-                },
-              ),
               BlocConsumer<KunyomiDialogCubit, KunyomiDialogState>(
                 listener: (context, state) {
                   if (state is KunyomiDialogFailure) {}
                 },
                 builder: (context, state) {
                   if (state is KunyomiDialogLoading) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.k8D493A.withOpacity(0.4),
+                    return Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.k8D493A.withOpacity(0.4),
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   }
                   if (state is KunyomiDialogLoaded) {
-                    return SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          ...state.kunyomis.map((onSample) {
-                            return Column(
-                              children: [
-                                Row(
+                    return Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            ...state.kunyomis.map((onSample) {
+                              return Container(
+                                padding: EdgeInsets.only(
+                                  top: state.kunyomis.indexOf(onSample) == 0
+                                      ? 16
+                                      : 0,
+                                  left: 16,
+                                  right: 16,
+                                  bottom: state.kunyomis.indexOf(onSample) ==
+                                          state.kunyomis.length - 1
+                                      ? 16
+                                      : 0,
+                                ),
+                                child: Column(
                                   children: [
-                                    Expanded(
-                                      child: Text(
-                                        "${state.kunyomis.indexOf(onSample) + 1}. ${onSample.sample}",
-                                        style: TextStyle(
-                                          fontSize: ResponsiveUtil.isDesktop(
-                                                  context)
-                                              ? 20
-                                              : ResponsiveUtil.isTablet(context)
-                                                  ? 16
-                                                  : 14,
-                                          fontWeight: FontWeight.w600,
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            "${state.kunyomis.indexOf(onSample) + 1}. ${onSample.sample}",
+                                            style: TextStyle(
+                                              fontSize:
+                                                  ResponsiveUtil.isDesktop(
+                                                          context)
+                                                      ? 20
+                                                      : ResponsiveUtil.isTablet(
+                                                              context)
+                                                          ? 16
+                                                          : 14,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            "Cách đọc: ${onSample.transform}\nĐịnh nghĩa: ${onSample.meaning}",
+                                            style: TextStyle(
+                                              fontSize:
+                                                  ResponsiveUtil.isDesktop(
+                                                          context)
+                                                      ? 20
+                                                      : ResponsiveUtil.isTablet(
+                                                              context)
+                                                          ? 16
+                                                          : 14,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 8),
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        "Cách đọc: ${onSample.transform}\nĐịnh nghĩa: ${onSample.meaning}",
-                                        style: TextStyle(
-                                          fontSize: ResponsiveUtil.isDesktop(
-                                                  context)
-                                              ? 20
-                                              : ResponsiveUtil.isTablet(context)
-                                                  ? 16
-                                                  : 14,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 8),
-                              ],
-                            );
-                          }),
-                        ],
+                              );
+                            }),
+                          ],
+                        ),
                       ),
                     );
                   }
                   return const SizedBox();
                 },
               ),
-              const Spacer(),
-              SizedBox(
+              Container(
+                padding: const EdgeInsets.all(16),
                 width: double.infinity,
                 child: CloseDialogButton(
                   onPressed: (context) => context.pop(),
