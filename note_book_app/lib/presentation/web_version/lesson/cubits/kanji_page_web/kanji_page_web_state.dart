@@ -14,11 +14,34 @@ class KanjiPageWebLoading extends KanjiPageWebState {}
 
 class KanjiPageWebLoaded extends KanjiPageWebState {
   final List<KanjiEntity> kanjis;
+  final bool hasReachedMax;
+  final int currentPage;
+  final String currentSearchKey;
 
-  const KanjiPageWebLoaded({required this.kanjis});
+  const KanjiPageWebLoaded({
+    required this.kanjis,
+    required this.hasReachedMax,
+    required this.currentPage,
+    required this.currentSearchKey,
+  });
 
   @override
-  List<Object?> get props => [kanjis];
+  List<Object> get props =>
+      [kanjis, hasReachedMax, currentPage, currentSearchKey];
+
+  KanjiPageWebLoaded copyWith({
+    List<KanjiEntity>? kanjis,
+    bool? hasReachedMax,
+    int? currentPage,
+    String? currentSearchKey,
+  }) {
+    return KanjiPageWebLoaded(
+      kanjis: kanjis ?? this.kanjis,
+      hasReachedMax: hasReachedMax ?? this.hasReachedMax,
+      currentPage: currentPage ?? this.currentPage,
+      currentSearchKey: currentSearchKey ?? this.currentSearchKey,
+    );
+  }
 }
 
 class KanjiPageWebFailure extends KanjiPageWebState {

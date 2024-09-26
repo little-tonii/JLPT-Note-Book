@@ -21,27 +21,40 @@ class KanjiPageWeb extends StatefulWidget {
 class _KanjiPageWebState extends State<KanjiPageWeb> {
   late TextEditingController _searchController;
   late KanjiPageWebCubit _kanjiPageWebCubit;
+  late ScrollController _scrollController;
 
   @override
   void initState() {
     _kanjiPageWebCubit = getIt<KanjiPageWebCubit>();
     _searchController = TextEditingController();
+    _scrollController = ScrollController()
+      ..addListener(() {
+        if (_scrollController.offset >=
+                _scrollController.position.maxScrollExtent &&
+            !_scrollController.position.outOfRange) {
+          _kanjiPageWebCubit.getAllKanjisByLevel(
+            levelId: widget.lesson.level,
+            hanVietSearchKey: _searchController.text,
+          );
+        }
+      });
     super.initState();
   }
 
   @override
   void dispose() {
+    _scrollController.dispose();
     _kanjiPageWebCubit.close();
     _searchController.dispose();
     super.dispose();
   }
 
-  void _handleSearchKanjis(BuildContext context) {
+  void _handleSearchKanjis() {
     _kanjiPageWebCubit.getAllKanjisByLevel(
-          levelId: widget.lesson.level,
-          hanVietSearchKey: _searchController.text,
-          pageNumber: 1,
-        );
+      levelId: widget.lesson.level,
+      hanVietSearchKey: _searchController.text,
+      refresh: true,
+    );
   }
 
   @override
@@ -53,7 +66,7 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
             ..getAllKanjisByLevel(
               levelId: widget.lesson.level,
               hanVietSearchKey: _searchController.text,
-              pageNumber: 1,
+              refresh: true,
             ),
         ),
         BlocProvider<KunyomiDialogCubit>(
@@ -75,7 +88,7 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
                   bottom: 8,
                 ),
                 child: TextField(
-                  onSubmitted: (value) => _handleSearchKanjis(context),
+                  onSubmitted: (value) => _handleSearchKanjis(),
                   cursorColor: AppColors.black,
                   controller: _searchController,
                   decoration: InputDecoration(
@@ -113,7 +126,7 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
                           Icons.search,
                           color: AppColors.black.withOpacity(0.4),
                         ),
-                        onPressed: () => _handleSearchKanjis(context),
+                        onPressed: _handleSearchKanjis,
                       ),
                     ),
                   ),
@@ -136,26 +149,32 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
                   if (state is KanjiPageWebLoaded) {
                     return Expanded(
                       child: ListView.builder(
+                        controller: _scrollController,
                         itemBuilder: (context, index) {
-                          return Container(
-                            height: 300,
-                            padding: EdgeInsets.only(
-                              left: 360,
-                              right: 360,
-                              top: index == 0 ? 32 : 16,
-                              bottom:
-                                  index == state.kanjis.length - 1 ? 32 : 16,
-                            ),
-                            child: KanjiComponent(
-                              kanji: state.kanjis[index],
-                              kunyomiDialogCubit:
-                                  context.read<KunyomiDialogCubit>(),
-                              onyomiDialogCubit:
-                                  context.read<OnyomiDialogCubit>(),
-                            ),
-                          );
+                          if (index < state.kanjis.length) {
+                            return Container(
+                              height: 300,
+                              padding: EdgeInsets.only(
+                                left: 360,
+                                right: 360,
+                                top: index == 0 ? 32 : 16,
+                                bottom:
+                                    index == state.kanjis.length - 1 ? 32 : 16,
+                              ),
+                              child: KanjiComponent(
+                                kanji: state.kanjis[index],
+                                kunyomiDialogCubit:
+                                    context.read<KunyomiDialogCubit>(),
+                                onyomiDialogCubit:
+                                    context.read<OnyomiDialogCubit>(),
+                              ),
+                            );
+                          } else {
+                            return const SizedBox();
+                          }
                         },
-                        itemCount: state.kanjis.length,
+                        itemCount:
+                            state.kanjis.length + (state.hasReachedMax ? 0 : 1),
                       ),
                     );
                   }

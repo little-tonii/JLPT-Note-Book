@@ -12,19 +12,57 @@ class KanjiPageWebCubit extends Cubit<KanjiPageWebState> {
   void getAllKanjisByLevel({
     required String levelId,
     required String hanVietSearchKey,
-    required int pageNumber,
+    bool refresh = false,
   }) async {
-    emit(KanjiPageWebLoading());
+    final currentState = state;
+    if (currentState is KanjiPageWebLoaded && !refresh) {
+      if (currentState.hasReachedMax) return;
+      if (currentState.currentSearchKey != hanVietSearchKey) {
+        emit(KanjiPageWebLoading());
+      }
+    } else if (refresh) {
+      emit(KanjiPageWebLoading());
+    }
+
     final result = await _getAllKanjisByLevelUsecase.call(
       level: levelId,
       pageSize: 10,
-      pageNumber: pageNumber,
+      pageNumber: refresh
+          ? 1
+          : (currentState is KanjiPageWebLoaded
+              ? currentState.currentPage + 1
+              : 1),
       hanVietSearchKey: hanVietSearchKey,
     );
-    result.fold((failure) {
-      emit(KanjiPageWebFailure(failureMessage: failure.message));
-    }, (kanjis) {
-      emit(KanjiPageWebLoaded(kanjis: kanjis));
-    });
+
+    result.fold(
+      (failure) => emit(KanjiPageWebFailure(failureMessage: failure.message)),
+      (newKanjis) {
+        if (currentState is KanjiPageWebLoaded) {
+          if (refresh) {
+            emit(KanjiPageWebLoaded(
+              kanjis: newKanjis,
+              hasReachedMax: newKanjis.isEmpty,
+              currentPage: 1,
+              currentSearchKey: hanVietSearchKey,
+            ));
+          } else {
+            emit(KanjiPageWebLoaded(
+              kanjis: currentState.kanjis + newKanjis,
+              hasReachedMax: newKanjis.isEmpty,
+              currentPage: currentState.currentPage + 1,
+              currentSearchKey: hanVietSearchKey,
+            ));
+          }
+        } else {
+          emit(KanjiPageWebLoaded(
+            kanjis: newKanjis,
+            hasReachedMax: newKanjis.isEmpty,
+            currentPage: 1,
+            currentSearchKey: hanVietSearchKey,
+          ));
+        }
+      },
+    );
   }
 }
