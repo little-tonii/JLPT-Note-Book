@@ -11,10 +11,10 @@ class CloseDialogButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-        padding: const WidgetStatePropertyAll<EdgeInsetsGeometry>(
+        padding: WidgetStatePropertyAll<EdgeInsetsGeometry>(
           EdgeInsets.symmetric(
-            horizontal: 32,
-            vertical: 16,
+            horizontal: ResponsiveUtil.isDesktop(context) ? 32 : 24,
+            vertical: ResponsiveUtil.isDesktop(context) ? 16 : 12,
           ),
         ),
         shape: WidgetStatePropertyAll<RoundedRectangleBorder>(

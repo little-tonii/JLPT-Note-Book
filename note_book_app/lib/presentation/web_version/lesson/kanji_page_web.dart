@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
+import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/lesson_entity.dart';
 import 'package:note_book_app/presentation/web_version/lesson/cubits/kanji_page_web/kanji_page_web_cubit.dart';
@@ -101,10 +102,19 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
                       itemBuilder: (context, index) {
                         if (index < state.kanjis.length) {
                           return Container(
-                            height: 300,
+                            height:
+                                ResponsiveUtil.isMobile(context) ? 400 : 300,
                             margin: EdgeInsets.only(
-                              left: 360,
-                              right: 360,
+                              left: ResponsiveUtil.isDesktop(context)
+                                  ? 360
+                                  : ResponsiveUtil.isTablet(context)
+                                      ? 100
+                                      : 32,
+                              right: ResponsiveUtil.isDesktop(context)
+                                  ? 360
+                                  : ResponsiveUtil.isTablet(context)
+                                      ? 100
+                                      : 32,
                               top: index == 0 ? 100 : 16,
                               bottom:
                                   index == state.kanjis.length - 1 ? 32 : 16,
@@ -133,9 +143,17 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
               ),
               Container(
                 decoration: const BoxDecoration(color: AppColors.k8D493A),
-                margin: const EdgeInsets.only(
-                  left: 360,
-                  right: 360,
+                margin: EdgeInsets.only(
+                  left: ResponsiveUtil.isDesktop(context)
+                      ? 360
+                      : ResponsiveUtil.isTablet(context)
+                          ? 100
+                          : 32,
+                  right: ResponsiveUtil.isDesktop(context)
+                      ? 360
+                      : ResponsiveUtil.isTablet(context)
+                          ? 100
+                          : 32,
                 ),
                 padding: const EdgeInsets.only(
                   top: 16,
@@ -168,6 +186,12 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
                     ),
                     hintStyle: TextStyle(
                       color: AppColors.black.withOpacity(0.4),
+                      fontWeight: FontWeight.bold,
+                      fontSize: ResponsiveUtil.isDesktop(context)
+                          ? 20
+                          : ResponsiveUtil.isTablet(context)
+                              ? 16
+                              : 14,
                     ),
                     hintText: 'Tìm kiếm bằng chữ Hán Việt',
                     suffixIcon: Padding(

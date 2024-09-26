@@ -7,10 +7,10 @@ class ResponsiveUtil {
 
   static bool isTablet(BuildContext context) {
     return MediaQuery.of(context).size.width >= 850 &&
-        MediaQuery.of(context).size.width < 1100;
+        MediaQuery.of(context).size.width < 1200;
   }
 
   static bool isDesktop(BuildContext context) {
-    return MediaQuery.of(context).size.width >= 1100;
+    return MediaQuery.of(context).size.width >= 1200;
   }
 }
