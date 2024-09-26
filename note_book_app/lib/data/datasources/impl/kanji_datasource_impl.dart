@@ -11,12 +11,49 @@ class KanjiDatasourceImpl implements KanjiDatasource {
   const KanjiDatasourceImpl({required this.firebaseFirestore});
 
   @override
-  Future<List<KanjiModel>> getAllKanjisByLevel({required String level}) async {
+  Future<List<KanjiModel>> getAllKanjisByLevel({
+    required String level,
+    required int pageSize,
+    required int pageNumber,
+    required String hanVietSearchKey,
+  }) async {
     try {
-      final kanjis = await firebaseFirestore
+      Query<Map<String, dynamic>> query = firebaseFirestore
           .collection('kanjis')
-          .where('level', isEqualTo: level)
-          .get();
+          .where('level', isEqualTo: level);
+
+      if (hanVietSearchKey.isNotEmpty) {
+        hanVietSearchKey = hanVietSearchKey[0].toUpperCase() +
+            hanVietSearchKey.substring(1).toLowerCase();
+        query = query.where('viet', isEqualTo: hanVietSearchKey);
+      }
+
+      query = query.orderBy('createdAt');
+
+      if (pageNumber > 1) {
+        Query<Map<String, dynamic>> previousPageQuery = firebaseFirestore
+            .collection('kanjis')
+            .where('level', isEqualTo: level);
+
+        if (hanVietSearchKey.isNotEmpty) {
+          previousPageQuery =
+              previousPageQuery.where('viet', isEqualTo: hanVietSearchKey);
+        }
+
+        final lastVisibleOfPreviousPage = await previousPageQuery
+            .orderBy('createdAt')
+            .limit((pageNumber - 1) * pageSize)
+            .get();
+
+        if (lastVisibleOfPreviousPage.docs.isNotEmpty) {
+          final lastDoc = lastVisibleOfPreviousPage.docs.last;
+          query = query.startAfter([lastDoc['createdAt']]);
+        }
+      }
+
+      query = query.limit(pageSize);
+
+      final kanjis = await query.get();
       List<KanjiModel> kanjiList = kanjis.docs.map((kanji) {
         return KanjiModel.fromJson({
           'id': kanji.id,
@@ -28,7 +65,7 @@ class KanjiDatasourceImpl implements KanjiDatasource {
           'createdAt': kanji.data()['createdAt'],
         });
       }).toList();
-      kanjiList.sort((a, b) => a.createdAt.compareTo(b.createdAt));
+
       return kanjiList;
     } on FirebaseException catch (e) {
       log(e.toString());

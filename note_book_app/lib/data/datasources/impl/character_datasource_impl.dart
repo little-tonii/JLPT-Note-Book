@@ -13,7 +13,10 @@ class CharacterDatasourceImpl implements CharacterDatasource {
   @override
   Future<List<CharacterModel>> getAllCharacters() async {
     try {
-      final result = await firebaseFirestore.collection('characters').get();
+      final result = await firebaseFirestore
+          .collection('characters')
+          .orderBy('createdAt')
+          .get();
       List<CharacterModel> characters = result.docs.map((character) {
         return CharacterModel.fromJson({
           'id': character.id,
@@ -23,7 +26,6 @@ class CharacterDatasourceImpl implements CharacterDatasource {
           'createdAt': character.data()['createdAt'],
         });
       }).toList();
-      characters.sort((a, b) => a.createdAt.compareTo(b.createdAt));
       return characters;
     } on FirebaseException catch (e) {
       log(e.toString());
