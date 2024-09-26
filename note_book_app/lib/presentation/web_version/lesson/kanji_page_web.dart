@@ -78,12 +78,67 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
       ],
       child: Scaffold(
         body: Center(
-          child: Column(
+          child: Stack(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(
+              BlocConsumer<KanjiPageWebCubit, KanjiPageWebState>(
+                builder: (context, state) {
+                  if (state is KanjiPageWebLoading) {
+                    return const Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircularProgressIndicator(
+                            color: AppColors.kDFD3C3,
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                  if (state is KanjiPageWebLoaded) {
+                    return Expanded(
+                      child: ListView.builder(
+                        controller: _scrollController,
+                        itemBuilder: (context, index) {
+                          if (index < state.kanjis.length) {
+                            return Container(
+                              height: 300,
+                              margin: EdgeInsets.only(
+                                left: 360,
+                                right: 360,
+                                top: index == 0 ? 100 : 16,
+                                bottom:
+                                    index == state.kanjis.length - 1 ? 32 : 16,
+                              ),
+                              child: KanjiComponent(
+                                kanji: state.kanjis[index],
+                                kunyomiDialogCubit:
+                                    context.read<KunyomiDialogCubit>(),
+                                onyomiDialogCubit:
+                                    context.read<OnyomiDialogCubit>(),
+                              ),
+                            );
+                          } else {
+                            return const SizedBox();
+                          }
+                        },
+                        itemCount:
+                            state.kanjis.length + (state.hasReachedMax ? 0 : 1),
+                      ),
+                    );
+                  }
+                  return const SizedBox();
+                },
+                listener: (context, state) {
+                  if (state is KanjiPageWebFailure) {}
+                },
+              ),
+              Container(
+                decoration: const BoxDecoration(color: AppColors.k8D493A),
+                margin: const EdgeInsets.only(
                   left: 360,
                   right: 360,
+                ),
+                padding: const EdgeInsets.only(
                   top: 16,
                   bottom: 8,
                 ),
@@ -131,58 +186,6 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
                     ),
                   ),
                 ),
-              ),
-              BlocConsumer<KanjiPageWebCubit, KanjiPageWebState>(
-                builder: (context, state) {
-                  if (state is KanjiPageWebLoading) {
-                    return const Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CircularProgressIndicator(
-                            color: AppColors.kDFD3C3,
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-                  if (state is KanjiPageWebLoaded) {
-                    return Expanded(
-                      child: ListView.builder(
-                        controller: _scrollController,
-                        itemBuilder: (context, index) {
-                          if (index < state.kanjis.length) {
-                            return Container(
-                              height: 300,
-                              padding: EdgeInsets.only(
-                                left: 360,
-                                right: 360,
-                                top: index == 0 ? 32 : 16,
-                                bottom:
-                                    index == state.kanjis.length - 1 ? 32 : 16,
-                              ),
-                              child: KanjiComponent(
-                                kanji: state.kanjis[index],
-                                kunyomiDialogCubit:
-                                    context.read<KunyomiDialogCubit>(),
-                                onyomiDialogCubit:
-                                    context.read<OnyomiDialogCubit>(),
-                              ),
-                            );
-                          } else {
-                            return const SizedBox();
-                          }
-                        },
-                        itemCount:
-                            state.kanjis.length + (state.hasReachedMax ? 0 : 1),
-                      ),
-                    );
-                  }
-                  return const SizedBox();
-                },
-                listener: (context, state) {
-                  if (state is KanjiPageWebFailure) {}
-                },
               ),
             ],
           ),
