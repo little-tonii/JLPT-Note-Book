@@ -9,12 +9,17 @@ class KanjiPageWebCubit extends Cubit<KanjiPageWebState> {
 
   KanjiPageWebCubit() : super(KanjiPageWebInitial());
 
-  void getAllKanjisByLevel({required String levelId}) async {
+  void getAllKanjisByLevel({
+    required String levelId,
+    required String hanVietSearchKey,
+    required int pageNumber,
+  }) async {
     emit(KanjiPageWebLoading());
     final result = await _getAllKanjisByLevelUsecase.call(
       level: levelId,
       pageSize: 10,
-      pageNumber: 1,
+      pageNumber: pageNumber,
+      hanVietSearchKey: hanVietSearchKey,
     );
     result.fold((failure) {
       emit(KanjiPageWebFailure(failureMessage: failure.message));

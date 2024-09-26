@@ -12,11 +12,13 @@ class GetAllKanjisByLevelUsecase {
     required String level,
     required int pageSize,
     required int pageNumber,
+    required String hanVietSearchKey,
   }) async {
     return await kanjiRepository.getAllKanjisByLevel(
       level: level,
       pageNumber: pageNumber,
       pageSize: pageSize,
+      hanVietSearchKey: hanVietSearchKey,
     );
   }
 }

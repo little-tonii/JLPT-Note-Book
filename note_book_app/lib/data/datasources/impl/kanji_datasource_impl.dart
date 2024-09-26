@@ -15,17 +15,32 @@ class KanjiDatasourceImpl implements KanjiDatasource {
     required String level,
     required int pageSize,
     required int pageNumber,
+    required String hanVietSearchKey,
   }) async {
     try {
       Query<Map<String, dynamic>> query = firebaseFirestore
           .collection('kanjis')
-          .where('level', isEqualTo: level)
-          .orderBy('createdAt')
-          .limit(pageSize);
+          .where('level', isEqualTo: level);
+
+      if (hanVietSearchKey.isNotEmpty) {
+        hanVietSearchKey = hanVietSearchKey[0].toUpperCase() +
+            hanVietSearchKey.substring(1).toLowerCase();
+        query = query.where('viet', isEqualTo: hanVietSearchKey);
+      }
+
+      query = query.orderBy('createdAt');
+
       if (pageNumber > 1) {
-        final lastVisibleOfPreviousPage = await firebaseFirestore
+        Query<Map<String, dynamic>> previousPageQuery = firebaseFirestore
             .collection('kanjis')
-            .where('level', isEqualTo: level)
+            .where('level', isEqualTo: level);
+
+        if (hanVietSearchKey.isNotEmpty) {
+          previousPageQuery =
+              previousPageQuery.where('viet', isEqualTo: hanVietSearchKey);
+        }
+
+        final lastVisibleOfPreviousPage = await previousPageQuery
             .orderBy('createdAt')
             .limit((pageNumber - 1) * pageSize)
             .get();
@@ -35,6 +50,9 @@ class KanjiDatasourceImpl implements KanjiDatasource {
           query = query.startAfter([lastDoc['createdAt']]);
         }
       }
+
+      query = query.limit(pageSize);
+
       final kanjis = await query.get();
       List<KanjiModel> kanjiList = kanjis.docs.map((kanji) {
         return KanjiModel.fromJson({
@@ -47,6 +65,7 @@ class KanjiDatasourceImpl implements KanjiDatasource {
           'createdAt': kanji.data()['createdAt'],
         });
       }).toList();
+
       return kanjiList;
     } on FirebaseException catch (e) {
       log(e.toString());

@@ -5,5 +5,8 @@ abstract class AppThemes {
   static final ThemeData defaultTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.k8D493A,
     brightness: Brightness.light,
+    textSelectionTheme: TextSelectionThemeData(
+      selectionColor: Colors.blue[400]!.withOpacity(0.8),
+    ),
   );
 }

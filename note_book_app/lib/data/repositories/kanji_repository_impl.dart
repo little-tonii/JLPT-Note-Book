@@ -15,12 +15,14 @@ class KanjiRepositoryImpl implements KanjiRepository {
     required String level,
     required int pageSize,
     required int pageNumber,
+    required String hanVietSearchKey,
   }) async {
     try {
       final kanjis = await kanjiDatasource.getAllKanjisByLevel(
         level: level,
         pageSize: pageSize,
         pageNumber: pageNumber,
+        hanVietSearchKey: hanVietSearchKey,
       );
       return Right(kanjis.map((kanji) => kanji.toEntity()).toList());
     } on Failure catch (e) {
