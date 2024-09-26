@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
+import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/domain/entities/kanji_entity.dart';
 import 'package:note_book_app/presentation/web_version/lesson/cubits/kanji_page_web/onyomi_dialog_cubit.dart';
 import 'package:note_book_app/presentation/web_version/lesson/cubits/kanji_page_web/onyomi_dialog_state.dart';
@@ -61,8 +62,13 @@ class OnyomiDialog extends StatelessWidget {
                                     Expanded(
                                       child: Text(
                                         "${state.onyomis.indexOf(onSample) + 1}. ${onSample.sample}",
-                                        style: const TextStyle(
-                                          fontSize: 20,
+                                        style: TextStyle(
+                                          fontSize: ResponsiveUtil.isDesktop(
+                                                  context)
+                                              ? 20
+                                              : ResponsiveUtil.isTablet(context)
+                                                  ? 16
+                                                  : 14,
                                           fontWeight: FontWeight.w600,
                                         ),
                                       ),
@@ -74,7 +80,14 @@ class OnyomiDialog extends StatelessWidget {
                                     Expanded(
                                       child: Text(
                                         "Cách đọc: ${onSample.transform}\nĐịnh nghĩa: ${onSample.meaning}",
-                                        style: const TextStyle(fontSize: 20),
+                                        style: TextStyle(
+                                          fontSize: ResponsiveUtil.isDesktop(
+                                                  context)
+                                              ? 20
+                                              : ResponsiveUtil.isTablet(context)
+                                                  ? 16
+                                                  : 14,
+                                        ),
                                       ),
                                     ),
                                   ],
