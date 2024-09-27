@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./note_book_app
+        working-directory: ./
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
@@ -36,4 +36,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./note_book_app/build/web
+          publish_dir: ./build/web
