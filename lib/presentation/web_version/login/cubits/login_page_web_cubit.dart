@@ -1,18 +1,18 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
-import 'package:note_book_app/domain/usecases/user/is_logged_in_usecase.dart';
+import 'package:note_book_app/domain/usecases/user/is_user_logged_in_usecase.dart';
 import 'package:note_book_app/domain/usecases/user/login_with_email_and_password_usecase.dart';
 import 'package:note_book_app/presentation/web_version/login/cubits/login_page_web_state.dart';
 
 class LoginPageWebCubit extends Cubit<LoginPageWebState> {
   final LoginWithEmailAndPasswordUsecase _loginWithEmailAndPasswordUsecase =
       getIt<LoginWithEmailAndPasswordUsecase>();
-  final IsLoggedInUsecase _isLoggedInUsecase = getIt<IsLoggedInUsecase>();
+  final IsUserLoggedInUsecase _isUserLoggedInUsecase = getIt<IsUserLoggedInUsecase>();
 
   LoginPageWebCubit() : super(LoginPageWebLoading());
 
   void checkIfUserIsLoggedIn() async {
-    final result = await _isLoggedInUsecase();
+    final result = await _isUserLoggedInUsecase();
     result.fold(
       (failure) => emit(LoginPageWebInitial()),
       (user) => emit(LoginPageWebSuccess(user: user)),

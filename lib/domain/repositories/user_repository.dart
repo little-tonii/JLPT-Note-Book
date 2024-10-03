@@ -9,4 +9,5 @@ abstract class UserRepository {
   });
   Future<Either<Failure, bool>> logout();
   Future<Either<Failure, UserEntity>> isLoggedIn();
+  Future<Either<Failure, UserEntity>> getUserInfor();
 }

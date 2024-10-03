@@ -4,17 +4,26 @@ import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web_state.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_side_bar.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_side_bar/admin_page_side_bar.dart';
 
 class AdminPageWeb extends StatelessWidget {
   const AdminPageWeb({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AdminPageWebCubit>(
-      create: (context) => getIt<AdminPageWebCubit>()..checkIfUserIsLoggedIn(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AdminPageWebCubit>(
+          create: (context) =>
+              getIt<AdminPageWebCubit>()..checkIfUserIsLoggedIn(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<AdminPageSideBarCubit>(),
+        ),
+      ],
       child: Scaffold(
         body: ResponsiveUtil.isDesktop(context)
             ? _desktopRender(context)

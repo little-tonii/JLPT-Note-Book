@@ -7,4 +7,5 @@ abstract class UserDatasource {
   });
   Future<bool> logout();
   Future<UserModel> isLoggedIn();
+  Future<UserModel> getUserInfor();
 }

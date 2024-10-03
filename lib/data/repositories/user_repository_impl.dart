@@ -49,4 +49,16 @@ class UserRepositoryImpl implements UserRepository {
       return Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> getUserInfor() async {
+    try {
+      final result = await userDatasource.getUserInfor();
+      return Right(result.toEntity());
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
 }
