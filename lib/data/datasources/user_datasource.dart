@@ -6,4 +6,5 @@ abstract class UserDatasource {
     required String password,
   });
   Future<bool> logout();
+  Future<UserModel> isLoggedIn();
 }

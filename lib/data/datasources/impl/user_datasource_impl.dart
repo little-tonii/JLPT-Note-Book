@@ -67,4 +67,28 @@ class UserDatasourceImpl implements UserDatasource {
       throw Exception(e);
     }
   }
+
+  @override
+  Future<UserModel> isLoggedIn() async {
+    try {
+      final user = firebaseAuth.currentUser;
+      if (user == null) {
+        throw AuthenticationFailure(message: "Vui lòng đăng nhập");
+      }
+      final userData =
+          await firebaseFirestore.collection('users').doc(user.uid).get();
+      return UserModel.fromJson({
+        'id': userData.id,
+        'email': userData.data()!['email'],
+        'fullName': userData.data()!['fullName'],
+        'createdAt': userData.data()!['createdAt'],
+        'role': userData.data()!['role'],
+      });
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(message: e.message.toString());
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }

@@ -8,4 +8,5 @@ abstract class UserRepository {
     required String password,
   });
   Future<Either<Failure, bool>> logout();
+  Future<Either<Failure, UserEntity>> isLoggedIn();
 }

@@ -50,7 +50,7 @@ class _LoginPageWebState extends State<LoginPageWeb> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginPageWebCubit>(
-      create: (context) => _loginPageWebCubit,
+      create: (context) => _loginPageWebCubit..checkIfUserIsLoggedIn(),
       child: Scaffold(
         body: Center(
           child: BlocListener<LoginPageWebCubit, LoginPageWebState>(
@@ -121,12 +121,8 @@ class _LoginPageWebState extends State<LoginPageWeb> {
             obcureText: true,
           ),
           const SizedBox(height: 16),
-          BlocBuilder<LoginPageWebCubit, LoginPageWebState>(
-            builder: (context, state) {
-              return LoginButton(
-                onPressed: _handleLoginEmailAndPassword,
-              );
-            },
+          LoginButton(
+            onPressed: _handleLoginEmailAndPassword,
           ),
         ],
       ),

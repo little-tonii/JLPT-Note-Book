@@ -28,7 +28,9 @@ import 'package:note_book_app/domain/repositories/kunyomi_repository.dart';
 import 'package:note_book_app/domain/repositories/lesson_repository.dart';
 import 'package:note_book_app/domain/repositories/level_repository.dart';
 import 'package:note_book_app/domain/repositories/onyomi_repository.dart';
+import 'package:note_book_app/domain/usecases/admin/is_logged_in_usecase.dart';
 import 'package:note_book_app/domain/usecases/admin/login_with_email_and_password_usecase.dart';
+import 'package:note_book_app/domain/usecases/admin/logout_usecase.dart';
 import 'package:note_book_app/domain/usecases/characters/create_character_question_usecase.dart';
 import 'package:note_book_app/domain/usecases/characters/get_all_characters_usecase.dart';
 import 'package:note_book_app/domain/usecases/kanjis/get_all_kanjis_by_level_usecase.dart';
@@ -172,7 +174,13 @@ Future<void> initializeDependencies() async {
     LoginWithEmailAndPasswordUsecase(userRepository: getIt<UserRepository>()),
   );
 
-  // logout usecase is not registered
+  getIt.registerSingleton<LogoutUsecase>(
+    LogoutUsecase(userRepository: getIt<UserRepository>()),
+  );
+
+  getIt.registerSingleton<IsLoggedInUsecase>(
+    IsLoggedInUsecase(userRepository: getIt<UserRepository>()),
+  );
 
   getIt.registerFactory(() => HomePageWebCubit());
 
