@@ -28,9 +28,9 @@ import 'package:note_book_app/domain/repositories/kunyomi_repository.dart';
 import 'package:note_book_app/domain/repositories/lesson_repository.dart';
 import 'package:note_book_app/domain/repositories/level_repository.dart';
 import 'package:note_book_app/domain/repositories/onyomi_repository.dart';
-import 'package:note_book_app/domain/usecases/admin/is_logged_in_usecase.dart';
-import 'package:note_book_app/domain/usecases/admin/login_with_email_and_password_usecase.dart';
-import 'package:note_book_app/domain/usecases/admin/logout_usecase.dart';
+import 'package:note_book_app/domain/usecases/user/is_logged_in_usecase.dart';
+import 'package:note_book_app/domain/usecases/user/login_with_email_and_password_usecase.dart';
+import 'package:note_book_app/domain/usecases/user/logout_usecase.dart';
 import 'package:note_book_app/domain/usecases/characters/create_character_question_usecase.dart';
 import 'package:note_book_app/domain/usecases/characters/get_all_characters_usecase.dart';
 import 'package:note_book_app/domain/usecases/kanjis/get_all_kanjis_by_level_usecase.dart';
@@ -40,6 +40,7 @@ import 'package:note_book_app/domain/usecases/lessons/get_lesson_by_id_usecase.d
 import 'package:note_book_app/domain/usecases/levels/get_all_levels_usecase.dart';
 import 'package:note_book_app/domain/usecases/levels/get_level_by_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/onyomis/get_all_onyomis_by_kanji_id_usecase.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web_cubit.dart';
 import 'package:note_book_app/presentation/web_version/login/cubits/login_page_web_cubit.dart';
 import 'package:note_book_app/presentation/web_version/home/cubits/home_page_web_cubit.dart';
 import 'package:note_book_app/presentation/web_version/lesson/cubits/character_page_web/character_page_web_cubit.dart';
@@ -197,4 +198,6 @@ Future<void> initializeDependencies() async {
   getIt.registerFactory(() => OnyomiDialogCubit());
 
   getIt.registerFactory(() => LoginPageWebCubit());
+
+  getIt.registerFactory(() => AdminPageWebCubit());
 }

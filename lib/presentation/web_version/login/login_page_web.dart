@@ -53,7 +53,7 @@ class _LoginPageWebState extends State<LoginPageWeb> {
       create: (context) => _loginPageWebCubit..checkIfUserIsLoggedIn(),
       child: Scaffold(
         body: Center(
-          child: BlocListener<LoginPageWebCubit, LoginPageWebState>(
+          child: BlocConsumer<LoginPageWebCubit, LoginPageWebState>(
             listener: (context, state) {
               if (state is LoginPageWebSuccess) {
                 if (state.user.role == 'admin') {
@@ -61,43 +61,55 @@ class _LoginPageWebState extends State<LoginPageWeb> {
                 }
               }
             },
-            child: Stack(
-              children: [
-                ResponsiveUtil.isDesktop(context)
-                    ? _desktopRender(context)
-                    : _mobileAndTabletRender(context),
-                ResponsiveUtil.isDesktop(context)
-                    ? BlocBuilder<LoginPageWebCubit, LoginPageWebState>(
-                        builder: (context, state) {
-                          if (state is LoginPageWebFailure) {
-                            return Container(
-                              margin: const EdgeInsets.only(top: 32),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16,
-                                vertical: 8,
-                              ),
-                              decoration: const BoxDecoration(
-                                color: AppColors.failureColor,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(8)),
-                              ),
-                              width: 480,
-                              child: Text(
-                                state.message,
-                                style: const TextStyle(
-                                  color: AppColors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            );
-                          }
-                          return const SizedBox();
-                        },
-                      )
-                    : const SizedBox(),
-              ],
-            ),
+            builder: (context, state) {
+              if (state is LoginPageWebLoading) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.kDFD3C3,
+                  ),
+                );
+              }
+              if (state is LoginPageWebInitial) {
+                return Stack(
+                  children: [
+                    ResponsiveUtil.isDesktop(context)
+                        ? _desktopRender(context)
+                        : _mobileAndTabletRender(context),
+                    ResponsiveUtil.isDesktop(context)
+                        ? BlocBuilder<LoginPageWebCubit, LoginPageWebState>(
+                            builder: (context, state) {
+                              if (state is LoginPageWebFailure) {
+                                return Container(
+                                  margin: const EdgeInsets.only(top: 32),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 8,
+                                  ),
+                                  decoration: const BoxDecoration(
+                                    color: AppColors.failureColor,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
+                                  ),
+                                  width: 480,
+                                  child: Text(
+                                    state.message,
+                                    style: const TextStyle(
+                                      color: AppColors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                );
+                              }
+                              return const SizedBox();
+                            },
+                          )
+                        : const SizedBox(),
+                  ],
+                );
+              }
+              return const SizedBox();
+            },
           ),
         ),
       ),
