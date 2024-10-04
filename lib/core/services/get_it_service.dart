@@ -41,8 +41,10 @@ import 'package:note_book_app/domain/usecases/lessons/get_lesson_by_id_usecase.d
 import 'package:note_book_app/domain/usecases/levels/get_all_levels_usecase.dart';
 import 'package:note_book_app/domain/usecases/levels/get_level_by_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/onyomis/get_all_onyomis_by_kanji_id_usecase.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar_cubit.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar/admin_page_side_bar_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web/admin_page_web_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/word_manager/word_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/login/cubits/login_page_web_cubit.dart';
 import 'package:note_book_app/presentation/web_version/home/cubits/home_page_web_cubit.dart';
 import 'package:note_book_app/presentation/web_version/lesson/cubits/character_page_web/character_page_web_cubit.dart';
@@ -208,4 +210,8 @@ Future<void> initializeDependencies() async {
   getIt.registerFactory(() => AdminPageWebCubit());
 
   getIt.registerFactory(() => AdminPageSideBarCubit());
+
+  getIt.registerFactory(() => KanjiManagerCubit());
+
+  getIt.registerFactory(() => WordManagerCubit());
 }

@@ -4,9 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar_cubit.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web_cubit.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar/admin_page_side_bar_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web/admin_page_web_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web/admin_page_web_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/admin_page_menu_item_view.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_side_bar/admin_page_side_bar.dart';
 
 class AdminPageWeb extends StatelessWidget {
@@ -41,12 +42,10 @@ class AdminPageWeb extends StatelessWidget {
       },
       builder: (BuildContext context, AdminPageWebState state) {
         if (state is AdminPageWebInitial) {
-          return Row(
+          return const Row(
             children: [
-              const AdminPageSideBar(),
-              Expanded(
-                child: Container(),
-              ),
+              AdminPageSideBar(),
+              AdminPageMenuItemView(),
             ],
           );
         }

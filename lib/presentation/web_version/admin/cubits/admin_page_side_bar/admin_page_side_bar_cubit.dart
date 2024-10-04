@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/usecases/user/get_user_infor_usecase.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar/admin_page_side_bar_state.dart';
 
 class AdminPageSideBarCubit extends Cubit<AdminPageSideBarState> {
   final GetUserInforUsecase _getUserInforUsecase = getIt<GetUserInforUsecase>();

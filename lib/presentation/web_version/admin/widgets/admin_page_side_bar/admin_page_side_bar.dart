@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar/admin_page_side_bar_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_side_bar/side_bar_menu_item.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_side_bar/user_infor.dart';
 
