@@ -45,8 +45,6 @@ class _LoginPageWebState extends State<LoginPageWeb> {
     );
   }
 
-  void _handleShowOrHidePassword() {}
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginPageWebCubit>(

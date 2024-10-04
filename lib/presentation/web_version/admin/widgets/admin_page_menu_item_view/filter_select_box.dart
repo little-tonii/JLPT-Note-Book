@@ -39,7 +39,7 @@ class _FilterSelectBoxState extends State<FilterSelectBox> {
           ),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           height: 48,
-          width: 400,
+          width: double.infinity,
         ),
         onChanged: (value) {
           setState(() {

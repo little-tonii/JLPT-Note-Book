@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:note_book_app/domain/entities/kanji_entity.dart';
-import 'package:note_book_app/domain/entities/lesson_entity.dart';
 import 'package:note_book_app/domain/entities/level_entity.dart';
 
 abstract class KanjiManagerState extends Equatable {
@@ -11,8 +10,6 @@ abstract class KanjiManagerState extends Equatable {
 }
 
 class KanjiManagerInitial extends KanjiManagerState {}
-
-class KanjiManagerLoading extends KanjiManagerState {}
 
 class KanjiManagerFailure extends KanjiManagerState {
   final String message;
@@ -25,25 +22,41 @@ class KanjiManagerFailure extends KanjiManagerState {
 
 class KanjiManagerLoaded extends KanjiManagerState {
   final String levelFilterState;
-  final String lessonFilterState;
   final List<LevelEntity> levels;
-  final List<LessonEntity> lessons;
   final List<KanjiEntity> kanjis;
+  final bool hasReachedMax;
+  final String searchKey;
 
   const KanjiManagerLoaded({
     required this.levelFilterState,
-    required this.lessonFilterState,
     required this.levels,
-    required this.lessons,
     required this.kanjis,
+    this.hasReachedMax = false,
+    this.searchKey = '',
   });
 
   @override
   List<Object?> get props => [
         levels,
-        lessons,
         levelFilterState,
-        lessonFilterState,
         kanjis,
+        hasReachedMax,
+        searchKey,
       ];
+
+  KanjiManagerLoaded copyWith({
+    String? levelFilterState,
+    List<LevelEntity>? levels,
+    List<KanjiEntity>? kanjis,
+    bool? hasReachedMax,
+    String? searchKey,
+  }) {
+    return KanjiManagerLoaded(
+      levelFilterState: levelFilterState ?? this.levelFilterState,
+      levels: levels ?? this.levels,
+      kanjis: kanjis ?? this.kanjis,
+      hasReachedMax: hasReachedMax ?? this.hasReachedMax,
+      searchKey: searchKey ?? this.searchKey,
+    );
+  }
 }

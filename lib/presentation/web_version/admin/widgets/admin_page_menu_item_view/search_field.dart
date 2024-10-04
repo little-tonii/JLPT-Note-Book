@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField({super.key});
@@ -26,7 +28,12 @@ class _SearchFieldState extends State<SearchField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onSubmitted: (value) {},
+      onSubmitted: (value) {
+        context.read<KanjiManagerCubit>().searchKanjis(
+              hanVietSearchKey: value,
+              refresh: true,
+            );
+      },
       cursorColor: AppColors.black,
       controller: _searchController,
       decoration: InputDecoration(
