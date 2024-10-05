@@ -7,7 +7,8 @@ import 'package:note_book_app/presentation/web_version/login/cubits/login_page_w
 class LoginPageWebCubit extends Cubit<LoginPageWebState> {
   final LoginWithEmailAndPasswordUsecase _loginWithEmailAndPasswordUsecase =
       getIt<LoginWithEmailAndPasswordUsecase>();
-  final IsUserLoggedInUsecase _isUserLoggedInUsecase = getIt<IsUserLoggedInUsecase>();
+  final IsUserLoggedInUsecase _isUserLoggedInUsecase =
+      getIt<IsUserLoggedInUsecase>();
 
   LoginPageWebCubit() : super(LoginPageWebLoading());
 
@@ -19,7 +20,7 @@ class LoginPageWebCubit extends Cubit<LoginPageWebState> {
     );
   }
 
-  void loginWithGoogleAccount(
+  void loginWithEmailAndPassword(
       {required String email, required String password}) async {
     emit(LoginPageWebLoading());
     final result = await _loginWithEmailAndPasswordUsecase(
@@ -30,5 +31,9 @@ class LoginPageWebCubit extends Cubit<LoginPageWebState> {
       (failure) => emit(LoginPageWebFailure(message: failure.message)),
       (user) => emit(LoginPageWebSuccess(user: user)),
     );
+  }
+
+  void triggerInitialState() {
+    emit(LoginPageWebInitial());
   }
 }
