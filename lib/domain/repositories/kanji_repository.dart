@@ -9,4 +9,20 @@ abstract class KanjiRepository {
     required int pageNumber,
     required String hanVietSearchKey,
   });
+
+  Future<Either<Failure, bool>> createKanjjByLevel({
+    required String level,
+    required String kanji,
+    required String kun,
+    required String on,
+    required String viet,
+  });
+
+  Future<Either<Failure, bool>> updateKanjiById({
+    required String id,
+    required String kanji,
+    required String kun,
+    required String on,
+    required String viet,
+  });
 }

@@ -1,4 +1,6 @@
 import 'package:go_router/go_router.dart';
+import 'package:note_book_app/presentation/web_version/admin/admin_page_web.dart';
+import 'package:note_book_app/presentation/web_version/login/login_page_web.dart';
 import 'package:note_book_app/presentation/web_version/home/home_page_web.dart';
 import 'package:note_book_app/presentation/web_version/lesson/decision_render.dart';
 import 'package:note_book_app/presentation/web_version/level/level_page_web.dart';
@@ -12,6 +14,24 @@ abstract class AppRoutes {
         GoRoute(
           path: "/",
           redirect: (context, state) => "/home",
+        ),
+        GoRoute(
+          path: "/login",
+          pageBuilder: (context, state) {
+            return NoTransitionPage(
+              child: const LoginPageWeb(),
+              key: state.pageKey,
+            );
+          },
+        ),
+        GoRoute(
+          path: "/admin",
+          pageBuilder: (context, state) {
+            return NoTransitionPage(
+              child: const AdminPageWeb(),
+              key: state.pageKey,
+            );
+          },
         ),
         GoRoute(
           path: "/home",

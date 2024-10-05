@@ -74,4 +74,54 @@ class KanjiDatasourceImpl implements KanjiDatasource {
       throw Exception(e);
     }
   }
+
+  @override
+  Future<bool> createKanjiByLevel({
+    required String level,
+    required String kanji,
+    required String kun,
+    required String on,
+    required String viet,
+  }) async {
+    try {
+      await firebaseFirestore.collection('kanjis').add({
+        'kanji': kanji,
+        'kun': kun,
+        'on': on,
+        'viet': viet,
+        'level': level,
+        'createdAt': Timestamp.now(),
+      });
+      return true;
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      return false;
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  @override
+  Future<bool> updateKanjiById({
+    required String id,
+    required String kanji,
+    required String kun,
+    required String on,
+    required String viet,
+  }) async {
+    try {
+      await firebaseFirestore.collection('kanjis').doc(id).update({
+        'kanji': kanji,
+        'kun': kun,
+        'on': on,
+        'viet': viet,
+      });
+      return true;
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      return false;
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
 }

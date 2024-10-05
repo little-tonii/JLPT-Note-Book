@@ -7,4 +7,20 @@ abstract class KanjiDatasource {
     required int pageNumber,
     required String hanVietSearchKey,
   });
+
+  Future<bool> createKanjiByLevel({
+    required String level,
+    required String kanji,
+    required String kun,
+    required String on,
+    required String viet,
+  });
+
+  Future<bool> updateKanjiById({
+    required String id,
+    required String kanji,
+    required String kun,
+    required String on,
+    required String viet,
+  });
 }

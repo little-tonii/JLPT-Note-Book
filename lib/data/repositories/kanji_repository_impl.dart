@@ -31,4 +31,50 @@ class KanjiRepositoryImpl implements KanjiRepository {
       return Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> createKanjjByLevel({
+    required String level,
+    required String kanji,
+    required String kun,
+    required String on,
+    required String viet,
+  }) async {
+    try {
+      return Right(await kanjiDatasource.createKanjiByLevel(
+        level: level,
+        kanji: kanji,
+        kun: kun,
+        on: on,
+        viet: viet,
+      ));
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> updateKanjiById({
+    required String id,
+    required String kanji,
+    required String kun,
+    required String on,
+    required String viet,
+  }) async {
+    try {
+      return Right(await kanjiDatasource.updateKanjiById(
+        id: id,
+        kanji: kanji,
+        kun: kun,
+        on: on,
+        viet: viet,
+      ));
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
 }

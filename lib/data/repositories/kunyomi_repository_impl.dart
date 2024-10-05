@@ -23,4 +23,48 @@ class KunyomiRepositoryImpl implements KunyomiRepository {
       return Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> createKunyomiByKanjiId({
+    required String kanjiId,
+    required String meaning,
+    required String sample,
+    required String transform,
+  }) async {
+    try {
+      return Right(await kunyomiDatasource.createKunyomiByKanjiId(
+        kanjiId: kanjiId,
+        meaning: meaning,
+        sample: sample,
+        transform: transform,
+      ));
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> updateKunyomiByKanjiId({
+    required String kanjiId,
+    required String kunyomiId,
+    required String meaning,
+    required String sample,
+    required String transform,
+  }) async {
+    try {
+      return Right(await kunyomiDatasource.updateKunyomiByKanjiId(
+        kanjiId: kanjiId,
+        kunyomiId: kunyomiId,
+        meaning: meaning,
+        sample: sample,
+        transform: transform,
+      ));
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
 }
