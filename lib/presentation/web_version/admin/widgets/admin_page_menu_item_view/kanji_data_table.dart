@@ -15,6 +15,8 @@ class KanjiDataTable extends StatefulWidget {
 }
 
 class _KanjiDataTableState extends State<KanjiDataTable> {
+  bool _isLoading = false;
+
   @override
   void initState() {
     super.initState();
@@ -316,14 +318,21 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
   }
 
   void _onScroll() {
-    if (_isBottom()) {
-      final state = context.read<KanjiManagerCubit>().state;
-      if (state is KanjiManagerLoaded) {
-        context.read<KanjiManagerCubit>().searchKanjis(
-              hanVietSearchKey: state.searchKey,
-            );
-      }
+    if (_isBottom() && !_isLoading) {
+      _loadMore();
     }
+  }
+
+  void _loadMore() {
+    if (_isLoading) return;
+    _isLoading = true;
+    final state = context.read<KanjiManagerCubit>().state;
+    if (state is KanjiManagerLoaded) {
+      context.read<KanjiManagerCubit>().searchKanjis(
+            hanVietSearchKey: state.searchKey,
+          );
+    }
+    _isLoading = false;
   }
 
   bool _isBottom() {
