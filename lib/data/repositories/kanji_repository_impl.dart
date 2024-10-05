@@ -33,7 +33,7 @@ class KanjiRepositoryImpl implements KanjiRepository {
   }
 
   @override
-  Future<Either<Failure, bool>> createKanjjByLevel({
+  Future<Either<Failure, KanjiEntity>> createKanjjByLevel({
     required String level,
     required String kanji,
     required String kun,
@@ -41,13 +41,14 @@ class KanjiRepositoryImpl implements KanjiRepository {
     required String viet,
   }) async {
     try {
-      return Right(await kanjiDatasource.createKanjiByLevel(
+      final kanjiCreated = await kanjiDatasource.createKanjiByLevel(
         level: level,
         kanji: kanji,
         kun: kun,
         on: on,
         viet: viet,
-      ));
+      );
+      return Right(kanjiCreated.toEntity());
     } on Failure catch (e) {
       return Left(e);
     } on Exception {

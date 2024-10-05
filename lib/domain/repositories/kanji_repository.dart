@@ -10,7 +10,7 @@ abstract class KanjiRepository {
     required String hanVietSearchKey,
   });
 
-  Future<Either<Failure, bool>> createKanjjByLevel({
+  Future<Either<Failure, KanjiEntity>> createKanjjByLevel({
     required String level,
     required String kanji,
     required String kun,

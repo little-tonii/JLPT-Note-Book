@@ -50,6 +50,7 @@ import 'package:note_book_app/domain/usecases/levels/get_level_by_id_usecase.dar
 import 'package:note_book_app/domain/usecases/onyomis/get_all_onyomis_by_kanji_id_usecase.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar/admin_page_side_bar_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web/admin_page_web_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji/create_kanji_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/word_manager/word_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/login/cubits/login_page_web_cubit.dart';
@@ -182,48 +183,64 @@ Future<void> initializeDependencies() async {
     GetAllOnyomisByKanjiIdUsecase(onyomiRepository: getIt<OnyomiRepository>()),
   );
 
-  getIt.registerSingleton<LoginWithEmailAndPasswordUsecase>(
-    LoginWithEmailAndPasswordUsecase(userRepository: getIt<UserRepository>()),
+  getIt.registerLazySingleton<LoginWithEmailAndPasswordUsecase>(
+    () => LoginWithEmailAndPasswordUsecase(
+      userRepository: getIt<UserRepository>(),
+    ),
   );
 
-  getIt.registerSingleton<LogoutUsecase>(
-    LogoutUsecase(userRepository: getIt<UserRepository>()),
+  getIt.registerLazySingleton<LogoutUsecase>(
+    () => LogoutUsecase(
+      userRepository: getIt<UserRepository>(),
+    ),
   );
 
-  getIt.registerSingleton<IsUserLoggedInUsecase>(
-    IsUserLoggedInUsecase(userRepository: getIt<UserRepository>()),
+  getIt.registerLazySingleton<IsUserLoggedInUsecase>(
+    () => IsUserLoggedInUsecase(
+      userRepository: getIt<UserRepository>(),
+    ),
   );
 
-  getIt.registerSingleton<GetUserInforUsecase>(
-    GetUserInforUsecase(userRepository: getIt<UserRepository>()),
+  getIt.registerLazySingleton<GetUserInforUsecase>(
+    () => GetUserInforUsecase(
+      userRepository: getIt<UserRepository>(),
+    ),
   );
 
   getIt.registerLazySingleton<CreateKanjiByLevelUsecase>(
-    () => CreateKanjiByLevelUsecase(kanjiRepository: getIt<KanjiRepository>()),
+    () => CreateKanjiByLevelUsecase(
+      kanjiRepository: getIt<KanjiRepository>(),
+    ),
   );
 
   getIt.registerLazySingleton<CreateKunyomiByKanjiIdUsecase>(
     () => CreateKunyomiByKanjiIdUsecase(
-        kunyomiRepository: getIt<KunyomiRepository>()),
+      kunyomiRepository: getIt<KunyomiRepository>(),
+    ),
   );
 
   getIt.registerLazySingleton<CreateOnyomiByKanjiIdUsecase>(
     () => CreateOnyomiByKanjiIdUsecase(
-        onyomiRepository: getIt<OnyomiRepository>()),
+      onyomiRepository: getIt<OnyomiRepository>(),
+    ),
   );
 
   getIt.registerLazySingleton<UpdateKanjiByIdUsecase>(
-    () => UpdateKanjiByIdUsecase(kanjiRepository: getIt<KanjiRepository>()),
+    () => UpdateKanjiByIdUsecase(
+      kanjiRepository: getIt<KanjiRepository>(),
+    ),
   );
 
   getIt.registerLazySingleton<UpdateKunyomiByKanjiIdUsecase>(
     () => UpdateKunyomiByKanjiIdUsecase(
-        kunyomiRepository: getIt<KunyomiRepository>()),
+      kunyomiRepository: getIt<KunyomiRepository>(),
+    ),
   );
 
   getIt.registerLazySingleton<UpdateOnyomiByKanjiIdUsecase>(
     () => UpdateOnyomiByKanjiIdUsecase(
-        onyomiRepository: getIt<OnyomiRepository>()),
+      onyomiRepository: getIt<OnyomiRepository>(),
+    ),
   );
 
   getIt.registerFactory(() => HomePageWebCubit());
@@ -249,4 +266,6 @@ Future<void> initializeDependencies() async {
   getIt.registerFactory(() => KanjiManagerCubit());
 
   getIt.registerFactory(() => WordManagerCubit());
+
+  getIt.registerFactory(() => CreateKanjiCubit());
 }

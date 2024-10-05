@@ -5,12 +5,14 @@ class KanjiManagerButton extends StatelessWidget {
   final String text;
   final void Function() onPressed;
 
-  const KanjiManagerButton({super.key, required this.text, required this.onPressed});
+  const KanjiManagerButton(
+      {super.key, required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
+        elevation: const WidgetStatePropertyAll(0),
         padding: const WidgetStatePropertyAll<EdgeInsetsGeometry>(
           EdgeInsets.symmetric(
             horizontal: 32,

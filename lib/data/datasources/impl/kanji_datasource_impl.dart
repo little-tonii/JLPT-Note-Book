@@ -76,7 +76,7 @@ class KanjiDatasourceImpl implements KanjiDatasource {
   }
 
   @override
-  Future<bool> createKanjiByLevel({
+  Future<KanjiModel> createKanjiByLevel({
     required String level,
     required String kanji,
     required String kun,
@@ -84,7 +84,7 @@ class KanjiDatasourceImpl implements KanjiDatasource {
     required String viet,
   }) async {
     try {
-      await firebaseFirestore.collection('kanjis').add({
+      final kanjiDoc = await firebaseFirestore.collection('kanjis').add({
         'kanji': kanji,
         'kun': kun,
         'on': on,
@@ -92,10 +92,20 @@ class KanjiDatasourceImpl implements KanjiDatasource {
         'level': level,
         'createdAt': Timestamp.now(),
       });
-      return true;
+
+      final kanjiData = await kanjiDoc.get();
+      return KanjiModel.fromJson({
+        'id': kanjiDoc.id,
+        'kanji': kanjiData.data()!['kanji'],
+        'kun': kanjiData.data()!['kun'],
+        'on': kanjiData.data()!['on'],
+        'viet': kanjiData.data()!['viet'],
+        'level': kanjiData.data()!['level'],
+        'createdAt': kanjiData.data()!['createdAt'],
+      });
     } on FirebaseException catch (e) {
       log(e.toString());
-      return false;
+      throw FirestoreFailure(message: e.message.toString());
     } on Exception catch (e) {
       throw Exception(e);
     }
