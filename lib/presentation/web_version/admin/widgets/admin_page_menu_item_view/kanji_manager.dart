@@ -35,7 +35,7 @@ class _KanjiManagerState extends State<KanjiManager> {
   void _scrollToTop() {
     _scrollController.animateTo(
       0,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 1),
       curve: Curves.easeInOut,
     );
   }
