@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
@@ -15,6 +16,13 @@ class AdminPageWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      SystemChrome.setApplicationSwitcherDescription(
+        const ApplicationSwitcherDescription(
+          label: "Admin",
+        ),
+      );
+    });
     return MultiBlocProvider(
       providers: [
         BlocProvider<AdminPageWebCubit>(

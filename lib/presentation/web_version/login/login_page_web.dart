@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
@@ -23,6 +24,13 @@ class _LoginPageWebState extends State<LoginPageWeb> {
 
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      SystemChrome.setApplicationSwitcherDescription(
+        const ApplicationSwitcherDescription(
+          label: "Login",
+        ),
+      );
+    });
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
     _loginPageWebCubit = getIt<LoginPageWebCubit>();
