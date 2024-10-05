@@ -28,6 +28,13 @@ import 'package:note_book_app/domain/repositories/kunyomi_repository.dart';
 import 'package:note_book_app/domain/repositories/lesson_repository.dart';
 import 'package:note_book_app/domain/repositories/level_repository.dart';
 import 'package:note_book_app/domain/repositories/onyomi_repository.dart';
+import 'package:note_book_app/domain/usecases/kanjis/create_kanji_by_level_usecase.dart';
+import 'package:note_book_app/domain/usecases/kanjis/update_kanji_by_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/kunyomis/create_kunyomi_by_kanji_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/kunyomis/update_kunyomi_by_kanji_id_usecase.dart';
+
+import 'package:note_book_app/domain/usecases/onyomis/create_onyomi_by_kanji_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/onyomis/update_onyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/user/get_user_infor_usecase.dart';
 import 'package:note_book_app/domain/usecases/user/is_user_logged_in_usecase.dart';
 import 'package:note_book_app/domain/usecases/user/login_with_email_and_password_usecase.dart';
@@ -189,6 +196,34 @@ Future<void> initializeDependencies() async {
 
   getIt.registerSingleton<GetUserInforUsecase>(
     GetUserInforUsecase(userRepository: getIt<UserRepository>()),
+  );
+
+  getIt.registerLazySingleton<CreateKanjiByLevelUsecase>(
+    () => CreateKanjiByLevelUsecase(kanjiRepository: getIt<KanjiRepository>()),
+  );
+
+  getIt.registerLazySingleton<CreateKunyomiByKanjiIdUsecase>(
+    () => CreateKunyomiByKanjiIdUsecase(
+        kunyomiRepository: getIt<KunyomiRepository>()),
+  );
+
+  getIt.registerLazySingleton<CreateOnyomiByKanjiIdUsecase>(
+    () => CreateOnyomiByKanjiIdUsecase(
+        onyomiRepository: getIt<OnyomiRepository>()),
+  );
+
+  getIt.registerLazySingleton<UpdateKanjiByIdUsecase>(
+    () => UpdateKanjiByIdUsecase(kanjiRepository: getIt<KanjiRepository>()),
+  );
+
+  getIt.registerLazySingleton<UpdateKunyomiByKanjiIdUsecase>(
+    () => UpdateKunyomiByKanjiIdUsecase(
+        kunyomiRepository: getIt<KunyomiRepository>()),
+  );
+
+  getIt.registerLazySingleton<UpdateOnyomiByKanjiIdUsecase>(
+    () => UpdateOnyomiByKanjiIdUsecase(
+        onyomiRepository: getIt<OnyomiRepository>()),
   );
 
   getIt.registerFactory(() => HomePageWebCubit());

@@ -38,4 +38,59 @@ class OnyomiDatasourceImpl implements OnyomiDatasource {
       throw UnknownFailure();
     }
   }
+
+  @override
+  Future<bool> createOnyomiByKanjiId({
+    required String kanjiId,
+    required String meaning,
+    required String sample,
+    required String transform,
+  }) async {
+    try {
+      await firebaseFirestore
+          .collection('kanjis')
+          .doc(kanjiId)
+          .collection('on')
+          .add({
+        'meaning': meaning,
+        'sample': sample,
+        'transform': transform,
+        'createdAt': Timestamp.now(),
+      });
+      return true;
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      return false;
+    } on Exception {
+      throw UnknownFailure();
+    }
+  }
+
+  @override
+  Future<bool> updateOnyomiByKanjiId({
+    required String kanjiId,
+    required String meaning,
+    required String sample,
+    required String transform,
+    required String onyomiId,
+  }) async {
+    try {
+      await firebaseFirestore
+          .collection('kanjis')
+          .doc(kanjiId)
+          .collection('on')
+          .doc(onyomiId)
+          .update({
+        'meaning': meaning,
+        'sample': sample,
+        'transform': transform,
+      });
+      return true;
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      return false;
+    } on Exception {
+      throw UnknownFailure();
+    }
+  }
 }

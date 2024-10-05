@@ -23,4 +23,48 @@ class OnyomiRepositoryImpl implements OnyomiRepository {
       return Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> createOnyomiByKanjiId({
+    required String kanjiId,
+    required String meaning,
+    required String sample,
+    required String transform,
+  }) async {
+    try {
+      return Right(await onyomiDatasource.createOnyomiByKanjiId(
+        kanjiId: kanjiId,
+        meaning: meaning,
+        sample: sample,
+        transform: transform,
+      ));
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> updateOnyomiByKanjiId({
+    required String kanjiId,
+    required String onyomiId,
+    required String meaning,
+    required String sample,
+    required String transform,
+  }) async {
+    try {
+      return Right(await onyomiDatasource.updateOnyomiByKanjiId(
+        kanjiId: kanjiId,
+        onyomiId: onyomiId,
+        meaning: meaning,
+        sample: sample,
+        transform: transform,
+      ));
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
 }
