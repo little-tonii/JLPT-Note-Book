@@ -47,7 +47,7 @@ class _LoginPageWebState extends State<LoginPageWeb> {
   void _handleLoginEmailAndPassword() {
     final email = _emailController.value.text.toLowerCase().trim();
     final password = _passwordController.value.text;
-    _loginPageWebCubit.loginWithGoogleAccount(
+    _loginPageWebCubit.loginWithEmailAndPassword(
       email: email,
       password: password,
     );
@@ -75,7 +75,13 @@ class _LoginPageWebState extends State<LoginPageWeb> {
                   ),
                 );
               }
-              if (state is LoginPageWebInitial) {
+              if (state is LoginPageWebInitial ||
+                  state is LoginPageWebFailure) {
+                if (state is LoginPageWebFailure) {
+                  Future.delayed(const Duration(seconds: 2), () {
+                    _loginPageWebCubit.triggerInitialState();
+                  });
+                }
                 return Stack(
                   children: [
                     ResponsiveUtil.isDesktop(context)
