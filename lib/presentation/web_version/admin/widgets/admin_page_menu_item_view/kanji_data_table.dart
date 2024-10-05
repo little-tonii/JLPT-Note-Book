@@ -41,26 +41,16 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
                 children: [
                   _buildTableHeader(),
                   Expanded(
-                    child: SingleChildScrollView(
+                    child: ListView.builder(
                       controller: widget.scrollController,
-                      child: Table(
-                        columnWidths: const {
-                          0: FlexColumnWidth(1),
-                          1: FlexColumnWidth(2),
-                          2: FlexColumnWidth(2),
-                          3: FlexColumnWidth(3),
-                          4: FlexColumnWidth(3),
-                          5: FlexColumnWidth(1),
-                        },
-                        children: [
-                          ...state.kanjis.asMap().entries.map((entry) {
-                            final index = entry.key;
-                            final kanji = entry.value;
-                            return _buildTableRow(
-                                index, kanji, state.kanjis.length);
-                          }),
-                        ],
-                      ),
+                      itemCount: state.kanjis.length,
+                      itemBuilder: (context, index) {
+                        return _buildTableRow(
+                          index,
+                          state.kanjis[index],
+                          state.kanjis.length,
+                        );
+                      },
                     ),
                   ),
                 ],
@@ -74,231 +64,254 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
   }
 
   Widget _buildTableHeader() {
-    return Table(
-      columnWidths: const {
-        0: FlexColumnWidth(1),
-        1: FlexColumnWidth(2),
-        2: FlexColumnWidth(2),
-        3: FlexColumnWidth(3),
-        4: FlexColumnWidth(3),
-        5: FlexColumnWidth(1),
-      },
-      children: [
-        TableRow(
+    return Container(
+      decoration: const BoxDecoration(
+        color: AppColors.kDFD3C3,
+        border: Border(
+          bottom: BorderSide(color: AppColors.black),
+        ),
+      ),
+      child: IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              decoration: const BoxDecoration(
-                color: AppColors.kDFD3C3,
-                border: Border(
-                  right: BorderSide(color: AppColors.black),
-                  bottom: BorderSide(color: AppColors.black),
+            Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: AppColors.kDFD3C3,
+                  border: Border(right: BorderSide(color: AppColors.black)),
                 ),
-              ),
-              padding: const EdgeInsets.all(8),
-              child: const Text(
-                'STT',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                padding: const EdgeInsets.all(8),
+                child: const Text(
+                  'STT',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
-            Container(
-              decoration: const BoxDecoration(
-                color: AppColors.kDFD3C3,
-                border: Border(
-                  right: BorderSide(color: AppColors.black),
-                  bottom: BorderSide(color: AppColors.black),
+            Expanded(
+              flex: 2,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: AppColors.kDFD3C3,
+                  border: Border(right: BorderSide(color: AppColors.black)),
                 ),
-              ),
-              padding: const EdgeInsets.all(8),
-              child: const Text(
-                'Kanji',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                padding: const EdgeInsets.all(8),
+                child: const Text(
+                  'Kanji',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
-            Container(
-              decoration: const BoxDecoration(
-                color: AppColors.kDFD3C3,
-                border: Border(
-                  right: BorderSide(color: AppColors.black),
-                  bottom: BorderSide(color: AppColors.black),
+            Expanded(
+              flex: 2,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: AppColors.kDFD3C3,
+                  border: Border(right: BorderSide(color: AppColors.black)),
                 ),
-              ),
-              padding: const EdgeInsets.all(8),
-              child: const Text(
-                'Âm Hán Việt',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                padding: const EdgeInsets.all(8),
+                child: const Text(
+                  'Âm Hán Việt',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
-            Container(
-              decoration: const BoxDecoration(
-                color: AppColors.kDFD3C3,
-                border: Border(
-                  right: BorderSide(color: AppColors.black),
-                  bottom: BorderSide(color: AppColors.black),
+            Expanded(
+              flex: 3,
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: const BoxDecoration(
+                  color: AppColors.kDFD3C3,
+                  border: Border(right: BorderSide(color: AppColors.black)),
                 ),
-              ),
-              padding: const EdgeInsets.all(8),
-              child: const Text(
-                'Âm Kun',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                child: const Text(
+                  'Âm Kun',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
-            Container(
-              decoration: const BoxDecoration(
-                color: AppColors.kDFD3C3,
-                border: Border(
-                  right: BorderSide(color: AppColors.black),
-                  bottom: BorderSide(color: AppColors.black),
+            Expanded(
+              flex: 3,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: AppColors.kDFD3C3,
+                  border: Border(right: BorderSide(color: AppColors.black)),
                 ),
-              ),
-              padding: const EdgeInsets.all(8),
-              child: const Text(
-                'Âm On',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                padding: const EdgeInsets.all(8),
+                child: const Text(
+                  'Âm On',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
-            Container(
-              decoration: const BoxDecoration(
-                color: AppColors.kDFD3C3,
-                border: Border(
-                  bottom: BorderSide(color: AppColors.black),
+            Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: AppColors.kDFD3C3,
                 ),
-              ),
-              padding: const EdgeInsets.all(8),
-              child: const Text(
-                'Thao tác',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                padding: const EdgeInsets.all(8),
+                child: const Text(
+                  'Thao tác',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
           ],
         ),
-      ],
+      ),
     );
   }
 
-  TableRow _buildTableRow(int index, KanjiEntity kanji, int length) {
-    return TableRow(
-      children: [
-        Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(color: AppColors.black),
-              right: BorderSide(color: AppColors.black),
-            ),
-          ),
-          padding: const EdgeInsets.all(8),
-          child: Text(
-            "${index + 1}",
-            style: const TextStyle(fontSize: 16),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(color: AppColors.black),
-              right: BorderSide(color: AppColors.black),
-            ),
-          ),
-          padding: const EdgeInsets.all(8),
-          child: Text(
-            kanji.kanji,
-            style: const TextStyle(fontSize: 16),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        Container(
-          decoration: const BoxDecoration(
-            border: Border(
-             bottom: BorderSide(color: AppColors.black),
-              right: BorderSide(color: AppColors.black),
-            ),
-          ),
-          padding: const EdgeInsets.all(8),
-          child: Text(
-            kanji.viet,
-            style: const TextStyle(fontSize: 16),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(color: AppColors.black),
-              right: BorderSide(color: AppColors.black),
-            ),
-          ),
-          padding: const EdgeInsets.all(8),
-          child: Text(
-            kanji.kun,
-            style: const TextStyle(fontSize: 16),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(color: AppColors.black),
-              right: BorderSide(color: AppColors.black),
-            ),
-          ),
-          padding: const EdgeInsets.all(8),
-          child: Text(
-            kanji.on,
-            style: const TextStyle(fontSize: 16),
-            textAlign: TextAlign.center,
-          ),
-        ),
-        Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(color: AppColors.black),
-            ),
-          ),
-          padding: const EdgeInsets.all(8),
-          child: InkWell(
+  Widget _buildTableRow(int index, KanjiEntity kanji, int length) {
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            flex: 1,
             child: Container(
-              decoration: BoxDecoration(
-                color: AppColors.kD0B8A8,
-                borderRadius: BorderRadius.circular(8),
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: AppColors.black),
+                  right: BorderSide(color: AppColors.black),
+                ),
               ),
+              padding: const EdgeInsets.all(8),
               child: Text(
+                "${index + 1}",
+                style: const TextStyle(fontSize: 16),
                 textAlign: TextAlign.center,
-                'Sửa',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: AppColors.black.withOpacity(0.4),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: AppColors.black),
+                  right: BorderSide(color: AppColors.black),
+                ),
+              ),
+              padding: const EdgeInsets.all(8),
+              child: Text(
+                kanji.kanji,
+                style: const TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: AppColors.black),
+                  right: BorderSide(color: AppColors.black),
+                ),
+              ),
+              padding: const EdgeInsets.all(8),
+              child: Text(
+                kanji.viet,
+                style: const TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: AppColors.black),
+                  right: BorderSide(color: AppColors.black),
+                ),
+              ),
+              padding: const EdgeInsets.all(8),
+              child: Text(
+                kanji.kun,
+                style: const TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: AppColors.black),
+                  right: BorderSide(color: AppColors.black),
+                ),
+              ),
+              padding: const EdgeInsets.all(8),
+              child: Text(
+                kanji.on,
+                style: const TextStyle(fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: AppColors.black),
+                ),
+              ),
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: InkWell(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: AppColors.kD0B8A8,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      'Sửa',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: AppColors.black.withOpacity(0.4),
+                      ),
+                    ),
+                  ),
+                  onTap: () {},
                 ),
               ),
             ),
-            onTap: () {},
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
