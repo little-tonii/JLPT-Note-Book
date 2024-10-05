@@ -470,22 +470,25 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: KanjiManagerButton(
-                    text: 'Xác nhận',
-                    onPressed: () {},
+            child: IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: KanjiManagerButton(
+                      text: 'Xác nhận',
+                      onPressed: () {},
+                    ),
                   ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: KanjiManagerButton(
-                    text: 'Huỷ bỏ',
-                    onPressed: () => context.pop(),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: KanjiManagerButton(
+                      text: 'Huỷ bỏ',
+                      onPressed: () => context.pop(),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
