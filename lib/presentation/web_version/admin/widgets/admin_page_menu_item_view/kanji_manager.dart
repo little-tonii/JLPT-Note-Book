@@ -16,16 +16,19 @@ class KanjiManager extends StatefulWidget {
 
 class _KanjiManagerState extends State<KanjiManager> {
   late ScrollController _scrollController;
+  late TextEditingController _searchController;
 
   @override
   void initState() {
     _scrollController = ScrollController();
+    _searchController = TextEditingController();
     super.initState();
   }
 
   @override
   void dispose() {
     _scrollController.dispose();
+    _searchController.dispose();
     super.dispose();
   }
 
@@ -72,8 +75,10 @@ class _KanjiManagerState extends State<KanjiManager> {
                   state.levelFilterState.isNotEmpty) {
                 return Row(
                   children: [
-                    const Expanded(
-                      child: SearchField(),
+                    Expanded(
+                      child: SearchField(
+                        searchController: _searchController,
+                      ),
                     ),
                     const SizedBox(width: 16),
                     KanjiManagerButton(
@@ -83,6 +88,7 @@ class _KanjiManagerState extends State<KanjiManager> {
                             .read<KanjiManagerCubit>()
                             .searchKanjis(hanVietSearchKey: '', refresh: true);
                         _scrollToTop();
+                        _searchController.clear();
                       },
                     ),
                     const SizedBox(width: 16),

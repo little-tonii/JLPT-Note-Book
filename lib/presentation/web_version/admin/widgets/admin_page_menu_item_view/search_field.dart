@@ -3,39 +3,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 
-class SearchField extends StatefulWidget {
-  const SearchField({super.key});
+class SearchField extends StatelessWidget {
+  final TextEditingController searchController;
 
-  @override
-  State<SearchField> createState() => _SearchFieldState();
-}
+  const SearchField({super.key, required this.searchController});
 
-class _SearchFieldState extends State<SearchField> {
-  late TextEditingController _searchController;
-
-  @override
-  void initState() {
-    _searchController = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
+  void _handleSearch(BuildContext context) {
+    context.read<KanjiManagerCubit>().searchKanjis(
+          hanVietSearchKey: searchController.text,
+          refresh: true,
+        );
   }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onSubmitted: (value) {
-        context.read<KanjiManagerCubit>().searchKanjis(
-              hanVietSearchKey: value,
-              refresh: true,
-            );
-      },
+      onSubmitted: (value) => _handleSearch(context),
       cursorColor: AppColors.black,
-      controller: _searchController,
+      controller: searchController,
       decoration: InputDecoration(
         filled: true,
         fillColor: AppColors.kF8EDE3,
@@ -73,7 +58,7 @@ class _SearchFieldState extends State<SearchField> {
               Icons.search,
               color: AppColors.black.withOpacity(0.4),
             ),
-            onPressed: () {},
+            onPressed: () => _handleSearch(context),
           ),
         ),
       ),
