@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/admin_log_manager/admin_log_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar/admin_page_side_bar_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar/admin_page_side_bar_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/word_manager/word_manager_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/admin_log_manager.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji_manager.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/word_manager.dart';
 
@@ -19,7 +21,8 @@ class AdminPageMenuItemView extends StatelessWidget {
           if (state is AdminPageSideBarLoaded) {
             if (state.selectedIndex == 0) {
               return BlocProvider<KanjiManagerCubit>(
-                create: (context) => getIt<KanjiManagerCubit>()..updateFilterChoice(),
+                create: (context) =>
+                    getIt<KanjiManagerCubit>()..updateFilterChoice(),
                 child: const KanjiManager(),
               );
             }
@@ -27,6 +30,12 @@ class AdminPageMenuItemView extends StatelessWidget {
               return BlocProvider<WordManagerCubit>(
                 create: (context) => getIt<WordManagerCubit>(),
                 child: const WordManager(),
+              );
+            }
+            if (state.selectedIndex == 2) {
+              return BlocProvider<AdminLogManagerCubit>(
+                create: (context) => getIt<AdminLogManagerCubit>(),
+                child: const AdminLogManager(),
               );
             }
           }

@@ -8,7 +8,7 @@ abstract class KanjiDatasource {
     required String hanVietSearchKey,
   });
 
-  Future<bool> createKanjiByLevel({
+  Future<KanjiModel> createKanjiByLevel({
     required String level,
     required String kanji,
     required String kun,

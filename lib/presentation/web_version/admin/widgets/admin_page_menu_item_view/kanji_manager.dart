@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:note_book_app/common/utils/responsive_util.dart';
+import 'package:note_book_app/core/services/get_it_service.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji/create_kanji_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji/create_kanji_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/create_new_kanji_form.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/filter_select_box.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji_data_table.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji_manager_button.dart';
@@ -40,6 +46,49 @@ class _KanjiManagerState extends State<KanjiManager> {
     );
   }
 
+  void _handleReload() {
+    context
+        .read<KanjiManagerCubit>()
+        .searchKanjis(hanVietSearchKey: '', refresh: true);
+    _scrollToTop();
+    _searchController.clear();
+  }
+
+  void _handleShowCreateNewKanjiForm({required String level}) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (!ResponsiveUtil.isDesktop(context)) {
+                context.pop();
+              }
+            });
+            return Dialog(
+              child: BlocProvider<CreateKanjiCubit>(
+                create: (context) => getIt<CreateKanjiCubit>()..init(),
+                child: BlocListener<CreateKanjiCubit, CreateKanjiState>(
+                  child: CreateNewKanjiForm(
+                    level: level,
+                  ),
+                  listener: (BuildContext context, CreateKanjiState state) {
+                    if (state is CreateKanjiSuccess ||
+                        state is CreateKanjiFailure) {
+                      context.pop();
+                    }
+                  },
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  void _handleImportKanjiData() {}
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -73,35 +122,34 @@ class _KanjiManagerState extends State<KanjiManager> {
             builder: (context, state) {
               if (state is KanjiManagerLoaded &&
                   state.levelFilterState.isNotEmpty) {
-                return Row(
-                  children: [
-                    Expanded(
-                      child: SearchField(
-                        searchController: _searchController,
+                return IntrinsicHeight(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Expanded(
+                        child: SearchField(
+                          searchController: _searchController,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 16),
-                    KanjiManagerButton(
-                      text: 'Tải lại',
-                      onPressed: () {
-                        context
-                            .read<KanjiManagerCubit>()
-                            .searchKanjis(hanVietSearchKey: '', refresh: true);
-                        _scrollToTop();
-                        _searchController.clear();
-                      },
-                    ),
-                    const SizedBox(width: 16),
-                    KanjiManagerButton(
-                      text: "Thêm mới",
-                      onPressed: () {},
-                    ),
-                    const SizedBox(width: 16),
-                    KanjiManagerButton(
-                      text: "Nhập dữ liệu",
-                      onPressed: () {},
-                    ),
-                  ],
+                      const SizedBox(width: 16),
+                      KanjiManagerButton(
+                        text: 'Tải lại',
+                        onPressed: _handleReload,
+                      ),
+                      const SizedBox(width: 16),
+                      KanjiManagerButton(
+                        text: "Thêm mới",
+                        onPressed: () => _handleShowCreateNewKanjiForm(
+                          level: state.levelFilterState,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      KanjiManagerButton(
+                        text: "Nhập dữ liệu",
+                        onPressed: _handleImportKanjiData,
+                      ),
+                    ],
+                  ),
                 );
               }
               return const SizedBox();
