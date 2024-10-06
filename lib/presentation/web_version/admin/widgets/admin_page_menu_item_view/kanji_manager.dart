@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji/create_kanji_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji/create_kanji_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/create_new_kanji_form.dart';
@@ -55,13 +58,30 @@ class _KanjiManagerState extends State<KanjiManager> {
     showDialog(
       context: context,
       builder: (context) {
-        return Dialog(
-          child: BlocProvider<CreateKanjiCubit>(
-            create: (context) => getIt<CreateKanjiCubit>()..init(),
-            child: CreateNewKanjiForm(
-              level: level,
-            ),
-          ),
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (!ResponsiveUtil.isDesktop(context)) {
+                context.pop();
+              }
+            });
+            return Dialog(
+              child: BlocProvider<CreateKanjiCubit>(
+                create: (context) => getIt<CreateKanjiCubit>()..init(),
+                child: BlocListener<CreateKanjiCubit, CreateKanjiState>(
+                  child: CreateNewKanjiForm(
+                    level: level,
+                  ),
+                  listener: (BuildContext context, CreateKanjiState state) {
+                    if (state is CreateKanjiSuccess ||
+                        state is CreateKanjiFailure) {
+                      context.pop();
+                    }
+                  },
+                ),
+              ),
+            );
+          },
         );
       },
     );

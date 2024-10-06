@@ -4,6 +4,7 @@ import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/kanji_entity.dart';
 import 'package:note_book_app/domain/entities/kunyomi_entity.dart';
 import 'package:note_book_app/domain/entities/onyomi_entity.dart';
+import 'package:note_book_app/domain/usecases/admin_logs/create_admin_log_usecase.dart';
 import 'package:note_book_app/domain/usecases/kanjis/create_kanji_by_level_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/create_kunyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/onyomis/create_onyomi_by_kanji_id_usecase.dart';
@@ -16,6 +17,8 @@ class CreateKanjiCubit extends Cubit<CreateKanjiState> {
       getIt<CreateKunyomiByKanjiIdUsecase>();
   final CreateOnyomiByKanjiIdUsecase _createOnyomiByKanjiIdUsecase =
       getIt<CreateOnyomiByKanjiIdUsecase>();
+  final CreateAdminLogUsecase _createAdminLogUsecase =
+      getIt<CreateAdminLogUsecase>();
 
   CreateKanjiCubit() : super(CreateKanjiInitial());
 
@@ -117,13 +120,11 @@ class CreateKanjiCubit extends Cubit<CreateKanjiState> {
     );
     kanjiCreated.fold(
       (failure) {
+        const message = 'Không thể tạo mới kanji';
         emit(
-          const CreateKanjiFailure(
-            message: 'Không thể tạo mới kanji',
-            kunyomiError: -1,
-            onyomiError: -1,
-          ),
+          const CreateKanjiFailure(message: message),
         );
+        _createAdminLogUsecase.call(message: 'null | $message');
       },
       (success) async {
         final kanjiId = success.id;
@@ -158,14 +159,14 @@ class CreateKanjiCubit extends Cubit<CreateKanjiState> {
           );
         }
         if (kunyomiError == 0 && onyomiError == 0) {
-          emit(const CreateKanjiSuccess(message: 'Tạo mới kanji thành công'));
+          const message = 'Tạo mới kanji thành công';
+          emit(const CreateKanjiSuccess(message: message));
+          await _createAdminLogUsecase.call(message: '$kanjiId | $message');
         } else {
-          emit(CreateKanjiFailure(
-            message:
-                'Có lỗi trong quá trình tạo mới kanji. $kunyomiError lỗi khi tạo kunyomi, $onyomiError lỗi khi tạo onyomi',
-            kunyomiError: kunyomiError,
-            onyomiError: onyomiError,
-          ));
+          final message =
+              'Có lỗi trong quá trình tạo mới kanji. $kunyomiError lỗi khi tạo kunyomi, $onyomiError lỗi khi tạo onyomi';
+          emit(CreateKanjiFailure(message: message));
+          await _createAdminLogUsecase.call(message: '$kanjiId | $message');
         }
       },
     );

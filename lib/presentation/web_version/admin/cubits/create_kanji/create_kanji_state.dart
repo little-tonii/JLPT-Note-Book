@@ -52,15 +52,11 @@ class CreateKanjiSuccess extends CreateKanjiState {
 
 class CreateKanjiFailure extends CreateKanjiState {
   final String message;
-  final int kunyomiError;
-  final int onyomiError;
 
   const CreateKanjiFailure({
     required this.message,
-    required this.kunyomiError,
-    required this.onyomiError,
   });
 
   @override
-  List<Object> get props => [message, kunyomiError, onyomiError];
+  List<Object> get props => [message];
 }
