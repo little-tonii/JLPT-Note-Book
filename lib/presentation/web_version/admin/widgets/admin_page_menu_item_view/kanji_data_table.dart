@@ -24,45 +24,9 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        decoration: const BoxDecoration(
-          color: AppColors.white,
-          border: Border(
-            bottom: BorderSide(color: AppColors.black),
-            right: BorderSide(color: AppColors.black),
-            left: BorderSide(color: AppColors.black),
-            top: BorderSide(color: AppColors.black),
-          ),
-        ),
-        child: BlocBuilder<KanjiManagerCubit, KanjiManagerState>(
-          builder: (context, state) {
-            if (state is KanjiManagerLoaded) {
-              return Column(
-                children: [
-                  _buildTableHeader(),
-                  Expanded(
-                    child: ListView.builder(
-                      controller: widget.scrollController,
-                      itemCount: state.kanjis.length,
-                      itemBuilder: (context, index) {
-                        return _buildTableRow(
-                          index,
-                          state.kanjis[index],
-                          state.kanjis.length,
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              );
-            }
-            return const SizedBox();
-          },
-        ),
-      ),
-    );
+  void dispose() {
+    widget.scrollController.removeListener(_onScroll);
+    super.dispose();
   }
 
   Widget _buildTableHeader() {
@@ -292,7 +256,8 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
               child: Center(
                 child: InkWell(
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: AppColors.kD0B8A8,
                       borderRadius: BorderRadius.circular(8),
@@ -343,8 +308,44 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
   }
 
   @override
-  void dispose() {
-    widget.scrollController.removeListener(_onScroll);
-    super.dispose();
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        decoration: const BoxDecoration(
+          color: AppColors.white,
+          border: Border(
+            bottom: BorderSide(color: AppColors.black),
+            right: BorderSide(color: AppColors.black),
+            left: BorderSide(color: AppColors.black),
+            top: BorderSide(color: AppColors.black),
+          ),
+        ),
+        child: BlocBuilder<KanjiManagerCubit, KanjiManagerState>(
+          builder: (context, state) {
+            if (state is KanjiManagerLoaded) {
+              return Column(
+                children: [
+                  _buildTableHeader(),
+                  Expanded(
+                    child: ListView.builder(
+                      controller: widget.scrollController,
+                      itemCount: state.kanjis.length,
+                      itemBuilder: (context, index) {
+                        return _buildTableRow(
+                          index,
+                          state.kanjis[index],
+                          state.kanjis.length,
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              );
+            }
+            return const SizedBox();
+          },
+        ),
+      ),
+    );
   }
 }
