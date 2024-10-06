@@ -73,6 +73,7 @@ class _AdminLogManagerState extends State<AdminLogManager> {
           Text.rich(
             TextSpan(
               children: [
+                const TextSpan(text: '['),
                 TextSpan(
                   text:
                       '$year/${month < 10 ? '0$month' : month}/${day < 10 ? '0$day' : day} - ${hour < 10 ? '0$hour' : hour}:${minute < 10 ? '0$minute' : minute}:${second < 10 ? '0$second' : second}',
@@ -80,9 +81,9 @@ class _AdminLogManagerState extends State<AdminLogManager> {
                     color: AppColors.successColorBlue,
                   ),
                 ),
-                const TextSpan(text: ' | '),
+                const TextSpan(text: '] ['),
                 TextSpan(text: user),
-                const TextSpan(text: ' | '),
+                const TextSpan(text: '] ['),
                 TextSpan(
                   text: 'Action: $action',
                   style: TextStyle(
@@ -93,7 +94,7 @@ class _AdminLogManagerState extends State<AdminLogManager> {
                             : AppColors.failureColor,
                   ),
                 ),
-                const TextSpan(text: ' | '),
+                const TextSpan(text: '] ['),
                 TextSpan(
                   text: 'Status: $actionStatus',
                   style: TextStyle(
@@ -102,8 +103,9 @@ class _AdminLogManagerState extends State<AdminLogManager> {
                         : AppColors.failureColor,
                   ),
                 ),
-                const TextSpan(text: ' | '),
+                const TextSpan(text: '] ['),
                 TextSpan(text: message),
+                const TextSpan(text: ']'),
               ],
             ),
             style: TextStyle(
