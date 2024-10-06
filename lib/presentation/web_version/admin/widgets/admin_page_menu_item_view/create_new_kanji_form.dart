@@ -386,7 +386,7 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
                                         return Container(
                                           decoration: BoxDecoration(
                                             border: index !=
-                                                    state.kunyomis.length - 1
+                                                    state.onyomis.length - 1
                                                 ? Border(
                                                     bottom: BorderSide(
                                                       color: AppColors.black
