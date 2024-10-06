@@ -58,6 +58,7 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/admin_log_ma
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar/admin_page_side_bar_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web/admin_page_web_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji/create_kanji_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/word_manager/word_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/login/cubits/login_page_web_cubit.dart';
@@ -302,4 +303,6 @@ Future<void> initializeDependencies() async {
   getIt.registerFactory(() => CreateKanjiCubit());
 
   getIt.registerFactory(() => AdminLogManagerCubit());
+
+  getIt.registerFactory(() => EditKanjiCubit());
 }

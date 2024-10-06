@@ -297,7 +297,7 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
                                             ],
                                           ),
                                         ),
-                                        const SizedBox(height: 8),
+                                        const SizedBox(width: 8),
                                         if (state is CreateKanjiLoaded)
                                           ...state.kunyomis
                                               .asMap()

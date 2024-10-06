@@ -127,7 +127,7 @@ class CreateKanjiCubit extends Cubit<CreateKanjiState> {
         _createAdminLogUsecase.call(
           message: 'null | $message',
           action: 'CREATE',
-          actionStatus: 'FAILED',
+          actionStatus: 'FAIL',
         );
       },
       (success) async {
@@ -177,7 +177,7 @@ class CreateKanjiCubit extends Cubit<CreateKanjiState> {
           await _createAdminLogUsecase.call(
             message: '$kanjiId | $message',
             action: 'CREATE',
-            actionStatus: 'FAILED',
+            actionStatus: 'FAIL',
           );
         }
       },

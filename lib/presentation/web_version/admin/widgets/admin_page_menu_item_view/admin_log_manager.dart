@@ -91,7 +91,9 @@ class _AdminLogManagerState extends State<AdminLogManager> {
                         ? AppColors.successColor
                         : action == "UPDATE"
                             ? AppColors.successColorYellow
-                            : AppColors.failureColor,
+                            : action == "DELETE"
+                                ? AppColors.failureColor
+                                : AppColors.softBlue,
                   ),
                 ),
                 const TextSpan(text: '] ['),

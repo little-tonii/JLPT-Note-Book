@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
+import 'package:note_book_app/common/utils/responsive_util.dart';
+import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/kanji_entity.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/edit_kanji_form.dart';
 
 class KanjiDataTable extends StatefulWidget {
   final ScrollController scrollController;
@@ -154,6 +160,42 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
     );
   }
 
+  void _handleOpenEditingKanjiForm(KanjiEntity kanji) {
+    showDialog(
+      context: context,
+      builder: (context) => LayoutBuilder(
+        builder: (context, constraints) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (!ResponsiveUtil.isDesktop(context)) {
+              context.pop();
+            }
+          });
+          return Dialog(
+            child: BlocProvider<EditKanjiCubit>(
+              create: (context) => getIt<EditKanjiCubit>()
+                ..init(
+                  kanji: kanji.kanji,
+                  viet: kanji.viet,
+                  kun: kanji.kun,
+                  createdAt: kanji.createdAt,
+                  id: kanji.id,
+                  on: kanji.on,
+                ),
+              child: BlocListener<EditKanjiCubit, EditKanjiState>(
+                child: const EditKanjiForm(),
+                listener: (BuildContext context, EditKanjiState state) {
+                  if (state is EditKanjiSuccess || state is EditKanjiFailure) {
+                    context.pop();
+                  }
+                },
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   Widget _buildTableRow(int index, KanjiEntity kanji, int length) {
     return IntrinsicHeight(
       child: Row(
@@ -272,7 +314,7 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
                       ),
                     ),
                   ),
-                  onTap: () {},
+                  onTap: () => _handleOpenEditingKanjiForm(kanji),
                 ),
               ),
             ),

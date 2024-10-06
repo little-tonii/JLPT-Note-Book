@@ -14,4 +14,19 @@ class OnyomiEntity {
     required this.transform,
     required this.createdAt,
   });
+
+  OnyomiEntity copyWith({
+    String? id,
+    String? meaning,
+    String? sample,
+    String? transform,
+  }) {
+    return OnyomiEntity(
+      id: id ?? this.id,
+      meaning: meaning ?? this.meaning,
+      sample: sample ?? this.sample,
+      transform: transform ?? this.transform,
+      createdAt: createdAt,
+    );
+  }
 }
