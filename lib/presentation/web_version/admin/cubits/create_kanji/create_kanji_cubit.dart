@@ -124,7 +124,11 @@ class CreateKanjiCubit extends Cubit<CreateKanjiState> {
         emit(
           const CreateKanjiFailure(message: message),
         );
-        _createAdminLogUsecase.call(message: 'null | $message');
+        _createAdminLogUsecase.call(
+          message: 'null | $message',
+          action: 'CREATE',
+          actionStatus: 'FAILED',
+        );
       },
       (success) async {
         final kanjiId = success.id;
@@ -161,12 +165,20 @@ class CreateKanjiCubit extends Cubit<CreateKanjiState> {
         if (kunyomiError == 0 && onyomiError == 0) {
           const message = 'Tạo mới kanji thành công';
           emit(const CreateKanjiSuccess(message: message));
-          await _createAdminLogUsecase.call(message: '$kanjiId | $message');
+          await _createAdminLogUsecase.call(
+            message: '$kanjiId | $message',
+            action: 'CREATE',
+            actionStatus: 'SUCCESS',
+          );
         } else {
           final message =
               'Có lỗi trong quá trình tạo mới kanji. $kunyomiError lỗi khi tạo kunyomi, $onyomiError lỗi khi tạo onyomi';
           emit(CreateKanjiFailure(message: message));
-          await _createAdminLogUsecase.call(message: '$kanjiId | $message');
+          await _createAdminLogUsecase.call(
+            message: '$kanjiId | $message',
+            action: 'CREATE',
+            actionStatus: 'FAILED',
+          );
         }
       },
     );

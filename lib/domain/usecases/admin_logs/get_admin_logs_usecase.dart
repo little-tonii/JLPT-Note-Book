@@ -8,11 +8,15 @@ class GetAdminLogsUsecase {
 
   const GetAdminLogsUsecase({required this.adminLogRepository});
 
-  Future<Either<Failure, List<AdminLogEntity>>> call(
-      {required int pageNumber, required int pageSize}) async {
+  Future<Either<Failure, List<AdminLogEntity>>> call({
+    required int pageNumber,
+    required int pageSize,
+    required String filterType,
+  }) async {
     return await adminLogRepository.getAdminLogs(
       pageNumber: pageNumber,
       pageSize: pageSize,
+      filterType: filterType,
     );
   }
 }

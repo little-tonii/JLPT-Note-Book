@@ -11,10 +11,17 @@ class AdminLogRepositoryImpl implements AdminLogRepository {
   const AdminLogRepositoryImpl({required this.adminLogDatasource});
 
   @override
-  Future<Either<Failure, bool>> createAdminLog(
-      {required String message}) async {
+  Future<Either<Failure, bool>> createAdminLog({
+    required String message,
+    required String action,
+    required String actionStatus,
+  }) async {
     try {
-      final result = await adminLogDatasource.createAdminLog(message: message);
+      final result = await adminLogDatasource.createAdminLog(
+        message: message,
+        action: action,
+        actionStatus: actionStatus,
+      );
       return Right(result);
     } on Failure catch (e) {
       return Left(e);
@@ -24,12 +31,16 @@ class AdminLogRepositoryImpl implements AdminLogRepository {
   }
 
   @override
-  Future<Either<Failure, List<AdminLogEntity>>> getAdminLogs(
-      {required int pageNumber, required int pageSize}) async {
+  Future<Either<Failure, List<AdminLogEntity>>> getAdminLogs({
+    required int pageNumber,
+    required int pageSize,
+    required String filterType,
+  }) async {
     try {
       final result = await adminLogDatasource.getAdminLogs(
         pageNumber: pageNumber,
         pageSize: pageSize,
+        filterType: filterType,
       );
       return Right(result.map((e) => e.toEntity()).toList());
     } on Failure catch (e) {

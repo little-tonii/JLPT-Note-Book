@@ -6,6 +6,11 @@ abstract class AdminLogRepository {
   Future<Either<Failure, List<AdminLogEntity>>> getAdminLogs({
     required int pageNumber,
     required int pageSize,
+    required String filterType,
   });
-  Future<Either<Failure, bool>> createAdminLog({required String message});
+  Future<Either<Failure, bool>> createAdminLog({
+    required String message,
+    required String action,
+    required String actionStatus,
+  });
 }
