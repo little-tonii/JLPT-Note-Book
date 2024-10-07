@@ -74,7 +74,32 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
     }
   }
 
-  void _handleConfirmSaveKanji() {}
+  void _handleConfirmSaveKanji() {
+    context.read<EditKanjiCubit>().updateKanji(
+          kanji: _kanjiController.text,
+          kun: _kunController.text,
+          on: _onController.text,
+          viet: _hanVietController.text,
+          sampleKunyomis: _exampleKunController
+              .map((controller) => controller.text)
+              .toList(),
+          sampleOnyomis: _exampleOnController
+              .map((controller) => controller.text)
+              .toList(),
+          meaningsKunyomis: _meaningKunController
+              .map((controller) => controller.text)
+              .toList(),
+          meaningsOnyomis: _meaningOnController
+              .map((controller) => controller.text)
+              .toList(),
+          transformsKunyomis: _transformKunController
+              .map((controller) => controller.text)
+              .toList(),
+          transformsOnyomis: _transformOnController
+              .map((controller) => controller.text)
+              .toList(),
+        );
+  }
 
   Widget _dataField({
     required String title,
@@ -189,6 +214,26 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
         ),
       ),
     );
+  }
+
+  void _handleRemoveKunyomi({required int index}) {
+    final exampleRemoved = _exampleKunController.removeAt(index);
+    final meaningRemoved = _meaningKunController.removeAt(index);
+    final transformRemoved = _transformKunController.removeAt(index);
+    context.read<EditKanjiCubit>().removeKunyomi(index: index);
+    exampleRemoved.dispose();
+    meaningRemoved.dispose();
+    transformRemoved.dispose();
+  }
+
+  void _handleRemoveOnyomi({required int index}) {
+    final exampleRemoved = _exampleOnController.removeAt(index);
+    final meaningRemoved = _meaningOnController.removeAt(index);
+    final transformRemoved = _transformOnController.removeAt(index);
+    context.read<EditKanjiCubit>().removeOnyomi(index: index);
+    exampleRemoved.dispose();
+    meaningRemoved.dispose();
+    transformRemoved.dispose();
   }
 
   @override
@@ -328,7 +373,10 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
                                                   Expanded(
                                                     child:
                                                         _dialogHandleActionFormButton(
-                                                      onPressed: () {},
+                                                      onPressed: () =>
+                                                          _handleRemoveKunyomi(
+                                                        index: index,
+                                                      ),
                                                       text: 'Huỷ Kunyomi',
                                                     ),
                                                   ),
@@ -419,7 +467,9 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
                                                   Expanded(
                                                     child:
                                                         _dialogHandleActionFormButton(
-                                                      onPressed: () {},
+                                                      onPressed: () =>
+                                                          _handleRemoveOnyomi(
+                                                              index: index),
                                                       text: 'Huỷ Onyomi',
                                                     ),
                                                   ),

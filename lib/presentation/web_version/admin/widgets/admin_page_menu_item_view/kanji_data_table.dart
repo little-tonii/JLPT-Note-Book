@@ -189,6 +189,9 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
               child: BlocListener<EditKanjiCubit, EditKanjiState>(
                 child: const EditKanjiForm(),
                 listener: (BuildContext context, EditKanjiState state) {
+                  if (state is EditKanjiSuccess) {
+                    kanjiManagerCubit.updateKanjiView(kanji: state.kanji);
+                  }
                   if (state is EditKanjiSuccess || state is EditKanjiFailure) {
                     context.pop();
                   }
