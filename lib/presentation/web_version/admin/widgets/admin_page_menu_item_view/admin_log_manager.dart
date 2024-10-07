@@ -168,6 +168,9 @@ class _AdminLogManagerState extends State<AdminLogManager> {
           const SizedBox(height: 16),
           Expanded(
             child: BlocBuilder<AdminLogManagerCubit, AdminLogManagerState>(
+              buildWhen: (previous, current) =>
+                  current is AdminLogManagerLoaded ||
+                  current is AdminLogManagerFailure,
               builder: (context, state) {
                 if (state is AdminLogManagerLoaded) {
                   return Container(
