@@ -19,6 +19,8 @@ class DeleteKanjiForm extends StatelessWidget {
         color: AppColors.kF8EDE3,
       ),
       child: BlocBuilder<DeleteKanjiCubit, DeleteKanjiState>(
+        buildWhen: (previous, current) =>
+            current is DeleteKanjiLoaded || current is DeleteKanjiLoading,
         builder: (context, state) {
           String kanji = '';
           String viet = '';

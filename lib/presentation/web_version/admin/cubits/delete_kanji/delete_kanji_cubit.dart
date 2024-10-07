@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/usecases/admin_logs/create_admin_log_usecase.dart';
@@ -18,6 +19,7 @@ class DeleteKanjiCubit extends Cubit<DeleteKanjiState> {
     required String kun,
     required String on,
     required String viet,
+    required Timestamp createdAt,
   }) {
     emit(DeleteKanjiLoaded(
       id: id,
@@ -25,10 +27,26 @@ class DeleteKanjiCubit extends Cubit<DeleteKanjiState> {
       kun: kun,
       on: on,
       viet: viet,
+      createdAt: createdAt,
     ));
   }
 
   void deleteKanji({required String kanjiId}) async {
+    String id = '';
+    String kanji = '';
+    String viet = '';
+    String kun = '';
+    String on = '';
+    String createdAt = '';
+    if (state is DeleteKanjiLoaded) {
+      final currentState = state as DeleteKanjiLoaded;
+      kanji = currentState.kanji;
+      viet = currentState.viet;
+      kun = currentState.kun;
+      on = currentState.on;
+      createdAt = currentState.createdAt.toDate().toLocal().toString();
+      id = currentState.id;
+    }
     emit(DeleteKanjiLoading());
     final result = await _deleteKanjiByIdUsecase.call(id: kanjiId);
     result.fold(
@@ -45,7 +63,8 @@ class DeleteKanjiCubit extends Cubit<DeleteKanjiState> {
         if (result) {
           String message = 'Xoá Kanji thành công';
           _createAdminLogUsecase.call(
-            message: '$kanjiId | $message',
+            message:
+                '{ id: "$id", kanji: "$kanji", kun: "$kun", on: "$on", viet: "$viet", createdAt: "$createdAt" } | $message',
             action: "DELETE",
             actionStatus: "SUCCESS",
           );

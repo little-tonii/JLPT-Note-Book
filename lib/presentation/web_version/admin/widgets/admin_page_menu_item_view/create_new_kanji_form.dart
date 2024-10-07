@@ -325,21 +325,30 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
                                                           child:
                                                               _dialogHandleActionFormButton(
                                                             onPressed: () {
-                                                              _sampleKunyomiController
-                                                                  .removeAt(
-                                                                      index);
-                                                              _transformKunyomiController
-                                                                  .removeAt(
-                                                                      index);
-                                                              _meaningKunyomiController
-                                                                  .removeAt(
-                                                                      index);
+                                                              final sampleRemoved =
+                                                                  _sampleKunyomiController
+                                                                      .removeAt(
+                                                                          index);
+                                                              final transformRemoved =
+                                                                  _transformKunyomiController
+                                                                      .removeAt(
+                                                                          index);
+                                                              final meaningRemoved =
+                                                                  _meaningKunyomiController
+                                                                      .removeAt(
+                                                                          index);
                                                               context
                                                                   .read<
                                                                       CreateKanjiCubit>()
                                                                   .removeKunyomi(
                                                                       index:
                                                                           index);
+                                                              sampleRemoved
+                                                                  .dispose();
+                                                              transformRemoved
+                                                                  .dispose();
+                                                              meaningRemoved
+                                                                  .dispose();
                                                             },
                                                             text: 'Huỷ Kunyomi',
                                                           ),
@@ -446,21 +455,30 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
                                                           child:
                                                               _dialogHandleActionFormButton(
                                                             onPressed: () {
-                                                              _sampleOnyomiController
-                                                                  .removeAt(
-                                                                      index);
-                                                              _transformOnyomiController
-                                                                  .removeAt(
-                                                                      index);
-                                                              _meaningOnyomiController
-                                                                  .removeAt(
-                                                                      index);
+                                                              final sampleRemoved =
+                                                                  _sampleOnyomiController
+                                                                      .removeAt(
+                                                                          index);
+                                                              final transformRemoved =
+                                                                  _transformOnyomiController
+                                                                      .removeAt(
+                                                                          index);
+                                                              final meaningRemoved =
+                                                                  _meaningOnyomiController
+                                                                      .removeAt(
+                                                                          index);
                                                               context
                                                                   .read<
                                                                       CreateKanjiCubit>()
                                                                   .removeOnyomi(
                                                                       index:
                                                                           index);
+                                                              sampleRemoved
+                                                                  .dispose();
+                                                              transformRemoved
+                                                                  .dispose();
+                                                              meaningRemoved
+                                                                  .dispose();
                                                             },
                                                             text: 'Huỷ Onyomi',
                                                           ),

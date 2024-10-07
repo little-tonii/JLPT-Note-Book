@@ -109,4 +109,44 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
       ));
     }
   }
+
+  void addMoreKunyomi() {
+    if (state is EditKanjiLoaded) {
+      final currentState = state as EditKanjiLoaded;
+      emit(
+        currentState.copyWith(
+          kunyomis: List.of(currentState.kunyomis)
+            ..add(
+              KunyomiEntity(
+                id: 'null',
+                transform: '',
+                meaning: '',
+                sample: '',
+                createdAt: Timestamp.now(),
+              ),
+            ),
+        ),
+      );
+    }
+  }
+
+  void addMoreOnyomi() {
+    if (state is EditKanjiLoaded) {
+      final currentState = state as EditKanjiLoaded;
+      emit(
+        currentState.copyWith(
+          onyomis: List.of(currentState.onyomis)
+            ..add(
+              OnyomiEntity(
+                id: 'null',
+                transform: '',
+                meaning: '',
+                sample: '',
+                createdAt: Timestamp.now(),
+              ),
+            ),
+        ),
+      );
+    }
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class DeleteKanjiState extends Equatable {
@@ -36,6 +37,7 @@ class DeleteKanjiLoaded extends DeleteKanjiState {
   final String kun;
   final String on;
   final String viet;
+  final Timestamp createdAt;
 
   const DeleteKanjiLoaded({
     required this.id,
@@ -43,8 +45,9 @@ class DeleteKanjiLoaded extends DeleteKanjiState {
     required this.kun,
     required this.on,
     required this.viet,
+    required this.createdAt,
   });
 
   @override
-  List<Object> get props => [id, kanji, kun, on, viet];
+  List<Object> get props => [id, kanji, kun, on, viet, createdAt];
 }

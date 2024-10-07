@@ -213,6 +213,7 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
               child: BlocProvider<DeleteKanjiCubit>(
                 create: (context) => getIt<DeleteKanjiCubit>()
                   ..init(
+                    createdAt: kanji.createdAt,
                     id: kanji.id,
                     kanji: kanji.kanji,
                     kun: kanji.kun,

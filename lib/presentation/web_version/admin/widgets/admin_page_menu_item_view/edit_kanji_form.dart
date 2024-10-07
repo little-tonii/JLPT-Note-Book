@@ -48,6 +48,11 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
     _hanVietController.dispose();
     _kunController.dispose();
     _onController.dispose();
+    _disposeListController();
+    super.dispose();
+  }
+
+  void _disposeListController() {
     for (var element in _exampleKunController) {
       element.dispose();
     }
@@ -66,7 +71,6 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
     for (var element in _transformOnController) {
       element.dispose();
     }
-    super.dispose();
   }
 
   void _handleConfirmSaveKanji() {}
@@ -214,26 +218,26 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
             _kunController.text = state.kanji.kun;
             _onController.text = state.kanji.on;
             for (var i = 0; i < state.kunyomis.length; i++) {
-              _exampleKunController.add(
-                TextEditingController()..text = state.kunyomis[i].sample,
-              );
-              _meaningKunController.add(
-                TextEditingController()..text = state.kunyomis[i].meaning,
-              );
-              _transformKunController.add(
-                TextEditingController()..text = state.kunyomis[i].transform,
-              );
+              final exampleKun = TextEditingController();
+              final meaningKun = TextEditingController();
+              final transformKun = TextEditingController();
+              exampleKun.text = state.kunyomis[i].sample;
+              meaningKun.text = state.kunyomis[i].meaning;
+              transformKun.text = state.kunyomis[i].transform;
+              _exampleKunController.add(exampleKun);
+              _meaningKunController.add(meaningKun);
+              _transformKunController.add(transformKun);
             }
             for (var i = 0; i < state.onyomis.length; i++) {
-              _exampleOnController.add(
-                TextEditingController()..text = state.onyomis[i].sample,
-              );
-              _meaningOnController.add(
-                TextEditingController()..text = state.onyomis[i].meaning,
-              );
-              _transformOnController.add(
-                TextEditingController()..text = state.onyomis[i].transform,
-              );
+              final exampleOn = TextEditingController();
+              final meaningOn = TextEditingController();
+              final transformOn = TextEditingController();
+              exampleOn.text = state.onyomis[i].sample;
+              meaningOn.text = state.onyomis[i].meaning;
+              transformOn.text = state.onyomis[i].transform;
+              _exampleOnController.add(exampleOn);
+              _meaningOnController.add(meaningOn);
+              _transformOnController.add(transformOn);
             }
           }
           return Column(
@@ -338,7 +342,20 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
                                           Expanded(
                                             child:
                                                 _dialogHandleActionFormButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                _exampleKunController.add(
+                                                  TextEditingController(),
+                                                );
+                                                _meaningKunController.add(
+                                                  TextEditingController(),
+                                                );
+                                                _transformKunController.add(
+                                                  TextEditingController(),
+                                                );
+                                                context
+                                                    .read<EditKanjiCubit>()
+                                                    .addMoreKunyomi();
+                                              },
                                               text: 'Thêm ví dụ Kunyomi',
                                             ),
                                           ),
@@ -416,7 +433,20 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
                                           Expanded(
                                             child:
                                                 _dialogHandleActionFormButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                _exampleOnController.add(
+                                                  TextEditingController(),
+                                                );
+                                                _meaningOnController.add(
+                                                  TextEditingController(),
+                                                );
+                                                _transformOnController.add(
+                                                  TextEditingController(),
+                                                );
+                                                context
+                                                    .read<EditKanjiCubit>()
+                                                    .addMoreOnyomi();
+                                              },
                                               text: 'Thêm ví dụ Onyomi',
                                             ),
                                           ),
