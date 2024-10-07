@@ -156,6 +156,9 @@ class _AdminLogManagerState extends State<AdminLogManager> {
                     context.read<AdminLogManagerCubit>()
                       ..resetState()
                       ..getAdminLogs(filterType: filterType);
+                    if (_scrollController.hasClients) {
+                      _scrollController.jumpTo(0);
+                    }
                   },
                 ),
               ),
