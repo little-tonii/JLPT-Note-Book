@@ -296,25 +296,36 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
               ),
               padding: const EdgeInsets.all(8),
               child: Center(
-                child: InkWell(
-                  child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: AppColors.kD0B8A8,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      textAlign: TextAlign.center,
-                      'Sửa',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: AppColors.black.withOpacity(0.4),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    elevation: const WidgetStatePropertyAll(0),
+                    padding: const WidgetStatePropertyAll<EdgeInsetsGeometry>(
+                      EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
                       ),
                     ),
+                    shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        side:  BorderSide(color: AppColors.kF8EDE3.withOpacity(0.8)),
+                      ),
+                    ),
+                    overlayColor: WidgetStatePropertyAll(
+                        AppColors.black.withOpacity(0.04)),
+                    backgroundColor:
+                         WidgetStatePropertyAll(AppColors.kF8EDE3.withOpacity(0.8)),
                   ),
-                  onTap: () => _handleOpenEditingKanjiForm(kanji),
+                  onPressed: () => _handleOpenEditingKanjiForm(kanji),
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    'Sửa',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: AppColors.black.withOpacity(0.4),
+                    ),
+                  ),
                 ),
               ),
             ),

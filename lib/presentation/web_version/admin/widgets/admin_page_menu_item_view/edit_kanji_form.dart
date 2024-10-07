@@ -215,25 +215,6 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
                               Expanded(
                                 child: _dialogHandleActionFormButton(
                                   onPressed: () {},
-                                  text: 'Xoá Kanji',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      IntrinsicHeight(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Expanded(
-                                child: _dialogHandleActionFormButton(
-                                  onPressed: () {},
                                   text: 'Thêm ví dụ Kunyomi',
                                 ),
                               ),
@@ -282,3 +263,50 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
     );
   }
 }
+/* 
+const SizedBox(height: 8),
+                      IntrinsicHeight(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              if (!_showDeleteConfirmChoice)
+                                Expanded(
+                                  child: _dialogHandleActionFormButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _showDeleteConfirmChoice = true;
+                                      });
+                                    },
+                                    text: 'Xoá Kanji',
+                                  ),
+                                ),
+                              if (_showDeleteConfirmChoice)
+                                Expanded(
+                                  child: _dialogHandleActionFormButton(
+                                    onPressed: () {},
+                                    text: 'Xác nhận xoá',
+                                  ),
+                                ),
+                              if (_showDeleteConfirmChoice)
+                                const SizedBox(width: 8),
+                              if (_showDeleteConfirmChoice)
+                                Expanded(
+                                  child: _dialogHandleActionFormButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _showDeleteConfirmChoice = false;
+                                      });
+                                    },
+                                    text: 'Huỷ bỏ',
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+ */
