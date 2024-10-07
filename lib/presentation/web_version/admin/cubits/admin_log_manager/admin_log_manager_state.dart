@@ -10,7 +10,7 @@ abstract class AdminLogManagerState extends Equatable {
 
 class AdminLogManagerInitial extends AdminLogManagerState {
   final List<AdminLogEntity> logs = [];
-  final int pageNumber = -1;
+  final int pageNumber = 0;
   final int pageSize = 25;
   final bool hasReachedMax = false;
   final String filterType = 'null';
