@@ -84,7 +84,13 @@ class AdminLogDatasourceImpl implements AdminLogDatasource {
               );
           break;
         case 'thisWeek':
-          final startOfWeek = now.subtract(Duration(days: now.weekday - 1));
+          int daysToSubtract = now.weekday - DateTime.monday;
+          if (daysToSubtract < 0) daysToSubtract += 7;
+          final startOfWeek = DateTime(
+            now.year,
+            now.month,
+            now.day - daysToSubtract,
+          );
           query = query.where(
             'createdAt',
             isGreaterThanOrEqualTo: Timestamp.fromDate(startOfWeek),

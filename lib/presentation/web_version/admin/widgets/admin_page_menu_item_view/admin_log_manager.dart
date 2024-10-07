@@ -85,7 +85,7 @@ class _AdminLogManagerState extends State<AdminLogManager> {
                 TextSpan(text: user),
                 const TextSpan(text: '] ['),
                 TextSpan(
-                  text: 'Action: $action',
+                  text: action,
                   style: TextStyle(
                     color: action == "CREATE"
                         ? AppColors.successColor
@@ -98,7 +98,7 @@ class _AdminLogManagerState extends State<AdminLogManager> {
                 ),
                 const TextSpan(text: '] ['),
                 TextSpan(
-                  text: 'Status: $actionStatus',
+                  text: actionStatus,
                   style: TextStyle(
                     color: actionStatus == "SUCCESS"
                         ? AppColors.successColor
