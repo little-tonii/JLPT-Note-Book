@@ -26,6 +26,7 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
   late List<TextEditingController> _meaningOnController;
   late List<TextEditingController> _transformKunController;
   late List<TextEditingController> _transformOnController;
+  int _countLoad = 1;
 
   @override
   void initState() {
@@ -211,33 +212,39 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
           List<KunyomiEntity> kunyomis = [];
           List<OnyomiEntity> onyomis = [];
           if (state is EditKanjiLoaded) {
-            kunyomis = state.kunyomis;
-            onyomis = state.onyomis;
-            _kanjiController.text = state.kanji.kanji;
-            _hanVietController.text = state.kanji.viet;
-            _kunController.text = state.kanji.kun;
-            _onController.text = state.kanji.on;
-            for (var i = 0; i < state.kunyomis.length; i++) {
-              final exampleKun = TextEditingController();
-              final meaningKun = TextEditingController();
-              final transformKun = TextEditingController();
-              exampleKun.text = state.kunyomis[i].sample;
-              meaningKun.text = state.kunyomis[i].meaning;
-              transformKun.text = state.kunyomis[i].transform;
-              _exampleKunController.add(exampleKun);
-              _meaningKunController.add(meaningKun);
-              _transformKunController.add(transformKun);
-            }
-            for (var i = 0; i < state.onyomis.length; i++) {
-              final exampleOn = TextEditingController();
-              final meaningOn = TextEditingController();
-              final transformOn = TextEditingController();
-              exampleOn.text = state.onyomis[i].sample;
-              meaningOn.text = state.onyomis[i].meaning;
-              transformOn.text = state.onyomis[i].transform;
-              _exampleOnController.add(exampleOn);
-              _meaningOnController.add(meaningOn);
-              _transformOnController.add(transformOn);
+            if (_countLoad <= 2) {
+              kunyomis = state.kunyomis;
+              onyomis = state.onyomis;
+              _kanjiController.text = state.kanji.kanji;
+              _hanVietController.text = state.kanji.viet;
+              _kunController.text = state.kanji.kun;
+              _onController.text = state.kanji.on;
+              for (var i = 0; i < state.kunyomis.length; i++) {
+                final exampleKun = TextEditingController();
+                final meaningKun = TextEditingController();
+                final transformKun = TextEditingController();
+                exampleKun.text = state.kunyomis[i].sample;
+                meaningKun.text = state.kunyomis[i].meaning;
+                transformKun.text = state.kunyomis[i].transform;
+                _exampleKunController.add(exampleKun);
+                _meaningKunController.add(meaningKun);
+                _transformKunController.add(transformKun);
+              }
+              for (var i = 0; i < state.onyomis.length; i++) {
+                final exampleOn = TextEditingController();
+                final meaningOn = TextEditingController();
+                final transformOn = TextEditingController();
+                exampleOn.text = state.onyomis[i].sample;
+                meaningOn.text = state.onyomis[i].meaning;
+                transformOn.text = state.onyomis[i].transform;
+                _exampleOnController.add(exampleOn);
+                _meaningOnController.add(meaningOn);
+                _transformOnController.add(transformOn);
+              }
+              _countLoad++;
+            } else {
+              kunyomis = state.kunyomis;
+              onyomis = state.onyomis;
             }
           }
           return Column(
