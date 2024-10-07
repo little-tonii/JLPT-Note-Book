@@ -35,6 +35,7 @@ import 'package:note_book_app/domain/repositories/onyomi_repository.dart';
 import 'package:note_book_app/domain/usecases/admin_logs/create_admin_log_usecase.dart';
 import 'package:note_book_app/domain/usecases/admin_logs/get_admin_logs_usecase.dart';
 import 'package:note_book_app/domain/usecases/kanjis/create_kanji_by_level_usecase.dart';
+import 'package:note_book_app/domain/usecases/kanjis/delete_kanji_by_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kanjis/update_kanji_by_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/create_kunyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/update_kunyomi_by_kanji_id_usecase.dart';
@@ -58,6 +59,7 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/admin_log_ma
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar/admin_page_side_bar_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web/admin_page_web_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji/create_kanji_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_kanji/delete_kanji_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/word_manager/word_manager_cubit.dart';
@@ -276,6 +278,12 @@ Future<void> initializeDependencies() async {
     ),
   );
 
+  getIt.registerLazySingleton<DeleteKanjiByIdUsecase>(
+    () => DeleteKanjiByIdUsecase(
+      kanjiRepository: getIt<KanjiRepository>(),
+    ),
+  );
+
   getIt.registerFactory(() => HomePageWebCubit());
 
   getIt.registerFactory(() => LevelPageWebCubit());
@@ -305,4 +313,6 @@ Future<void> initializeDependencies() async {
   getIt.registerFactory(() => AdminLogManagerCubit());
 
   getIt.registerFactory(() => EditKanjiCubit());
+
+  getIt.registerFactory(() => DeleteKanjiCubit());
 }

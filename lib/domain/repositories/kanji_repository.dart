@@ -25,4 +25,6 @@ abstract class KanjiRepository {
     required String on,
     required String viet,
   });
+
+  Future<Either<Failure, bool>> deleteKanjiById({required String id});
 }

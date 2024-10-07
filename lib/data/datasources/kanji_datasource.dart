@@ -23,4 +23,6 @@ abstract class KanjiDatasource {
     required String on,
     required String viet,
   });
+
+  Future<bool> deleteKanjiById({required String id});
 }
