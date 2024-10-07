@@ -70,7 +70,7 @@ class _AdminLogManagerState extends State<AdminLogManager> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text.rich(
+          SelectableText.rich(
             TextSpan(
               children: [
                 const TextSpan(text: '['),
