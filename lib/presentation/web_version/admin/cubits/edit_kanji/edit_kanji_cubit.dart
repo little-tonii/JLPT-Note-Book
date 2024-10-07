@@ -7,9 +7,11 @@ import 'package:note_book_app/domain/entities/onyomi_entity.dart';
 import 'package:note_book_app/domain/usecases/admin_logs/create_admin_log_usecase.dart';
 import 'package:note_book_app/domain/usecases/kanjis/update_kanji_by_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/create_kunyomi_by_kanji_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/kunyomis/delete_kunyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/get_all_kunyomis_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/update_kunyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/onyomis/create_onyomi_by_kanji_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/onyomis/delete_onyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/onyomis/get_all_onyomis_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/onyomis/update_onyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_state.dart';
@@ -31,6 +33,10 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
       getIt<CreateOnyomiByKanjiIdUsecase>();
   final CreateKunyomiByKanjiIdUsecase _createKunyomiByKanjiIdUsecase =
       getIt<CreateKunyomiByKanjiIdUsecase>();
+  final DeleteKunyomiByKanjiIdUsecase _deleteKunyomiByKanjiIdUsecase =
+      getIt<DeleteKunyomiByKanjiIdUsecase>();
+  final DeleteOnyomiByKanjiIdUsecase _deleteOnyomiByKanjiIdUsecase =
+      getIt<DeleteOnyomiByKanjiIdUsecase>();
 
   EditKanjiCubit() : super(EditKanjiInitial());
 
@@ -81,6 +87,8 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
           } else {
             int kunyomiFailure = 0;
             int onyomiFailure = 0;
+            int kunyomiDeleteFaliure = 0;
+            int onyomiDeleteFailure = 0;
             for (int i = 0; i < kunyomis.length; i++) {
               if (kunyomis[i].id == 'null') {
                 final kunyomiCreated =
@@ -168,7 +176,53 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
                 action: "UPDATE",
                 actionStatus: "FAIL",
               );
-            } else {
+            }
+            for (int i = 0; i < currentState.kunyomisToDelete.length; i++) {
+              final kunyomiDeleted = await _deleteKunyomiByKanjiIdUsecase.call(
+                kanjiId: updatingKanji.id,
+                kunyomiId: currentState.kunyomisToDelete[i],
+              );
+              kunyomiDeleted.fold(
+                (failure) {
+                  kunyomiDeleteFaliure++;
+                },
+                (success) {
+                  if (!success) {
+                    kunyomiDeleteFaliure++;
+                  }
+                },
+              );
+            }
+            for (int i = 0; i < currentState.onyomisToDelete.length; i++) {
+              final onyomiDeleted = await _deleteOnyomiByKanjiIdUsecase.call(
+                kanjiId: updatingKanji.id,
+                onyomiId: currentState.onyomisToDelete[i],
+              );
+              onyomiDeleted.fold(
+                (failure) {
+                  onyomiDeleteFailure++;
+                },
+                (success) {
+                  if (!success) {
+                    onyomiDeleteFailure++;
+                  }
+                },
+              );
+            }
+            if (kunyomiDeleteFaliure > 0 || onyomiDeleteFailure > 0) {
+              String message = 'Có lỗi xảy ra khi xoá Kunyomi hoặc Onyomi';
+              emit(EditKanjiFailure(message: message));
+              _createAdminLogUsecase.call(
+                message:
+                    '${updatingKanji.id} | $message. $kunyomiDeleteFaliure lỗi khi xoá Kunyomi, $onyomiDeleteFailure lỗi khi xoá Onyomi',
+                action: "UPDATE",
+                actionStatus: "FAIL",
+              );
+            }
+            if (onyomiFailure == 0 &&
+                kunyomiFailure == 0 &&
+                kunyomiDeleteFaliure == 0 &&
+                onyomiDeleteFailure == 0) {
               String message = 'Cập nhật Kanji thành công';
               emit(
                 EditKanjiSuccess(
@@ -215,6 +269,8 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
         ),
         kunyomis: const [],
         onyomis: const [],
+        kunyomisToDelete: const [],
+        onyomisToDelete: const [],
       ),
     );
 
@@ -320,9 +376,14 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
   void removeKunyomi({required int index}) {
     if (state is EditKanjiLoaded) {
       final currentState = state as EditKanjiLoaded;
+      final id = currentState.kunyomis[index].id;
       emit(
         currentState.copyWith(
           kunyomis: List.from(currentState.kunyomis)..removeAt(index),
+          kunyomisToDelete: id == 'null'
+              ? List.of(currentState.kunyomisToDelete)
+              : List.of(currentState.kunyomisToDelete)
+            ..add(currentState.kunyomis[index].id),
         ),
       );
     }
@@ -331,9 +392,14 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
   void removeOnyomi({required int index}) {
     if (state is EditKanjiLoaded) {
       final currentState = state as EditKanjiLoaded;
+      final id = currentState.onyomis[index].id;
       emit(
         currentState.copyWith(
           onyomis: List.from(currentState.onyomis)..removeAt(index),
+          onyomisToDelete: id == 'null'
+              ? List.of(currentState.onyomisToDelete)
+              : List.of(currentState.onyomisToDelete)
+            ..add(currentState.onyomis[index].id),
         ),
       );
     }

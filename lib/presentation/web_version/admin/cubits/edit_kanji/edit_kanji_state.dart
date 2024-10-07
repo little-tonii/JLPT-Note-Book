@@ -37,25 +37,34 @@ class EditKanjiLoaded extends EditKanjiState {
   final KanjiEntity kanji;
   final List<KunyomiEntity> kunyomis;
   final List<OnyomiEntity> onyomis;
+  final List<String> kunyomisToDelete;
+  final List<String> onyomisToDelete;
 
   const EditKanjiLoaded({
     required this.kanji,
     required this.kunyomis,
     required this.onyomis,
+    required this.kunyomisToDelete,
+    required this.onyomisToDelete,
   });
 
   @override
-  List<Object> get props => [kanji, kunyomis, onyomis];
+  List<Object> get props =>
+      [kanji, kunyomis, onyomis, kunyomisToDelete, onyomisToDelete];
 
   EditKanjiLoaded copyWith({
     KanjiEntity? kanji,
     List<KunyomiEntity>? kunyomis,
     List<OnyomiEntity>? onyomis,
+    List<String>? kunyomisToDelete,
+    List<String>? onyomisToDelete,
   }) {
     return EditKanjiLoaded(
       kanji: kanji ?? this.kanji,
       kunyomis: kunyomis ?? this.kunyomis,
       onyomis: onyomis ?? this.onyomis,
+      kunyomisToDelete: kunyomisToDelete ?? this.kunyomisToDelete,
+      onyomisToDelete: onyomisToDelete ?? this.onyomisToDelete,
     );
   }
 }

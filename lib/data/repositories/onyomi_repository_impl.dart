@@ -67,4 +67,19 @@ class OnyomiRepositoryImpl implements OnyomiRepository {
       return Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> deleteOnyomiByKanjiId(
+      {required String kanjiId, required String onyomiId}) async {
+    try {
+      return Right(await onyomiDatasource.deleteOnyomiByKanjiId(
+        kanjiId: kanjiId,
+        onyomiId: onyomiId,
+      ));
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
 }

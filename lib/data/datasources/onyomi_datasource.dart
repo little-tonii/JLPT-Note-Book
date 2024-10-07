@@ -17,4 +17,9 @@ abstract class OnyomiDatasource {
     required String transform,
     required String onyomiId,
   });
+
+  Future<bool> deleteOnyomiByKanjiId({
+    required String kanjiId,
+    required String onyomiId,
+  });
 }

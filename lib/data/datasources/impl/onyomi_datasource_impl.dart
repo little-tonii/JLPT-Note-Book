@@ -93,4 +93,25 @@ class OnyomiDatasourceImpl implements OnyomiDatasource {
       throw UnknownFailure();
     }
   }
+
+  @override
+  Future<bool> deleteOnyomiByKanjiId({
+    required String kanjiId,
+    required String onyomiId,
+  }) async {
+    try {
+      await firebaseFirestore
+          .collection('kanjis')
+          .doc(kanjiId)
+          .collection('on')
+          .doc(onyomiId)
+          .delete();
+      return true;
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      return false;
+    } on Exception {
+      throw UnknownFailure();
+    }
+  }
 }

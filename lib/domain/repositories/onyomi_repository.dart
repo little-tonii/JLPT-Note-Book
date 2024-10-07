@@ -20,4 +20,9 @@ abstract class OnyomiRepository {
     required String sample,
     required String transform,
   });
+
+  Future<Either<Failure, bool>> deleteOnyomiByKanjiId({
+    required String kanjiId,
+    required String onyomiId,
+  });
 }

@@ -67,4 +67,19 @@ class KunyomiRepositoryImpl implements KunyomiRepository {
       return Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> deleteKunyomiByKanjiId(
+      {required String kanjiId, required String kunyomiId}) async {
+    try {
+      return Right(await kunyomiDatasource.deleteKunyomiByKanjiId(
+        kanjiId: kanjiId,
+        kunyomiId: kunyomiId,
+      ));
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
 }

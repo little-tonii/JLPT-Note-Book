@@ -17,4 +17,9 @@ abstract class KunyomiDatasource {
     required String transform,
     required String kunyomiId,
   });
+
+  Future<bool> deleteKunyomiByKanjiId({
+    required String kanjiId,
+    required String kunyomiId,
+  });
 }
