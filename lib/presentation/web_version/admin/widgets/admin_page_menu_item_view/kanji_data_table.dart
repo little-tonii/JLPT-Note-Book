@@ -5,10 +5,13 @@ import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/kanji_entity.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_kanji/delete_kanji_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_kanji/delete_kanji_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/delete_kanji_form.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/edit_kanji_form.dart';
 
 class KanjiDataTable extends StatefulWidget {
@@ -160,8 +163,10 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
     );
   }
 
-  void _handleOpenEditingKanjiForm(KanjiEntity kanji) {
-    showDialog(
+  void _handleOpenEditingKanjiForm(KanjiEntity kanji) async {
+    final kanjiManagerCubit = context.read<KanjiManagerCubit>();
+
+    final result = await showDialog<bool>(
       context: context,
       builder: (context) => LayoutBuilder(
         builder: (context, constraints) {
@@ -194,6 +199,44 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
         },
       ),
     );
+    if (result != null && result == true && mounted) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return LayoutBuilder(builder: (context, constraints) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (!ResponsiveUtil.isDesktop(context)) {
+                context.pop();
+              }
+            });
+            return Dialog(
+              child: BlocProvider<DeleteKanjiCubit>(
+                create: (context) => getIt<DeleteKanjiCubit>()
+                  ..init(
+                    id: kanji.id,
+                    kanji: kanji.kanji,
+                    kun: kanji.kun,
+                    on: kanji.on,
+                    viet: kanji.viet,
+                  ),
+                child: BlocListener<DeleteKanjiCubit, DeleteKanjiState>(
+                  listener: (context, state) {
+                    if (state is DeleteKanjiSuccess) {
+                      kanjiManagerCubit.deleteKanjiByIdView(id: state.id);
+                    }
+                    if (state is DeleteKanjiSuccess ||
+                        state is DeleteKanjiFailure) {
+                      context.pop();
+                    }
+                  },
+                  child: const DeleteKanjiForm(),
+                ),
+              ),
+            );
+          });
+        },
+      );
+    }
   }
 
   Widget _buildTableRow(int index, KanjiEntity kanji, int length) {
@@ -308,13 +351,14 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
                     shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
-                        side:  BorderSide(color: AppColors.kF8EDE3.withOpacity(0.8)),
+                        side: BorderSide(
+                            color: AppColors.kF8EDE3.withOpacity(0.8)),
                       ),
                     ),
                     overlayColor: WidgetStatePropertyAll(
                         AppColors.black.withOpacity(0.04)),
-                    backgroundColor:
-                         WidgetStatePropertyAll(AppColors.kF8EDE3.withOpacity(0.8)),
+                    backgroundColor: WidgetStatePropertyAll(
+                        AppColors.kF8EDE3.withOpacity(0.8)),
                   ),
                   onPressed: () => _handleOpenEditingKanjiForm(kanji),
                   child: Text(

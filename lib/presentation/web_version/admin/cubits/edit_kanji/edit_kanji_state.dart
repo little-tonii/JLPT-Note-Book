@@ -13,12 +13,13 @@ abstract class EditKanjiState extends Equatable {
 class EditKanjiInitial extends EditKanjiState {}
 
 class EditKanjiSuccess extends EditKanjiState {
+  final KanjiEntity kanji;
   final String message;
 
-  const EditKanjiSuccess({required this.message});
+  const EditKanjiSuccess({required this.message, required this.kanji});
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [message, kanji];
 }
 
 class EditKanjiFailure extends EditKanjiState {

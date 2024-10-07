@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
+import 'package:note_book_app/domain/entities/kunyomi_entity.dart';
+import 'package:note_book_app/domain/entities/onyomi_entity.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji_manager_button.dart';
@@ -18,6 +20,12 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
   late TextEditingController _hanVietController;
   late TextEditingController _kunController;
   late TextEditingController _onController;
+  late List<TextEditingController> _exampleKunController;
+  late List<TextEditingController> _exampleOnController;
+  late List<TextEditingController> _meaningKunController;
+  late List<TextEditingController> _meaningOnController;
+  late List<TextEditingController> _transformKunController;
+  late List<TextEditingController> _transformOnController;
 
   @override
   void initState() {
@@ -25,6 +33,12 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
     _hanVietController = TextEditingController();
     _kunController = TextEditingController();
     _onController = TextEditingController();
+    _exampleKunController = [];
+    _exampleOnController = [];
+    _meaningKunController = [];
+    _meaningOnController = [];
+    _transformKunController = [];
+    _transformOnController = [];
     super.initState();
   }
 
@@ -34,6 +48,24 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
     _hanVietController.dispose();
     _kunController.dispose();
     _onController.dispose();
+    for (var element in _exampleKunController) {
+      element.dispose();
+    }
+    for (var element in _exampleOnController) {
+      element.dispose();
+    }
+    for (var element in _meaningKunController) {
+      element.dispose();
+    }
+    for (var element in _meaningOnController) {
+      element.dispose();
+    }
+    for (var element in _transformKunController) {
+      element.dispose();
+    }
+    for (var element in _transformOnController) {
+      element.dispose();
+    }
     super.dispose();
   }
 
@@ -172,11 +204,37 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
               ),
             );
           }
+          List<KunyomiEntity> kunyomis = [];
+          List<OnyomiEntity> onyomis = [];
           if (state is EditKanjiLoaded) {
+            kunyomis = state.kunyomis;
+            onyomis = state.onyomis;
             _kanjiController.text = state.kanji.kanji;
             _hanVietController.text = state.kanji.viet;
             _kunController.text = state.kanji.kun;
             _onController.text = state.kanji.on;
+            for (var i = 0; i < state.kunyomis.length; i++) {
+              _exampleKunController.add(
+                TextEditingController()..text = state.kunyomis[i].sample,
+              );
+              _meaningKunController.add(
+                TextEditingController()..text = state.kunyomis[i].meaning,
+              );
+              _transformKunController.add(
+                TextEditingController()..text = state.kunyomis[i].transform,
+              );
+            }
+            for (var i = 0; i < state.onyomis.length; i++) {
+              _exampleOnController.add(
+                TextEditingController()..text = state.onyomis[i].sample,
+              );
+              _meaningOnController.add(
+                TextEditingController()..text = state.onyomis[i].meaning,
+              );
+              _transformOnController.add(
+                TextEditingController()..text = state.onyomis[i].transform,
+              );
+            }
           }
           return Column(
             children: [
@@ -213,16 +271,180 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Expanded(
-                                child: _dialogHandleActionFormButton(
-                                  onPressed: () {},
-                                  text: 'Thêm ví dụ Kunyomi',
+                                child: Column(
+                                  children: [
+                                    const SizedBox(height: 8),
+                                    ...kunyomis.asMap().entries.map((entry) {
+                                      final index = entry.key;
+                                      return Container(
+                                        decoration: BoxDecoration(
+                                          border: Border(
+                                            bottom: BorderSide(
+                                              color: AppColors.black
+                                                  .withOpacity(0.4),
+                                              width: 1,
+                                            ),
+                                          ),
+                                        ),
+                                        width: double.infinity,
+                                        child: Column(
+                                          children: [
+                                            const SizedBox(height: 8),
+                                            _yomiField(
+                                              hintText: "Nhập Kunyomi Kanji",
+                                              controller:
+                                                  _exampleKunController[index],
+                                            ),
+                                            const SizedBox(height: 8),
+                                            _yomiField(
+                                              hintText: "Nhập Kunyomi Hiragana",
+                                              controller:
+                                                  _transformKunController[
+                                                      index],
+                                            ),
+                                            const SizedBox(height: 8),
+                                            _yomiField(
+                                              hintText: "Nhập nghĩa Kunyomi",
+                                              controller:
+                                                  _meaningKunController[index],
+                                            ),
+                                            const SizedBox(height: 8),
+                                            IntrinsicHeight(
+                                              child: Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.stretch,
+                                                children: [
+                                                  Expanded(
+                                                    child:
+                                                        _dialogHandleActionFormButton(
+                                                      onPressed: () {},
+                                                      text: 'Huỷ Kunyomi',
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                                    const SizedBox(height: 8),
+                                    IntrinsicHeight(
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
+                                        children: [
+                                          Expanded(
+                                            child:
+                                                _dialogHandleActionFormButton(
+                                              onPressed: () {},
+                                              text: 'Thêm ví dụ Kunyomi',
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               const SizedBox(width: 8),
                               Expanded(
+                                child: Column(
+                                  children: [
+                                    const SizedBox(height: 8),
+                                    ...onyomis.asMap().entries.map((entry) {
+                                      final index = entry.key;
+                                      return Container(
+                                        decoration: BoxDecoration(
+                                          border: Border(
+                                            bottom: BorderSide(
+                                              color: AppColors.black
+                                                  .withOpacity(0.4),
+                                              width: 1,
+                                            ),
+                                          ),
+                                        ),
+                                        width: double.infinity,
+                                        child: Column(
+                                          children: [
+                                            const SizedBox(height: 8),
+                                            _yomiField(
+                                              hintText: "Nhập Onyomi Kanji",
+                                              controller:
+                                                  _exampleOnController[index],
+                                            ),
+                                            const SizedBox(height: 8),
+                                            _yomiField(
+                                              hintText: "Nhập Onyomi Hiragana",
+                                              controller:
+                                                  _transformOnController[index],
+                                            ),
+                                            const SizedBox(height: 8),
+                                            _yomiField(
+                                              hintText: "Nhập nghĩa Onyomi",
+                                              controller:
+                                                  _meaningOnController[index],
+                                            ),
+                                            const SizedBox(height: 8),
+                                            IntrinsicHeight(
+                                              child: Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.stretch,
+                                                children: [
+                                                  Expanded(
+                                                    child:
+                                                        _dialogHandleActionFormButton(
+                                                      onPressed: () {},
+                                                      text: 'Huỷ Onyomi',
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                          ],
+                                        ),
+                                      );
+                                    }),
+                                    const SizedBox(height: 8),
+                                    IntrinsicHeight(
+                                      child: Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
+                                        children: [
+                                          Expanded(
+                                            child:
+                                                _dialogHandleActionFormButton(
+                                              onPressed: () {},
+                                              text: 'Thêm ví dụ Onyomi',
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      IntrinsicHeight(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Expanded(
                                 child: _dialogHandleActionFormButton(
-                                  onPressed: () {},
-                                  text: 'Thêm ví dụ Onyomi',
+                                  onPressed: () {
+                                    context.pop(true);
+                                  },
+                                  text: 'Xoá Kanji',
                                 ),
                               ),
                             ],
@@ -263,50 +485,3 @@ class _EditKanjiFormState extends State<EditKanjiForm> {
     );
   }
 }
-/* 
-const SizedBox(height: 8),
-                      IntrinsicHeight(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              if (!_showDeleteConfirmChoice)
-                                Expanded(
-                                  child: _dialogHandleActionFormButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _showDeleteConfirmChoice = true;
-                                      });
-                                    },
-                                    text: 'Xoá Kanji',
-                                  ),
-                                ),
-                              if (_showDeleteConfirmChoice)
-                                Expanded(
-                                  child: _dialogHandleActionFormButton(
-                                    onPressed: () {},
-                                    text: 'Xác nhận xoá',
-                                  ),
-                                ),
-                              if (_showDeleteConfirmChoice)
-                                const SizedBox(width: 8),
-                              if (_showDeleteConfirmChoice)
-                                Expanded(
-                                  child: _dialogHandleActionFormButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _showDeleteConfirmChoice = false;
-                                      });
-                                    },
-                                    text: 'Huỷ bỏ',
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
- */
