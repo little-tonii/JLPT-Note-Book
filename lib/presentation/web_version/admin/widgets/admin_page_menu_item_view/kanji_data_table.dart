@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
+import 'package:note_book_app/common/utils/responsive_util.dart';
+import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/kanji_entity.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_kanji/delete_kanji_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_kanji/delete_kanji_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/delete_kanji_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/edit_kanji_form.dart';
 
 class KanjiDataTable extends StatefulWidget {
   final ScrollController scrollController;
@@ -24,45 +33,9 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        decoration: const BoxDecoration(
-          color: AppColors.white,
-          border: Border(
-            bottom: BorderSide(color: AppColors.black),
-            right: BorderSide(color: AppColors.black),
-            left: BorderSide(color: AppColors.black),
-            top: BorderSide(color: AppColors.black),
-          ),
-        ),
-        child: BlocBuilder<KanjiManagerCubit, KanjiManagerState>(
-          builder: (context, state) {
-            if (state is KanjiManagerLoaded) {
-              return Column(
-                children: [
-                  _buildTableHeader(),
-                  Expanded(
-                    child: ListView.builder(
-                      controller: widget.scrollController,
-                      itemCount: state.kanjis.length,
-                      itemBuilder: (context, index) {
-                        return _buildTableRow(
-                          index,
-                          state.kanjis[index],
-                          state.kanjis.length,
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              );
-            }
-            return const SizedBox();
-          },
-        ),
-      ),
-    );
+  void dispose() {
+    widget.scrollController.removeListener(_onScroll);
+    super.dispose();
   }
 
   Widget _buildTableHeader() {
@@ -190,6 +163,86 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
     );
   }
 
+  void _handleOpenEditingKanjiForm(KanjiEntity kanji) async {
+    final kanjiManagerCubit = context.read<KanjiManagerCubit>();
+
+    final result = await showDialog<bool>(
+      context: context,
+      builder: (context) => LayoutBuilder(
+        builder: (context, constraints) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (!ResponsiveUtil.isDesktop(context)) {
+              context.pop();
+            }
+          });
+          return Dialog(
+            child: BlocProvider<EditKanjiCubit>(
+              create: (context) => getIt<EditKanjiCubit>()
+                ..init(
+                  kanji: kanji.kanji,
+                  viet: kanji.viet,
+                  kun: kanji.kun,
+                  createdAt: kanji.createdAt,
+                  id: kanji.id,
+                  on: kanji.on,
+                ),
+              child: BlocListener<EditKanjiCubit, EditKanjiState>(
+                child: const EditKanjiForm(),
+                listener: (BuildContext context, EditKanjiState state) {
+                  if (state is EditKanjiSuccess) {
+                    kanjiManagerCubit.updateKanjiView(kanji: state.kanji);
+                  }
+                  if (state is EditKanjiSuccess || state is EditKanjiFailure) {
+                    context.pop();
+                  }
+                },
+              ),
+            ),
+          );
+        },
+      ),
+    );
+    if (result != null && result == true && mounted) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return LayoutBuilder(builder: (context, constraints) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (!ResponsiveUtil.isDesktop(context)) {
+                context.pop();
+              }
+            });
+            return Dialog(
+              child: BlocProvider<DeleteKanjiCubit>(
+                create: (context) => getIt<DeleteKanjiCubit>()
+                  ..init(
+                    createdAt: kanji.createdAt,
+                    id: kanji.id,
+                    kanji: kanji.kanji,
+                    kun: kanji.kun,
+                    on: kanji.on,
+                    viet: kanji.viet,
+                  ),
+                child: BlocListener<DeleteKanjiCubit, DeleteKanjiState>(
+                  listener: (context, state) {
+                    if (state is DeleteKanjiSuccess) {
+                      kanjiManagerCubit.deleteKanjiByIdView(id: state.id);
+                    }
+                    if (state is DeleteKanjiSuccess ||
+                        state is DeleteKanjiFailure) {
+                      context.pop();
+                    }
+                  },
+                  child: const DeleteKanjiForm(),
+                ),
+              ),
+            );
+          });
+        },
+      );
+    }
+  }
+
   Widget _buildTableRow(int index, KanjiEntity kanji, int length) {
     return IntrinsicHeight(
       child: Row(
@@ -290,24 +343,37 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
               ),
               padding: const EdgeInsets.all(8),
               child: Center(
-                child: InkWell(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: AppColors.kD0B8A8,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      textAlign: TextAlign.center,
-                      'Sửa',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: AppColors.black.withOpacity(0.4),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    elevation: const WidgetStatePropertyAll(0),
+                    padding: const WidgetStatePropertyAll<EdgeInsetsGeometry>(
+                      EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
                       ),
                     ),
+                    shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        side: BorderSide(
+                            color: AppColors.kF8EDE3.withOpacity(0.8)),
+                      ),
+                    ),
+                    overlayColor: WidgetStatePropertyAll(
+                        AppColors.black.withOpacity(0.04)),
+                    backgroundColor: WidgetStatePropertyAll(
+                        AppColors.kF8EDE3.withOpacity(0.8)),
                   ),
-                  onTap: () {},
+                  onPressed: () => _handleOpenEditingKanjiForm(kanji),
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    'Sửa',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: AppColors.black.withOpacity(0.4),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -343,8 +409,44 @@ class _KanjiDataTableState extends State<KanjiDataTable> {
   }
 
   @override
-  void dispose() {
-    widget.scrollController.removeListener(_onScroll);
-    super.dispose();
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        decoration: const BoxDecoration(
+          color: AppColors.white,
+          border: Border(
+            bottom: BorderSide(color: AppColors.black),
+            right: BorderSide(color: AppColors.black),
+            left: BorderSide(color: AppColors.black),
+            top: BorderSide(color: AppColors.black),
+          ),
+        ),
+        child: BlocBuilder<KanjiManagerCubit, KanjiManagerState>(
+          builder: (context, state) {
+            if (state is KanjiManagerLoaded) {
+              return Column(
+                children: [
+                  _buildTableHeader(),
+                  Expanded(
+                    child: ListView.builder(
+                      controller: widget.scrollController,
+                      itemCount: state.kanjis.length,
+                      itemBuilder: (context, index) {
+                        return _buildTableRow(
+                          index,
+                          state.kanjis[index],
+                          state.kanjis.length,
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              );
+            }
+            return const SizedBox();
+          },
+        ),
+      ),
+    );
   }
 }

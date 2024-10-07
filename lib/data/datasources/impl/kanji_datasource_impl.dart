@@ -134,4 +134,17 @@ class KanjiDatasourceImpl implements KanjiDatasource {
       throw Exception(e);
     }
   }
+
+  @override
+  Future<bool> deleteKanjiById({required String id}) async {
+    try {
+      await firebaseFirestore.collection('kanjis').doc(id).delete();
+      return true;
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      return false;
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
 }

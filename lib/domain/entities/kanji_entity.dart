@@ -16,4 +16,21 @@ class KanjiEntity {
     required this.viet,
     required this.createdAt,
   });
+
+  KanjiEntity copyWith({
+    String? id,
+    String? kanji,
+    String? kun,
+    String? on,
+    String? viet,
+  }) {
+    return KanjiEntity(
+      id: id ?? this.id,
+      kanji: kanji ?? this.kanji,
+      kun: kun ?? this.kun,
+      on: on ?? this.on,
+      viet: viet ?? this.viet,
+      createdAt: createdAt,
+    );
+  }
 }

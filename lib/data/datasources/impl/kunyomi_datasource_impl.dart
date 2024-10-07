@@ -93,4 +93,25 @@ class KunyomiDatasourceImpl implements KunyomiDatasource {
       throw UnknownFailure();
     }
   }
+
+  @override
+  Future<bool> deleteKunyomiByKanjiId({
+    required String kanjiId,
+    required String kunyomiId,
+  }) async {
+    try {
+      await firebaseFirestore
+          .collection('kanjis')
+          .doc(kanjiId)
+          .collection('kun')
+          .doc(kunyomiId)
+          .delete();
+      return true;
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      return false;
+    } on Exception {
+      throw UnknownFailure();
+    }
+  }
 }

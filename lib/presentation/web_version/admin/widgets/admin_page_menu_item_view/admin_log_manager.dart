@@ -70,7 +70,7 @@ class _AdminLogManagerState extends State<AdminLogManager> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text.rich(
+          SelectableText.rich(
             TextSpan(
               children: [
                 const TextSpan(text: '['),
@@ -85,18 +85,20 @@ class _AdminLogManagerState extends State<AdminLogManager> {
                 TextSpan(text: user),
                 const TextSpan(text: '] ['),
                 TextSpan(
-                  text: 'Action: $action',
+                  text: action,
                   style: TextStyle(
                     color: action == "CREATE"
                         ? AppColors.successColor
                         : action == "UPDATE"
                             ? AppColors.successColorYellow
-                            : AppColors.failureColor,
+                            : action == "DELETE"
+                                ? AppColors.failureColor
+                                : AppColors.softBlue,
                   ),
                 ),
                 const TextSpan(text: '] ['),
                 TextSpan(
-                  text: 'Status: $actionStatus',
+                  text: actionStatus,
                   style: TextStyle(
                     color: actionStatus == "SUCCESS"
                         ? AppColors.successColor
@@ -166,6 +168,9 @@ class _AdminLogManagerState extends State<AdminLogManager> {
           const SizedBox(height: 16),
           Expanded(
             child: BlocBuilder<AdminLogManagerCubit, AdminLogManagerState>(
+              buildWhen: (previous, current) =>
+                  current is AdminLogManagerLoaded ||
+                  current is AdminLogManagerFailure,
               builder: (context, state) {
                 if (state is AdminLogManagerLoaded) {
                   return Container(

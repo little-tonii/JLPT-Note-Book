@@ -271,33 +271,6 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
                                     return Column(
                                       children: [
                                         const SizedBox(height: 8),
-                                        IntrinsicHeight(
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.stretch,
-                                            children: [
-                                              Expanded(
-                                                child:
-                                                    _dialogHandleActionFormButton(
-                                                  onPressed: () {
-                                                    _sampleKunyomiController.add(
-                                                        TextEditingController());
-                                                    _transformKunyomiController.add(
-                                                        TextEditingController());
-                                                    _meaningKunyomiController.add(
-                                                        TextEditingController());
-                                                    context
-                                                        .read<
-                                                            CreateKanjiCubit>()
-                                                        .addKunyomi();
-                                                  },
-                                                  text: 'Thêm ví dụ Kunyomi',
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        const SizedBox(height: 8),
                                         if (state is CreateKanjiLoaded)
                                           ...state.kunyomis
                                               .asMap()
@@ -306,17 +279,13 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
                                             final index = entry.key;
                                             return Container(
                                               decoration: BoxDecoration(
-                                                border: index !=
-                                                        state.kunyomis.length -
-                                                            1
-                                                    ? Border(
-                                                        bottom: BorderSide(
-                                                          color: AppColors.black
-                                                              .withOpacity(0.4),
-                                                          width: 1,
-                                                        ),
-                                                      )
-                                                    : null,
+                                                border: Border(
+                                                  bottom: BorderSide(
+                                                    color: AppColors.black
+                                                        .withOpacity(0.4),
+                                                    width: 1,
+                                                  ),
+                                                ),
                                               ),
                                               width: double.infinity,
                                               child: Column(
@@ -356,21 +325,30 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
                                                           child:
                                                               _dialogHandleActionFormButton(
                                                             onPressed: () {
-                                                              _sampleKunyomiController
-                                                                  .removeAt(
-                                                                      index);
-                                                              _transformKunyomiController
-                                                                  .removeAt(
-                                                                      index);
-                                                              _meaningKunyomiController
-                                                                  .removeAt(
-                                                                      index);
+                                                              final sampleRemoved =
+                                                                  _sampleKunyomiController
+                                                                      .removeAt(
+                                                                          index);
+                                                              final transformRemoved =
+                                                                  _transformKunyomiController
+                                                                      .removeAt(
+                                                                          index);
+                                                              final meaningRemoved =
+                                                                  _meaningKunyomiController
+                                                                      .removeAt(
+                                                                          index);
                                                               context
                                                                   .read<
                                                                       CreateKanjiCubit>()
                                                                   .removeKunyomi(
                                                                       index:
                                                                           index);
+                                                              sampleRemoved
+                                                                  .dispose();
+                                                              transformRemoved
+                                                                  .dispose();
+                                                              meaningRemoved
+                                                                  .dispose();
                                                             },
                                                             text: 'Huỷ Kunyomi',
                                                           ),
@@ -383,6 +361,33 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
                                               ),
                                             );
                                           }),
+                                        const SizedBox(height: 8),
+                                        IntrinsicHeight(
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                            children: [
+                                              Expanded(
+                                                child:
+                                                    _dialogHandleActionFormButton(
+                                                  onPressed: () {
+                                                    _sampleKunyomiController.add(
+                                                        TextEditingController());
+                                                    _transformKunyomiController.add(
+                                                        TextEditingController());
+                                                    _meaningKunyomiController.add(
+                                                        TextEditingController());
+                                                    context
+                                                        .read<
+                                                            CreateKanjiCubit>()
+                                                        .addKunyomi();
+                                                  },
+                                                  text: 'Thêm ví dụ Kunyomi',
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ],
                                     );
                                   },
@@ -396,33 +401,6 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
                                     return Column(
                                       children: [
                                         const SizedBox(height: 8),
-                                        IntrinsicHeight(
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.stretch,
-                                            children: [
-                                              Expanded(
-                                                child:
-                                                    _dialogHandleActionFormButton(
-                                                  onPressed: () {
-                                                    _sampleOnyomiController.add(
-                                                        TextEditingController());
-                                                    _transformOnyomiController.add(
-                                                        TextEditingController());
-                                                    _meaningOnyomiController.add(
-                                                        TextEditingController());
-                                                    context
-                                                        .read<
-                                                            CreateKanjiCubit>()
-                                                        .addOnyomi();
-                                                  },
-                                                  text: 'Thêm ví dụ Onyomi',
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        const SizedBox(height: 8),
                                         if (state is CreateKanjiLoaded)
                                           ...state.onyomis
                                               .asMap()
@@ -431,16 +409,13 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
                                             final index = entry.key;
                                             return Container(
                                               decoration: BoxDecoration(
-                                                border: index !=
-                                                        state.onyomis.length - 1
-                                                    ? Border(
-                                                        bottom: BorderSide(
-                                                          color: AppColors.black
-                                                              .withOpacity(0.4),
-                                                          width: 1,
-                                                        ),
-                                                      )
-                                                    : null,
+                                                border: Border(
+                                                  bottom: BorderSide(
+                                                    color: AppColors.black
+                                                        .withOpacity(0.4),
+                                                    width: 1,
+                                                  ),
+                                                ),
                                               ),
                                               width: double.infinity,
                                               child: Column(
@@ -480,21 +455,30 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
                                                           child:
                                                               _dialogHandleActionFormButton(
                                                             onPressed: () {
-                                                              _sampleOnyomiController
-                                                                  .removeAt(
-                                                                      index);
-                                                              _transformOnyomiController
-                                                                  .removeAt(
-                                                                      index);
-                                                              _meaningOnyomiController
-                                                                  .removeAt(
-                                                                      index);
+                                                              final sampleRemoved =
+                                                                  _sampleOnyomiController
+                                                                      .removeAt(
+                                                                          index);
+                                                              final transformRemoved =
+                                                                  _transformOnyomiController
+                                                                      .removeAt(
+                                                                          index);
+                                                              final meaningRemoved =
+                                                                  _meaningOnyomiController
+                                                                      .removeAt(
+                                                                          index);
                                                               context
                                                                   .read<
                                                                       CreateKanjiCubit>()
                                                                   .removeOnyomi(
                                                                       index:
                                                                           index);
+                                                              sampleRemoved
+                                                                  .dispose();
+                                                              transformRemoved
+                                                                  .dispose();
+                                                              meaningRemoved
+                                                                  .dispose();
                                                             },
                                                             text: 'Huỷ Onyomi',
                                                           ),
@@ -507,6 +491,33 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
                                               ),
                                             );
                                           }),
+                                        const SizedBox(height: 8),
+                                        IntrinsicHeight(
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                            children: [
+                                              Expanded(
+                                                child:
+                                                    _dialogHandleActionFormButton(
+                                                  onPressed: () {
+                                                    _sampleOnyomiController.add(
+                                                        TextEditingController());
+                                                    _transformOnyomiController.add(
+                                                        TextEditingController());
+                                                    _meaningOnyomiController.add(
+                                                        TextEditingController());
+                                                    context
+                                                        .read<
+                                                            CreateKanjiCubit>()
+                                                        .addOnyomi();
+                                                  },
+                                                  text: 'Thêm ví dụ Onyomi',
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
                                       ],
                                     );
                                   },

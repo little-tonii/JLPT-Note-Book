@@ -14,4 +14,19 @@ class KunyomiEntity {
     required this.transform,
     required this.createdAt,
   });
+
+  KunyomiEntity copyWith({
+    String? id,
+    String? meaning,
+    String? sample,
+    String? transform,
+  }) {
+    return KunyomiEntity(
+      id: id ?? this.id,
+      meaning: meaning ?? this.meaning,
+      sample: sample ?? this.sample,
+      transform: transform ?? this.transform,
+      createdAt: createdAt,
+    );
+  }
 }

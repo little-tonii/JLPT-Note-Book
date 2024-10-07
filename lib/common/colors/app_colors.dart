@@ -11,4 +11,5 @@ abstract class AppColors {
   static const failureColor = Color(0xfffc3d11);
   static const successColorYellow = Color(0xffFFD700);
   static const successColorBlue = Color.fromARGB(255, 30, 64, 255);
+  static const softBlue = Color.fromARGB(255, 74, 170, 226);
 }
