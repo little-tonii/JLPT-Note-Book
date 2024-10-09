@@ -10,10 +10,13 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_j
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jnpt/create_new_jnpt_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jnpt/delete_jnpt_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jnpt/delete_jnpt_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jnpt/edit_jnpt_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jnpt/edit_jnpt_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/jnpt_manager/jnpt_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/jnpt_manager/jnpt_manager_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/create_new_jnpt_form.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/delete_jnpt_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/edit_jnpt_form.dart';
 
 class JnptManager extends StatefulWidget {
   const JnptManager({super.key});
@@ -97,7 +100,7 @@ class _JnptManagerState extends State<JnptManager> {
                     context.pop();
                   }
                 },
-                child: const DeleteJnptForm(),
+                child: DeleteJnptForm(jnpt: level),
               ),
             ),
           );
@@ -116,7 +119,20 @@ class _JnptManagerState extends State<JnptManager> {
               context.pop();
             }
           });
-          return Dialog();
+          return BlocProvider<EditJnptCubit>(
+            create: (context) => getIt<EditJnptCubit>()..init(),
+            child: BlocListener<EditJnptCubit, EditJnptState>(
+              listener: (context, state) {
+                if (state is EditJnptSuccess) {
+                  _jnptManagerCubit.updateJnptListView(jnpt: state.level);
+                }
+                if (state is EditJnptSuccess || state is EditJnptFailure) {
+                  context.pop();
+                }
+              },
+              child: EditJnptForm(jnpt: level),
+            ),
+          );
         },
       ),
     );

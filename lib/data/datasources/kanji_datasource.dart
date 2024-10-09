@@ -25,4 +25,6 @@ abstract class KanjiDatasource {
   });
 
   Future<bool> deleteKanjiById({required String id});
+
+  Future<int> deleteKanjisByLevelId({required String levelId});
 }

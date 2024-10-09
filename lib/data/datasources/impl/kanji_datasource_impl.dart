@@ -147,4 +147,26 @@ class KanjiDatasourceImpl implements KanjiDatasource {
       throw Exception(e);
     }
   }
+
+  @override
+  Future<int> deleteKanjisByLevelId({required String levelId}) async {
+    try {
+      final kanjis = await firebaseFirestore
+          .collection('kanjis')
+          .where('levelId', isEqualTo: levelId)
+          .get();
+
+      for (final kanji in kanjis.docs) {
+        await kanji.reference.delete();
+      }
+
+      return kanjis.docs.length;
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(
+          message: "Có lỗi xảy ra khi xóa các Kanji khi xoá JNPT");
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
 }

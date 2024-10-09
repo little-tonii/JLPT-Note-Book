@@ -49,4 +49,17 @@ class JnptManagerCubit extends Cubit<JnptManagerState> {
       );
     }
   }
+
+  void updateJnptListView({required LevelEntity jnpt}) {
+    if (state is JnptManagerLoaded) {
+      final currentState = state as JnptManagerLoaded;
+      emit(
+        currentState.copyWith(
+          levels: currentState.levels
+              .map((element) => element.id == jnpt.id ? jnpt : element)
+              .toList(),
+        ),
+      );
+    }
+  }
 }

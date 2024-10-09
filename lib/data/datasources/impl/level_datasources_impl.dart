@@ -73,4 +73,17 @@ class LevelDatasourcesImpl implements LevelDatasource {
       throw Exception(e);
     }
   }
+
+  @override
+  Future<bool> deleteLevelById({required String id}) async {
+    try {
+      await firebaseFirestore.collection('levels').doc(id).delete();
+      return true;
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi xóa JNPT");
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
 }

@@ -47,4 +47,16 @@ class LevelRepositoryImpl implements LevelRepository {
       return Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> deleteLevelById({required String id}) async {
+    try {
+      final result = await levelDatasource.deleteLevelById(id: id);
+      return Right(result);
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
 }

@@ -27,4 +27,7 @@ abstract class KanjiRepository {
   });
 
   Future<Either<Failure, bool>> deleteKanjiById({required String id});
+
+  Future<Either<Failure, int>> deleteKanjisByLevelId(
+      {required String levelId});
 }

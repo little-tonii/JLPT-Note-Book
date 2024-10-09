@@ -6,4 +6,6 @@ abstract class LessonRepository {
   Future<Either<Failure, List<LessonEntity>>> getAllLessonsByLevelId(
       {required String levelId});
   Future<Either<Failure, LessonEntity>> getLessonById({required String id});
+  Future<Either<Failure, int>> deleteLessonsByLevelId(
+      {required String levelId});
 }

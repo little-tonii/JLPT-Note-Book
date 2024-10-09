@@ -89,4 +89,17 @@ class KanjiRepositoryImpl implements KanjiRepository {
       return Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, int>> deleteKanjisByLevelId(
+      {required String levelId}) async {
+    try {
+      return Right(
+          await kanjiDatasource.deleteKanjisByLevelId(levelId: levelId));
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
 }

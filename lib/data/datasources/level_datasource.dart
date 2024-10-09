@@ -4,4 +4,5 @@ abstract class LevelDatasource {
   Future<List<LevelModel>> getAllLevels();
   Future<LevelModel> getLevelById({required String id});
   Future<LevelModel> createLevel({required String level});
+  Future<bool> deleteLevelById({required String id});
 }

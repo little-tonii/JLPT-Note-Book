@@ -55,4 +55,25 @@ class LessonDatasourceImpl implements LessonDatasource {
       throw Exception(e);
     }
   }
+
+  @override
+  Future<int> deleteLessonsByLevelId({required String levelId}) async {
+    try {
+      final queryResult = await firebaseFirestore
+          .collection('lessons')
+          .where('levelId', isEqualTo: levelId)
+          .get();
+      for (final lesson in queryResult.docs) {
+        await lesson.reference.delete();
+      }
+
+      return queryResult.docs.length;
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(
+          message: "Có lỗi xảy ra khi xóa các bài học khi xoá JNPT");
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
 }
