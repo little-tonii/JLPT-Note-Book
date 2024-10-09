@@ -31,7 +31,7 @@ class LessonDatasourceImpl implements LessonDatasource {
     } on FirebaseException catch (e) {
       log(e.toString());
       throw FirestoreFailure(
-          message: "Có lỗi xảy ra khi truy cập bài học theo JNPT");
+          message: "Có lỗi xảy ra khi truy cập bài học theo JLPT");
     } on Exception catch (e) {
       throw Exception(e);
     }
@@ -71,7 +71,7 @@ class LessonDatasourceImpl implements LessonDatasource {
     } on FirebaseException catch (e) {
       log(e.toString());
       throw FirestoreFailure(
-          message: "Có lỗi xảy ra khi xóa các bài học khi xoá JNPT");
+          message: "Có lỗi xảy ra khi xóa các bài học khi xoá JLPT");
     } on Exception catch (e) {
       throw Exception(e);
     }

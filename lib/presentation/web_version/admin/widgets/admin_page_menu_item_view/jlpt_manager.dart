@@ -6,31 +6,31 @@ import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/level_entity.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jnpt/create_new_jnpt_cubit.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jnpt/create_new_jnpt_state.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jnpt/delete_jnpt_cubit.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jnpt/delete_jnpt_state.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jnpt/edit_jnpt_cubit.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jnpt/edit_jnpt_state.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/jnpt_manager/jnpt_manager_cubit.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/jnpt_manager/jnpt_manager_state.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/create_new_jnpt_form.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/delete_jnpt_form.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/edit_jnpt_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jlpt/create_new_jlpt_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jlpt/create_new_jlpt_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jlpt/delete_jlpt_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jlpt/delete_jlpt_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jlpt/edit_jlpt_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jlpt/edit_jlpt_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/jlpt_manager/jlpt_manager_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/jlpt_manager/jlpt_manager_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/create_new_jlpt_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/delete_jlpt_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/edit_jlpt_form.dart';
 
-class JnptManager extends StatefulWidget {
-  const JnptManager({super.key});
+class JlptManager extends StatefulWidget {
+  const JlptManager({super.key});
 
   @override
-  State<JnptManager> createState() => _JnptManagerState();
+  State<JlptManager> createState() => _JlptManagerState();
 }
 
-class _JnptManagerState extends State<JnptManager> {
-  late JnptManagerCubit _jnptManagerCubit;
+class _JlptManagerState extends State<JlptManager> {
+  late JlptManagerCubit _jlptManagerCubit;
 
   @override
   void initState() {
-    _jnptManagerCubit = context.read<JnptManagerCubit>()..init();
+    _jlptManagerCubit = context.read<JlptManagerCubit>()..init();
     super.initState();
   }
 
@@ -40,10 +40,10 @@ class _JnptManagerState extends State<JnptManager> {
   }
 
   void _handleReload() {
-    context.read<JnptManagerCubit>().init();
+    context.read<JlptManagerCubit>().init();
   }
 
-  void _handleShowCreateNewJnptForm() {
+  void _handleShowCreateNewJlptForm() {
     showDialog(
       context: context,
       builder: (context) => LayoutBuilder(
@@ -54,16 +54,16 @@ class _JnptManagerState extends State<JnptManager> {
             }
           });
           return Dialog(
-            child: BlocProvider<CreateNewJnptCubit>(
-              create: (context) => getIt<CreateNewJnptCubit>()..init(),
-              child: BlocListener<CreateNewJnptCubit, CreateNewJnptState>(
-                child: const CreateNewJnptForm(),
-                listener: (BuildContext context, CreateNewJnptState state) {
-                  if (state is CreateNewJnptSuccess) {
-                    _jnptManagerCubit.addJnptListView(jnpt: state.levelEntity);
+            child: BlocProvider<CreateNewJlptCubit>(
+              create: (context) => getIt<CreateNewJlptCubit>()..init(),
+              child: BlocListener<CreateNewJlptCubit, CreateNewJlptState>(
+                child: const CreateNewJlptForm(),
+                listener: (BuildContext context, CreateNewJlptState state) {
+                  if (state is CreateNewJlptSuccess) {
+                    _jlptManagerCubit.addJlptListView(jlpt: state.levelEntity);
                   }
-                  if (state is CreateNewJnptSuccess ||
-                      state is CreateNewJnptFailure) {
+                  if (state is CreateNewJlptSuccess ||
+                      state is CreateNewJlptFailure) {
                     context.pop();
                   }
                 },
@@ -75,7 +75,7 @@ class _JnptManagerState extends State<JnptManager> {
     );
   }
 
-  void _handleShowDeleteJnptForm({required LevelEntity level}) {
+  void _handleShowDeleteJlptForm({required LevelEntity level}) {
     showDialog(
       context: context,
       builder: (context) => LayoutBuilder(
@@ -86,21 +86,21 @@ class _JnptManagerState extends State<JnptManager> {
             }
           });
           return Dialog(
-            child: BlocProvider<DeleteJnptCubit>(
-              create: (context) => getIt<DeleteJnptCubit>()..init(),
-              child: BlocListener<DeleteJnptCubit, DeleteJnptState>(
+            child: BlocProvider<DeleteJlptCubit>(
+              create: (context) => getIt<DeleteJlptCubit>()..init(),
+              child: BlocListener<DeleteJlptCubit, DeleteJlptState>(
                 listener: (context, state) {
-                  if (state is DeleteJnptSuccess) {
-                    _jnptManagerCubit.removeJnptListView(
-                      jnptId: state.levelEntity.id,
+                  if (state is DeleteJlptSuccess) {
+                    _jlptManagerCubit.removeJlptListView(
+                      jlptId: state.levelEntity.id,
                     );
                   }
-                  if (state is DeleteJnptSuccess ||
-                      state is DeleteJnptFailure) {
+                  if (state is DeleteJlptSuccess ||
+                      state is DeleteJlptFailure) {
                     context.pop();
                   }
                 },
-                child: DeleteJnptForm(jnpt: level),
+                child: DeleteJlptForm(jlpt: level),
               ),
             ),
           );
@@ -109,7 +109,7 @@ class _JnptManagerState extends State<JnptManager> {
     );
   }
 
-  void _handleShowEditJnptForm({required LevelEntity level}) {
+  void _handleShowEditJlptForm({required LevelEntity level}) {
     showDialog(
       context: context,
       builder: (context) => LayoutBuilder(
@@ -119,18 +119,18 @@ class _JnptManagerState extends State<JnptManager> {
               context.pop();
             }
           });
-          return BlocProvider<EditJnptCubit>(
-            create: (context) => getIt<EditJnptCubit>()..init(),
-            child: BlocListener<EditJnptCubit, EditJnptState>(
+          return BlocProvider<EditJlptCubit>(
+            create: (context) => getIt<EditJlptCubit>()..init(),
+            child: BlocListener<EditJlptCubit, EditJlptState>(
               listener: (context, state) {
-                if (state is EditJnptSuccess) {
-                  _jnptManagerCubit.updateJnptListView(jnpt: state.level);
+                if (state is EditJlptSuccess) {
+                  _jlptManagerCubit.updateJlptListView(jlpt: state.level);
                 }
-                if (state is EditJnptSuccess || state is EditJnptFailure) {
+                if (state is EditJlptSuccess || state is EditJlptFailure) {
                   context.pop();
                 }
               },
-              child: EditJnptForm(jnpt: level),
+              child: EditJlptForm(jlpt: level),
             ),
           );
         },
@@ -138,7 +138,7 @@ class _JnptManagerState extends State<JnptManager> {
     );
   }
 
-  Widget _jnptTableHeader() {
+  Widget _jlptTableHeader() {
     return Container(
       decoration: const BoxDecoration(
         color: AppColors.kDFD3C3,
@@ -177,7 +177,7 @@ class _JnptManagerState extends State<JnptManager> {
                 ),
                 padding: const EdgeInsets.all(8),
                 child: const Text(
-                  'JNPT',
+                  'JLPT',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -239,8 +239,8 @@ class _JnptManagerState extends State<JnptManager> {
                 onChanged: (value) {
                   if (value == "Tải lại") {
                     _handleReload();
-                  } else if (value == "Tạo mới JNPT") {
-                    _handleShowCreateNewJnptForm();
+                  } else if (value == "Tạo mới JLPT") {
+                    _handleShowCreateNewJlptForm();
                   }
                 },
                 isExpanded: true,
@@ -252,7 +252,7 @@ class _JnptManagerState extends State<JnptManager> {
                     color: AppColors.black.withOpacity(0.6),
                   ),
                 ),
-                items: ["Tải lại", "Tạo mới JNPT"]
+                items: ["Tải lại", "Tạo mới JLPT"]
                     .map(
                       (item) => DropdownMenuItem<String>(
                         value: item,
@@ -354,7 +354,7 @@ class _JnptManagerState extends State<JnptManager> {
                     backgroundColor: WidgetStatePropertyAll(
                         AppColors.kF8EDE3.withOpacity(0.8)),
                   ),
-                  onPressed: () => _handleShowEditJnptForm(level: level),
+                  onPressed: () => _handleShowEditJlptForm(level: level),
                   child: Text(
                     textAlign: TextAlign.center,
                     'Sửa',
@@ -399,7 +399,7 @@ class _JnptManagerState extends State<JnptManager> {
                     backgroundColor: WidgetStatePropertyAll(
                         AppColors.kF8EDE3.withOpacity(0.8)),
                   ),
-                  onPressed: () => _handleShowDeleteJnptForm(level: level),
+                  onPressed: () => _handleShowDeleteJlptForm(level: level),
                   child: Text(
                     textAlign: TextAlign.center,
                     'Xoá',
@@ -427,10 +427,10 @@ class _JnptManagerState extends State<JnptManager> {
         children: [
           _actionSelector(),
           const SizedBox(height: 16),
-          BlocBuilder<JnptManagerCubit, JnptManagerState>(
-            buildWhen: (previous, current) => current is JnptManagerLoaded,
+          BlocBuilder<JlptManagerCubit, JlptManagerState>(
+            buildWhen: (previous, current) => current is JlptManagerLoaded,
             builder: (context, state) {
-              if (state is JnptManagerLoaded) {
+              if (state is JlptManagerLoaded) {
                 return Expanded(
                   child: Container(
                     decoration: const BoxDecoration(
@@ -444,7 +444,7 @@ class _JnptManagerState extends State<JnptManager> {
                     ),
                     child: Column(
                       children: [
-                        _jnptTableHeader(),
+                        _jlptTableHeader(),
                         Expanded(
                           child: ListView.builder(
                             itemCount: state.levels.length,
@@ -467,7 +467,7 @@ class _JnptManagerState extends State<JnptManager> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Center(
-                      child: state is JnptManagerFailure
+                      child: state is JlptManagerFailure
                           ? Text(
                               state.message,
                               style: TextStyle(

@@ -102,7 +102,7 @@ class _KanjiManagerState extends State<KanjiManager> {
                 children: [
                   Expanded(
                     child: FilterSelectBox(
-                      hint: "JNPT",
+                      hint: "JLPT",
                       items: state is KanjiManagerLoaded
                           ? state.levels
                               .map(

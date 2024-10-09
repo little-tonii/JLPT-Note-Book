@@ -1,50 +1,50 @@
 import 'package:equatable/equatable.dart';
 import 'package:note_book_app/domain/entities/level_entity.dart';
 
-abstract class JnptManagerState extends Equatable {
-  const JnptManagerState();
+abstract class JlptManagerState extends Equatable {
+  const JlptManagerState();
 
   @override
   List<Object> get props => [];
 }
 
-class JnptManagerInitial extends JnptManagerState {}
+class JlptManagerInitial extends JlptManagerState {}
 
-class JnptManagerLoading extends JnptManagerState {}
+class JlptManagerLoading extends JlptManagerState {}
 
-class JnptManagerLoaded extends JnptManagerState {
+class JlptManagerLoaded extends JlptManagerState {
   final String searchValue;
   final List<LevelEntity> levels;
 
-  const JnptManagerLoaded({required this.levels, required this.searchValue});
+  const JlptManagerLoaded({required this.levels, required this.searchValue});
 
   @override
   List<Object> get props => [levels, searchValue];
 
-  JnptManagerLoaded copyWith({
+  JlptManagerLoaded copyWith({
     List<LevelEntity>? levels,
     String? searchValue,
   }) {
-    return JnptManagerLoaded(
+    return JlptManagerLoaded(
       levels: levels ?? this.levels,
       searchValue: searchValue ?? this.searchValue,
     );
   }
 }
 
-class JnptManagerFailure extends JnptManagerState {
+class JlptManagerFailure extends JlptManagerState {
   final String message;
 
-  const JnptManagerFailure({required this.message});
+  const JlptManagerFailure({required this.message});
 
   @override
   List<Object> get props => [message];
 }
 
-class JnptManagerSuccess extends JnptManagerState {
+class JlptManagerSuccess extends JlptManagerState {
   final String message;
 
-  const JnptManagerSuccess({required this.message});
+  const JlptManagerSuccess({required this.message});
 
   @override
   List<Object> get props => [message];
