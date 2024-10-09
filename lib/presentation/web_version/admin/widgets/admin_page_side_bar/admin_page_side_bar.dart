@@ -19,7 +19,7 @@ class AdminPageSideBar extends StatelessWidget {
       child: Column(
         children: [
           const UserInfor(),
-          ...["JNPT", "Bài học", "Hán tự", "Từ vựng", "Logs"]
+          ...["JLPT", "Bài học", "Hán tự", "Từ vựng", "Logs"]
               .asMap()
               .entries
               .map((entry) {

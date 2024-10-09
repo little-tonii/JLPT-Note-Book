@@ -2,21 +2,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/usecases/admin_logs/create_admin_log_usecase.dart';
 import 'package:note_book_app/domain/usecases/levels/create_level_usecase.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jnpt/create_new_jnpt_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jlpt/create_new_jlpt_state.dart';
 
-class CreateNewJnptCubit extends Cubit<CreateNewJnptState> {
+class CreateNewJlptCubit extends Cubit<CreateNewJlptState> {
   final CreateLevelUsecase _createLevelUsecase = getIt<CreateLevelUsecase>();
   final CreateAdminLogUsecase _createAdminLogUsecase =
       getIt<CreateAdminLogUsecase>();
 
-  CreateNewJnptCubit() : super(CreateNewJnptInitial());
+  CreateNewJlptCubit() : super(CreateNewJlptInitial());
 
   void init() {
-    emit(CreateNewJnptLoaded());
+    emit(CreateNewJlptLoaded());
   }
 
-  void createNewJnpt({required String level}) async {
-    emit(CreateNewJnptLoading());
+  void createNewJlpt({required String level}) async {
+    emit(CreateNewJlptLoading());
     final result = await _createLevelUsecase.call(level: level);
     result.fold(
       (failure) async {
@@ -25,16 +25,16 @@ class CreateNewJnptCubit extends Cubit<CreateNewJnptState> {
           action: "CREATE",
           actionStatus: "FAILED",
         );
-        emit(CreateNewJnptFailure(message: failure.message));
+        emit(CreateNewJlptFailure(message: failure.message));
       },
       (success) async {
-        String message = 'Tạo mới JNPT thành công';
+        String message = 'Tạo mới JLPT thành công';
         await _createAdminLogUsecase.call(
           action: 'CREATE',
           actionStatus: "SUCCESS",
           message: '${success.id} | $message',
         );
-        emit(CreateNewJnptSuccess(message: message, levelEntity: success));
+        emit(CreateNewJlptSuccess(message: message, levelEntity: success));
       },
     );
   }

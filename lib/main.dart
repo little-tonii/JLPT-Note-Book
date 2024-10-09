@@ -24,7 +24,7 @@ class NoteBookApp extends StatelessWidget {
       return MaterialApp.router(
         theme: AppThemes.defaultTheme,
         debugShowCheckedModeBanner: false,
-        title: "JNPT Note Book",
+        title: "JLPT Note Book",
         routerConfig: AppRoutes.goRouterConfig(),
       );
     }

@@ -5,9 +5,9 @@ import 'package:note_book_app/domain/usecases/admin_logs/create_admin_log_usecas
 import 'package:note_book_app/domain/usecases/kanjis/delete_kanjis_by_level_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/lessons/delete_lesson_by_level_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/levels/delete_level_by_id_usecase.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jnpt/delete_jnpt_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jlpt/delete_jlpt_state.dart';
 
-class DeleteJnptCubit extends Cubit<DeleteJnptState> {
+class DeleteJlptCubit extends Cubit<DeleteJlptState> {
   final CreateAdminLogUsecase _createAdminLogUsecase =
       getIt<CreateAdminLogUsecase>();
   final DeleteLevelByIdUsecase _deleteLevelByIdUsecase =
@@ -17,20 +17,20 @@ class DeleteJnptCubit extends Cubit<DeleteJnptState> {
   final DeleteLessonByLevelIdUsecase _deleteLessonByLevelIdUsecase =
       getIt<DeleteLessonByLevelIdUsecase>();
 
-  DeleteJnptCubit() : super(DeleteJnptInitial());
+  DeleteJlptCubit() : super(DeleteJlptInitial());
 
   void init() {
-    emit(DeleteJnptLoaded());
+    emit(DeleteJlptLoaded());
   }
 
-  void deleteJnpt({required LevelEntity jnpt}) async {
-    if (state is DeleteJnptLoaded) {
+  void deleteJlpt({required LevelEntity jlpt}) async {
+    if (state is DeleteJlptLoaded) {
       bool isContinue = true;
       int numKanjisDeleted = 0;
       int numLessonsDeleted = 0;
-      emit(DeleteJnptLoading());
+      emit(DeleteJlptLoading());
       final kanjisDeleted =
-          await _deleteKanjisByLevelIdUsecase.call(levelId: jnpt.id);
+          await _deleteKanjisByLevelIdUsecase.call(levelId: jlpt.id);
       kanjisDeleted.fold((failure) async {
         isContinue = false;
         await _createAdminLogUsecase.call(
@@ -38,13 +38,13 @@ class DeleteJnptCubit extends Cubit<DeleteJnptState> {
           actionStatus: 'FAILED',
           message: failure.message,
         );
-        emit(DeleteJnptFailure(message: failure.message));
+        emit(DeleteJlptFailure(message: failure.message));
       }, (success) {
         numKanjisDeleted = success;
       });
       if (isContinue) {
         final lessonsDeleted =
-            await _deleteLessonByLevelIdUsecase.call(levelId: jnpt.id);
+            await _deleteLessonByLevelIdUsecase.call(levelId: jlpt.id);
         lessonsDeleted.fold((failure) async {
           isContinue = false;
           await _createAdminLogUsecase.call(
@@ -52,13 +52,13 @@ class DeleteJnptCubit extends Cubit<DeleteJnptState> {
             actionStatus: 'FAILED',
             message: failure.message,
           );
-          emit(DeleteJnptFailure(message: failure.message));
+          emit(DeleteJlptFailure(message: failure.message));
         }, (success) {
           numLessonsDeleted = success;
         });
       }
       if (isContinue) {
-        final result = await _deleteLevelByIdUsecase.call(levelId: jnpt.id);
+        final result = await _deleteLevelByIdUsecase.call(levelId: jlpt.id);
         result.fold(
           (failure) async {
             await _createAdminLogUsecase.call(
@@ -66,17 +66,17 @@ class DeleteJnptCubit extends Cubit<DeleteJnptState> {
               actionStatus: 'FAILED',
               message: failure.message,
             );
-            emit(DeleteJnptFailure(message: failure.message));
+            emit(DeleteJlptFailure(message: failure.message));
           },
           (success) async {
-            String message = 'Xóa JNPT thành công';
+            String message = 'Xóa JLPT thành công';
             await _createAdminLogUsecase.call(
               action: 'DELETE',
               actionStatus: 'SUCCESS',
               message:
-                  '{ id: ${jnpt.id}, level: ${jnpt.level}, createdAt: ${jnpt.createdAt.toDate().toLocal().toString()} } | $message. Số kanji đã xóa: $numKanjisDeleted. Số bài học đã xóa: $numLessonsDeleted',
+                  '{ id: ${jlpt.id}, level: ${jlpt.level}, createdAt: ${jlpt.createdAt.toDate().toLocal().toString()} } | $message. Số kanji đã xóa: $numKanjisDeleted. Số bài học đã xóa: $numLessonsDeleted',
             );
-            emit(DeleteJnptSuccess(message: message, levelEntity: jnpt));
+            emit(DeleteJlptSuccess(message: message, levelEntity: jlpt));
           },
         );
       }

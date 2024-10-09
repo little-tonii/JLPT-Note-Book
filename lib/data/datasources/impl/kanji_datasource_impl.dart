@@ -164,7 +164,7 @@ class KanjiDatasourceImpl implements KanjiDatasource {
     } on FirebaseException catch (e) {
       log(e.toString());
       throw FirestoreFailure(
-          message: "Có lỗi xảy ra khi xóa các Kanji khi xoá JNPT");
+          message: "Có lỗi xảy ra khi xóa các Kanji khi xoá JLPT");
     } on Exception catch (e) {
       throw Exception(e);
     }

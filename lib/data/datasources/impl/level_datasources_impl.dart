@@ -26,7 +26,7 @@ class LevelDatasourcesImpl implements LevelDatasource {
       return levels;
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: "Có lỗi xảy ra khi truy cập tất cả JNPT");
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi truy cập tất cả JLPT");
     } on Exception catch (e) {
       throw Exception(e);
     }
@@ -47,7 +47,7 @@ class LevelDatasourcesImpl implements LevelDatasource {
       }
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: "Có lỗi xảy ra khi truy cập JNPT");
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi truy cập JLPT");
     } on Exception catch (e) {
       throw Exception(e);
     }
@@ -68,7 +68,7 @@ class LevelDatasourcesImpl implements LevelDatasource {
       });
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: "Có lỗi xảy ra khi tạo JNPT");
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi tạo JLPT");
     } on Exception catch (e) {
       throw Exception(e);
     }
@@ -81,7 +81,7 @@ class LevelDatasourcesImpl implements LevelDatasource {
       return true;
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: "Có lỗi xảy ra khi xóa JNPT");
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi xóa JLPT");
     } on Exception catch (e) {
       throw Exception(e);
     }

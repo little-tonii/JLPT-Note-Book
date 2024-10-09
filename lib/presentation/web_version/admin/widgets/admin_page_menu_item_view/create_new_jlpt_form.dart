@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jnpt/create_new_jnpt_cubit.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jnpt/create_new_jnpt_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jlpt/create_new_jlpt_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jlpt/create_new_jlpt_state.dart';
 
-class CreateNewJnptForm extends StatefulWidget {
-  const CreateNewJnptForm({super.key});
+class CreateNewJlptForm extends StatefulWidget {
+  const CreateNewJlptForm({super.key});
 
   @override
-  State<CreateNewJnptForm> createState() => _CreateNewJnptFormState();
+  State<CreateNewJlptForm> createState() => _CreateNewJlptFormState();
 }
 
-class _CreateNewJnptFormState extends State<CreateNewJnptForm> {
+class _CreateNewJlptFormState extends State<CreateNewJlptForm> {
   late TextEditingController _titleController;
 
   @override
@@ -27,10 +27,10 @@ class _CreateNewJnptFormState extends State<CreateNewJnptForm> {
     super.dispose();
   }
 
-  void _handleCreateNewJnpt() {
+  void _handleCreateNewJlpt() {
     context
-        .read<CreateNewJnptCubit>()
-        .createNewJnpt(level: _titleController.text);
+        .read<CreateNewJlptCubit>()
+        .createNewJlpt(level: _titleController.text);
   }
 
   Widget _dataField({
@@ -156,18 +156,18 @@ class _CreateNewJnptFormState extends State<CreateNewJnptForm> {
         borderRadius: BorderRadius.circular(8),
         color: AppColors.kF8EDE3,
       ),
-      child: BlocBuilder<CreateNewJnptCubit, CreateNewJnptState>(
+      child: BlocBuilder<CreateNewJlptCubit, CreateNewJlptState>(
         buildWhen: (previous, current) =>
-            current is CreateNewJnptLoading || current is CreateNewJnptLoaded,
+            current is CreateNewJlptLoading || current is CreateNewJlptLoaded,
         builder: (context, state) {
-          if (state is CreateNewJnptLoading) {
+          if (state is CreateNewJlptLoading) {
             return const Center(
               child: CircularProgressIndicator(
                 color: AppColors.kDFD3C3,
               ),
             );
           }
-          if (state is CreateNewJnptLoaded) {
+          if (state is CreateNewJlptLoaded) {
             return Column(
               children: [
                 Expanded(
@@ -192,7 +192,7 @@ class _CreateNewJnptFormState extends State<CreateNewJnptForm> {
                         Expanded(
                           child: _actionButton(
                             text: 'Xác nhận',
-                            onPressed: _handleCreateNewJnpt,
+                            onPressed: _handleCreateNewJlpt,
                           ),
                         ),
                         const SizedBox(width: 8),

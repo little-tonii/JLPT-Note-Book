@@ -3,19 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/domain/entities/level_entity.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jnpt/delete_jnpt_cubit.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jnpt/delete_jnpt_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jlpt/delete_jlpt_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jlpt/delete_jlpt_state.dart';
 
-class DeleteJnptForm extends StatefulWidget {
-  final LevelEntity jnpt;
+class DeleteJlptForm extends StatefulWidget {
+  final LevelEntity jlpt;
 
-  const DeleteJnptForm({super.key, required this.jnpt});
+  const DeleteJlptForm({super.key, required this.jlpt});
 
   @override
-  State<DeleteJnptForm> createState() => _DeleteJnptFormState();
+  State<DeleteJlptForm> createState() => _DeleteJlptFormState();
 }
 
-class _DeleteJnptFormState extends State<DeleteJnptForm> {
+class _DeleteJlptFormState extends State<DeleteJlptForm> {
   late TextEditingController _confirmController;
 
   @override
@@ -70,9 +70,9 @@ class _DeleteJnptFormState extends State<DeleteJnptForm> {
         borderRadius: BorderRadius.circular(8),
         color: AppColors.kF8EDE3,
       ),
-      child: BlocBuilder<DeleteJnptCubit, DeleteJnptState>(
+      child: BlocBuilder<DeleteJlptCubit, DeleteJlptState>(
         buildWhen: (previous, current) =>
-            current is DeleteJnptLoaded || current is DeleteJnptLoading,
+            current is DeleteJlptLoaded || current is DeleteJlptLoading,
         builder: (context, state) {
           return Column(
             children: [
@@ -86,7 +86,7 @@ class _DeleteJnptFormState extends State<DeleteJnptForm> {
                           Expanded(
                             child: Text(
                               textAlign: TextAlign.center,
-                              'Bạn có chắc chắn muốn xoá JNPT này?',
+                              'Bạn có chắc chắn muốn xoá JLPT này?',
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -98,7 +98,7 @@ class _DeleteJnptFormState extends State<DeleteJnptForm> {
                       ),
                     ),
                     Expanded(
-                      child: state is DeleteJnptLoading
+                      child: state is DeleteJlptLoading
                           ? const Center(
                               child: CircularProgressIndicator(
                                 color: AppColors.kDFD3C3,
@@ -108,7 +108,7 @@ class _DeleteJnptFormState extends State<DeleteJnptForm> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  widget.jnpt.level,
+                                  widget.jlpt.level,
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -150,7 +150,7 @@ class _DeleteJnptFormState extends State<DeleteJnptForm> {
                                         fontSize: 16,
                                       ),
                                       hintText:
-                                          "Nhập \"${widget.jnpt.level}\" để xác nhận",
+                                          "Nhập \"${widget.jlpt.level}\" để xác nhận",
                                     ),
                                   ),
                                 ),
@@ -171,11 +171,11 @@ class _DeleteJnptFormState extends State<DeleteJnptForm> {
                         child: _customButtonForm(
                           text: 'Xác nhận',
                           onPressed: () => {
-                            if (_confirmController.text == widget.jnpt.level)
+                            if (_confirmController.text == widget.jlpt.level)
                               {
                                 context
-                                    .read<DeleteJnptCubit>()
-                                    .deleteJnpt(jnpt: widget.jnpt),
+                                    .read<DeleteJlptCubit>()
+                                    .deleteJlpt(jlpt: widget.jlpt),
                               }
                           },
                         ),
