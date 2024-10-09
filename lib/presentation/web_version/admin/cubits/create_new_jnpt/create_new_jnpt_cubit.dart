@@ -28,7 +28,7 @@ class CreateNewJnptCubit extends Cubit<CreateNewJnptState> {
         emit(CreateNewJnptFailure(message: failure.message));
       },
       (success) async {
-        String message = 'Tạo JNPT thành công';
+        String message = 'Tạo mới JNPT thành công';
         await _createAdminLogUsecase.call(
           action: 'CREATE',
           actionStatus: "SUCCESS",
