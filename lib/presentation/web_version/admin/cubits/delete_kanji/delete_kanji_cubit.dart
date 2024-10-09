@@ -50,19 +50,18 @@ class DeleteKanjiCubit extends Cubit<DeleteKanjiState> {
     emit(DeleteKanjiLoading());
     final result = await _deleteKanjiByIdUsecase.call(id: kanjiId);
     result.fold(
-      (failure) {
-        String message = 'Có lỗi xảy ra khi xoá Kanji';
-        _createAdminLogUsecase.call(
-          message: '$kanjiId | $message',
+      (failure) async {
+        await _createAdminLogUsecase.call(
+          message: '$kanjiId | ${failure.message}',
           action: "DELETE",
-          actionStatus: "FAIL",
+          actionStatus: "FAILED",
         );
-        emit(DeleteKanjiFailure(message: message));
+        emit(DeleteKanjiFailure(message: failure.message));
       },
-      (result) {
+      (result) async {
         if (result) {
           String message = 'Xoá Kanji thành công';
-          _createAdminLogUsecase.call(
+          await _createAdminLogUsecase.call(
             message:
                 '{ id: "$id", kanji: "$kanji", kun: "$kun", on: "$on", viet: "$viet", createdAt: "$createdAt" } | $message',
             action: "DELETE",
@@ -76,10 +75,10 @@ class DeleteKanjiCubit extends Cubit<DeleteKanjiState> {
           );
         } else {
           String message = 'Xoá Kanji thất bại';
-          _createAdminLogUsecase.call(
+          await _createAdminLogUsecase.call(
             message: '$kanjiId | $message',
             action: "DELETE",
-            actionStatus: "FAIL",
+            actionStatus: "FAILED",
           );
           emit(DeleteKanjiFailure(message: message));
         }

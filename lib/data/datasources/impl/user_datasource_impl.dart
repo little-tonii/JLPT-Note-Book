@@ -47,7 +47,7 @@ class UserDatasourceImpl implements UserDatasource {
       } else if (e.code == 'user-not-found') {
         throw AuthenticationFailure(message: "Người dùng không tồn tại");
       } else {
-        throw FirestoreFailure(message: e.message.toString());
+        throw FirestoreFailure(message: "Có lỗi xảy ra khi đăng nhập");
       }
     } catch (e) {
       log(e.toString());
@@ -62,7 +62,7 @@ class UserDatasourceImpl implements UserDatasource {
       return true;
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: e.message.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi đăng xuất");
     } catch (e) {
       throw Exception(e);
     }
@@ -86,7 +86,7 @@ class UserDatasourceImpl implements UserDatasource {
       });
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: e.message.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi kiểm tra trạng thái đăng nhập");
     } catch (e) {
       throw Exception(e);
     }
@@ -110,7 +110,7 @@ class UserDatasourceImpl implements UserDatasource {
       });
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: e.message.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi lấy thông tin người dùng");
     } catch (e) {
       throw Exception(e);
     }

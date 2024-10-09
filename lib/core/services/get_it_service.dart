@@ -40,6 +40,7 @@ import 'package:note_book_app/domain/usecases/kanjis/update_kanji_by_id_usecase.
 import 'package:note_book_app/domain/usecases/kunyomis/create_kunyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/delete_kunyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/update_kunyomi_by_kanji_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/levels/create_level_usecase.dart';
 
 import 'package:note_book_app/domain/usecases/onyomis/create_onyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/onyomis/delete_onyomi_by_kanji_id_usecase.dart';
@@ -298,6 +299,12 @@ Future<void> initializeDependencies() async {
   getIt.registerLazySingleton<DeleteOnyomiByKanjiIdUsecase>(
     () => DeleteOnyomiByKanjiIdUsecase(
       onyomiRepository: getIt<OnyomiRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<CreateLevelUsecase>(
+    () => CreateLevelUsecase(
+      levelRepository: getIt<LevelRepository>(),
     ),
   );
 

@@ -69,7 +69,7 @@ class KanjiDatasourceImpl implements KanjiDatasource {
       return kanjiList;
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: e.message.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi truy cập Kanji");
     } on Exception catch (e) {
       throw Exception(e);
     }
@@ -105,7 +105,7 @@ class KanjiDatasourceImpl implements KanjiDatasource {
       });
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: e.message.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi tạo Kanji");
     } on Exception catch (e) {
       throw Exception(e);
     }

@@ -33,7 +33,7 @@ class KunyomiDatasourceImpl implements KunyomiDatasource {
       return kuns;
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: e.message.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi truy cập Kunyomi");
     } on Exception {
       throw UnknownFailure();
     }
