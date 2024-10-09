@@ -8,9 +8,12 @@ import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/level_entity.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jnpt/create_new_jnpt_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jnpt/create_new_jnpt_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jnpt/delete_jnpt_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jnpt/delete_jnpt_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/jnpt_manager/jnpt_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/jnpt_manager/jnpt_manager_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/create_new_jnpt_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/delete_jnpt_form.dart';
 
 class JnptManager extends StatefulWidget {
   const JnptManager({super.key});
@@ -20,9 +23,11 @@ class JnptManager extends StatefulWidget {
 }
 
 class _JnptManagerState extends State<JnptManager> {
+  late JnptManagerCubit _jnptManagerCubit;
+
   @override
   void initState() {
-    context.read<JnptManagerCubit>().init();
+    _jnptManagerCubit = context.read<JnptManagerCubit>()..init();
     super.initState();
   }
 
@@ -51,6 +56,9 @@ class _JnptManagerState extends State<JnptManager> {
               child: BlocListener<CreateNewJnptCubit, CreateNewJnptState>(
                 child: const CreateNewJnptForm(),
                 listener: (BuildContext context, CreateNewJnptState state) {
+                  if (state is CreateNewJnptSuccess) {
+                    _jnptManagerCubit.addJnptListView(jnpt: state.levelEntity);
+                  }
                   if (state is CreateNewJnptSuccess ||
                       state is CreateNewJnptFailure) {
                     context.pop();
@@ -59,6 +67,56 @@ class _JnptManagerState extends State<JnptManager> {
               ),
             ),
           );
+        },
+      ),
+    );
+  }
+
+  void _handleShowDeleteJnptForm({required LevelEntity level}) {
+    showDialog(
+      context: context,
+      builder: (context) => LayoutBuilder(
+        builder: (context, constraints) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (!ResponsiveUtil.isDesktop(context)) {
+              context.pop();
+            }
+          });
+          return Dialog(
+            child: BlocProvider<DeleteJnptCubit>(
+              create: (context) => getIt<DeleteJnptCubit>()..init(),
+              child: BlocListener<DeleteJnptCubit, DeleteJnptState>(
+                listener: (context, state) {
+                  if (state is DeleteJnptSuccess) {
+                    _jnptManagerCubit.removeJnptListView(
+                      jnptId: state.levelEntity.id,
+                    );
+                  }
+                  if (state is DeleteJnptSuccess ||
+                      state is DeleteJnptFailure) {
+                    context.pop();
+                  }
+                },
+                child: const DeleteJnptForm(),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  void _handleShowEditJnptForm({required LevelEntity level}) {
+    showDialog(
+      context: context,
+      builder: (context) => LayoutBuilder(
+        builder: (context, constraints) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (!ResponsiveUtil.isDesktop(context)) {
+              context.pop();
+            }
+          });
+          return Dialog();
         },
       ),
     );
@@ -95,7 +153,7 @@ class _JnptManagerState extends State<JnptManager> {
               ),
             ),
             Expanded(
-              flex: 6,
+              flex: 8,
               child: Container(
                 decoration: const BoxDecoration(
                   color: AppColors.kDFD3C3,
@@ -232,7 +290,7 @@ class _JnptManagerState extends State<JnptManager> {
             ),
           ),
           Expanded(
-            flex: 6,
+            flex: 8,
             child: Container(
               decoration: const BoxDecoration(
                 border: Border(
@@ -244,7 +302,7 @@ class _JnptManagerState extends State<JnptManager> {
               child: Text(
                 level.level,
                 style: const TextStyle(fontSize: 16),
-                textAlign: TextAlign.start,
+                textAlign: TextAlign.center,
               ),
             ),
           ),
@@ -280,7 +338,7 @@ class _JnptManagerState extends State<JnptManager> {
                     backgroundColor: WidgetStatePropertyAll(
                         AppColors.kF8EDE3.withOpacity(0.8)),
                   ),
-                  onPressed: () {},
+                  onPressed: () => _handleShowEditJnptForm(level: level),
                   child: Text(
                     textAlign: TextAlign.center,
                     'Sửa',
@@ -325,7 +383,7 @@ class _JnptManagerState extends State<JnptManager> {
                     backgroundColor: WidgetStatePropertyAll(
                         AppColors.kF8EDE3.withOpacity(0.8)),
                   ),
-                  onPressed: () {},
+                  onPressed: () => _handleShowDeleteJnptForm(level: level),
                   child: Text(
                     textAlign: TextAlign.center,
                     'Xoá',

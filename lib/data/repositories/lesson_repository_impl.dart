@@ -11,10 +11,12 @@ class LessonRepositoryImpl implements LessonRepository {
   const LessonRepositoryImpl({required this.lessonDatasource});
 
   @override
-  Future<Either<Failure, List<LessonEntity>>> getAllLessonsByLevel(
-      {required String level}) async {
+  Future<Either<Failure, List<LessonEntity>>> getAllLessonsByLevelId(
+      {required String levelId}) async {
     try {
-      final result = await lessonDatasource.getAllLessonsByLevel(level: level);
+      final result = await lessonDatasource.getAllLessonsByLevelId(
+        levelId: levelId,
+      );
       return Right(
         result.map((lesson) => lesson.toEntity()).toList(),
       );

@@ -12,6 +12,8 @@ class CreateNewJnptInitial extends CreateNewJnptState {}
 
 class CreateNewJnptLoading extends CreateNewJnptState {}
 
+class CreateNewJnptLoaded extends CreateNewJnptState {}
+
 class CreateNewJnptFailure extends CreateNewJnptState {
   final String message;
 

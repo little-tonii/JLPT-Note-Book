@@ -33,8 +33,8 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
         if (_scrollController.offset >=
                 _scrollController.position.maxScrollExtent &&
             !_scrollController.position.outOfRange) {
-          _kanjiPageWebCubit.getAllKanjisByLevel(
-            levelId: widget.lesson.level,
+          _kanjiPageWebCubit.getAllKanjisByLevelId(
+            levelId: widget.lesson.levelId,
             hanVietSearchKey: _searchController.text,
           );
         }
@@ -51,8 +51,8 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
   }
 
   void _handleSearchKanjis() {
-    _kanjiPageWebCubit.getAllKanjisByLevel(
-      levelId: widget.lesson.level,
+    _kanjiPageWebCubit.getAllKanjisByLevelId(
+      levelId: widget.lesson.levelId,
       hanVietSearchKey: _searchController.text,
       refresh: true,
     );
@@ -64,8 +64,8 @@ class _KanjiPageWebState extends State<KanjiPageWeb> {
       providers: [
         BlocProvider<KanjiPageWebCubit>(
           create: (context) => _kanjiPageWebCubit
-            ..getAllKanjisByLevel(
-              levelId: widget.lesson.level,
+            ..getAllKanjisByLevelId(
+              levelId: widget.lesson.levelId,
               hanVietSearchKey: _searchController.text,
               refresh: true,
             ),

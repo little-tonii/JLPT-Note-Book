@@ -12,7 +12,7 @@ class CreateNewJnptCubit extends Cubit<CreateNewJnptState> {
   CreateNewJnptCubit() : super(CreateNewJnptInitial());
 
   void init() {
-    emit(CreateNewJnptInitial());
+    emit(CreateNewJnptLoaded());
   }
 
   void createNewJnpt({required String level}) async {

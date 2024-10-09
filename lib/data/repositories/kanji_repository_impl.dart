@@ -11,15 +11,15 @@ class KanjiRepositoryImpl implements KanjiRepository {
   const KanjiRepositoryImpl({required this.kanjiDatasource});
 
   @override
-  Future<Either<Failure, List<KanjiEntity>>> getAllKanjisByLevel({
-    required String level,
+  Future<Either<Failure, List<KanjiEntity>>> getAllKanjisByLevelId({
+    required String levelId,
     required int pageSize,
     required int pageNumber,
     required String hanVietSearchKey,
   }) async {
     try {
-      final kanjis = await kanjiDatasource.getAllKanjisByLevel(
-        level: level,
+      final kanjis = await kanjiDatasource.getAllKanjisByLevelId(
+        levelId: levelId,
         pageSize: pageSize,
         pageNumber: pageNumber,
         hanVietSearchKey: hanVietSearchKey,
@@ -33,20 +33,20 @@ class KanjiRepositoryImpl implements KanjiRepository {
   }
 
   @override
-  Future<Either<Failure, KanjiEntity>> createKanjjByLevel({
-    required String level,
+  Future<Either<Failure, KanjiEntity>> createKanjjByLevelId({
+    required String levelId,
     required String kanji,
     required String kun,
     required String on,
     required String viet,
   }) async {
     try {
-      final kanjiCreated = await kanjiDatasource.createKanjiByLevel(
-        level: level,
+      final kanjiCreated = await kanjiDatasource.createKanjiByLevelId(
         kanji: kanji,
         kun: kun,
         on: on,
         viet: viet,
+        levelId: levelId,
       );
       return Right(kanjiCreated.toEntity());
     } on Failure catch (e) {

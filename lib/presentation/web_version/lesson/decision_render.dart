@@ -28,7 +28,7 @@ class DecisionRender extends StatelessWidget {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               SystemChrome.setApplicationSwitcherDescription(
                 ApplicationSwitcherDescription(
-                  label: '${state.lesson.level} | ${state.lesson.lesson}',
+                  label: '${state.level.level} | ${state.lesson.lesson}',
                 ),
               );
             });
@@ -38,7 +38,7 @@ class DecisionRender extends StatelessWidget {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               SystemChrome.setApplicationSwitcherDescription(
                 ApplicationSwitcherDescription(
-                  label: '${state.lesson.level} | ${state.lesson.lesson}',
+                  label: '${state.level.level} | ${state.lesson.lesson}',
                 ),
               );
             });

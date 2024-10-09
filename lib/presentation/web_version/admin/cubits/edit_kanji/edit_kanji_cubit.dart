@@ -232,6 +232,7 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
                 EditKanjiSuccess(
                   message: message,
                   kanji: KanjiEntity(
+                    levelId: updatingKanji.levelId,
                     id: updatingKanji.id,
                     kanji: kanji,
                     kun: kun,
@@ -259,6 +260,7 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
     emit(
       EditKanjiLoaded(
         kanji: KanjiEntity(
+          levelId: 'null',
           id: id,
           kanji: kanji,
           kun: kun,

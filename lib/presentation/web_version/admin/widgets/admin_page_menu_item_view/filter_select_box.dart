@@ -4,7 +4,7 @@ import 'package:note_book_app/common/colors/app_colors.dart';
 
 class FilterSelectBox extends StatefulWidget {
   final String hint;
-  final List<String> items;
+  final List<Map<String, String>> items;
   final Function(String) onChanged;
 
   const FilterSelectBox({
@@ -62,9 +62,9 @@ class _FilterSelectBoxState extends State<FilterSelectBox> {
         items: widget.items
             .map(
               (item) => DropdownMenuItem<String>(
-                value: item,
+                value: item['value'],
                 child: Text(
-                  item,
+                  item['label']!,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

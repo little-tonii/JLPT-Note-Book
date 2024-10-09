@@ -30,13 +30,13 @@ class _LevelPageWebState extends State<LevelPageWeb> {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 SystemChrome.setApplicationSwitcherDescription(
                   ApplicationSwitcherDescription(
-                    label: state.title,
+                    label: state.level.level,
                   ),
                 );
               });
               context
                   .read<LevelPageWebCubit>()
-                  .getAllLessonsByLevel(level: state.title);
+                  .getAllLessonsByLevelId(levelId: levelId);
             }
           },
           builder: (context, state) {
@@ -61,10 +61,16 @@ class _LevelPageWebState extends State<LevelPageWeb> {
                   if (index != state.lessons.length - 1) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 16),
-                      child: LessonCard(lesson: state.lessons[index]),
+                      child: LessonCard(
+                        lesson: state.lessons[index],
+                        level: state.level,
+                      ),
                     );
                   }
-                  return LessonCard(lesson: state.lessons[index]);
+                  return LessonCard(
+                    lesson: state.lessons[index],
+                    level: state.level,
+                  );
                 },
               );
             }

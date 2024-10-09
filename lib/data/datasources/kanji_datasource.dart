@@ -1,15 +1,15 @@
 import 'package:note_book_app/data/models/kanji_model.dart';
 
 abstract class KanjiDatasource {
-  Future<List<KanjiModel>> getAllKanjisByLevel({
-    required String level,
+  Future<List<KanjiModel>> getAllKanjisByLevelId({
+    required String levelId,
     required int pageSize,
     required int pageNumber,
     required String hanVietSearchKey,
   });
 
-  Future<KanjiModel> createKanjiByLevel({
-    required String level,
+  Future<KanjiModel> createKanjiByLevelId({
+    required String levelId,
     required String kanji,
     required String kun,
     required String on,

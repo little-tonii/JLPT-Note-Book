@@ -11,26 +11,27 @@ class LessonDatasourceImpl implements LessonDatasource {
   const LessonDatasourceImpl({required this.firebaseFirestore});
 
   @override
-  Future<List<LessonModel>> getAllLessonsByLevel(
-      {required String level}) async {
+  Future<List<LessonModel>> getAllLessonsByLevelId(
+      {required String levelId}) async {
     try {
       final queryResult = await firebaseFirestore
           .collection('lessons')
-          .where('level', isEqualTo: level)
+          .where('levelId', isEqualTo: levelId)
           .orderBy('createdAt')
           .get();
       final lessons = queryResult.docs
           .map((lesson) => LessonModel.fromJson({
                 'id': lesson.id,
                 'lesson': lesson.data()['lesson'],
-                'level': lesson.data()['level'],
                 'createdAt': lesson.data()['createdAt'],
+                'levelId': lesson.data()['levelId'],
               }))
           .toList();
       return lessons;
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: "Có lỗi xảy ra khi truy cập bài học theo JNPT");
+      throw FirestoreFailure(
+          message: "Có lỗi xảy ra khi truy cập bài học theo JNPT");
     } on Exception catch (e) {
       throw Exception(e);
     }
@@ -44,8 +45,8 @@ class LessonDatasourceImpl implements LessonDatasource {
       return LessonModel.fromJson({
         'id': lesson.id,
         'lesson': lesson.data()!['lesson'],
-        'level': lesson.data()!['level'],
         'createdAt': lesson.data()!['createdAt'],
+        'levelId': lesson.data()!['levelId'],
       });
     } on FirebaseException catch (e) {
       log(e.toString());

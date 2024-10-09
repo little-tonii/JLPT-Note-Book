@@ -1,18 +1,18 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/kanji_entity.dart';
-import 'package:note_book_app/domain/usecases/kanjis/get_all_kanjis_by_level_usecase.dart';
+import 'package:note_book_app/domain/usecases/kanjis/get_all_kanjis_by_level_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/levels/get_all_levels_usecase.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_state.dart';
 
 class KanjiManagerCubit extends Cubit<KanjiManagerState> {
   final GetAllLevelsUsecase _getAllLevelsUsecase = getIt<GetAllLevelsUsecase>();
-  final GetAllKanjisByLevelUsecase _getAllKanjisByLevelUsecase =
-      getIt<GetAllKanjisByLevelUsecase>();
+  final GetAllKanjisByLevelIdUsecase _getAllKanjisByLevelIdUsecase =
+      getIt<GetAllKanjisByLevelIdUsecase>();
 
   KanjiManagerCubit() : super(KanjiManagerInitial());
 
-  void updateFilterChoice({String? level}) async {
+  void updateFilterChoice({String? levelId}) async {
     if (state is KanjiManagerInitial) {
       final levels = await _getAllLevelsUsecase.call();
       levels.fold(
@@ -25,12 +25,12 @@ class KanjiManagerCubit extends Cubit<KanjiManagerState> {
       );
     }
     if (state is KanjiManagerLoaded) {
-      String levelFilter = level ?? '';
+      String levelFilter = levelId ?? '';
       if (levelFilter.isNotEmpty) {
-        final kanjis = await _getAllKanjisByLevelUsecase.call(
+        final kanjis = await _getAllKanjisByLevelIdUsecase.call(
           pageNumber: 0,
           pageSize: 20,
-          level: levelFilter,
+          levelId: levelFilter,
           hanVietSearchKey: '',
         );
         kanjis.fold(
@@ -57,8 +57,8 @@ class KanjiManagerCubit extends Cubit<KanjiManagerState> {
     if (state is KanjiManagerLoaded) {
       final currentState = state as KanjiManagerLoaded;
       if (refresh) {
-        final kanjis = await _getAllKanjisByLevelUsecase.call(
-          level: currentState.levelFilterState,
+        final kanjis = await _getAllKanjisByLevelIdUsecase.call(
+          levelId: currentState.levelFilterState,
           pageNumber: 0,
           pageSize: 20,
           hanVietSearchKey: hanVietSearchKey,
@@ -77,8 +77,8 @@ class KanjiManagerCubit extends Cubit<KanjiManagerState> {
         );
       } else {
         if (!currentState.hasReachedMax) {
-          final kanjis = await _getAllKanjisByLevelUsecase.call(
-            level: currentState.levelFilterState,
+          final kanjis = await _getAllKanjisByLevelIdUsecase.call(
+            levelId: currentState.levelFilterState,
             pageNumber: currentState.kanjis.length ~/ 20 + 1,
             pageSize: 20,
             hanVietSearchKey: hanVietSearchKey,
