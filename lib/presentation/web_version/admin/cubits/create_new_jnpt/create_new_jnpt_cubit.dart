@@ -32,7 +32,7 @@ class CreateNewJnptCubit extends Cubit<CreateNewJnptState> {
         await _createAdminLogUsecase.call(
           action: 'CREATE',
           actionStatus: "SUCCESS",
-          message: message,
+          message: '${success.id} | $message',
         );
         emit(CreateNewJnptSuccess(message: message, levelEntity: success));
       },
