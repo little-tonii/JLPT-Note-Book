@@ -7,7 +7,7 @@ class KanjiModel {
   final String kun;
   final String on;
   final String viet;
-  final String level;
+  final String levelId;
   final Timestamp createdAt;
 
   const KanjiModel({
@@ -16,7 +16,7 @@ class KanjiModel {
     required this.kun,
     required this.on,
     required this.viet,
-    required this.level,
+    required this.levelId,
     required this.createdAt,
   });
 
@@ -27,13 +27,14 @@ class KanjiModel {
       kun: json['kun'],
       on: json['on'],
       viet: json['viet'],
-      level: json['level'],
+      levelId: json['levelId'],
       createdAt: json['createdAt'],
     );
   }
 
   KanjiEntity toEntity() {
     return KanjiEntity(
+      levelId: levelId,
       id: id,
       kanji: kanji,
       kun: kun,

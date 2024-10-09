@@ -3,19 +3,19 @@ import 'package:note_book_app/core/failures/failure.dart';
 import 'package:note_book_app/domain/entities/kanji_entity.dart';
 import 'package:note_book_app/domain/repositories/kanji_repository.dart';
 
-class GetAllKanjisByLevelUsecase {
+class GetAllKanjisByLevelIdUsecase {
   final KanjiRepository kanjiRepository;
 
-  const GetAllKanjisByLevelUsecase({required this.kanjiRepository});
+  const GetAllKanjisByLevelIdUsecase({required this.kanjiRepository});
 
   Future<Either<Failure, List<KanjiEntity>>> call({
-    required String level,
+    required String levelId,
     required int pageSize,
     required int pageNumber,
     required String hanVietSearchKey,
   }) async {
-    return await kanjiRepository.getAllKanjisByLevel(
-      level: level,
+    return await kanjiRepository.getAllKanjisByLevelId(
+      levelId: levelId,
       pageNumber: pageNumber,
       pageSize: pageSize,
       hanVietSearchKey: hanVietSearchKey,

@@ -66,24 +66,23 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
         id: updatingKanji.id,
       );
       updatedKanji.fold(
-        (failure) {
-          String message = 'Có lỗi xảy ra khi cập nhật Kanji';
-          emit(EditKanjiFailure(message: failure.message));
-          _createAdminLogUsecase.call(
-            message: '${updatingKanji.id} | $message',
+        (failure) async {
+          await _createAdminLogUsecase.call(
+            message: '${updatingKanji.id} | ${failure.message}',
             action: "UPDATE",
-            actionStatus: "FAIL",
+            actionStatus: "FAILED",
           );
+          emit(EditKanjiFailure(message: failure.message));
         },
         (success) async {
           if (!success) {
             String message = 'Cập nhật Kanji không thành công';
-            emit(EditKanjiFailure(message: message));
-            _createAdminLogUsecase.call(
+            await _createAdminLogUsecase.call(
               message: '${updatingKanji.id} | $message',
               action: "UPDATE",
-              actionStatus: "FAIL",
+              actionStatus: "FAILED",
             );
+            emit(EditKanjiFailure(message: message));
           } else {
             int kunyomiFailure = 0;
             int onyomiFailure = 0;
@@ -169,13 +168,13 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
             }
             if (kunyomiFailure > 0 || onyomiFailure > 0) {
               String message = 'Có lỗi xảy ra khi cập nhật Kunyomi hoặc Onyomi';
-              emit(EditKanjiFailure(message: message));
-              _createAdminLogUsecase.call(
+              await _createAdminLogUsecase.call(
                 message:
                     '${updatingKanji.id} | $message. $kunyomiFailure lỗi khi cập nhật Kunyomi, $onyomiFailure lỗi khi cập nhật Onyomi',
                 action: "UPDATE",
-                actionStatus: "FAIL",
+                actionStatus: "FAILED",
               );
+              emit(EditKanjiFailure(message: message));
             }
             for (int i = 0; i < currentState.kunyomisToDelete.length; i++) {
               final kunyomiDeleted = await _deleteKunyomiByKanjiIdUsecase.call(
@@ -211,23 +210,29 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
             }
             if (kunyomiDeleteFaliure > 0 || onyomiDeleteFailure > 0) {
               String message = 'Có lỗi xảy ra khi xoá Kunyomi hoặc Onyomi';
-              emit(EditKanjiFailure(message: message));
-              _createAdminLogUsecase.call(
+              await _createAdminLogUsecase.call(
                 message:
                     '${updatingKanji.id} | $message. $kunyomiDeleteFaliure lỗi khi xoá Kunyomi, $onyomiDeleteFailure lỗi khi xoá Onyomi',
                 action: "UPDATE",
-                actionStatus: "FAIL",
+                actionStatus: "FAILED",
               );
+              emit(EditKanjiFailure(message: message));
             }
             if (onyomiFailure == 0 &&
                 kunyomiFailure == 0 &&
                 kunyomiDeleteFaliure == 0 &&
                 onyomiDeleteFailure == 0) {
               String message = 'Cập nhật Kanji thành công';
+              await _createAdminLogUsecase.call(
+                message: '${updatingKanji.id} | $message',
+                action: "UPDATE",
+                actionStatus: "SUCCESS",
+              );
               emit(
                 EditKanjiSuccess(
                   message: message,
                   kanji: KanjiEntity(
+                    levelId: updatingKanji.levelId,
                     id: updatingKanji.id,
                     kanji: kanji,
                     kun: kun,
@@ -236,11 +241,6 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
                     createdAt: updatingKanji.createdAt,
                   ),
                 ),
-              );
-              _createAdminLogUsecase.call(
-                message: '${updatingKanji.id} | $message',
-                action: "UPDATE",
-                actionStatus: "SUCCESS",
               );
             }
           }
@@ -260,6 +260,7 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
     emit(
       EditKanjiLoaded(
         kanji: KanjiEntity(
+          levelId: 'null',
           id: id,
           kanji: kanji,
           kun: kun,
@@ -305,7 +306,7 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
       await _createAdminLogUsecase.call(
         message: '$id | Lỗi khi đọc Onyomis',
         action: "GET",
-        actionStatus: "FAIL",
+        actionStatus: "FAILED",
       );
     }
 
@@ -313,7 +314,7 @@ class EditKanjiCubit extends Cubit<EditKanjiState> {
       await _createAdminLogUsecase.call(
         message: '$id | Lỗi khi đọc Kunyomis',
         action: "GET",
-        actionStatus: "FAIL",
+        actionStatus: "FAILED",
       );
     }
 

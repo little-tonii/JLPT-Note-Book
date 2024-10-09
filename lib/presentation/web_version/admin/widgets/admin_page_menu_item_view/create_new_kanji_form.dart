@@ -7,9 +7,9 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji_manager_button.dart';
 
 class CreateNewKanjiForm extends StatefulWidget {
-  final String level;
+  final String levelId;
 
-  const CreateNewKanjiForm({super.key, required this.level});
+  const CreateNewKanjiForm({super.key, required this.levelId});
 
   @override
   State<CreateNewKanjiForm> createState() => _CreateNewKanjiFormState();
@@ -186,7 +186,7 @@ class _CreateNewKanjiFormState extends State<CreateNewKanjiForm> {
 
   void _handleConfirmCreateKanji() {
     context.read<CreateKanjiCubit>().createKanji(
-          level: widget.level,
+          levelId: widget.levelId,
           kanji: _kanjiController.text,
           viet: _hanVietController.text,
           kun: _kunController.text,

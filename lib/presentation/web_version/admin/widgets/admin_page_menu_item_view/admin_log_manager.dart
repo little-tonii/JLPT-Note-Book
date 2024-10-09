@@ -134,11 +134,26 @@ class _AdminLogManagerState extends State<AdminLogManager> {
                 child: FilterSelectBox(
                   hint: "Thời gian",
                   items: const [
-                    'Hôm nay',
-                    'Hôm qua',
-                    'Tuần này',
-                    'Tháng này',
-                    'Tất cả'
+                    {
+                      'value': 'Hôm nay',
+                      'label': 'Hôm nay',
+                    },
+                    {
+                      'value': 'Hôm qua',
+                      'label': 'Hôm qua',
+                    },
+                    {
+                      'value': 'Tuần này',
+                      'label': 'Tuần này',
+                    },
+                    {
+                      'value': 'Tháng này',
+                      'label': 'Tháng này',
+                    },
+                    {
+                      'value': 'Tất cả',
+                      'label': 'Tất cả',
+                    },
                   ],
                   onChanged: (value) {
                     String filterType = '';

@@ -33,7 +33,7 @@ class OnyomiDatasourceImpl implements OnyomiDatasource {
       return ons;
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: e.message.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi truy cập Onyomi");
     } on Exception {
       throw UnknownFailure();
     }

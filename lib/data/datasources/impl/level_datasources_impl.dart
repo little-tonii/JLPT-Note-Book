@@ -26,7 +26,7 @@ class LevelDatasourcesImpl implements LevelDatasource {
       return levels;
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: e.message.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi truy cập tất cả JNPT");
     } on Exception catch (e) {
       throw Exception(e);
     }
@@ -47,7 +47,41 @@ class LevelDatasourcesImpl implements LevelDatasource {
       }
     } on FirebaseException catch (e) {
       log(e.toString());
-      throw FirestoreFailure(message: e.message!);
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi truy cập JNPT");
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  @override
+  Future<LevelModel> createLevel({required String level}) async {
+    try {
+      final levelRef = await firebaseFirestore.collection('levels').add({
+        'level': level,
+        'createdAt': Timestamp.now(),
+      });
+      final levelDoc = await levelRef.get();
+      return LevelModel.fromJson({
+        'level': levelDoc.data()!['level'],
+        'id': levelDoc.id,
+        'createdAt': levelDoc.data()!['createdAt'],
+      });
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi tạo JNPT");
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  @override
+  Future<bool> deleteLevelById({required String id}) async {
+    try {
+      await firebaseFirestore.collection('levels').doc(id).delete();
+      return true;
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi xóa JNPT");
     } on Exception catch (e) {
       throw Exception(e);
     }

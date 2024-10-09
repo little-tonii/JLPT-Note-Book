@@ -4,30 +4,30 @@ import 'package:note_book_app/domain/entities/lesson_entity.dart';
 class LessonModel {
   final String id;
   final String lesson;
-  final String level;
   final Timestamp createdAt;
+  final String levelId;
 
   const LessonModel({
+    required this.levelId,
     required this.lesson,
     required this.id,
-    required this.level,
     required this.createdAt,
   });
 
   factory LessonModel.fromJson(Map<String, dynamic> json) {
     return LessonModel(
+      levelId: json['levelId'],
       lesson: json['lesson'],
       id: json['id'],
-      level: json['level'],
       createdAt: json['createdAt'],
     );
   }
 
   LessonEntity toEntity() {
     return LessonEntity(
+      levelId: levelId,
       lesson: lesson,
       id: id,
-      level: level,
       createdAt: createdAt,
     );
   }

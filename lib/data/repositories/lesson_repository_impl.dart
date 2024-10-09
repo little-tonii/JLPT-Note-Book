@@ -11,10 +11,12 @@ class LessonRepositoryImpl implements LessonRepository {
   const LessonRepositoryImpl({required this.lessonDatasource});
 
   @override
-  Future<Either<Failure, List<LessonEntity>>> getAllLessonsByLevel(
-      {required String level}) async {
+  Future<Either<Failure, List<LessonEntity>>> getAllLessonsByLevelId(
+      {required String levelId}) async {
     try {
-      final result = await lessonDatasource.getAllLessonsByLevel(level: level);
+      final result = await lessonDatasource.getAllLessonsByLevelId(
+        levelId: levelId,
+      );
       return Right(
         result.map((lesson) => lesson.toEntity()).toList(),
       );
@@ -31,6 +33,20 @@ class LessonRepositoryImpl implements LessonRepository {
     try {
       final result = await lessonDatasource.getLessonById(id: id);
       return Right(result.toEntity());
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, int>> deleteLessonsByLevelId(
+      {required String levelId}) async {
+    try {
+      final result =
+          await lessonDatasource.deleteLessonsByLevelId(levelId: levelId);
+      return Right(result);
     } on Failure catch (e) {
       return Left(e);
     } on Exception {

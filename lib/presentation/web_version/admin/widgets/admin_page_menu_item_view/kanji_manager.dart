@@ -54,7 +54,7 @@ class _KanjiManagerState extends State<KanjiManager> {
     _searchController.clear();
   }
 
-  void _handleShowCreateNewKanjiForm({required String level}) {
+  void _handleShowCreateNewKanjiForm({required String levelId}) {
     showDialog(
       context: context,
       builder: (context) {
@@ -70,7 +70,7 @@ class _KanjiManagerState extends State<KanjiManager> {
                 create: (context) => getIt<CreateKanjiCubit>()..init(),
                 child: BlocListener<CreateKanjiCubit, CreateKanjiState>(
                   child: CreateNewKanjiForm(
-                    level: level,
+                    levelId: levelId,
                   ),
                   listener: (BuildContext context, CreateKanjiState state) {
                     if (state is CreateKanjiSuccess ||
@@ -104,11 +104,18 @@ class _KanjiManagerState extends State<KanjiManager> {
                     child: FilterSelectBox(
                       hint: "JNPT",
                       items: state is KanjiManagerLoaded
-                          ? state.levels.map((level) => level.level).toList()
+                          ? state.levels
+                              .map(
+                                (level) => {
+                                  'value': level.id,
+                                  'label': level.level,
+                                },
+                              )
+                              .toList()
                           : [],
                       onChanged: (value) {
                         context.read<KanjiManagerCubit>().updateFilterChoice(
-                              level: value,
+                              levelId: value,
                             );
                       },
                     ),
@@ -140,7 +147,7 @@ class _KanjiManagerState extends State<KanjiManager> {
                       KanjiManagerButton(
                         text: "Thêm mới",
                         onPressed: () => _handleShowCreateNewKanjiForm(
-                          level: state.levelFilterState,
+                          levelId: state.levelFilterState,
                         ),
                       ),
                       const SizedBox(width: 16),

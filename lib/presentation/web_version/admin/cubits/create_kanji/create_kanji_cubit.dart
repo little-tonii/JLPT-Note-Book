@@ -5,14 +5,14 @@ import 'package:note_book_app/domain/entities/kanji_entity.dart';
 import 'package:note_book_app/domain/entities/kunyomi_entity.dart';
 import 'package:note_book_app/domain/entities/onyomi_entity.dart';
 import 'package:note_book_app/domain/usecases/admin_logs/create_admin_log_usecase.dart';
-import 'package:note_book_app/domain/usecases/kanjis/create_kanji_by_level_usecase.dart';
+import 'package:note_book_app/domain/usecases/kanjis/create_kanji_by_level_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/create_kunyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/onyomis/create_onyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji/create_kanji_state.dart';
 
 class CreateKanjiCubit extends Cubit<CreateKanjiState> {
-  final CreateKanjiByLevelUsecase _createKanjiByLevelUsecase =
-      getIt<CreateKanjiByLevelUsecase>();
+  final CreateKanjiByLevelIdUsecase _createKanjiByLevelIdUsecase =
+      getIt<CreateKanjiByLevelIdUsecase>();
   final CreateKunyomiByKanjiIdUsecase _createKunyomiByKanjiIdUsecase =
       getIt<CreateKunyomiByKanjiIdUsecase>();
   final CreateOnyomiByKanjiIdUsecase _createOnyomiByKanjiIdUsecase =
@@ -26,6 +26,7 @@ class CreateKanjiCubit extends Cubit<CreateKanjiState> {
     emit(
       CreateKanjiLoaded(
         kanji: KanjiEntity(
+          levelId: 'null',
           id: 'null',
           kanji: '',
           kun: '',
@@ -98,7 +99,7 @@ class CreateKanjiCubit extends Cubit<CreateKanjiState> {
   }
 
   void createKanji({
-    required String level,
+    required String levelId,
     required String kanji,
     required String viet,
     required String kun,
@@ -111,23 +112,22 @@ class CreateKanjiCubit extends Cubit<CreateKanjiState> {
     required List<String> meaningOnyomi,
   }) async {
     emit(CreateKanjiLoading());
-    final kanjiCreated = await _createKanjiByLevelUsecase.call(
-      level: level,
+    final kanjiCreated = await _createKanjiByLevelIdUsecase.call(
+      levelId: levelId,
       kanji: kanji,
       kun: kun,
       on: on,
       viet: viet,
     );
     kanjiCreated.fold(
-      (failure) {
-        const message = 'Không thể tạo mới kanji';
-        emit(
-          const CreateKanjiFailure(message: message),
-        );
-        _createAdminLogUsecase.call(
-          message: 'null | $message',
+      (failure) async {
+        await _createAdminLogUsecase.call(
+          message: 'null | ${failure.message}',
           action: 'CREATE',
           actionStatus: 'FAIL',
+        );
+        emit(
+          CreateKanjiFailure(message: failure.message),
         );
       },
       (success) async {
@@ -164,21 +164,21 @@ class CreateKanjiCubit extends Cubit<CreateKanjiState> {
         }
         if (kunyomiError == 0 && onyomiError == 0) {
           const message = 'Tạo mới kanji thành công';
-          emit(const CreateKanjiSuccess(message: message));
           await _createAdminLogUsecase.call(
             message: '$kanjiId | $message',
             action: 'CREATE',
             actionStatus: 'SUCCESS',
           );
+          emit(const CreateKanjiSuccess(message: message));
         } else {
           final message =
               'Có lỗi trong quá trình tạo mới kanji. $kunyomiError lỗi khi tạo kunyomi, $onyomiError lỗi khi tạo onyomi';
-          emit(CreateKanjiFailure(message: message));
           await _createAdminLogUsecase.call(
             message: '$kanjiId | $message',
             action: 'CREATE',
             actionStatus: 'FAIL',
           );
+          emit(CreateKanjiFailure(message: message));
         }
       },
     );

@@ -3,11 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/domain/entities/lesson_entity.dart';
+import 'package:note_book_app/domain/entities/level_entity.dart';
 
 class LessonCard extends StatelessWidget {
   final LessonEntity lesson;
+  final LevelEntity level;
 
-  const LessonCard({super.key, required this.lesson});
+  const LessonCard({super.key, required this.lesson, required this.level});
 
   void _handleOnTapDetailCard(BuildContext context) {
     context.go(
@@ -27,7 +29,7 @@ class LessonCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
-            "${lesson.level} | ${lesson.lesson}",
+            "${level.level} | ${lesson.lesson}",
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: ResponsiveUtil.isDesktop(context)

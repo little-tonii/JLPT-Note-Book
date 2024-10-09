@@ -34,12 +34,16 @@ import 'package:note_book_app/domain/repositories/level_repository.dart';
 import 'package:note_book_app/domain/repositories/onyomi_repository.dart';
 import 'package:note_book_app/domain/usecases/admin_logs/create_admin_log_usecase.dart';
 import 'package:note_book_app/domain/usecases/admin_logs/get_admin_logs_usecase.dart';
-import 'package:note_book_app/domain/usecases/kanjis/create_kanji_by_level_usecase.dart';
+import 'package:note_book_app/domain/usecases/kanjis/create_kanji_by_level_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kanjis/delete_kanji_by_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/kanjis/delete_kanjis_by_level_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kanjis/update_kanji_by_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/create_kunyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/delete_kunyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/update_kunyomi_by_kanji_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/lessons/delete_lesson_by_level_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/levels/create_level_usecase.dart';
+import 'package:note_book_app/domain/usecases/levels/delete_level_by_id_usecase.dart';
 
 import 'package:note_book_app/domain/usecases/onyomis/create_onyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/onyomis/delete_onyomi_by_kanji_id_usecase.dart';
@@ -50,9 +54,9 @@ import 'package:note_book_app/domain/usecases/user/login_with_email_and_password
 import 'package:note_book_app/domain/usecases/user/logout_usecase.dart';
 import 'package:note_book_app/domain/usecases/characters/create_character_question_usecase.dart';
 import 'package:note_book_app/domain/usecases/characters/get_all_characters_usecase.dart';
-import 'package:note_book_app/domain/usecases/kanjis/get_all_kanjis_by_level_usecase.dart';
+import 'package:note_book_app/domain/usecases/kanjis/get_all_kanjis_by_level_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/get_all_kunyomis_by_kanji_id_usecase.dart';
-import 'package:note_book_app/domain/usecases/lessons/get_all_lessons_by_level_usecase.dart';
+import 'package:note_book_app/domain/usecases/lessons/get_all_lessons_by_level_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/lessons/get_lesson_by_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/levels/get_all_levels_usecase.dart';
 import 'package:note_book_app/domain/usecases/levels/get_level_by_id_usecase.dart';
@@ -61,9 +65,14 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/admin_log_ma
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar/admin_page_side_bar_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web/admin_page_web_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji/create_kanji_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jnpt/create_new_jnpt_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jnpt/delete_jnpt_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/delete_kanji/delete_kanji_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jnpt/edit_jnpt_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/jnpt_manager/jnpt_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/lesson_manager/lesson_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/word_manager/word_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/login/cubits/login_page_web_cubit.dart';
 import 'package:note_book_app/presentation/web_version/home/cubits/home_page_web_cubit.dart';
@@ -173,8 +182,8 @@ Future<void> initializeDependencies() async {
     ),
   );
 
-  getIt.registerSingleton<GetAllLessonsByLevelUsecase>(
-      GetAllLessonsByLevelUsecase(
+  getIt.registerSingleton<GetAllLessonsByLevelIdUsecase>(
+      GetAllLessonsByLevelIdUsecase(
     lessonRepository: getIt<LessonRepository>(),
   ));
 
@@ -195,8 +204,8 @@ Future<void> initializeDependencies() async {
     GetLessonByIdUsecase(lessonRepository: getIt<LessonRepository>()),
   );
 
-  getIt.registerSingleton<GetAllKanjisByLevelUsecase>(
-    GetAllKanjisByLevelUsecase(kanjiRepository: getIt<KanjiRepository>()),
+  getIt.registerSingleton<GetAllKanjisByLevelIdUsecase>(
+    GetAllKanjisByLevelIdUsecase(kanjiRepository: getIt<KanjiRepository>()),
   );
 
   getIt.registerSingleton<GetAllKunyomisByKanjiIdUsecase>(
@@ -232,8 +241,8 @@ Future<void> initializeDependencies() async {
     ),
   );
 
-  getIt.registerLazySingleton<CreateKanjiByLevelUsecase>(
-    () => CreateKanjiByLevelUsecase(
+  getIt.registerLazySingleton<CreateKanjiByLevelIdUsecase>(
+    () => CreateKanjiByLevelIdUsecase(
       kanjiRepository: getIt<KanjiRepository>(),
     ),
   );
@@ -298,6 +307,30 @@ Future<void> initializeDependencies() async {
     ),
   );
 
+  getIt.registerLazySingleton<CreateLevelUsecase>(
+    () => CreateLevelUsecase(
+      levelRepository: getIt<LevelRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<DeleteLevelByIdUsecase>(
+    () => DeleteLevelByIdUsecase(
+      levelRepository: getIt<LevelRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<DeleteLessonByLevelIdUsecase>(
+    () => DeleteLessonByLevelIdUsecase(
+      lessonRepository: getIt<LessonRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<DeleteKanjisByLevelIdUsecase>(
+    () => DeleteKanjisByLevelIdUsecase(
+      kanjiRepository: getIt<KanjiRepository>(),
+    ),
+  );
+
   getIt.registerFactory(() => HomePageWebCubit());
 
   getIt.registerFactory(() => LevelPageWebCubit());
@@ -329,4 +362,14 @@ Future<void> initializeDependencies() async {
   getIt.registerFactory(() => EditKanjiCubit());
 
   getIt.registerFactory(() => DeleteKanjiCubit());
+
+  getIt.registerFactory(() => JnptManagerCubit());
+
+  getIt.registerFactory(() => LessonManagerCubit());
+
+  getIt.registerFactory(() => CreateNewJnptCubit());
+
+  getIt.registerFactory(() => DeleteJnptCubit());
+
+  getIt.registerFactory(() => EditJnptCubit());
 }
