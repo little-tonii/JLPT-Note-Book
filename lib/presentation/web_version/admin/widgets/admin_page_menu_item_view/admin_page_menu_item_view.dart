@@ -8,11 +8,11 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/jlpt_manager
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/lesson_manager/lesson_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/word_manager/word_manager_cubit.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/admin_log_manager.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/jlpt_manager.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji_manager.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/lesson_manager.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/word_manager.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/log/admin_log_manager.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/jlpt/jlpt_manager.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/kanji_manager.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/lesson/lesson_manager.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/word/word_manager.dart';
 
 class AdminPageMenuItemView extends StatelessWidget {
   const AdminPageMenuItemView({super.key});

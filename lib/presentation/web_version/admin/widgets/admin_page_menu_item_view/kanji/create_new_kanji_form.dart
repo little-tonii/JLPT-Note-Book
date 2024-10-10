@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji/create_kanji_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji/create_kanji_state.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji_manager_button.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/kanji_manager_button.dart';
 
 class CreateNewKanjiForm extends StatefulWidget {
   final String levelId;

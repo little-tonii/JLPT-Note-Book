@@ -122,7 +122,7 @@ class CreateKanjiCubit extends Cubit<CreateKanjiState> {
     kanjiCreated.fold(
       (failure) async {
         await _createAdminLogUsecase.call(
-          message: 'null | ${failure.message}',
+          message: failure.message,
           action: 'CREATE',
           actionStatus: 'FAIL',
         );

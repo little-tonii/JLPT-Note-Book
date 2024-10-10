@@ -6,7 +6,7 @@ import 'package:note_book_app/domain/entities/kunyomi_entity.dart';
 import 'package:note_book_app/domain/entities/onyomi_entity.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_state.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji_manager_button.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/kanji_manager_button.dart';
 
 class EditKanjiForm extends StatefulWidget {
   const EditKanjiForm({super.key});

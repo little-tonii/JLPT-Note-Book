@@ -76,4 +76,51 @@ class LessonDatasourceImpl implements LessonDatasource {
       throw Exception(e);
     }
   }
+
+  @override
+  Future<LessonModel> createLessonByLevelId(
+      {required String levelId, required String lesson}) async {
+    try {
+      final lessonRef = await firebaseFirestore.collection('lessons').add({
+        'lesson': lesson,
+        'createdAt': Timestamp.now(),
+        'levelId': levelId,
+      });
+      final lessonDoc = await lessonRef.get();
+      return LessonModel.fromJson({
+        'id': lessonDoc.id,
+        'lesson': lessonDoc.data()!['lesson'],
+        'createdAt': lessonDoc.data()!['createdAt'],
+        'levelId': lessonDoc.data()!['levelId'],
+      });
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi tạo bài học");
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  @override
+  Future<LessonModel> updateLessonById(
+      {required String id, required String lesson}) async {
+    try {
+      await firebaseFirestore.collection('lessons').doc(id).update({
+        'lesson': lesson,
+      });
+      final lessonDoc =
+          await firebaseFirestore.collection('lessons').doc(id).get();
+      return LessonModel.fromJson({
+        'id': lessonDoc.id,
+        'lesson': lessonDoc.data()!['lesson'],
+        'createdAt': lessonDoc.data()!['createdAt'],
+        'levelId': lessonDoc.data()!['levelId'],
+      });
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi cập nhật bài học");
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
 }

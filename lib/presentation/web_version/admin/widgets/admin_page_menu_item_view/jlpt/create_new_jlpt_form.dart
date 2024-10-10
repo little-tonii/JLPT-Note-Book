@@ -151,7 +151,7 @@ class _CreateNewJlptFormState extends State<CreateNewJlptForm> {
   Widget build(BuildContext context) {
     return Container(
       width: 600,
-      height: 800,
+      height: 300,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: AppColors.kF8EDE3,
