@@ -8,4 +8,8 @@ abstract class LessonRepository {
   Future<Either<Failure, LessonEntity>> getLessonById({required String id});
   Future<Either<Failure, int>> deleteLessonsByLevelId(
       {required String levelId});
+  Future<Either<Failure, LessonEntity>> createLessonByLevelId(
+      {required String levelId, required String lesson});
+  Future<Either<Failure, LessonEntity>> updateLessonById(
+      {required String id, required String lesson});
 }

@@ -53,4 +53,36 @@ class LessonRepositoryImpl implements LessonRepository {
       return Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, LessonEntity>> createLessonByLevelId(
+      {required String levelId, required String lesson}) async {
+    try {
+      final result = await lessonDatasource.createLessonByLevelId(
+        levelId: levelId,
+        lesson: lesson,
+      );
+      return Right(result.toEntity());
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, LessonEntity>> updateLessonById(
+      {required String id, required String lesson}) async {
+    try {
+      final result = await lessonDatasource.updateLessonById(
+        id: id,
+        lesson: lesson,
+      );
+      return Right(result.toEntity());
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
 }

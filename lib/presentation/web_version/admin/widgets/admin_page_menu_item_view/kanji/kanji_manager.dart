@@ -7,10 +7,10 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_kanji/create_kanji_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_state.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/create_new_kanji_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/create_new_kanji_form.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/filter_select_box.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji_data_table.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji_manager_button.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/kanji_data_table.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/kanji_manager_button.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/search_field.dart';
 
 class KanjiManager extends StatefulWidget {

@@ -11,8 +11,8 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/e
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_state.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/delete_kanji_form.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/edit_kanji_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/delete_kanji_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/edit_kanji_form.dart';
 
 class KanjiDataTable extends StatefulWidget {
   final ScrollController scrollController;

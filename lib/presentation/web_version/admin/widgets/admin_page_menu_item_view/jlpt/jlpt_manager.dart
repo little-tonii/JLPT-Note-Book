@@ -14,9 +14,9 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jlpt/ed
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jlpt/edit_jlpt_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/jlpt_manager/jlpt_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/jlpt_manager/jlpt_manager_state.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/create_new_jlpt_form.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/delete_jlpt_form.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/edit_jlpt_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/jlpt/create_new_jlpt_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/jlpt/delete_jlpt_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/jlpt/edit_jlpt_form.dart';
 
 class JlptManager extends StatefulWidget {
   const JlptManager({super.key});
