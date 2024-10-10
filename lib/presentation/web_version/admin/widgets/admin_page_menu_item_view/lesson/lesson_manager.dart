@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
+import 'package:note_book_app/common/utils/responsive_util.dart';
+import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/lesson_entity.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/create_lesson/create_lesson_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/create_lesson/create_lesson_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jlpt/edit_jlpt_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_lesson/edit_lesson_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/edit_lesson/edit_lesson_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/lesson_manager/lesson_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/lesson_manager/lesson_manager_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/filter_select_box.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/lesson/create_lesson_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/lesson/edit_lesson_form.dart';
 
 class LessonManager extends StatefulWidget {
   const LessonManager({super.key});
@@ -14,15 +24,83 @@ class LessonManager extends StatefulWidget {
 }
 
 class _LessonManagerState extends State<LessonManager> {
+  late LessonManagerCubit _lessonManagerCubit;
+
   @override
   void initState() {
-    context.read<LessonManagerCubit>().init();
+    _lessonManagerCubit = context.read<LessonManagerCubit>()..init();
     super.initState();
   }
 
-  void _handleShowCreateNewLessonForm() {}
+  void _handleShowCreateNewLessonForm() {
+    showDialog(
+      context: context,
+      builder: (context) => LayoutBuilder(
+        builder: (context, constraints) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (!ResponsiveUtil.isDesktop(context)) {
+              context.pop();
+            }
+          });
+          return Dialog(
+            child: BlocProvider<CreateLessonCubit>(
+              create: (context) => getIt<CreateLessonCubit>()
+                ..init(
+                  levelId: (_lessonManagerCubit.state as LessonManagerLoaded)
+                      .selectedLevelId,
+                ),
+              child: BlocListener<CreateLessonCubit, CreateLessonState>(
+                listener: (context, state) {
+                  if (state is CreateLessonSuccess) {
+                    _lessonManagerCubit.addLessonListView(lesson: state.lesson);
+                  }
+                  if (state is CreateLessonFailure ||
+                      state is CreateLessonSuccess) {
+                    context.pop();
+                  }
+                },
+                child: CreateLessonForm(),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
 
-  void _handleShowEditLessonForm() {}
+  void _handleShowEditLessonForm({required LessonEntity lesson}) {
+    showDialog(
+      context: context,
+      builder: (context) => LayoutBuilder(
+        builder: (context, constraints) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (!ResponsiveUtil.isDesktop(context)) {
+              context.pop();
+            }
+          });
+          return Dialog(
+            child: BlocProvider<EditLessonCubit>(
+              create: (context) => getIt<EditLessonCubit>()..init(),
+              child: BlocListener<EditLessonCubit, EditLessonState>(
+                listener: (context, state) {
+                  if (state is EditLessonSuccess) {
+                    _lessonManagerCubit.updateLessonListView(
+                        lesson: state.lesson);
+                  }
+                  if (state is EditLessonSuccess || state is EditJlptFailure) {
+                    context.pop();
+                  }
+                },
+                child: EditLessonForm(
+                  lesson: lesson,
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
 
   Widget _actionButton(
       {required String text, required void Function() onPressed}) {
@@ -83,7 +161,10 @@ class _LessonManagerState extends State<LessonManager> {
             if (state is LessonManagerLoaded && state.selectedLevelId != 'null')
               SizedBox(width: 16),
             if (state is LessonManagerLoaded && state.selectedLevelId != 'null')
-              _actionButton(text: 'Tạo mới', onPressed: () {}),
+              _actionButton(
+                text: 'Tạo mới',
+                onPressed: _handleShowCreateNewLessonForm,
+              ),
           ],
         );
       },
@@ -236,7 +317,7 @@ class _LessonManagerState extends State<LessonManager> {
                     backgroundColor: WidgetStatePropertyAll(
                         AppColors.kF8EDE3.withOpacity(0.8)),
                   ),
-                  onPressed: () {},
+                  onPressed: () => _handleShowEditLessonForm(lesson: lesson),
                   child: Text(
                     textAlign: TextAlign.center,
                     'Sửa',
