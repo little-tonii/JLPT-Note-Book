@@ -119,18 +119,20 @@ class _JlptManagerState extends State<JlptManager> {
               context.pop();
             }
           });
-          return BlocProvider<EditJlptCubit>(
-            create: (context) => getIt<EditJlptCubit>()..init(),
-            child: BlocListener<EditJlptCubit, EditJlptState>(
-              listener: (context, state) {
-                if (state is EditJlptSuccess) {
-                  _jlptManagerCubit.updateJlptListView(jlpt: state.level);
-                }
-                if (state is EditJlptSuccess || state is EditJlptFailure) {
-                  context.pop();
-                }
-              },
-              child: EditJlptForm(jlpt: level),
+          return Dialog(
+            child: BlocProvider<EditJlptCubit>(
+              create: (context) => getIt<EditJlptCubit>()..init(),
+              child: BlocListener<EditJlptCubit, EditJlptState>(
+                listener: (context, state) {
+                  if (state is EditJlptSuccess) {
+                    _jlptManagerCubit.updateJlptListView(jlpt: state.level);
+                  }
+                  if (state is EditJlptSuccess || state is EditJlptFailure) {
+                    context.pop();
+                  }
+                },
+                child: EditJlptForm(jlpt: level),
+              ),
             ),
           );
         },

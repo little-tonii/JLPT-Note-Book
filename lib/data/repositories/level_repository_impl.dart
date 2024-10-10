@@ -59,4 +59,18 @@ class LevelRepositoryImpl implements LevelRepository {
       return Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, LevelEntity>> updateLevelById(
+      {required String id, required String level}) async {
+    try {
+      final result =
+          await levelDatasource.updateLevelById(id: id, level: level);
+      return Right(result.toEntity());
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
 }

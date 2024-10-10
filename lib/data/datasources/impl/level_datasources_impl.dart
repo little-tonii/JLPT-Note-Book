@@ -86,4 +86,26 @@ class LevelDatasourcesImpl implements LevelDatasource {
       throw Exception(e);
     }
   }
+
+  @override
+  Future<LevelModel> updateLevelById(
+      {required String id, required String level}) async {
+    try {
+      await firebaseFirestore.collection('levels').doc(id).update({
+        'level': level,
+      });
+      final levelDoc =
+          await firebaseFirestore.collection('levels').doc(id).get();
+      return LevelModel.fromJson({
+        'level': levelDoc.data()!['level'],
+        'id': levelDoc.id,
+        'createdAt': levelDoc.data()!['createdAt'],
+      });
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi cập nhật JLPT");
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
 }

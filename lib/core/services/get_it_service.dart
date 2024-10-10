@@ -44,6 +44,7 @@ import 'package:note_book_app/domain/usecases/kunyomis/update_kunyomi_by_kanji_i
 import 'package:note_book_app/domain/usecases/lessons/delete_lesson_by_level_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/levels/create_level_usecase.dart';
 import 'package:note_book_app/domain/usecases/levels/delete_level_by_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/levels/update_level_by_id_usecase.dart';
 
 import 'package:note_book_app/domain/usecases/onyomis/create_onyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/onyomis/delete_onyomi_by_kanji_id_usecase.dart';
@@ -328,6 +329,12 @@ Future<void> initializeDependencies() async {
   getIt.registerLazySingleton<DeleteKanjisByLevelIdUsecase>(
     () => DeleteKanjisByLevelIdUsecase(
       kanjiRepository: getIt<KanjiRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<UpdateLevelByIdUsecase>(
+    () => UpdateLevelByIdUsecase(
+      levelRepository: getIt<LevelRepository>(),
     ),
   );
 
