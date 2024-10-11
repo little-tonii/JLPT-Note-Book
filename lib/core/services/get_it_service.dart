@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
 import 'package:note_book_app/data/datasources/admin_log_datasource.dart';
 import 'package:note_book_app/data/datasources/impl/admin_log_datasource_impl.dart';
+import 'package:note_book_app/data/datasources/impl/word_datasource_impl.dart';
 import 'package:note_book_app/data/datasources/user_datasource.dart';
 import 'package:note_book_app/data/datasources/character_datasource.dart';
 import 'package:note_book_app/data/datasources/impl/user_datasource_impl.dart';
@@ -16,6 +17,7 @@ import 'package:note_book_app/data/datasources/kunyomi_datasource.dart';
 import 'package:note_book_app/data/datasources/level_datasource.dart';
 import 'package:note_book_app/data/datasources/lesson_datasource.dart';
 import 'package:note_book_app/data/datasources/onyomi_datasource.dart';
+import 'package:note_book_app/data/datasources/word_datasource.dart';
 import 'package:note_book_app/data/repositories/admin_log_repository_impl.dart';
 import 'package:note_book_app/data/repositories/user_repository_impl.dart';
 import 'package:note_book_app/data/repositories/character_repository_impl.dart';
@@ -24,6 +26,7 @@ import 'package:note_book_app/data/repositories/kunyomi_repository_impl.dart';
 import 'package:note_book_app/data/repositories/lesson_repository_impl.dart';
 import 'package:note_book_app/data/repositories/level_repository_impl.dart';
 import 'package:note_book_app/data/repositories/onyomi_repository_impl.dart';
+import 'package:note_book_app/data/repositories/word_repository_impl.dart';
 import 'package:note_book_app/domain/repositories/admin_log_repository.dart';
 import 'package:note_book_app/domain/repositories/user_repository.dart';
 import 'package:note_book_app/domain/repositories/character_repository.dart';
@@ -32,6 +35,7 @@ import 'package:note_book_app/domain/repositories/kunyomi_repository.dart';
 import 'package:note_book_app/domain/repositories/lesson_repository.dart';
 import 'package:note_book_app/domain/repositories/level_repository.dart';
 import 'package:note_book_app/domain/repositories/onyomi_repository.dart';
+import 'package:note_book_app/domain/repositories/word_repository.dart';
 import 'package:note_book_app/domain/usecases/admin_logs/create_admin_log_usecase.dart';
 import 'package:note_book_app/domain/usecases/admin_logs/get_admin_logs_usecase.dart';
 import 'package:note_book_app/domain/usecases/kanjis/create_kanji_by_level_id_usecase.dart';
@@ -65,6 +69,13 @@ import 'package:note_book_app/domain/usecases/lessons/get_lesson_by_id_usecase.d
 import 'package:note_book_app/domain/usecases/levels/get_all_levels_usecase.dart';
 import 'package:note_book_app/domain/usecases/levels/get_level_by_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/onyomis/get_all_onyomis_by_kanji_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/word/create_word_by_level_id_and_lesson_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/word/delete_word_by_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/word/delete_word_by_lesson_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/word/delete_word_by_level_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/word/get_all_words_by_level_id_and_lesson_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/word/get_all_words_by_level_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/word/update_word_by_id_usecase.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_log_manager/admin_log_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_side_bar/admin_page_side_bar_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/admin_page_web/admin_page_web_cubit.dart';
@@ -147,6 +158,12 @@ Future<void> initializeDependencies() async {
     ),
   );
 
+  getIt.registerLazySingleton<WordDatasource>(
+    () => WordDatasourceImpl(
+      firestore: getIt<FirebaseFirestore>(),
+    ),
+  );
+
   getIt.registerSingleton<LevelRepository>(
     LevelRepositoryImpl(
       levelDatasource: getIt<LevelDatasource>(),
@@ -180,6 +197,12 @@ Future<void> initializeDependencies() async {
   getIt.registerLazySingleton<AdminLogRepository>(
     () => AdminLogRepositoryImpl(
       adminLogDatasource: getIt<AdminLogDatasource>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<WordRepository>(
+    () => WordRepositoryImpl(
+      wordDatasource: getIt<WordDatasource>(),
     ),
   );
 
@@ -356,9 +379,51 @@ Future<void> initializeDependencies() async {
     ),
   );
 
-  getIt.registerLazySingleton(
+  getIt.registerLazySingleton<DeleteLessonByIdUsecase>(
     () => DeleteLessonByIdUsecase(
       lessonRepository: getIt<LessonRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<CreateWordByLevelIdAndLessonIdUsecase>(
+    () => CreateWordByLevelIdAndLessonIdUsecase(
+      wordRepository: getIt<WordRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<DeleteWordByIdUsecase>(
+    () => DeleteWordByIdUsecase(
+      wordRepository: getIt<WordRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<GetAllWordsByLevelIdUsecase>(
+    () => GetAllWordsByLevelIdUsecase(
+      wordRepository: getIt<WordRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<GetAllWordsByLevelIdAndLessonIdUsecase>(
+    () => GetAllWordsByLevelIdAndLessonIdUsecase(
+      wordRepository: getIt<WordRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<UpdateWordByIdUsecase>(
+    () => UpdateWordByIdUsecase(
+      wordRepository: getIt<WordRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<DeleteWordByLevelIdUsecase>(
+    () => DeleteWordByLevelIdUsecase(
+      wordRepository: getIt<WordRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<DeleteWordByLessonIdUsecase>(
+    () => DeleteWordByLessonIdUsecase(
+      wordRepository: getIt<WordRepository>(),
     ),
   );
 
