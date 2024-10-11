@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:note_book_app/core/failures/failure.dart';
+import 'package:note_book_app/core/failures/unknown_failure.dart';
 import 'package:note_book_app/data/datasources/word_datasource.dart';
 import 'package:note_book_app/domain/entities/word_entity.dart';
 import 'package:note_book_app/domain/repositories/word_repository.dart';
@@ -56,16 +57,27 @@ class WordRepositoryImpl implements WordRepository {
     // TODO: implement createWordByLevelIdAndLessonId
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<Either<Failure, int>> deleteWordByLessonId({required String lessonId}) {
-    // TODO: implement deleteWordByLessonId
-    throw UnimplementedError();
+  Future<Either<Failure, int>> deleteWordByLessonId(
+      {required String lessonId}) async {
+    try {
+      final result =
+          await wordDatasource.deleteWordByLessonId(lessonId: lessonId);
+      return Right(result);
+    } on Exception catch (e) {
+      return Left(UnknownFailure());
+    }
   }
-  
+
   @override
-  Future<Either<Failure, int>> deleteWordByLevelId({required String levelId}) {
-    // TODO: implement deleteWordByLevelId
-    throw UnimplementedError();
+  Future<Either<Failure, int>> deleteWordByLevelId(
+      {required String levelId}) async {
+    try {
+      final result = await wordDatasource.deleteWordByLevelId(levelId: levelId);
+      return Right(result);
+    } on Exception catch (e) {
+      return Left(UnknownFailure());
+    }
   }
 }
