@@ -41,7 +41,7 @@ class DeleteJlptCubit extends Cubit<DeleteJlptState> {
           await _createAdminLogUsecase.call(
             action: 'DELETE',
             actionStatus: 'FAILED',
-            message: failure.message,
+            message: '${jlpt.id} |${failure.message}',
           );
           emit(DeleteJlptFailure(message: failure.message));
         },
@@ -58,7 +58,7 @@ class DeleteJlptCubit extends Cubit<DeleteJlptState> {
             await _createAdminLogUsecase.call(
               action: 'DELETE',
               actionStatus: 'FAILED',
-              message: failure.message,
+              message: '${jlpt.id} | ${failure.message}',
             );
             emit(DeleteJlptFailure(message: failure.message));
           },
@@ -77,7 +77,7 @@ class DeleteJlptCubit extends Cubit<DeleteJlptState> {
             await _createAdminLogUsecase.call(
               action: 'DELETE',
               actionStatus: 'FAILED',
-              message: failure.message,
+              message: '${jlpt.id} | ${failure.message}',
             );
             emit(DeleteJlptFailure(message: failure.message));
           },
@@ -93,7 +93,7 @@ class DeleteJlptCubit extends Cubit<DeleteJlptState> {
             await _createAdminLogUsecase.call(
               action: 'DELETE',
               actionStatus: 'FAILED',
-              message: failure.message,
+              message: '${jlpt.id} |${failure.message}',
             );
             emit(DeleteJlptFailure(message: failure.message));
           },
@@ -103,7 +103,7 @@ class DeleteJlptCubit extends Cubit<DeleteJlptState> {
               action: 'DELETE',
               actionStatus: 'SUCCESS',
               message:
-                  '{ id: ${jlpt.id}, level: ${jlpt.level}, createdAt: ${jlpt.createdAt.toDate().toLocal().toString()} } | $message. Số kanji đã xóa: $numKanjisDeleted. Số bài học đã xóa: $numLessonsDeleted. Số từ vựng đã xóa: $numWordsDeleted',
+                  '{ id: ${jlpt.id}, level: ${jlpt.level}, createdAt: ${jlpt.createdAt.toDate().toLocal().toString()} } | $message. Số kanji đã xóa: $numKanjisDeleted. Số bài học đã xóa: $numLessonsDeleted. Số từ vựng đã xóa: $numWordsDeleted.',
             );
             emit(DeleteJlptSuccess(message: message, levelEntity: jlpt));
           },

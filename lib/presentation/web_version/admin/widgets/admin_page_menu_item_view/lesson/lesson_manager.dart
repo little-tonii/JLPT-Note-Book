@@ -331,43 +331,47 @@ class _LessonManagerState extends State<LessonManager> {
               decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(color: AppColors.black),
-                  right: BorderSide(color: AppColors.black),
                 ),
               ),
               padding: const EdgeInsets.all(8),
               child: Center(
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    elevation: const WidgetStatePropertyAll(0),
-                    padding: const WidgetStatePropertyAll<EdgeInsetsGeometry>(
-                      EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
+                child: lesson.lesson == "Kanji" ||
+                        lesson.lesson == "Hiragana & Katakana"
+                    ? SizedBox()
+                    : ElevatedButton(
+                        style: ButtonStyle(
+                          elevation: const WidgetStatePropertyAll(0),
+                          padding:
+                              const WidgetStatePropertyAll<EdgeInsetsGeometry>(
+                            EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
+                          ),
+                          shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              side: BorderSide(
+                                  color: AppColors.kF8EDE3.withOpacity(0.8)),
+                            ),
+                          ),
+                          overlayColor: WidgetStatePropertyAll(
+                              AppColors.black.withOpacity(0.04)),
+                          backgroundColor: WidgetStatePropertyAll(
+                              AppColors.kF8EDE3.withOpacity(0.8)),
+                        ),
+                        onPressed: () =>
+                            _handleShowEditLessonForm(lesson: lesson),
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          'Sửa',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: AppColors.black.withOpacity(0.4),
+                          ),
+                        ),
                       ),
-                    ),
-                    shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        side: BorderSide(
-                            color: AppColors.kF8EDE3.withOpacity(0.8)),
-                      ),
-                    ),
-                    overlayColor: WidgetStatePropertyAll(
-                        AppColors.black.withOpacity(0.04)),
-                    backgroundColor: WidgetStatePropertyAll(
-                        AppColors.kF8EDE3.withOpacity(0.8)),
-                  ),
-                  onPressed: () => _handleShowEditLessonForm(lesson: lesson),
-                  child: Text(
-                    textAlign: TextAlign.center,
-                    'Sửa',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: AppColors.black.withOpacity(0.4),
-                    ),
-                  ),
-                ),
               ),
             ),
           ),
