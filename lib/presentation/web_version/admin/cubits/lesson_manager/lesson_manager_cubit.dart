@@ -55,6 +55,7 @@ class LessonManagerCubit extends Cubit<LessonManagerState> {
         }
         return e;
       }).toList();
+      updatedLessons.sort((a, b) => a.lesson.compareTo(b.lesson));
       emit((state as LessonManagerLoaded).copyWith(lessons: updatedLessons));
     }
   }
@@ -63,6 +64,7 @@ class LessonManagerCubit extends Cubit<LessonManagerState> {
     if (state is LessonManagerLoaded) {
       final lessons = (state as LessonManagerLoaded).lessons;
       final updatedLessons = List<LessonEntity>.from(lessons)..add(lesson);
+      updatedLessons.sort((a, b) => a.lesson.compareTo(b.lesson));
       emit((state as LessonManagerLoaded).copyWith(lessons: updatedLessons));
     }
   }

@@ -156,7 +156,7 @@ class _LoginPageWebState extends State<LoginPageWeb> {
   Widget _mobileAndTabletRender(BuildContext context) {
     return Text(
       textAlign: TextAlign.center,
-      "Chỉ hỗ trợ trình duyệt web trên máy tính",
+      "Chỉ hỗ trợ trình duyệt web trên máy tính ở chế độ toàn màn hình",
       style: TextStyle(
         fontSize: ResponsiveUtil.isTablet(context) ? 20 : 16,
         color: AppColors.kF8EDE3,
