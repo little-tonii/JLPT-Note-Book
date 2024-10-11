@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -87,7 +90,21 @@ class _KanjiManagerState extends State<KanjiManager> {
     );
   }
 
-  void _handleImportKanjiData() {}
+  void _handleImportKanjiData() {
+    // FileUploadInputElement uploadInput = FileUploadInputElement();
+    // uploadInput.accept = '.json';
+    // uploadInput.click();
+    // uploadInput.onChange.listen((event) {
+    //   final file = uploadInput.files!.first;
+    //   final reader = FileReader();
+    //   reader.readAsText(file);
+    //   reader.onLoadEnd.listen((event) {
+    //     final jsonString = reader.result as String;
+    //     final data = jsonDecode(jsonString);
+
+    //   });
+    // });
+  }
 
   @override
   Widget build(BuildContext context) {
