@@ -12,6 +12,16 @@ class EditLessonInitial extends EditLessonState {}
 
 class EditLessonLoading extends EditLessonState {}
 
+class EditLessonLoaded extends EditLessonState {
+  final String id;
+  final String lesson;
+
+  const EditLessonLoaded({required this.id, required this.lesson});
+
+  @override
+  List<Object> get props => [id, lesson];
+}
+
 class EditLessonFailure extends EditLessonState {
   final String message;
 
