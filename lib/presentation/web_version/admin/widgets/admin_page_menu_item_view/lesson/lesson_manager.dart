@@ -294,9 +294,11 @@ class _LessonManagerState extends State<LessonManager> {
           Expanded(
             flex: 1,
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(color: AppColors.black),
+                  bottom: index != length - 1
+                      ? BorderSide(color: AppColors.black)
+                      : BorderSide(color: Colors.transparent),
                   right: BorderSide(color: AppColors.black),
                 ),
               ),
@@ -311,9 +313,11 @@ class _LessonManagerState extends State<LessonManager> {
           Expanded(
             flex: 8,
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(color: AppColors.black),
+                  bottom: index != length - 1
+                      ? BorderSide(color: AppColors.black)
+                      : BorderSide(color: Colors.transparent),
                   right: BorderSide(color: AppColors.black),
                 ),
               ),
@@ -328,9 +332,11 @@ class _LessonManagerState extends State<LessonManager> {
           Expanded(
             flex: 1,
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(color: AppColors.black),
+                  bottom: index != length - 1
+                      ? BorderSide(color: AppColors.black)
+                      : BorderSide(color: Colors.transparent),
                 ),
               ),
               padding: const EdgeInsets.all(8),

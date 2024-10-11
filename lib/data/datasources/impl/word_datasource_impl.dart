@@ -11,9 +11,29 @@ class WordDatasourceImpl implements WordDatasource {
   const WordDatasourceImpl({required this.firestore});
 
   @override
-  Future<WordModel> deleteWordById({required String id}) {
-    // TODO: implement deleteWordById
-    throw UnimplementedError();
+  Future<WordModel> deleteWordById({required String id}) async {
+    try {
+      final querySnapshot = firestore.collection("words").doc(id);
+      final wordDoc = await querySnapshot.get();
+      await querySnapshot.delete();
+      return WordModel.fromJson({
+        "id": wordDoc.id,
+        "word": wordDoc.data()!["word"],
+        "meaning": wordDoc.data()!["meaning"],
+        "kanjiForm": wordDoc.data()!["kanjiForm"],
+        "lessonId": wordDoc.data()!["lessonId"],
+        "levelId": wordDoc.data()!["levelId"],
+        "createdAt": wordDoc.data()!["createdAt"],
+      });
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(
+        message: "Có lỗi xảy ra khi thực hiện xoá từ vựng",
+      );
+    } catch (e) {
+      log(e.toString());
+      throw Exception(e);
+    }
   }
 
   @override
@@ -42,9 +62,33 @@ class WordDatasourceImpl implements WordDatasource {
       {required String id,
       required String word,
       required String meaning,
-      required String kanjiForm}) {
-    // TODO: implement updateWordById
-    throw UnimplementedError();
+      required String kanjiForm}) async {
+    try {
+      final querySnapshot = firestore.collection("words").doc(id);
+      final wordDoc = await querySnapshot.get();
+      await querySnapshot.update({
+        "word": word,
+        "meaning": meaning,
+        "kanjiForm": kanjiForm,
+      });
+      return WordModel.fromJson({
+        "id": wordDoc.id,
+        "word": word,
+        "meaning": meaning,
+        "kanjiForm": kanjiForm,
+        "lessonId": wordDoc.data()!["lessonId"],
+        "levelId": wordDoc.data()!["levelId"],
+        "createdAt": wordDoc.data()!["createdAt"],
+      });
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(
+        message: "Có lỗi xảy ra khi cập nhật từ vựng",
+      );
+    } catch (e) {
+      log(e.toString());
+      throw Exception(e);
+    }
   }
 
   @override
@@ -53,9 +97,36 @@ class WordDatasourceImpl implements WordDatasource {
       required String lessonId,
       required String word,
       required String meaning,
-      required String kanjiForm}) {
-    // TODO: implement createWordByLevelIdAndLessonId
-    throw UnimplementedError();
+      required String kanjiForm}) async {
+    try {
+      final wordRef = firestore.collection("words").doc();
+      final createdAt = Timestamp.now();
+      await wordRef.set({
+        "word": word,
+        "meaning": meaning,
+        "kanjiForm": kanjiForm,
+        "lessonId": lessonId,
+        "levelId": levelId,
+        "createdAt": createdAt,
+      });
+      return WordModel.fromJson({
+        "id": wordRef.id,
+        "word": word,
+        "meaning": meaning,
+        "kanjiForm": kanjiForm,
+        "lessonId": lessonId,
+        "levelId": levelId,
+        "createdAt": createdAt,
+      });
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(
+        message: "Có lỗi xảy ra khi tạo từ vựng",
+      );
+    } catch (e) {
+      log(e.toString());
+      throw Exception(e);
+    }
   }
 
   @override
