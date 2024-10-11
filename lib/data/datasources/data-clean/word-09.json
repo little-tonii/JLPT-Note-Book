@@ -1,0 +1,197 @@
+[
+    {
+        "word": "すき 「な」",
+        "kanjiForm": "好き",
+        "meaning": "Thích"
+    },
+    {
+        "word": "きらい 「な」",
+        "kanjiForm": "嫌い",
+        "meaning": "Ghét, không thích"
+    },
+    {
+        "word": "じょうず 「な」",
+        "kanjiForm": "上手",
+        "meaning": "Giỏi, khéo"
+    },
+    {
+        "word": "へた 「な」",
+        "kanjiForm": "下手",
+        "meaning": "Kém"
+    },
+    {
+        "word": "いたい",
+        "kanjiForm": "痛い",
+        "meaning": "Đau"
+    },
+    {
+        "word": "おじいさん",
+        "kanjiForm": "お祖父さん",
+        "meaning": "Ông"
+    },
+    {
+        "word": "おばあさん",
+        "kanjiForm": "お祖母さん",
+        "meaning": "Bà"
+    },
+    {
+        "word": "はいしゃ",
+        "kanjiForm": "歯医者",
+        "meaning": "Nha sĩ"
+    },
+    {
+        "word": "りょうり",
+        "kanjiForm": "料理",
+        "meaning": "Món ăn, việc nấu ăn 「～をします: nấu ăn」"
+    },
+    {
+        "word": "のみもの",
+        "kanjiForm": "飲み物",
+        "meaning": "Đồ uống"
+    },
+    {
+        "word": "スポーツ",
+        "kanjiForm": "",
+        "meaning": "Thể thao"
+    },
+    {
+        "word": "やきゅう",
+        "kanjiForm": "野球",
+        "meaning": "bóng chày"
+    },
+    {
+        "word": "ダンス",
+        "kanjiForm": "",
+        "meaning": "Nhảy, khiêu vũ"
+    },
+    {
+        "word": "カラオケ",
+        "kanjiForm": "",
+        "meaning": "Karaoke"
+    },
+    {
+        "word": "うた",
+        "kanjiForm": "歌",
+        "meaning": "Bài hát"
+    },
+    {
+        "word": "かぶき",
+        "kanjiForm": "歌舞伎",
+        "meaning": "Kịch kabuki"
+    },
+    {
+        "word": "え",
+        "kanjiForm": "絵",
+        "meaning": "Tranh, hội họa"
+    },
+    {
+        "word": "じ",
+        "kanjiForm": "字",
+        "meaning": "Chữ"
+    },
+    {
+        "word": "かんじ",
+        "kanjiForm": "漢字",
+        "meaning": "Chữ Hán"
+    },
+    {
+        "word": "かぜ 「～をひきます」",
+        "kanjiForm": "風邪 「～をひきます」",
+        "meaning": "Cảm, cúm [bị cảm]"
+    },
+    {
+        "word": "ねつ 「～があります」",
+        "kanjiForm": "熱 「～があります」",
+        "meaning": "Sốt [bị sốt]"
+    },
+    {
+        "word": "じかん",
+        "kanjiForm": "時間",
+        "meaning": "Thời gian"
+    },
+    {
+        "word": "ようじ",
+        "kanjiForm": "用事",
+        "meaning": "Việc bận, công chuyện"
+    },
+    {
+        "word": "やくそく",
+        "kanjiForm": "約束",
+        "meaning": "Cuộc hẹn, lời hứa"
+    },
+    {
+        "word": "は",
+        "kanjiForm": "歯",
+        "meaning": "Răng"
+    },
+    {
+        "word": "どうして",
+        "kanjiForm": "",
+        "meaning": "Tại sao"
+    },
+    {
+        "word": "わかる / わかります",
+        "kanjiForm": "分かる / 分かります",
+        "meaning": "Hiểu, nắm được"
+    },
+    {
+        "word": "ある / あります",
+        "kanjiForm": "有る / 有ります",
+        "meaning": "Có (sở hữu)"
+    },
+    {
+        "word": "よく",
+        "kanjiForm": "",
+        "meaning": "Tốt, rõ (chỉ mức độ), thường"
+    },
+    {
+        "word": "だいたい",
+        "kanjiForm": "",
+        "meaning": "Đại khái, đại thể"
+    },
+    {
+        "word": "たくさん",
+        "kanjiForm": "",
+        "meaning": "Nhiều"
+    },
+    {
+        "word": "すこし",
+        "kanjiForm": "少し",
+        "meaning": "Ít, một ít"
+    },
+    {
+        "word": "ぜんぜん",
+        "kanjiForm": "全然",
+        "meaning": "Hoàn toàn ~ không"
+    },
+    {
+        "word": "はやく",
+        "kanjiForm": "早く",
+        "meaning": "Sớm, nhanh"
+    },
+    {
+        "word": "～から",
+        "kanjiForm": "",
+        "meaning": "Vì ~"
+    },
+    {
+        "word": "ほかに",
+        "kanjiForm": "他に",
+        "meaning": "Ngoài ra, bên cạnh đó"
+    },
+    {
+        "word": "コンサート",
+        "kanjiForm": "",
+        "meaning": "Buổi hòa nhạc"
+    },
+    {
+        "word": "チケット",
+        "kanjiForm": "",
+        "meaning": "Vé"
+    },
+    {
+        "word": "ざんねん",
+        "kanjiForm": "残念",
+        "meaning": "Đáng tiếc"
+    }
+]
