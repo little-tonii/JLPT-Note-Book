@@ -123,4 +123,24 @@ class LessonDatasourceImpl implements LessonDatasource {
       throw Exception(e);
     }
   }
+
+  @override
+  Future<LessonModel> deleteLessonById({required String id}) async {
+    try {
+      final querySnapShot = firebaseFirestore.collection('lessons').doc(id);
+      final lessonDoc = await querySnapShot.get();
+      await querySnapShot.delete();
+      return LessonModel.fromJson({
+        'id': lessonDoc.id,
+        'lesson': lessonDoc.data()!['lesson'],
+        'createdAt': lessonDoc.data()!['createdAt'],
+        'levelId': lessonDoc.data()!['levelId'],
+      });
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(message: "Có lỗi xảy ra khi xóa bài học");
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
 }

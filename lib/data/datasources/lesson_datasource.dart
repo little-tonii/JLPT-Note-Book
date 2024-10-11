@@ -8,4 +8,5 @@ abstract class LessonDatasource {
       {required String levelId, required String lesson});
   Future<LessonModel> updateLessonById(
       {required String id, required String lesson});
+  Future<LessonModel> deleteLessonById({required String id});
 }

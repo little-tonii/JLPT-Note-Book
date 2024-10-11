@@ -7,6 +7,8 @@ import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/lesson_entity.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_lesson/create_lesson_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_lesson/create_lesson_state.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_lesson/delete_lesson_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_lesson/delete_lesson_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jlpt/edit_jlpt_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_lesson/edit_lesson_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_lesson/edit_lesson_state.dart';
@@ -14,6 +16,7 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/lesson_manag
 import 'package:note_book_app/presentation/web_version/admin/cubits/lesson_manager/lesson_manager_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/filter_select_box.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/lesson/create_lesson_form.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/lesson/delete_lesson_form.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/lesson/edit_lesson_form.dart';
 
 class LessonManager extends StatefulWidget {
@@ -68,8 +71,8 @@ class _LessonManagerState extends State<LessonManager> {
     );
   }
 
-  void _handleShowEditLessonForm({required LessonEntity lesson}) {
-    showDialog(
+  void _handleShowEditLessonForm({required LessonEntity lesson}) async {
+    final isShowDeleteForm = await showDialog(
       context: context,
       builder: (context) => LayoutBuilder(
         builder: (context, constraints) {
@@ -80,7 +83,11 @@ class _LessonManagerState extends State<LessonManager> {
           });
           return Dialog(
             child: BlocProvider<EditLessonCubit>(
-              create: (context) => getIt<EditLessonCubit>()..init(),
+              create: (context) => getIt<EditLessonCubit>()
+                ..init(
+                  id: lesson.id,
+                  lesson: lesson.lesson,
+                ),
               child: BlocListener<EditLessonCubit, EditLessonState>(
                 listener: (context, state) {
                   if (state is EditLessonSuccess) {
@@ -100,6 +107,39 @@ class _LessonManagerState extends State<LessonManager> {
         },
       ),
     );
+    if (mounted && isShowDeleteForm == true) {
+      showDialog(
+        context: context,
+        builder: (context) => LayoutBuilder(
+          builder: (context, constraints) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (!ResponsiveUtil.isDesktop(context)) {
+                context.pop();
+              }
+            });
+            return Dialog(
+              child: BlocProvider<DeleteLessonCubit>(
+                create: (context) => getIt<DeleteLessonCubit>()..init(),
+                child: BlocListener<DeleteLessonCubit, DeleteLessonState>(
+                  listener: (context, state) {
+                    if (state is DeleteLessonSuccess) {
+                      _lessonManagerCubit.removeLessonListView(
+                        lessonId: state.lessonId,
+                      );
+                    }
+                    if (state is DeleteLessonSuccess ||
+                        state is DeleteLessonFailure) {
+                      context.pop();
+                    }
+                  },
+                  child: DeleteLessonForm(lesson: lesson),
+                ),
+              ),
+            );
+          },
+        ),
+      );
+    }
   }
 
   Widget _actionButton(

@@ -42,6 +42,7 @@ import 'package:note_book_app/domain/usecases/kunyomis/create_kunyomi_by_kanji_i
 import 'package:note_book_app/domain/usecases/kunyomis/delete_kunyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/kunyomis/update_kunyomi_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/lessons/create_lesson_by_level_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/lessons/delete_lesson_by_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/lessons/delete_lesson_by_level_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/lessons/update_lesson_by_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/levels/create_level_usecase.dart';
@@ -72,6 +73,7 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/create_lesso
 import 'package:note_book_app/presentation/web_version/admin/cubits/create_new_jlpt/create_new_jlpt_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/delete_jlpt/delete_jlpt_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/delete_kanji/delete_kanji_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/delete_lesson/delete_lesson_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jlpt/edit_jlpt_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_lesson/edit_lesson_cubit.dart';
@@ -354,6 +356,12 @@ Future<void> initializeDependencies() async {
     ),
   );
 
+  getIt.registerLazySingleton(
+    () => DeleteLessonByIdUsecase(
+      lessonRepository: getIt<LessonRepository>(),
+    ),
+  );
+
   getIt.registerFactory(() => HomePageWebCubit());
 
   getIt.registerFactory(() => LevelPageWebCubit());
@@ -399,4 +407,6 @@ Future<void> initializeDependencies() async {
   getIt.registerFactory(() => CreateLessonCubit());
 
   getIt.registerFactory(() => EditLessonCubit());
+
+  getIt.registerFactory(() => DeleteLessonCubit());
 }

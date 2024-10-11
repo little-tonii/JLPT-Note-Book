@@ -169,7 +169,9 @@ class _EditLessonFormState extends State<EditLessonForm> {
     );
   }
 
-  void _handleSaveChanges() {}
+  void _handleSaveChanges() {
+    context.read<EditLessonCubit>().saveChange(lesson: _lessonController.text);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -211,7 +213,9 @@ class _EditLessonFormState extends State<EditLessonForm> {
                             children: [
                               Expanded(
                                 child: _actionFormDeleteButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    context.pop(true);
+                                  },
                                   text: "Xoá bài học",
                                 ),
                               ),

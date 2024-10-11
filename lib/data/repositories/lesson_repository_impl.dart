@@ -85,4 +85,16 @@ class LessonRepositoryImpl implements LessonRepository {
       return Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, LessonEntity>> deleteLessonById({required String id}) async {
+    try {
+      final result = await lessonDatasource.deleteLessonById(id: id);
+      return Right(result.toEntity());
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
+  }
 }

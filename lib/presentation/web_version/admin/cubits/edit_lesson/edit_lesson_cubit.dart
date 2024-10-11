@@ -12,5 +12,34 @@ class EditLessonCubit extends Cubit<EditLessonState> {
 
   EditLessonCubit() : super(EditLessonInitial());
 
-  void init() {}
+  void init({required String id, required String lesson}) {
+    emit(EditLessonLoaded(id: id, lesson: lesson));
+  }
+
+  void saveChange({required String lesson}) async {
+    if (state is EditLessonLoaded) {
+      final currentState = state as EditLessonLoaded;
+      emit(EditLessonLoading());
+      final editedLesson = await _updateLessonByIdUsecase.call(
+        id: currentState.id,
+        lesson: lesson,
+      );
+      editedLesson.fold((failure) async {
+        await _createAdminLogUsecase.call(
+          message: '${currentState.id} | ${failure.message}',
+          action: "UPDATE",
+          actionStatus: "FAILED",
+        );
+        emit(EditLessonFailure(message: failure.message));
+      }, (success) async {
+        String message = 'Cập nhật bài học thành công';
+        await _createAdminLogUsecase.call(
+          message: '${currentState.id} | $message',
+          action: "UPDATE",
+          actionStatus: "SUCCESS",
+        );
+        emit(EditLessonSuccess(message: message, lesson: success));
+      });
+    }
+  }
 }
