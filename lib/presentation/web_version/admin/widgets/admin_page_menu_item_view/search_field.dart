@@ -4,9 +4,11 @@ import 'package:note_book_app/common/colors/app_colors.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 
 class SearchField extends StatelessWidget {
+  final String hint;
   final TextEditingController searchController;
 
-  const SearchField({super.key, required this.searchController});
+  const SearchField(
+      {super.key, required this.searchController, required this.hint});
 
   void _handleSearch(BuildContext context) {
     context.read<KanjiManagerCubit>().searchKanjis(
@@ -47,7 +49,7 @@ class SearchField extends StatelessWidget {
           fontWeight: FontWeight.bold,
           fontSize: 16,
         ),
-        hintText: 'Tìm kiếm bằng chữ Hán Việt',
+        hintText: hint,
         suffixIcon: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: IconButton(

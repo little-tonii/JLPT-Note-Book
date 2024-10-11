@@ -11,9 +11,16 @@ class WordRepositoryImpl implements WordRepository {
   const WordRepositoryImpl({required this.wordDatasource});
 
   @override
-  Future<Either<Failure, WordEntity>> deleteWordById({required String id}) {
-    // TODO: implement deleteWordById
-    throw UnimplementedError();
+  Future<Either<Failure, WordEntity>> deleteWordById(
+      {required String id}) async {
+    try {
+      final result = await wordDatasource.deleteWordById(id: id);
+      return Right(result.toEntity());
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
   }
 
   @override
@@ -21,9 +28,21 @@ class WordRepositoryImpl implements WordRepository {
     required String levelId,
     required int pageSize,
     required int pageNumber,
-  }) {
-    // TODO: implement getAllWordsByLevelId
-    throw UnimplementedError();
+    required String searchKey,
+  }) async {
+    try {
+      final result = await wordDatasource.getAllWordsByLevelId(
+        levelId: levelId,
+        pageSize: pageSize,
+        pageNumber: pageNumber,
+        searchKey: searchKey,
+      );
+      return Right(result.map((e) => e.toEntity()).toList());
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
   }
 
   @override
@@ -32,30 +51,68 @@ class WordRepositoryImpl implements WordRepository {
     required String levelId,
     required int pageSize,
     required int pageNumber,
-  }) {
-    // TODO: implement getAllWordsByLevelIdAndLessonId
-    throw UnimplementedError();
+    required String searchKey,
+  }) async {
+    try {
+      final result = await wordDatasource.getAllWordsByLevelIdAndLessonId(
+        lessonId: lessonId,
+        levelId: levelId,
+        pageSize: pageSize,
+        pageNumber: pageNumber,
+        searchKey: searchKey,
+      );
+      return Right(result.map((e) => e.toEntity()).toList());
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, WordEntity>> updateWordById(
-      {required String id,
-      required String word,
-      required String meaning,
-      required String kanjiForm}) {
-    // TODO: implement updateWordById
-    throw UnimplementedError();
+  Future<Either<Failure, WordEntity>> updateWordById({
+    required String id,
+    required String word,
+    required String meaning,
+    required String kanjiForm,
+  }) async {
+    try {
+      final result = await wordDatasource.updateWordById(
+        id: id,
+        word: word,
+        meaning: meaning,
+        kanjiForm: kanjiForm,
+      );
+      return Right(result.toEntity());
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, WordEntity>> createWordByLevelIdAndLessonId(
-      {required String levelId,
-      required String lessonId,
-      required String word,
-      required String meaning,
-      required String kanjiForm}) {
-    // TODO: implement createWordByLevelIdAndLessonId
-    throw UnimplementedError();
+  Future<Either<Failure, WordEntity>> createWordByLevelIdAndLessonId({
+    required String levelId,
+    required String lessonId,
+    required String word,
+    required String meaning,
+    required String kanjiForm,
+  }) async {
+    try {
+      final result = await wordDatasource.createWordByLevelIdAndLessonId(
+        levelId: levelId,
+        lessonId: lessonId,
+        word: word,
+        meaning: meaning,
+        kanjiForm: kanjiForm,
+      );
+      return Right(result.toEntity());
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
+      return Left(UnknownFailure());
+    }
   }
 
   @override
@@ -65,7 +122,9 @@ class WordRepositoryImpl implements WordRepository {
       final result =
           await wordDatasource.deleteWordByLessonId(lessonId: lessonId);
       return Right(result);
-    } on Exception catch (e) {
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
       return Left(UnknownFailure());
     }
   }
@@ -76,7 +135,9 @@ class WordRepositoryImpl implements WordRepository {
     try {
       final result = await wordDatasource.deleteWordByLevelId(levelId: levelId);
       return Right(result);
-    } on Exception catch (e) {
+    } on Failure catch (e) {
+      return Left(e);
+    } on Exception {
       return Left(UnknownFailure());
     }
   }

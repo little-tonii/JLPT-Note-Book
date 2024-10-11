@@ -101,7 +101,6 @@ class _KanjiManagerState extends State<KanjiManager> {
     //   reader.onLoadEnd.listen((event) {
     //     final jsonString = reader.result as String;
     //     final data = jsonDecode(jsonString);
-
     //   });
     // });
   }
@@ -152,6 +151,7 @@ class _KanjiManagerState extends State<KanjiManager> {
                     children: [
                       Expanded(
                         child: SearchField(
+                          hint: "Tìm kiếm bằng chữ Hán Việt",
                           searchController: _searchController,
                         ),
                       ),

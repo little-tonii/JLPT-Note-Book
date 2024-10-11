@@ -26,6 +26,7 @@ class _FilterSelectBoxState extends State<FilterSelectBox> {
     return DropdownButtonHideUnderline(
       child: DropdownButton2(
         dropdownStyleData: DropdownStyleData(
+          maxHeight: 400,
           offset: const Offset(0, -8),
           decoration: BoxDecoration(
             color: AppColors.white,

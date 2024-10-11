@@ -325,7 +325,7 @@ class _LessonManagerState extends State<LessonManager> {
               child: Text(
                 lesson.lesson,
                 style: const TextStyle(fontSize: 16),
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.start,
               ),
             ),
           ),

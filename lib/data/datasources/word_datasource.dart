@@ -5,6 +5,7 @@ abstract class WordDatasource {
     required String levelId,
     required int pageSize,
     required int pageNumber,
+    required String searchKey,
   });
 
   Future<List<WordModel>> getAllWordsByLevelIdAndLessonId({
@@ -12,6 +13,7 @@ abstract class WordDatasource {
     required String levelId,
     required int pageSize,
     required int pageNumber,
+    required String searchKey,
   });
 
   Future<WordModel> createWordByLevelIdAndLessonId({
