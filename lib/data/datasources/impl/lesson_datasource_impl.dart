@@ -17,7 +17,7 @@ class LessonDatasourceImpl implements LessonDatasource {
       final queryResult = await firebaseFirestore
           .collection('lessons')
           .where('levelId', isEqualTo: levelId)
-          .orderBy('createdAt')
+          .orderBy('lesson')
           .get();
       final lessons = queryResult.docs
           .map((lesson) => LessonModel.fromJson({

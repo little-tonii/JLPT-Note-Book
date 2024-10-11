@@ -1,0 +1,207 @@
+[
+    {
+        "word": "まいしゅう",
+        "kanjiForm": "毎週",
+        "meaning": "Mỗi tuần"
+    },
+    {
+        "word": "まいつき",
+        "kanjiForm": "毎月",
+        "meaning": "Mỗi tháng"
+    },
+    {
+        "word": "まいとし",
+        "kanjiForm": "毎年",
+        "meaning": "Mỗi năm"
+    },
+    {
+        "word": "ちち",
+        "kanjiForm": "父",
+        "meaning": "Bố (dùng khi nói về bố mình)"
+    },
+    {
+        "word": "はは",
+        "kanjiForm": "母",
+        "meaning": "Mẹ (dùng khi nói về mẹ mình)"
+    },
+    {
+        "word": "おとうさん",
+        "kanjiForm": "お父さん",
+        "meaning": "Bố (dùng khi nói về bố người khác và dùng khi xưng hô với bố mình)"
+    },
+    {
+        "word": "おかあさん",
+        "kanjiForm": "お母さん",
+        "meaning": "Mẹ (dùng khi nói về mẹ người khác và dùng khi xưng hô với mẹ mình)"
+    },
+    {
+        "word": "おっと / しゅじん",
+        "kanjiForm": "夫 / 主人",
+        "meaning": "Chồng (mình)"
+    },
+    {
+        "word": "つま / かない",
+        "kanjiForm": "妻 / 家内",
+        "meaning": "Vợ (mình)"
+    },
+    {
+        "word": "ごしゅじん",
+        "kanjiForm": "ご主人",
+        "meaning": "Chồng (của người khác) (khi muốn hỏi hoặc giới thiệu chồng của ai đó thì sử dụng từ này)"
+    },
+    {
+        "word": "おくさん",
+        "kanjiForm": "奥さん",
+        "meaning": "Vợ (của người khác) (khi muốn hỏi hoặc giới thiệu vợ của ai đó thì dùng từ này)"
+    },
+    {
+        "word": "て",
+        "kanjiForm": "手",
+        "meaning": "Tay"
+    },
+    {
+        "word": "はし",
+        "kanjiForm": "箸",
+        "meaning": "Đũa"
+    },
+    {
+        "word": "スプーン",
+        "kanjiForm": "",
+        "meaning": "Thìa"
+    },
+    {
+        "word": "フォーク",
+        "kanjiForm": "",
+        "meaning": "Dĩa, nĩa"
+    },
+    {
+        "word": "ナイフ",
+        "kanjiForm": "",
+        "meaning": "Dao"
+    },
+    {
+        "word": "はさみ",
+        "kanjiForm": "鋏",
+        "meaning": "Kéo"
+    },
+    {
+        "word": "かみ",
+        "kanjiForm": "紙",
+        "meaning": "Giấy"
+    },
+    {
+        "word": "はな",
+        "kanjiForm": "花",
+        "meaning": "Hoa"
+    },
+    {
+        "word": "シャツ",
+        "kanjiForm": "",
+        "meaning": "Áo sơ mi"
+    },
+    {
+        "word": "プレゼント",
+        "kanjiForm": "",
+        "meaning": "Quà tặng"
+    },
+    {
+        "word": "きっぷ",
+        "kanjiForm": "切符",
+        "meaning": "Vé"
+    },
+    {
+        "word": "おちゃわん",
+        "kanjiForm": "お茶碗",
+        "meaning": "Bát"
+    },
+    {
+        "word": "おかね",
+        "kanjiForm": "お金",
+        "meaning": "Tiền"
+    },
+    {
+        "word": "クリスマス",
+        "kanjiForm": "",
+        "meaning": "Giáng sinh"
+    },
+    {
+        "word": "インターネット",
+        "kanjiForm": "",
+        "meaning": "Internet"
+    },
+    {
+        "word": "ニュース",
+        "kanjiForm": "",
+        "meaning": "Tin tức, bản tin"
+    },
+    {
+        "word": "きる / きります",
+        "kanjiForm": "切る / 切ります",
+        "meaning": "Cắt"
+    },
+    {
+        "word": "おくる / おくります",
+        "kanjiForm": "送る / 送ります",
+        "meaning": "Gửi"
+    },
+    {
+        "word": "もらう / もらいます",
+        "kanjiForm": "貰う / 貰います",
+        "meaning": "Nhận"
+    },
+    {
+        "word": "ならう / ならいます",
+        "kanjiForm": "習う / 習います",
+        "meaning": "Học"
+    },
+    {
+        "word": "かす / かします",
+        "kanjiForm": "貸す / 貸します",
+        "meaning": "Cho mượn"
+    },
+    {
+        "word": "あげる / あげます",
+        "kanjiForm": "上げる / 上げます",
+        "meaning": "Cho, tặng"
+    },
+    {
+        "word": "おしえる / おしえます",
+        "kanjiForm": "教える / 教えます",
+        "meaning": "Dạy"
+    },
+    {
+        "word": "かける / かけます 「でんわを～」", 
+        "kanjiForm": "かける / かけます 「電話を～」",
+        "meaning": "Gọi điện thoại"
+    },
+    {
+        "word": "かりる / かります",
+        "kanjiForm": "借りる / 借ります",
+        "meaning": "Vay, mượn"
+    },
+    {
+        "word": "もう",
+        "kanjiForm": "",
+        "meaning": "Đã"
+    },
+    {
+        "word": "まだ",
+        "kanjiForm": "",
+        "meaning": "Vẫn, chưa"
+    },
+    {
+        "word": "これから",
+        "kanjiForm": "",
+        "meaning": "Từ bây giờ, từ nay"
+    },
+    {
+        "word": "このあいだ",
+        "kanjiForm": "この間",
+        "meaning": "Vừa rồi, hôm nọ"
+    },
+    {
+        "word": "こいびと",
+        "kanjiForm": "恋人",
+        "meaning": "Người yêu"
+    }
+]

@@ -14,7 +14,10 @@ class LevelDatasourcesImpl implements LevelDatasource {
   @override
   Future<List<LevelModel>> getAllLevels() async {
     try {
-      final queryResult = await firebaseFirestore.collection('levels').get();
+      final queryResult = await firebaseFirestore
+          .collection('levels')
+          .orderBy('level', descending: true)
+          .get();
       final levels = queryResult.docs.map((e) {
         return LevelModel.fromJson({
           'level': e.data()['level'],

@@ -1,0 +1,257 @@
+[
+    {
+        "word": "チョコレート",
+        "kanjiForm": "",
+        "meaning": "Sô cô la"
+    },
+    {
+        "word": "パン",
+        "kanjiForm": "",
+        "meaning": "Bánh mì"
+    },
+    {
+        "word": "ごはん",
+        "kanjiForm": "ご飯",
+        "meaning": "Cơm"
+    },
+    {
+        "word": "たまご",
+        "kanjiForm": "卵",
+        "meaning": "Trứng"
+    },
+    {
+        "word": "にく",
+        "kanjiForm": "肉",
+        "meaning": "Thịt"
+    },
+    {
+        "word": "ぎゅうにく",
+        "kanjiForm": "牛肉",
+        "meaning": "Thịt bò"
+    },
+    {
+        "word": "さかな",
+        "kanjiForm": "魚",
+        "meaning": "Cá"
+    },
+    {
+        "word": "やさい",
+        "kanjiForm": "野菜",
+        "meaning": "Rau củ"
+    },
+    {
+        "word": "くだもの",
+        "kanjiForm": "果物",
+        "meaning": "Hoa quả"
+    },
+    {
+        "word": "みず",
+        "kanjiForm": "水",
+        "meaning": "Nước"
+    },
+    {
+        "word": "おちゃ",
+        "kanjiForm": "お茶",
+        "meaning": "Trà"
+    },
+    {
+        "word": "コーヒー",
+        "kanjiForm": "",
+        "meaning": "Cà phê"
+    },
+    {
+        "word": "ワイン",
+        "kanjiForm": "",
+        "meaning": "Rượu vang"
+    },
+    {
+        "word": "ジュース",
+        "kanjiForm": "",
+        "meaning": "Nước hoa quả"
+    },
+    {
+        "word": "ビール",
+        "kanjiForm": "",
+        "meaning": "Bia"
+    },
+    {
+        "word": "おさけ",
+        "kanjiForm": "お酒",
+        "meaning": "Rượu"
+    },
+    {
+        "word": "たばこ",
+        "kanjiForm": "",
+        "meaning": "Thuốc lá"
+    },
+    {
+        "word": "くすり",
+        "kanjiForm": "薬",
+        "meaning": "Thuốc"
+    },
+    {
+        "word": "てがみ",
+        "kanjiForm": "手紙",
+        "meaning": "Thư, bức thư"
+    },
+    {
+        "word": "メール",
+        "kanjiForm": "",
+        "meaning": "Mail"
+    },
+    {
+        "word": "レポート",
+        "kanjiForm": "",
+        "meaning": "Bản báo cáo"
+    },
+    {
+        "word": "おんがく",
+        "kanjiForm": "音楽",
+        "meaning": "Âm nhạc"
+    },
+    {
+        "word": "えいが",
+        "kanjiForm": "映画",
+        "meaning": "Phim, điện ảnh"
+    },
+    {
+        "word": "しゃしん",
+        "kanjiForm": "写真",
+        "meaning": "Ảnh"
+    },
+    {
+        "word": "しゅくだい",
+        "kanjiForm": "宿題",
+        "meaning": "Bài về nhà"
+    },
+    {
+        "word": "テニス",
+        "kanjiForm": "",
+        "meaning": "Tennis"
+    },
+    {
+        "word": "サッカー",
+        "kanjiForm": "",
+        "meaning": "Bóng đá"
+    },
+    {
+        "word": "[お]はなみ",
+        "kanjiForm": "[お]花見",
+        "meaning": "Ngắm hoa anh đào"
+    },
+    {
+        "word": "レストラン",
+        "kanjiForm": "",
+        "meaning": "Nhà hàng"
+    },
+    {
+        "word": "カフェ",
+        "kanjiForm": "",
+        "meaning": "Quán cà phê"
+    },
+    {
+        "word": "にわ",
+        "kanjiForm": "庭",
+        "meaning": "Vườn"
+    },
+    {
+        "word": "みせ",
+        "kanjiForm": "店",
+        "meaning": "Cửa hàng, tiệm"
+    },
+    {
+        "word": "[お]しょうがつ",
+        "kanjiForm": "お正月",
+        "meaning": "Tết, năm mới"
+    },
+    {
+        "word": "みんなで",
+        "kanjiForm": "",
+        "meaning": "Mọi người cùng"
+    },
+    {
+        "word": "なに",
+        "kanjiForm": "何",
+        "meaning": "Cái gì, gì"
+    },
+    {
+        "word": "よむ / よみます",
+        "kanjiForm": "読む / 読みます",
+        "meaning": "Đọc"
+    },
+    {
+        "word": "かく / かきます",
+        "kanjiForm": "書く / 書きます",
+        "meaning": "Viết"
+    },
+    {
+        "word": "かう / かいます",
+        "kanjiForm": "買う / 買います",
+        "meaning": "Mua"
+    },
+    {
+        "word": "とる / とります 「しゃしんを」",
+        "kanjiForm": "撮る / 撮ります 「写真を」",
+        "meaning": "Chụp ảnh"
+    },
+    {
+        "word": "きく / ききます",
+        "kanjiForm": "聞く / 聞きます",
+        "meaning": "Nghe"
+    },
+    {
+        "word": "すう / すいます",
+        "kanjiForm": "吸う / 吸います",
+        "meaning": "Hút thuốc"
+    },
+    {
+        "word": "する / します",
+        "kanjiForm": "",
+        "meaning": "Làm"
+    },
+    {
+        "word": "あう / あいます",
+        "kanjiForm": "会う / 会います",
+        "meaning": "Gặp"
+    },
+    {
+        "word": "のむ / のみます",
+        "kanjiForm": "飲む / 飲みます",
+        "meaning": "Uống"
+    },
+    {
+        "word": "たべる / たべます",
+        "kanjiForm": "食べる / 食べます",
+        "meaning": "Ăn"
+    },
+    {
+        "word": "みる / みます",
+        "kanjiForm": "見る / 見ます",
+        "meaning": "Xem, nhìn, trông"
+    },
+    {
+        "word": "しょくじする / しょくじします",
+        "kanjiForm": "食事する / 食事します",
+        "meaning": "Dùng bữa"
+    },
+    {
+        "word": "いっしょに",
+        "kanjiForm": "一緒に",
+        "meaning": "Cùng nhau"
+    },
+    {
+        "word": "ちょっと",
+        "kanjiForm": "",
+        "meaning": "Một chút"
+    },
+    {
+        "word": "いつも",
+        "kanjiForm": "",
+        "meaning": "Luôn luôn, lúc nào cũng"
+    },
+    {
+        "word": "ときどき",
+        "kanjiForm": "時々",
+        "meaning": "Thỉnh thoảng"
+    }
+]
