@@ -2,307 +2,307 @@
     {
         "meaning": "Máy bay",
         "romanji": "Hikouki",
-        "kanji": "飛行機",
+        "kanjiForm": "飛行機",
         "word": "ひこうき"
     },
     {
         "meaning": "Thuyền, tàu thuỷ",
         "romanji": "Fune",
-        "kanji": "船",
+        "kanjiForm": "船",
         "word": "ふね"
     },
     {
         "meaning": "Tàu điện ngầm",
         "romanji": "Chikatetsu",
-        "kanji": "地下鉄",
+        "kanjiForm": "地下鉄",
         "word": "ちかてつ"
     },
     {
         "meaning": "Tàu điện",
         "romanji": "Densha",
-        "kanji": "電車",
+        "kanjiForm": "電車",
         "word": "でんしゃ"
     },
     {
         "meaning": "Xe máy",
         "romanji": "Baiku",
-        "kanji": null,
+        "kanjiForm": "",
         "word": "バイク"
     },
     {
         "meaning": "Xe bus",
         "romanji": "Basu",
-        "kanji": null,
+        "kanjiForm": "",
         "word": "バス"
     },
     {
         "meaning": "Taxi",
         "romanji": "Takushii",
-        "kanji": null,
+        "kanjiForm": "",
         "word": "タクシー"
     },
     {
         "meaning": "Xe đạp",
         "romanji": "Jitensha",
-        "kanji": null,
+        "kanjiForm": "",
         "word": "じてんしゃ"
     },
     {
         "meaning": "Đi bộ",
         "romanji": "Aruite",
-        "kanji": "歩いて",
+        "kanjiForm": "歩いて",
         "word": "あるいて"
     },
     {
         "meaning": "Khách sạn",
         "romanji": "Hoteru",
-        "kanji": null,
+        "kanjiForm": "",
         "word": "ホテル"
     },
     {
         "meaning": "Bảo tàng mỹ thuật",
         "romanji": "Bijutsukan",
-        "kanji": "美術館",
+        "kanjiForm": "美術館",
         "word": "びじゅつかん"
     },
     {
         "meaning": "Thành phố Hồ Chí Minh",
         "romanji": "Hoochiminhshi",
-        "kanji": "ホーチミン市",
+        "kanjiForm": "ホーチミン市",
         "word": "ホーチミンし"
     },
     {
         "meaning": "Hải Dương",
         "romanji": "Haizuon",
-        "kanji": null,
+        "kanjiForm": "",
         "word": "ハイズオン"
     },
     {
         "meaning": "Vịnh Hạ Long",
         "romanji": "Haronwan",
-        "kanji": "ハロン湾",
+        "kanjiForm": "ハロン湾",
         "word": "ハロンわん"
     },
     {
         "meaning": "Bạn, bạn bè",
         "romanji": "Tomodachi",
-        "kanji": "友達",
+        "kanjiForm": "友達",
         "word": "ともだち"
     },
     {
         "meaning": "Một mình",
         "romanji": "Hitoride",
-        "kanji": "一人で",
+        "kanjiForm": "一人で",
         "word": "ひとりで"
     },
     {
         "meaning": "Người",
         "romanji": "Hito",
-        "kanji": "人",
+        "kanjiForm": "人",
         "word": "ひと"
     },
     {
         "meaning": "Gia đình",
         "romanji": "Kazoku",
-        "kanji": "家族",
+        "kanjiForm": "家族",
         "word": "かぞく"
     },
     {
         "meaning": "Tuần trước",
         "romanji": "Senshuu",
-        "kanji": "先週",
+        "kanjiForm": "先週",
         "word": "せんしゅう"
     },
     {
         "meaning": "Tuần này",
         "romanji": "Konshuu",
-        "kanji": "今週",
+        "kanjiForm": "今週",
         "word": "こんしゅう"
     },
     {
         "meaning": "Tuần sau",
         "romanji": "Raishuu",
-        "kanji": "来週",
+        "kanjiForm": "来週",
         "word": "らいしゅう"
     },
     {
         "meaning": "Tháng trước",
         "romanji": "Sengetsu",
-        "kanji": "先月",
+        "kanjiForm": "先月",
         "word": "せんげつ"
     },
     {
         "meaning": "Tháng này",
         "romanji": "Kongetsu",
-        "kanji": "今月",
+        "kanjiForm": "今月",
         "word": "こんげつ"
     },
     {
         "meaning": "Tháng sau",
         "romanji": "Raigetsu",
-        "kanji": "来月",
+        "kanjiForm": "来月",
         "word": "らいげつ"
     },
     {
         "meaning": "Năm ngoái",
         "romanji": "Kyonen",
-        "kanji": "去年",
+        "kanjiForm": "去年",
         "word": "きょねん"
     },
     {
         "meaning": "Năm nay",
         "romanji": "Kotoshi",
-        "kanji": "今年",
+        "kanjiForm": "今年",
         "word": "ことし"
     },
     {
         "meaning": "Năm sau",
         "romanji": "Rainen",
-        "kanji": "来年",
+        "kanjiForm": "来年",
         "word": "らいねん"
     },
     {
         "meaning": "Mồng 1",
         "romanji": "Tsuitachi",
-        "kanji": "一日",
+        "kanjiForm": "一日",
         "word": "ついたち"
     },
     {
         "meaning": "Mồng 2",
         "romanji": "Futsuka",
-        "kanji": "二日",
+        "kanjiForm": "二日",
         "word": "ふつか"
     },
     {
         "meaning": "Mồng 3",
         "romanji": "Mikka",
-        "kanji": "三日",
+        "kanjiForm": "三日",
         "word": "みっか"
     },
     {
         "meaning": "Mồng 4",
         "romanji": "Yokka",
-        "kanji": "四日",
+        "kanjiForm": "四日",
         "word": "よっか"
     },
     {
         "meaning": "Mồng 5",
         "romanji": "Itsuka",
-        "kanji": "五日",
+        "kanjiForm": "五日",
         "word": "いつか"
     },
     {
         "meaning": "Mồng 6",
         "romanji": "Muika",
-        "kanji": "六日",
+        "kanjiForm": "六日",
         "word": "むいか"
     },
     {
         "meaning": "Mồng 7",
         "romanji": "Nanoka",
-        "kanji": "七日",
+        "kanjiForm": "七日",
         "word": "なのか"
     },
     {
         "meaning": "Mồng 8",
         "romanji": "Youka",
-        "kanji": "八日",
+        "kanjiForm": "八日",
         "word": "ようか"
     },
     {
         "meaning": "Mồng 9",
         "romanji": "Kokonoka",
-        "kanji": "九日",
+        "kanjiForm": "九日",
         "word": "ここのか"
     },
     {
         "meaning": "Mồng 10",
         "romanji": "Tooka",
-        "kanji": "十日",
+        "kanjiForm": "十日",
         "word": "とおか"
     },
     {
         "meaning": "ngày 14",
         "romanji": "Juuyokka",
-        "kanji": "十四日",
+        "kanjiForm": "十四日",
         "word": "じゅうよっか"
     },
     {
         "meaning": "Ngày 20",
         "romanji": "Hatsuka",
-        "kanji": "二十日",
+        "kanjiForm": "二十日",
         "word": "はつか"
     },
     {
         "meaning": "Ngày 24",
         "romanji": "Nijuuyokka",
-        "kanji": "二十四日",
+        "kanjiForm": "二十四日",
         "word": "にじゅうよっか"
     },
     {
         "meaning": "Sinh nhật",
         "romanji": "Tanjoubi",
-        "kanji": "誕生日",
+        "kanjiForm": "誕生日",
         "word": "たんじょうび"
     },
     {
         "meaning": "Khoảng ~",
         "romanji": "~ goro",
-        "kanji": null,
+        "kanjiForm": "",
         "word": "～ごろ"
     },
     {
         "meaning": "Ngày mấy, ngày bao nhiêu, mấy ngày, bao nhiêu ngày",
         "romanji": "Nan nichi",
-        "kanji": "何日",
+        "kanjiForm": "何日",
         "word": "なんにち"
     },
     {
         "meaning": "Tháng mấy",
         "romanji": "Nan gatsu",
-        "kanji": "何月",
+        "kanjiForm": "何月",
         "word": "なんがつ"
     },
     {
         "meaning": "Bao giờ, khi nào",
         "romanji": "Itsu",
-        "kanji": null,
+        "kanjiForm": "",
         "word": "いつ"
     },
     {
         "meaning": "Đi",
         "romanji": "Ikimasu",
-        "kanji": "行きます",
+        "kanjiForm": "行きます",
         "word": "いきます"
     },
     {
         "meaning": "Đến",
         "romanji": "Kimasu",
-        "kanji": "来ます",
+        "kanjiForm": "来ます",
         "word": "きます"
     },
     {
         "meaning": "Về",
         "romanji": "Kaerimasu",
-        "kanji": "帰ります",
+        "kanjiForm": "帰ります",
         "word": "かえります"
     },
     {
         "meaning": "Nhật ký",
         "romanji": "Nikki",
-        "kanji": "日記",
+        "kanjiForm": "日記",
         "word": "にっき"
     },
     {
         "meaning": "Trụ sở chính",
         "romanji": "Honsha",
-        "kanji": "本社",
+        "kanjiForm": "本社",
         "word": "ほんしゃ"
     },
     {
         "meaning": "Sân bay",
         "romanji": "Kuukou",
-        "kanji": "空港",
+        "kanjiForm": "空港",
         "word": "くうこう"
     }
 ]

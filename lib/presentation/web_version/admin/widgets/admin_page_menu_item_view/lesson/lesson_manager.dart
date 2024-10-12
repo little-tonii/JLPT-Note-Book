@@ -296,9 +296,7 @@ class _LessonManagerState extends State<LessonManager> {
             child: Container(
               decoration: BoxDecoration(
                 border: Border(
-                  bottom: index != length - 1
-                      ? BorderSide(color: AppColors.black)
-                      : BorderSide(color: Colors.transparent),
+                  bottom: BorderSide(color: AppColors.black),
                   right: BorderSide(color: AppColors.black),
                 ),
               ),
@@ -315,9 +313,7 @@ class _LessonManagerState extends State<LessonManager> {
             child: Container(
               decoration: BoxDecoration(
                 border: Border(
-                  bottom: index != length - 1
-                      ? BorderSide(color: AppColors.black)
-                      : BorderSide(color: Colors.transparent),
+                  bottom: BorderSide(color: AppColors.black),
                   right: BorderSide(color: AppColors.black),
                 ),
               ),
@@ -334,9 +330,7 @@ class _LessonManagerState extends State<LessonManager> {
             child: Container(
               decoration: BoxDecoration(
                 border: Border(
-                  bottom: index != length - 1
-                      ? BorderSide(color: AppColors.black)
-                      : BorderSide(color: Colors.transparent),
+                  bottom: BorderSide(color: AppColors.black),
                 ),
               ),
               padding: const EdgeInsets.all(8),

@@ -2,259 +2,259 @@
     {
         "meaning": "Thứ hai",
         "word": "げつようび",
-        "kanji": "月曜日",
+        "kanjiForm": "月曜日",
         "romanji": "Getsuyoubi"
     },
     {
         "meaning": "Thứ ba",
         "word": "かようび",
-        "kanji": "火曜日",
+        "kanjiForm": "火曜日",
         "romanji": "Kayoubi"
     },
     {
         "meaning": "Thứ tư",
         "word": "すいようび",
-        "kanji": "水曜日",
+        "kanjiForm": "水曜日",
         "romanji": "Suiyoubi"
     },
     {
         "meaning": "Thứ năm",
         "word": "もくようび",
-        "kanji": "木曜日",
+        "kanjiForm": "木曜日",
         "romanji": "Mokuyoubi"
     },
     {
         "meaning": "Thứ sáu",
         "word": "きんようび",
-        "kanji": "金曜日",
+        "kanjiForm": "金曜日",
         "romanji": "Kinyoubi"
     },
     {
         "meaning": "Thứ bảy",
         "word": "どようび",
-        "kanji": "土曜日",
+        "kanjiForm": "土曜日",
         "romanji": "Doyoubi"
     },
     {
         "meaning": "Chủ nhật",
         "word": "にちようび",
-        "kanji": "日曜日",
+        "kanjiForm": "日曜日",
         "romanji": "Nichiyoubi"
     },
     {
         "meaning": "Thứ mấy",
         "word": "なんようび",
-        "kanji": "何曜日",
+        "kanjiForm": "何曜日",
         "romanji": "Nanyoubi"
     },
     {
         "meaning": "Bây giờ",
         "word": "いま",
-        "kanji": "今",
+        "kanjiForm": "今",
         "romanji": "Ima"
     },
     {
         "meaning": "Sáng, trước 12 giờ trưa",
         "word": "ごぜん",
-        "kanji": "午前",
+        "kanjiForm": "午前",
         "romanji": "Gozen"
     },
     {
         "meaning": "Chiều, sau 12 giờ trưa",
         "word": "ごご",
-        "kanji": "午後",
+        "kanjiForm": "午後",
         "romanji": "Gogo"
     },
     {
         "meaning": "Rưỡi, nửa",
         "word": "はん",
-        "kanji": "半",
+        "kanjiForm": "半",
         "romanji": "Han"
     },
     {
         "meaning": "Buổi sáng, sáng",
         "word": "あさ",
-        "kanji": "朝",
+        "kanjiForm": "朝",
         "romanji": "Asa"
     },
     {
         "meaning": "Buổi trưa, trưa",
         "word": "ひる",
-        "kanji": "昼",
+        "kanjiForm": "昼",
         "romanji": "Hiru"
     },
     {
         "meaning": "Buổi chiều, chiều",
         "word": "ゆうがた",
-        "kanji": "夕方",
+        "kanjiForm": "夕方",
         "romanji": "Yuugata"
     },
     {
         "meaning": "Buổi tối, tối",
         "word": "ばん",
-        "kanji": "晩",
+        "kanjiForm": "晩",
         "romanji": "Ban"
     },
     {
         "meaning": "Đêm, khuya",
         "word": "よる",
-        "kanji": "夜",
+        "kanjiForm": "夜",
         "romanji": "Yoru"
     },
     {
         "meaning": "Hôm kia",
         "word": "おととい",
-        "kanji": "ー昨日",
+        "kanjiForm": "ー昨日",
         "romanji": "Ototoi"
     },
     {
         "meaning": "Hôm qua",
         "word": "きのう",
-        "kanji": "昨日",
+        "kanjiForm": "昨日",
         "romanji": "Kinou"
     },
     {
         "meaning": "Hôm nay",
         "word": "きょう",
-        "kanji": "今日",
+        "kanjiForm": "今日",
         "romanji": "Kyou"
     },
     {
         "meaning": "Ngày mai",
         "word": "あした",
-        "kanji": "明日",
+        "kanjiForm": "明日",
         "romanji": "Ashita"
     },
     {
         "meaning": "Ngày kia",
         "word": "あさって",
-        "kanji": "明後日",
+        "kanjiForm": "明後日",
         "romanji": "Asatte"
     },
     {
         "meaning": "Sáng nay",
         "word": "けさ",
-        "kanji": "今朝",
+        "kanjiForm": "今朝",
         "romanji": "Kesa"
     },
     {
         "meaning": "Tối nay",
         "word": "こんばん",
-        "kanji": "今晩",
+        "kanjiForm": "今晩",
         "romanji": "Konban"
     },
     {
         "meaning": "Đêm nay",
         "word": "こんや",
-        "kanji": "今夜",
+        "kanjiForm": "今夜",
         "romanji": "Konya"
     },
     {
         "meaning": "Nghỉ, nghỉ phép, ngày nghỉ",
         "word": "やすみ",
-        "kanji": "休み",
+        "kanjiForm": "休み",
         "romanji": "Yasumi"
     },
     {
         "meaning": "Nghỉ trưa",
         "word": "ひるやすみ",
-        "kanji": "昼休み",
+        "kanjiForm": "昼休み",
         "romanji": "Hiruyasumi"
     },
     {
         "meaning": "Mỗi sáng",
         "word": "まいあさ",
-        "kanji": "毎朝",
+        "kanjiForm": "毎朝",
         "romanji": "Maiasa"
     },
     {
         "meaning": "Mỗi tối",
         "word": "まいばん",
-        "kanji": "毎晩",
+        "kanjiForm": "毎晩",
         "romanji": "Maiban"
     },
     {
         "meaning": "Mỗi ngày",
         "word": "まいにち",
-        "kanji": "毎日",
+        "kanjiForm": "毎日",
         "romanji": "Mainichi"
     },
     {
         "meaning": "Mấy giờ",
         "word": "なんじ",
-        "kanji": "何時",
+        "kanjiForm": "何時",
         "romanji": "Nanji"
     },
     {
         "meaning": "Mấy phút",
         "word": "なんぷん",
-        "kanji": "何分",
+        "kanjiForm": "何分",
         "romanji": "Nanpun"
     },
     {
         "meaning": "Làm việc",
         "word": "はたらきます",
-        "kanji": "働きます",
+        "kanjiForm": "働きます",
         "romanji": "Hatarakimasu"
     },
     {
         "meaning": "Nghỉ, nghỉ ngơi",
         "word": "やすみます",
-        "kanji": "休みます",
+        "kanjiForm": "休みます",
         "romanji": "Yasumimasu"
     },
     {
         "meaning": "Hết, kết thúc, xong",
         "word": "おわります",
-        "kanji": "終わります",
+        "kanjiForm": "終わります",
         "romanji": "Owarimasu"
     },
     {
         "meaning": "Thức dậy",
         "word": "おきます",
-        "kanji": "起きます",
+        "kanjiForm": "起きます",
         "romanji": "Okimasu"
     },
     {
         "meaning": "Ngủ",
         "word": "ねます",
-        "kanji": "寝ます",
+        "kanjiForm": "寝ます",
         "romanji": "Nemasu"
     },
     {
         "meaning": "Học",
         "word": "べんきょうします",
-        "kanji": "勉強します",
+        "kanjiForm": "勉強します",
         "romanji": "Benkyoushimasu"
     },
     {
         "meaning": "Từ ~",
         "word": "～から",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "~Kara"
     },
     {
         "meaning": "Đến ~",
         "word": "～まで",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "~Made"
     },
     {
         "meaning": "~ và (dùng để nối hai danh từ)",
         "word": "～と～",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "~To~"
     },
     {
         "meaning": "Kỳ thi",
         "word": "しけん",
-        "kanji": "試験",
+        "kanjiForm": "試験",
         "romanji": "Shiken"
     },
     {
         "meaning": "Cuộc họp",
         "word": "かいぎ",
-        "kanji": "会議",
+        "kanjiForm": "会議",
         "romanji": "Kaigi"
     }
 ]

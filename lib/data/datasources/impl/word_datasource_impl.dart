@@ -291,4 +291,43 @@ class WordDatasourceImpl implements WordDatasource {
       throw Exception(e);
     }
   }
+
+  @override
+  Future<List<WordModel>> createWordQuestions({
+    required String questionType,
+    required String answerType,
+    required String levelId,
+    required String lessonId,
+  }) async {
+    try {
+      final result = await firestore
+          .collection("words")
+          .where("levelId", isEqualTo: levelId)
+          .where("lessonId", isEqualTo: lessonId)
+          .get();
+      return result.docs
+          .map(
+            (doc) => WordModel.fromJson(
+              {
+                "id": doc.id,
+                "word": doc.data()["word"],
+                "meaning": doc.data()["meaning"],
+                "kanjiForm": doc.data()["kanjiForm"],
+                "lessonId": doc.data()["lessonId"],
+                "levelId": doc.data()["levelId"],
+                "createdAt": doc.data()["createdAt"],
+              },
+            ),
+          )
+          .toList();
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(
+        message: "Có lỗi xảy ra khi tạo câu hỏi trắc nghiệm từ vựng",
+      );
+    } catch (e) {
+      log(e.toString());
+      throw Exception(e);
+    }
+  }
 }

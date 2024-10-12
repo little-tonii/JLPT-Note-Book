@@ -70,6 +70,7 @@ import 'package:note_book_app/domain/usecases/levels/get_all_levels_usecase.dart
 import 'package:note_book_app/domain/usecases/levels/get_level_by_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/onyomis/get_all_onyomis_by_kanji_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/word/create_word_by_level_id_and_lesson_id_usecase.dart';
+import 'package:note_book_app/domain/usecases/word/create_word_question_usecase.dart';
 import 'package:note_book_app/domain/usecases/word/delete_word_by_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/word/delete_word_by_lesson_id_usecase.dart';
 import 'package:note_book_app/domain/usecases/word/delete_word_by_level_id_usecase.dart';
@@ -424,6 +425,12 @@ Future<void> initializeDependencies() async {
 
   getIt.registerLazySingleton<DeleteWordByLessonIdUsecase>(
     () => DeleteWordByLessonIdUsecase(
+      wordRepository: getIt<WordRepository>(),
+    ),
+  );
+
+  getIt.registerSingleton<CreateWordQuestionUsecase>(
+    CreateWordQuestionUsecase(
       wordRepository: getIt<WordRepository>(),
     ),
   );

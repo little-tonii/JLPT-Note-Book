@@ -8,7 +8,6 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/import_word_
 import 'package:note_book_app/presentation/web_version/admin/cubits/word_manager/word_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/word_manager/word_manager_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/filter_select_box.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/search_field.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/word/import_word_data_form.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/word/word_data_table.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/word/word_manager_button.dart';

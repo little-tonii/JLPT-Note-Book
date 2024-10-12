@@ -36,4 +36,11 @@ abstract class WordDatasource {
   Future<int> deleteWordByLevelId({required String levelId});
 
   Future<int> deleteWordByLessonId({required String lessonId});
+
+  Future<List<WordModel>> createWordQuestions({
+    required String questionType,
+    required String answerType,
+    required String levelId,
+    required String lessonId,
+  });
 }
