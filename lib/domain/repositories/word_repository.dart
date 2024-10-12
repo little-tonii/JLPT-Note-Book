@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:note_book_app/core/failures/failure.dart';
+import 'package:note_book_app/domain/entities/question_entity.dart';
 import 'package:note_book_app/domain/entities/word_entity.dart';
 
 abstract class WordRepository {
@@ -38,4 +39,11 @@ abstract class WordRepository {
   Future<Either<Failure, int>> deleteWordByLevelId({required String levelId});
 
   Future<Either<Failure, int>> deleteWordByLessonId({required String lessonId});
+
+  Future<Either<Failure, List<QuestionEntity>>> createWordQuestions({
+    required String questionType,
+    required String answerType,
+    required String levelId,
+    required String lessonId,
+  });
 }
