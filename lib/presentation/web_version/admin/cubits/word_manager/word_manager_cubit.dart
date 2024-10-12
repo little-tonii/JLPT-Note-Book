@@ -29,7 +29,7 @@ class WordManagerCubit extends Cubit<WordManagerState> {
       selectedLevel: '',
       selectedLesson: '',
       hasReachedMax: false,
-      pageNumber: 0,
+      pageNumber: 1,
       pageSize: 25,
     ));
     final levels = await _getAllLevelsUsecase.call();
@@ -48,7 +48,7 @@ class WordManagerCubit extends Cubit<WordManagerState> {
       final wordsResult = await _getAllWordsByLevelIdUsecase.call(
         searchKey: '',
         levelId: levelId,
-        pageNumber: 0,
+        pageNumber: 1,
         pageSize: 25,
       );
       List<LessonEntity> lessons = [];
@@ -72,9 +72,11 @@ class WordManagerCubit extends Cubit<WordManagerState> {
       emit(
         currentState.copyWith(
           selectedLevel: levelId,
-          selectedLesson: 'null',
+          selectedLesson: '',
           lessons: lessons,
           words: words,
+          hasReachedMax: false,
+          pageNumber: 1,
         ),
       );
     }
@@ -87,7 +89,7 @@ class WordManagerCubit extends Cubit<WordManagerState> {
         searchKey: '',
         levelId: currentState.selectedLevel,
         lessonId: lessonId,
-        pageNumber: 0,
+        pageNumber: 1,
         pageSize: 25,
       );
       wordsResult.fold(
@@ -99,6 +101,8 @@ class WordManagerCubit extends Cubit<WordManagerState> {
             currentState.copyWith(
               selectedLesson: lessonId,
               words: success,
+              hasReachedMax: false,
+              pageNumber: 1,
             ),
           );
         },
@@ -109,34 +113,53 @@ class WordManagerCubit extends Cubit<WordManagerState> {
   void loadMoreWords({required String searchKey}) async {
     if (state is WordManagerLoaded) {
       final currentState = state as WordManagerLoaded;
-      final wordsResult = await _getAllWordsByLevelIdAndLessonIdUsecase.call(
-        searchKey: searchKey,
-        levelId: currentState.selectedLevel,
-        lessonId: currentState.selectedLesson,
-        pageNumber: currentState.pageNumber + 1,
-        pageSize: currentState.pageSize,
-      );
-      wordsResult.fold(
-        (failure) {
-          emit(WordManagerFailure(message: failure.message));
-        },
-        (success) {
-          if (success.isEmpty || success.length < currentState.pageSize) {
+      if (currentState.hasReachedMax) return;
+      if (currentState.selectedLesson.isEmpty) {
+        final wordsResult = await _getAllWordsByLevelIdUsecase.call(
+          searchKey: searchKey,
+          levelId: currentState.selectedLevel,
+          pageNumber: currentState.pageNumber + 1,
+          pageSize: currentState.pageSize,
+        );
+        wordsResult.fold(
+          (failure) {
+            emit(WordManagerFailure(message: failure.message));
+          },
+          (success) {
             emit(
               currentState.copyWith(
-                hasReachedMax: true,
-              ),
-            );
-          } else {
-            emit(
-              currentState.copyWith(
-                words: currentState.words + success,
+                words: List.from(currentState.words)..addAll(success),
                 pageNumber: currentState.pageNumber + 1,
+                hasReachedMax:
+                    success.isEmpty || success.length < currentState.pageSize,
               ),
             );
-          }
-        },
-      );
+          },
+        );
+      } else {
+        final wordsResult = await _getAllWordsByLevelIdAndLessonIdUsecase.call(
+          searchKey: searchKey,
+          levelId: currentState.selectedLevel,
+          lessonId: currentState.selectedLesson,
+          pageNumber: currentState.pageNumber + 1,
+          pageSize: currentState.pageSize,
+        );
+        wordsResult.fold(
+          (failure) {
+            emit(WordManagerFailure(message: failure.message));
+          },
+          (success) {
+            emit(
+              currentState.copyWith(
+                words: List.from(currentState.words)..addAll(success),
+                pageNumber: currentState.pageNumber + 1,
+                hasReachedMax:
+                    success.isEmpty || success.length < currentState.pageSize,
+              ),
+            );
+          },
+        );
+      }
     }
   }
 }

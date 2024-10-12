@@ -41,10 +41,20 @@ class _WordManagerState extends State<WordManager> {
   }
 
   void _scrollToTop() {
-    _scrollController.jumpTo(0);
+    if (_scrollController.hasClients) {
+      _scrollController.jumpTo(0);
+    }
   }
 
-  void _handleReload() {}
+  void _handleReload() {
+    final state = context.read<WordManagerCubit>().state;
+    if (state is WordManagerLoaded) {
+      _scrollToTop();
+      context
+          .read<WordManagerCubit>()
+          .loadMoreWords(searchKey: _searchController.text);
+    }
+  }
 
   void _handleShowCreateNewWordForm() {}
 
@@ -102,6 +112,7 @@ class _WordManagerState extends State<WordManager> {
                               .toList()
                           : [],
                       onChanged: (value) {
+                        _scrollToTop();
                         context
                             .read<WordManagerCubit>()
                             .updateLevelFilter(levelId: value);
@@ -115,6 +126,9 @@ class _WordManagerState extends State<WordManager> {
                 child: BlocBuilder<WordManagerCubit, WordManagerState>(
                   builder: (context, state) {
                     return FilterSelectBox(
+                      key: Key(state is WordManagerLoaded
+                          ? state.selectedLevel
+                          : ''),
                       hint: "Bài học",
                       items: state is WordManagerLoaded
                           ? state.lessons
@@ -127,6 +141,7 @@ class _WordManagerState extends State<WordManager> {
                               .toList()
                           : [],
                       onChanged: (value) {
+                        _scrollToTop();
                         context
                             .read<WordManagerCubit>()
                             .updateLessonFilter(lessonId: value);
@@ -180,6 +195,7 @@ class _WordManagerState extends State<WordManager> {
               if (state is WordManagerLoaded &&
                   state.selectedLevel.isNotEmpty) {
                 return WordDataTable(
+                  searchController: _searchController,
                   scrollController: _scrollController,
                 );
               }

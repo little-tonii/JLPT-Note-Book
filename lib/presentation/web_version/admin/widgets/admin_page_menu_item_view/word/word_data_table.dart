@@ -7,8 +7,13 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/word_manager
 
 class WordDataTable extends StatefulWidget {
   final ScrollController scrollController;
+  final TextEditingController searchController;
 
-  const WordDataTable({super.key, required this.scrollController});
+  const WordDataTable({
+    super.key,
+    required this.scrollController,
+    required this.searchController,
+  });
 
   @override
   State<WordDataTable> createState() => _WordDataTableState();
@@ -16,6 +21,43 @@ class WordDataTable extends StatefulWidget {
 
 class _WordDataTableState extends State<WordDataTable> {
   bool _isLoading = false;
+
+  @override
+  void initState() {
+    widget.scrollController.addListener(_onScroll);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    widget.scrollController.removeListener(_onScroll);
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (_isBottom() && !_isLoading) {
+      _loadMore();
+    }
+  }
+
+  void _loadMore() async {
+    if (_isLoading) return;
+    _isLoading = true;
+    final state = context.read<WordManagerCubit>().state;
+    if (state is WordManagerLoaded) {
+      context
+          .read<WordManagerCubit>()
+          .loadMoreWords(searchKey: widget.searchController.text);
+    }
+    _isLoading = false;
+  }
+
+  bool _isBottom() {
+    if (!widget.scrollController.hasClients) return false;
+    final maxScroll = widget.scrollController.position.maxScrollExtent;
+    final currentScroll = widget.scrollController.offset;
+    return currentScroll >= (maxScroll * 0.9);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -174,9 +216,12 @@ class _WordDataTableState extends State<WordDataTable> {
           Expanded(
             flex: 1,
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(color: AppColors.black),
+                  bottom: BorderSide(
+                      color: index != length - 1
+                          ? AppColors.black
+                          : Colors.transparent),
                   right: BorderSide(color: AppColors.black),
                 ),
               ),
@@ -191,9 +236,12 @@ class _WordDataTableState extends State<WordDataTable> {
           Expanded(
             flex: 2,
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(color: AppColors.black),
+                  bottom: BorderSide(
+                      color: index != length - 1
+                          ? AppColors.black
+                          : Colors.transparent),
                   right: BorderSide(color: AppColors.black),
                 ),
               ),
@@ -208,9 +256,12 @@ class _WordDataTableState extends State<WordDataTable> {
           Expanded(
             flex: 2,
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(color: AppColors.black),
+                  bottom: BorderSide(
+                      color: index != length - 1
+                          ? AppColors.black
+                          : Colors.transparent),
                   right: BorderSide(color: AppColors.black),
                 ),
               ),
@@ -225,9 +276,12 @@ class _WordDataTableState extends State<WordDataTable> {
           Expanded(
             flex: 3,
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(color: AppColors.black),
+                  bottom: BorderSide(
+                      color: index != length - 1
+                          ? AppColors.black
+                          : Colors.transparent),
                   right: BorderSide(color: AppColors.black),
                 ),
               ),
@@ -242,9 +296,12 @@ class _WordDataTableState extends State<WordDataTable> {
           Expanded(
             flex: 1,
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(color: AppColors.black),
+                  bottom: BorderSide(
+                      color: index != length - 1
+                          ? AppColors.black
+                          : Colors.transparent),
                 ),
               ),
               padding: const EdgeInsets.all(8),
