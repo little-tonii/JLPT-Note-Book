@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
+import 'package:note_book_app/common/utils/responsive_util.dart';
 import 'package:note_book_app/core/services/get_it_service.dart';
 import 'package:note_book_app/domain/entities/question_entity.dart';
 import 'package:note_book_app/domain/usecases/word/create_word_question_usecase.dart';
@@ -55,7 +56,10 @@ class DecisionRender extends StatelessWidget {
                 ),
               );
             });
-            return Temp();
+            return BlocProvider<TempCubit>(
+              create: (context) => TempCubit(),
+              child: Temp(),
+            );
           }
           return const Scaffold(
             body: Center(
@@ -70,221 +74,429 @@ class DecisionRender extends StatelessWidget {
   }
 }
 
-class Temp extends StatelessWidget {
+class Temp extends StatefulWidget {
   const Temp({super.key});
+
+  @override
+  State<Temp> createState() => _TempState();
+}
+
+class _TempState extends State<Temp> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final lessonId = GoRouterState.of(context).pathParameters['lessonId']!;
     final levelId = GoRouterState.of(context).pathParameters['levelId']!;
-    return BlocProvider<TempCubit>(
-      create: (context) => TempCubit()
-        ..init(
+    context.read<TempCubit>().init(
           lessonId: lessonId,
           levelId: levelId,
           questionType: 'meaning',
           answerType: 'word',
-        ),
-      child: Scaffold(
-        body: Center(
-          child: BlocBuilder<TempCubit, TempState>(
-            builder: (context, state) {
-              if (state is TempLoaded) {
-                final correctAnswerIndex = state
-                    .questions[state.currentQuestionIndex].answers
-                    .indexOf(state
-                        .questions[state.currentQuestionIndex].correctAnswer);
-                return SizedBox(
-                  width: 600,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: AppColors.kF8EDE3,
-                        ),
-                        height: 180,
-                        width: double.infinity,
-                        child: Center(
-                          child: Text(
-                            state
-                                .questions[state.currentQuestionIndex].question,
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: AppColors.black.withOpacity(0.4),
-                              fontWeight: FontWeight.bold,
+        );
+    return Scaffold(
+      body: Center(
+        child: BlocBuilder<TempCubit, TempState>(
+          builder: (context, state) {
+            if (state is TempLoaded) {
+              final correctAnswerIndex = state
+                  .questions[state.currentQuestionIndex].answers
+                  .indexOf(state
+                      .questions[state.currentQuestionIndex].correctAnswer);
+              return ResponsiveUtil.isMobile(context)
+                  ? _mobileRender(
+                      state: state,
+                      correctAnswerIndex: correctAnswerIndex,
+                    )
+                  : Container(
+                      padding: EdgeInsets.all(16),
+                      width: ResponsiveUtil.isDesktop(context)
+                          ? 600
+                          : ResponsiveUtil.isTablet(context)
+                              ? 800
+                              : double.infinity,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: AppColors.kF8EDE3,
+                              ),
+                              height:
+                                  ResponsiveUtil.isDesktop(context) ? 180 : 120,
+                              width: double.infinity,
+                              child: Center(
+                                child: Text(
+                                  state.questions[state.currentQuestionIndex]
+                                      .question,
+                                  style: TextStyle(
+                                    fontSize:
+                                        ResponsiveUtil.isDesktop(context) ||
+                                                ResponsiveUtil.isTablet(context)
+                                            ? 24
+                                            : 20,
+                                    color: AppColors.black.withOpacity(0.4),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
                             ),
-                            textAlign: TextAlign.center,
-                          ),
+                            SizedBox(height: 16),
+                            IntrinsicHeight(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Expanded(
+                                    child: _answerChoice(
+                                      color: state.isAnswered &&
+                                              state.selectedAnswerIndex == 0
+                                          ? state.isCorrect
+                                              ? AppColors.successColor
+                                              : AppColors.failureColor
+                                          : correctAnswerIndex == 0 &&
+                                                  state.isAnswered
+                                              ? AppColors.successColor
+                                              : null,
+                                      onPressed: () {
+                                        if (state.isAnswered == false) {
+                                          context
+                                              .read<TempCubit>()
+                                              .answerQuestion(
+                                                answer: state
+                                                    .questions[state
+                                                        .currentQuestionIndex]
+                                                    .answers[0],
+                                              );
+                                        }
+                                      },
+                                      answer: state
+                                          .questions[state.currentQuestionIndex]
+                                          .answers[0],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 16,
+                                  ),
+                                  Expanded(
+                                    child: _answerChoice(
+                                      color: state.isAnswered &&
+                                              state.selectedAnswerIndex == 1
+                                          ? state.isCorrect
+                                              ? AppColors.successColor
+                                              : AppColors.failureColor
+                                          : correctAnswerIndex == 1 &&
+                                                  state.isAnswered
+                                              ? AppColors.successColor
+                                              : null,
+                                      onPressed: () {
+                                        if (!state.isAnswered) {
+                                          context
+                                              .read<TempCubit>()
+                                              .answerQuestion(
+                                                answer: state
+                                                    .questions[state
+                                                        .currentQuestionIndex]
+                                                    .answers[1],
+                                              );
+                                        }
+                                      },
+                                      answer: state
+                                          .questions[state.currentQuestionIndex]
+                                          .answers[1],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 16),
+                            IntrinsicHeight(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Expanded(
+                                    child: _answerChoice(
+                                      color: state.isAnswered &&
+                                              state.selectedAnswerIndex == 2
+                                          ? state.isCorrect
+                                              ? AppColors.successColor
+                                              : AppColors.failureColor
+                                          : correctAnswerIndex == 2 &&
+                                                  state.isAnswered
+                                              ? AppColors.successColor
+                                              : null,
+                                      onPressed: () {
+                                        if (!state.isAnswered) {
+                                          context
+                                              .read<TempCubit>()
+                                              .answerQuestion(
+                                                answer: state
+                                                    .questions[state
+                                                        .currentQuestionIndex]
+                                                    .answers[2],
+                                              );
+                                        }
+                                      },
+                                      answer: state
+                                          .questions[state.currentQuestionIndex]
+                                          .answers[2],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 16,
+                                  ),
+                                  Expanded(
+                                    child: _answerChoice(
+                                      color: state.isAnswered &&
+                                              state.selectedAnswerIndex == 3
+                                          ? state.isCorrect
+                                              ? AppColors.successColor
+                                              : AppColors.failureColor
+                                          : correctAnswerIndex == 3 &&
+                                                  state.isAnswered
+                                              ? AppColors.successColor
+                                              : null,
+                                      onPressed: () {
+                                        if (!state.isAnswered) {
+                                          context
+                                              .read<TempCubit>()
+                                              .answerQuestion(
+                                                answer: state
+                                                    .questions[state
+                                                        .currentQuestionIndex]
+                                                    .answers[3],
+                                              );
+                                        }
+                                      },
+                                      answer: state
+                                          .questions[state.currentQuestionIndex]
+                                          .answers[3],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 16),
+                            if (state.isAnswered)
+                              IntrinsicHeight(
+                                child: Row(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    Expanded(
+                                      child: _nextQuestionButton(
+                                        onPressed: () {
+                                          context
+                                              .read<TempCubit>()
+                                              .nextQuestion();
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                          ],
                         ),
                       ),
-                      SizedBox(height: 16),
-                      IntrinsicHeight(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Expanded(
-                              child: _answerChoice(
-                                color: state.isAnswered &&
-                                        state.selectedAnswerIndex == 0
-                                    ? state.isCorrect
-                                        ? AppColors.successColor
-                                        : AppColors.failureColor
-                                    : correctAnswerIndex == 0 &&
-                                            state.isAnswered
-                                        ? AppColors.successColor
-                                        : null,
-                                onPressed: () {
-                                  if (state.isAnswered == false) {
-                                    context.read<TempCubit>().answerQuestion(
-                                          answer: state
-                                              .questions[
-                                                  state.currentQuestionIndex]
-                                              .answers[0],
-                                        );
-                                  }
-                                },
+                    );
+            }
+            if (state is TempFinished) {
+              return _answerChoice(
+                answer: 'Bắt đầu lại',
+                onPressed: () {
+                  context.read<TempCubit>().init(
+                        lessonId: lessonId,
+                        levelId: levelId,
+                        questionType: 'meaning',
+                        answerType: 'word',
+                      );
+                },
+              );
+            }
+            return Center(
+              child: CircularProgressIndicator(
+                color: AppColors.kDFD3C3,
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _mobileRender(
+      {required TempLoaded state, required int correctAnswerIndex}) {
+    return Container(
+      padding: EdgeInsets.all(16),
+      width: double.infinity,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: AppColors.kF8EDE3,
+              ),
+              height: ResponsiveUtil.isDesktop(context) ? 180 : 120,
+              width: double.infinity,
+              child: Center(
+                child: Text(
+                  state.questions[state.currentQuestionIndex].question,
+                  style: TextStyle(
+                    fontSize: ResponsiveUtil.isDesktop(context) ||
+                            ResponsiveUtil.isTablet(context)
+                        ? 24
+                        : 20,
+                    color: AppColors.black.withOpacity(0.4),
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+            SizedBox(height: 24),
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: _answerChoice(
+                      color: state.isAnswered && state.selectedAnswerIndex == 0
+                          ? state.isCorrect
+                              ? AppColors.successColor
+                              : AppColors.failureColor
+                          : correctAnswerIndex == 0 && state.isAnswered
+                              ? AppColors.successColor
+                              : null,
+                      onPressed: () {
+                        if (state.isAnswered == false) {
+                          context.read<TempCubit>().answerQuestion(
                                 answer: state
                                     .questions[state.currentQuestionIndex]
                                     .answers[0],
-                              ),
-                            ),
-                            SizedBox(
-                              width: 16,
-                            ),
-                            Expanded(
-                              child: _answerChoice(
-                                color: state.isAnswered &&
-                                        state.selectedAnswerIndex == 1
-                                    ? state.isCorrect
-                                        ? AppColors.successColor
-                                        : AppColors.failureColor
-                                    : correctAnswerIndex == 1 &&
-                                            state.isAnswered
-                                        ? AppColors.successColor
-                                        : null,
-                                onPressed: () {
-                                  if (!state.isAnswered) {
-                                    context.read<TempCubit>().answerQuestion(
-                                          answer: state
-                                              .questions[
-                                                  state.currentQuestionIndex]
-                                              .answers[1],
-                                        );
-                                  }
-                                },
+                              );
+                        }
+                      },
+                      answer: state
+                          .questions[state.currentQuestionIndex].answers[0],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 8),
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: _answerChoice(
+                      color: state.isAnswered && state.selectedAnswerIndex == 1
+                          ? state.isCorrect
+                              ? AppColors.successColor
+                              : AppColors.failureColor
+                          : correctAnswerIndex == 1 && state.isAnswered
+                              ? AppColors.successColor
+                              : null,
+                      onPressed: () {
+                        if (state.isAnswered == false) {
+                          context.read<TempCubit>().answerQuestion(
                                 answer: state
                                     .questions[state.currentQuestionIndex]
                                     .answers[1],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      IntrinsicHeight(
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Expanded(
-                              child: _answerChoice(
-                                color: state.isAnswered &&
-                                        state.selectedAnswerIndex == 2
-                                    ? state.isCorrect
-                                        ? AppColors.successColor
-                                        : AppColors.failureColor
-                                    : correctAnswerIndex == 2 &&
-                                            state.isAnswered
-                                        ? AppColors.successColor
-                                        : null,
-                                onPressed: () {
-                                  if (!state.isAnswered) {
-                                    context.read<TempCubit>().answerQuestion(
-                                          answer: state
-                                              .questions[
-                                                  state.currentQuestionIndex]
-                                              .answers[2],
-                                        );
-                                  }
-                                },
+                              );
+                        }
+                      },
+                      answer: state
+                          .questions[state.currentQuestionIndex].answers[1],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 8),
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: _answerChoice(
+                      color: state.isAnswered && state.selectedAnswerIndex == 2
+                          ? state.isCorrect
+                              ? AppColors.successColor
+                              : AppColors.failureColor
+                          : correctAnswerIndex == 2 && state.isAnswered
+                              ? AppColors.successColor
+                              : null,
+                      onPressed: () {
+                        if (state.isAnswered == false) {
+                          context.read<TempCubit>().answerQuestion(
                                 answer: state
                                     .questions[state.currentQuestionIndex]
                                     .answers[2],
-                              ),
-                            ),
-                            SizedBox(
-                              width: 16,
-                            ),
-                            Expanded(
-                              child: _answerChoice(
-                                color: state.isAnswered &&
-                                        state.selectedAnswerIndex == 3
-                                    ? state.isCorrect
-                                        ? AppColors.successColor
-                                        : AppColors.failureColor
-                                    : correctAnswerIndex == 3 &&
-                                            state.isAnswered
-                                        ? AppColors.successColor
-                                        : null,
-                                onPressed: () {
-                                  if (!state.isAnswered) {
-                                    context.read<TempCubit>().answerQuestion(
-                                          answer: state
-                                              .questions[
-                                                  state.currentQuestionIndex]
-                                              .answers[3],
-                                        );
-                                  }
-                                },
+                              );
+                        }
+                      },
+                      answer: state
+                          .questions[state.currentQuestionIndex].answers[2],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 8),
+            IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(
+                    child: _answerChoice(
+                      color: state.isAnswered && state.selectedAnswerIndex == 3
+                          ? state.isCorrect
+                              ? AppColors.successColor
+                              : AppColors.failureColor
+                          : correctAnswerIndex == 3 && state.isAnswered
+                              ? AppColors.successColor
+                              : null,
+                      onPressed: () {
+                        if (state.isAnswered == false) {
+                          context.read<TempCubit>().answerQuestion(
                                 answer: state
                                     .questions[state.currentQuestionIndex]
                                     .answers[3],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      if (state.isAnswered)
-                        IntrinsicHeight(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Expanded(
-                                child: _nextQuestionButton(
-                                  onPressed: () {
-                                    context.read<TempCubit>().nextQuestion();
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                    ],
+                              );
+                        }
+                      },
+                      answer: state
+                          .questions[state.currentQuestionIndex].answers[3],
+                    ),
                   ),
-                );
-              }
-              if (state is TempFinished) {
-                return _answerChoice(
-                  answer: 'Bắt đầu lại',
-                  onPressed: () {
-                    context.read<TempCubit>().init(
-                          lessonId: lessonId,
-                          levelId: levelId,
-                          questionType: 'meaning',
-                          answerType: 'word',
-                        );
-                  },
-                );
-              }
-              return Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.kDFD3C3,
+                ],
+              ),
+            ),
+            SizedBox(height: 8),
+            if (state.isAnswered)
+              IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Expanded(
+                      child: _nextQuestionButton(
+                        onPressed: () {
+                          context.read<TempCubit>().nextQuestion();
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              );
-            },
-          ),
+              ),
+          ],
         ),
       ),
     );
@@ -314,7 +526,10 @@ class Temp extends StatelessWidget {
         "Câu tiếp theo",
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 20,
+          fontSize: ResponsiveUtil.isDesktop(context) ||
+                  ResponsiveUtil.isTablet(context)
+              ? 20
+              : 16,
           color: AppColors.white.withOpacity(0.2),
         ),
       ),
@@ -348,7 +563,10 @@ class Temp extends StatelessWidget {
         answer,
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 20,
+          fontSize: ResponsiveUtil.isDesktop(context) ||
+                  ResponsiveUtil.isTablet(context)
+              ? 20
+              : 16,
           color: AppColors.black.withOpacity(0.4),
         ),
       ),
@@ -380,7 +598,7 @@ class TempCubit extends Cubit<TempState> {
       },
       (success) {
         emit(TempLoaded(
-          questions: success,
+          questions: success..shuffle(),
           currentQuestionIndex: 0,
           isAnswered: false,
           isCorrect: false,
