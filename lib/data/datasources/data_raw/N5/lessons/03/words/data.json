@@ -2,343 +2,286 @@
     {
         "meaning": "Chỗ này, đây",
         "word": "ここ",
-        "kanji": null,
-        "romanji": "Koko"
+        "kanjiForm": ""
     },
     {
         "meaning": "Chỗ đó, kia",
         "word": "そこ",
-        "kanji": null,
-        "romanji": "Soko"
+        "kanjiForm": ""
     },
     {
         "meaning": "Chỗ kia, kia",
         "word": "あそこ",
-        "kanji": null,
-        "romanji": "Asoko"
+        "kanjiForm": ""
     },
     {
         "meaning": "Chỗ nào, đâu",
         "word": "どこ",
-        "kanji": null,
-        "romanji": "Doko"
+        "kanjiForm": ""
     },
     {
         "meaning": "Phía này (cách nói lịch sự của ここ)",
         "word": "こちら",
-        "kanji": null,
-        "romanji": "Kochira"
+        "kanjiForm": ""
     },
     {
         "meaning": "Phía đó (cách nói lịch sự của そこ)",
         "word": "そちら",
-        "kanji": null,
-        "romanji": "Sochira"
+        "kanjiForm": ""
     },
     {
         "meaning": "Phía kia (cách nói lịch sự của あそこ)",
         "word": "あちら",
-        "kanji": null,
-        "romanji": "Achira"
+        "kanjiForm": ""
     },
     {
         "meaning": "Phía nào (cách nói lịch sự của どこ)",
         "word": "どちら",
-        "kanji": null,
-        "romanji": "Dochira"
+        "kanjiForm": ""
     },
     {
         "meaning": "Quầy lễ tân (dùng cho công ty, cơ quan)",
         "word": "うけつけ",
-        "kanji": "受付",
-        "romanji": "Uketsuke"
+        "kanjiForm": "受付"
     },
     {
         "meaning": "Quầy lễ tân (dùng cho khách sạn)",
         "word": "フロント",
-        "kanji": null,
-        "romanji": "Furonto"
+        "kanjiForm": ""
     },
     {
         "meaning": "Cầu thang",
         "word": "かいだん",
-        "kanji": "階段",
-        "romanji": "Kaidan"
+        "kanjiForm": "階段"
     },
     {
         "meaning": "Thang máy",
         "word": "エレベーター",
-        "kanji": null,
-        "romanji": "Erebetaa"
+        "kanjiForm": ""
     },
     {
         "meaning": "Thang cuốn",
         "word": "エスカレーター",
-        "kanji": null,
-        "romanji": "Esukareetaa"
+        "kanjiForm": ""
     },
     {
         "meaning": "Phòng vệ sinh",
         "word": "トイレ",
-        "kanji": null,
-        "romanji": "Toire"
+        "kanjiForm": ""
     },
     {
         "meaning": "Phòng vệ sinh",
         "word": "おてあらい",
-        "kanji": "お手洗い",
-        "romanji": "Otearai"
+        "kanjiForm": "お手洗い"
     },
     {
         "meaning": "Nhà",
         "word": "いえ",
-        "kanji": null,
-        "romanji": "Ie"
+        "kanjiForm": ""
     },
     {
         "meaning": "Nhà",
         "word": "うち",
-        "kanji": null,
-        "romanji": "Uchi"
+        "kanjiForm": ""
     },
     {
         "meaning": "Căn phòng",
         "word": "へや",
-        "kanji": "部屋",
-        "romanji": "Heya"
+        "kanjiForm": "部屋"
     },
     {
         "meaning": "Phòng học",
         "word": "きょうしつ",
-        "kanji": "教室",
-        "romanji": "Kyoushitsu"
+        "kanjiForm": "教室"
     },
     {
         "meaning": "Văn phòng",
         "word": "じむしょ",
-        "kanji": "事務所",
-        "romanji": "Jimusho"
+        "kanjiForm": "事務所"
     },
     {
         "meaning": "Phòng họp",
         "word": "かいぎしつ",
-        "kanji": "会議室",
-        "romanji": "Kaigishitsu"
+        "kanjiForm": "会議室"
     },
     {
         "meaning": "Nhà ăn",
         "word": "しょくどう",
-        "kanji": "食堂",
-        "romanji": "Shokudou"
+        "kanjiForm": "食堂"
     },
     {
         "meaning": "Cuộc họp",
         "word": "かいぎ",
-        "kanji": "会議",
-        "romanji": "Kaigi"
+        "kanjiForm": "会議"
     },
     {
         "meaning": "Phòng rửa tay (toilet)",
         "word": "おてあらい",
-        "kanji": "お手洗い",
-        "romanji": "Otearai"
+        "kanjiForm": "お手洗い"
     },
     {
         "meaning": "Toà nhà",
         "word": "ビル",
-        "kanji": null,
-        "romanji": "Biru"
+        "kanjiForm": ""
     },
     {
         "meaning": "Trung tâm thương mại",
         "word": "デパート",
-        "kanji": null,
-        "romanji": "Depaato"
+        "kanjiForm": ""
     },
     {
         "meaning": "Siêu thị",
         "word": "スーパー",
-        "kanji": null,
-        "romanji": "Suupaa"
+        "kanjiForm": ""
     },
     {
         "meaning": "Trung tâm",
         "word": "センター",
-        "kanji": null,
-        "romanji": "Sentaa"
+        "kanjiForm": ""
     },
     {
         "meaning": "Rạp chiếu phim",
         "word": "えいがかん",
-        "kanji": "映画館",
-        "romanji": "Eigakan"
+        "kanjiForm": "映画館"
     },
     {
         "meaning": "Quán trà, cà phê",
         "word": "きっさてん",
-        "kanji": "喫茶店",
-        "romanji": "Kissaten"
+        "kanjiForm": "喫茶店"
     },
     {
         "meaning": "Thư viện",
         "word": "としょかん",
-        "kanji": "図書館",
-        "romanji": "Toshokan"
+        "kanjiForm": "図書館"
     },
     {
         "meaning": "Công ty",
         "word": "かいしゃ",
-        "kanji": "会社",
-        "romanji": "Kaisha"
+        "kanjiForm": "会社"
     },
     {
         "meaning": "Trường học",
         "word": "がっこう",
-        "kanji": "学校",
-        "romanji": "Gakkou"
+        "kanjiForm": "学校"
     },
     {
         "meaning": "Bưu điện",
         "word": "ゆうびんきょく",
-        "kanji": "郵便局",
-        "romanji": "Yuubinkyoku"
+        "kanjiForm": "郵便局"
     },
     {
         "meaning": "Ngân hàng",
         "word": "ぎんこう",
-        "kanji": "銀行",
-        "romanji": "Ginkou"
+        "kanjiForm": "銀行"
     },
     {
         "meaning": "Trạm xe bus",
         "word": "バスてい",
-        "kanji": null,
-        "romanji": "Basutei"
+        "kanjiForm": ""
     },
     {
         "meaning": "Nhà ga",
         "word": "えき",
-        "kanji": "駅",
-        "romanji": "Eki"
+        "kanjiForm": "駅"
     },
     {
         "meaning": "Đất nước (của anh/chị)",
         "word": "[お]くに",
-        "kanji": "[お]国",
-        "romanji": "[O]kuni"
+        "kanjiForm": "[お]国"
     },
     {
         "meaning": "Bao nhiêu tiền",
         "word": "いくら",
-        "kanji": null,
-        "romanji": "Ikura"
+        "kanjiForm": ""
     },
     {
         "meaning": "Yên",
         "word": "えん",
-        "kanji": "円",
-        "romanji": "En"
+        "kanjiForm": "円"
     },
     {
         "meaning": "Hành lang, sảnh đợi",
         "word": "ロビー",
-        "kanji": null,
-        "romanji": "Robii"
+        "kanjiForm": ""
     },
     {
         "meaning": "Máy bán hàng tự động",
         "word": "じどうはんばいき",
-        "kanji": "自動販売機",
-        "romanji": "Jidouhanbaiki"
+        "kanjiForm": "自動販売機"
     },
     {
         "meaning": "Quán cà phê",
         "word": "カフェ",
-        "kanji": null,
-        "romanji": "Kafe"
+        "kanjiForm": ""
     },
     {
         "meaning": "Cà vạt",
         "word": "ネクタイ",
-        "kanji": null,
-        "romanji": "Nekutai"
+        "kanjiForm": ""
     },
     {
         "meaning": "Rượu tây, rượu vang",
         "word": "ワイン",
-        "kanji": null,
-        "romanji": "Wain"
+        "kanjiForm": ""
     },
     {
         "meaning": "Quầy bán",
         "word": "うりば",
-        "kanji": "売り場",
-        "romanji": "Uriba"
+        "kanjiForm": "売り場"
     },
     {
         "meaning": "Dưới lòng đất, tầng hầm",
         "word": "ちか",
-        "kanji": "地下",
-        "romanji": "Chika"
+        "kanjiForm": "地下"
     },
     {
         "meaning": "Tàu điện ngầm",
         "word": "ちかてつ",
-        "kanji": "地下鉄",
-        "romanji": "Chikatetsu"
+        "kanjiForm": "地下鉄"
     },
     {
         "meaning": "Thuốc lá",
         "word": "たばこ",
-        "kanji": null,
-        "romanji": "Tabako"
+        "kanjiForm": ""
     },
     {
         "meaning": "Tầng thứ -",
         "word": "～かい (～がい)",
-        "kanji": "～階",
-        "romanji": "~Kai (~Gai)"
+        "kanjiForm": "～階"
     },
     {
         "meaning": "Tầng mấy",
         "word": "なんがい",
-        "kanji": "何階",
-        "romanji": "Nangai"
+        "kanjiForm": "何階"
     },
     {
         "meaning": "Cách nói lịch sự của 「です」",
         "word": "～でございます",
-        "kanji": null,
-        "romanji": "De gozaimasu"
+        "kanjiForm": ""
     },
     {
         "meaning": "Cho tôi xem [~]",
         "word": "[~を]みせてください",
-        "kanji": "[~を]見せてください",
-        "romanji": "[~O]Misetekudasai"
+        "kanjiForm": "[~を]見せてください"
     },
     {
         "meaning": "Thế thì, vậy thì",
         "word": "じゃ",
-        "kanji": null,
-        "romanji": "Ja"
+        "kanjiForm": ""
     },
     {
         "meaning": "Cho tôi [~]",
         "word": "[~を]ください",
-        "kanji": null,
-        "romanji": "[~O]Kudasai"
+        "kanjiForm": ""
     },
     {
         "meaning": "Nước Ý",
         "word": "イタリア",
-        "kanji": null,
-        "romanji": "Itaria"
+        "kanjiForm": ""
     },
     {
         "meaning": "Nước Thuỵ Sĩ",
         "word": "スイス",
-        "kanji": null,
-        "romanji": "Suisu"
+        "kanjiForm": ""
     }
 ]

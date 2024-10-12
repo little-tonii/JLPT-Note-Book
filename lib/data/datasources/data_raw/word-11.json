@@ -1,0 +1,237 @@
+[
+    {
+        "word": "こいびと",
+        "kanjiForm": "恋人",
+        "meaning": "người yêu"
+    },
+    {
+        "word": "あに",
+        "kanjiForm": "兄",
+        "meaning": "anh trai (mình)"
+    },
+    {
+        "word": "おにいさん",
+        "kanjiForm": "お兄さん",
+        "meaning": "anh trai (của người khác và khi xưng hô với anh trai mình)"
+    },
+    {
+        "word": "あね",
+        "kanjiForm": "姉",
+        "meaning": "chị gái (mình)"
+    },
+    {
+        "word": "おねえさん",
+        "kanjiForm": "お姉さん",
+        "meaning": "chị gái (của người khác và khi xưng hô với chị gái mình)"
+    },
+    {
+        "word": "おとうと",
+        "kanjiForm": "弟",
+        "meaning": "em trai (mình)"
+    },
+    {
+        "word": "いもうと",
+        "kanjiForm": "妹",
+        "meaning": "em gái (mình)"
+    },
+    {
+        "word": "きょうだい",
+        "kanjiForm": "兄弟",
+        "meaning": "anh em"
+    },
+    {
+        "word": "こども",
+        "kanjiForm": "子供",
+        "meaning": "trẻ con, trẻ em"
+    },
+    {
+        "word": "アイスクリーム",
+        "kanjiForm": "",
+        "meaning": "kem"
+    },
+    {
+        "word": "はがき",
+        "kanjiForm": "葉書",
+        "meaning": "bưu thiếp"
+    },
+    {
+        "word": "おく",
+        "kanjiForm": "奥",
+        "meaning": "bên trong cùng"
+    },
+    {
+        "word": "ほんだな",
+        "kanjiForm": "本棚",
+        "meaning": "giá sách"
+    },
+    {
+        "word": "りょう",
+        "kanjiForm": "寮",
+        "meaning": "kí túc xá"
+    },
+    {
+        "word": "いなか",
+        "kanjiForm": "田舎",
+        "meaning": "quê, nông thôn"
+    },
+    {
+        "word": "がいこく",
+        "kanjiForm": "外国",
+        "meaning": "nước ngoài"
+    },
+    {
+        "word": "どうぶつ",
+        "kanjiForm": "動物",
+        "meaning": "động vật"
+    },
+    {
+        "word": "ひるね",
+        "kanjiForm": "昼寝",
+        "meaning": "ngủ trưa"
+    },
+    {
+        "word": "ひとつ",
+        "kanjiForm": "一つ",
+        "meaning": "một cái"
+    },
+    {
+        "word": "ふたつ",
+        "kanjiForm": "二つ",
+        "meaning": "hai cái"
+    },
+    {
+        "word": "みっつ",
+        "kanjiForm": "三つ",
+        "meaning": "ba cái"
+    },
+    {
+        "word": "よっつ",
+        "kanjiForm": "四つ",
+        "meaning": "bốn cái"
+    },
+    {
+        "word": "いつつ",
+        "kanjiForm": "五つ",
+        "meaning": "năm cái"
+    },
+    {
+        "word": "むっつ",
+        "kanjiForm": "六つ",
+        "meaning": "sáu cái"
+    },
+    {
+        "word": "ななつ",
+        "kanjiForm": "七つ",
+        "meaning": "bảy cái"
+    },
+    {
+        "word": "やっつ",
+        "kanjiForm": "八つ",
+        "meaning": "tám cái"
+    },
+    {
+        "word": "ここのつ",
+        "kanjiForm": "九つ",
+        "meaning": "chín cái"
+    },
+    {
+        "word": "とお",
+        "kanjiForm": "十",
+        "meaning": "mười cái"
+    },
+    {
+        "word": "ひとり",
+        "kanjiForm": "一人",
+        "meaning": "một người"
+    },
+    {
+        "word": "ふたり",
+        "kanjiForm": "二人",
+        "meaning": "hai người"
+    },
+    {
+        "word": "~にん",
+        "kanjiForm": "~人",
+        "meaning": "~ người"
+    },
+    {
+        "word": "~だい",
+        "kanjiForm": "~台",
+        "meaning": "~ cái"
+    },
+    {
+        "word": "~まい",
+        "kanjiForm": "~枚",
+        "meaning": "~ tờ, tấm"
+    },
+    {
+        "word": "~かい",
+        "kanjiForm": "~回",
+        "meaning": "~ lần"
+    },
+    {
+        "word": "~じかん",
+        "kanjiForm": "~時間",
+        "meaning": "~ tiếng"
+    },
+    {
+        "word": "~しゅうかん",
+        "kanjiForm": "~週間",
+        "meaning": "~ tuần"
+    },
+    {
+        "word": "~かげつ",
+        "kanjiForm": "~ヶ月",
+        "meaning": "~ tháng"
+    },
+    {
+        "word": "~ねん",
+        "kanjiForm": "~年",
+        "meaning": "~ năm"
+    },
+    {
+        "word": "いくつ",
+        "kanjiForm": "",
+        "meaning": "mấy cái, bao nhiêu cái"
+    },
+    {
+        "word": "どのくらい",
+        "kanjiForm": "",
+        "meaning": "bao lâu"
+    },
+    {
+        "word": "~ぐらい",
+        "kanjiForm": "",
+        "meaning": "khoảng ~"
+    },
+    {
+        "word": "ぜんぶで",
+        "kanjiForm": "全部で",
+        "meaning": "tổng cộng"
+    },
+    {
+        "word": "~だけ",
+        "kanjiForm": "",
+        "meaning": "chỉ ~"
+    },
+    {
+        "word": "やきます",
+        "kanjiForm": "焼きます",
+        "meaning": "Nướng"
+    },
+    {
+        "word": "とおくに",
+        "kanjiForm": "遠くに",
+        "meaning": "Ở đằng xa"
+    },
+    {
+        "word": "ひつよう",
+        "kanjiForm": "必要",
+        "meaning": "Cần thiết"
+    },
+    {
+        "word": "りょうしん",
+        "kanjiForm": "両親",
+        "meaning": "Bố mẹ"
+    }
+]

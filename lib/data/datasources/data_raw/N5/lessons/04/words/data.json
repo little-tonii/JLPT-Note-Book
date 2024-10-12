@@ -2,54 +2,54 @@
     {
         "meaning": "Đẹp trai",
         "word": "イケメン「な」/ ハンサム",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Ikemen / Hansamu"
     },
     {
         "meaning": "Xinh, đẹp, sạch",
         "word": "きれい「な」",
-        "kanji": "綺麗",
+        "kanjiForm": "綺麗",
         "romanji": "Kirei"
     },
     {
         "meaning": "Tốt bụng",
         "word": "しんせつ「な」",
-        "romanji": "Shinsetsu",
-        "kanji": "親切"
+        "kanjiForm": "親切",
+        "romanji": "Shinsetsu"
     },
     {
         "meaning": "Khoẻ mạnh",
         "word": "げんき「な」",
-        "kanji": "元気",
+        "kanjiForm": "元気",
         "romanji": "Genki"
     },
     {
         "meaning": "Yên tĩnh",
         "word": "しずか「な」",
-        "romanji": "Shizuka",
-        "kanji": "静か"
+        "kanjiForm": "静か",
+        "romanji": "Shizuka"
     },
     {
         "meaning": "Náo nhiệt",
-        "kanji": "賑やか",
-        "romanji": "Nigiyaka",
-        "word": "にぎやか「な」"
+        "kanjiForm": "賑やか",
+        "word": "にぎやか「な」",
+        "romanji": "Nigiyaka"
     },
     {
-        "kanji": "有名",
+        "kanjiForm": "有名",
         "word": "ゆうめい「な」",
         "romanji": "Yuumei",
         "meaning": "Nổi tiếng"
     },
     {
         "meaning": "Tiện lợi",
-        "kanji": "便利",
+        "kanjiForm": "便利",
         "romanji": "Benri",
         "word": "べんり「な」"
     },
     {
         "word": "たいせつ「な」",
-        "kanji": "大切",
+        "kanjiForm": "大切",
         "meaning": "Quan trọng",
         "romanji": "Taisetsu"
     },
@@ -57,414 +57,414 @@
         "meaning": "Rảnh rỗi",
         "romanji": "Hima",
         "word": "ひま「な」",
-        "kanji": "暇"
+        "kanjiForm": "暇"
     },
     {
         "meaning": "Bận rộn",
         "romanji": "Isogashii",
         "word": "いそがしい",
-        "kanji": "忙しい"
+        "kanjiForm": "忙しい"
     },
     {
         "meaning": "To, lớn",
         "word": "おおきい",
-        "kanji": "大きい",
+        "kanjiForm": "大きい",
         "romanji": "Ookii"
     },
     {
         "meaning": "Nhỏ, bé",
         "word": "ちいさい",
-        "kanji": "小さい",
+        "kanjiForm": "小さい",
         "romanji": "Chiisai"
     },
     {
         "meaning": "Mới",
         "word": "あたらしい",
-        "kanji": "新しい",
+        "kanjiForm": "新しい",
         "romanji": "Atarashii"
     },
     {
         "meaning": "Cũ",
         "word": "ふるい",
-        "kanji": "古い",
+        "kanjiForm": "古い",
         "romanji": "Furui"
     },
     {
         "meaning": "Tốt",
         "word": "いい (よい)",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Ii (Yoi)"
     },
     {
         "meaning": "Xấu",
         "word": "わるい",
-        "kanji": "悪い",
+        "kanjiForm": "悪い",
         "romanji": "Warui"
     },
     {
         "meaning": "Nóng (dùng cho thời tiết)",
         "word": "あつい",
-        "kanji": "暑い",
+        "kanjiForm": "暑い",
         "romanji": "Atsui"
     },
     {
         "meaning": "Lạnh, rét (dùng cho thời tiết)",
         "word": "さむい",
-        "kanji": "寒い",
+        "kanjiForm": "寒い",
         "romanji": "Samui"
     },
     {
         "meaning": "Nóng (dùng cho cảm giác)",
         "word": "あつい",
-        "kanji": "熱い",
+        "kanjiForm": "熱い",
         "romanji": "Atsui"
     },
     {
         "meaning": "Lạnh, buốt (dùng cho cảm giác)",
         "word": "つめたい",
-        "kanji": "冷たい",
+        "kanjiForm": "冷たい",
         "romanji": "Tsumetai"
     },
     {
         "meaning": "Khó",
         "word": "むずかしい",
-        "kanji": "難しい",
+        "kanjiForm": "難しい",
         "romanji": "Muzukashii"
     },
     {
         "meaning": "Dễ, hiền lành",
         "word": "やさしい",
-        "kanji": "易しい / 優しい",
+        "kanjiForm": "易しい / 優しい",
         "romanji": "Yasashii"
     },
     {
         "meaning": "Đắt, cao (せがたかい: Chiều cao)",
         "word": "たかい",
-        "kanji": "高い",
+        "kanjiForm": "高い",
         "romanji": "Takai"
     },
     {
         "meaning": "Rẻ",
         "word": "やすい",
-        "kanji": "安い",
+        "kanjiForm": "安い",
         "romanji": "Yasui"
     },
     {
         "meaning": "Thấp",
         "word": "ひくい",
-        "kanji": "低い",
+        "kanjiForm": "低い",
         "romanji": "Hikui"
     },
     {
         "meaning": "Sáng sủa, tươi sáng",
         "word": "あかるい",
-        "kanji": "明るい",
+        "kanjiForm": "明るい",
         "romanji": "Akarui"
     },
     {
         "meaning": "Tối, u ám",
         "word": "くらい",
-        "kanji": "暗い",
+        "kanjiForm": "暗い",
         "romanji": "Kurai"
     },
     {
         "meaning": "Thú vị",
         "word": "おもしろい",
-        "kanji": "面白い",
+        "kanjiForm": "面白い",
         "romanji": "Omoshiroi"
     },
     {
         "meaning": "Dễ thương",
         "word": "かわいい",
-        "kanji": "可愛い",
+        "kanjiForm": "可愛い",
         "romanji": "Kawaii"
     },
     {
         "meaning": "Ngon",
         "word": "おいしい",
-        "kanji": "美味しい",
+        "kanjiForm": "美味しい",
         "romanji": "Oishii"
     },
     {
         "meaning": "Vui vẻ",
         "word": "たのしい",
-        "kanji": "楽しい",
+        "kanjiForm": "楽しい",
         "romanji": "Tanoshii"
     },
     {
         "meaning": "Trắng",
         "word": "しろい",
-        "kanji": "白い",
+        "kanjiForm": "白い",
         "romanji": "Shiroi"
     },
     {
         "meaning": "Đỏ",
         "word": "あかい",
-        "kanji": "赤い",
+        "kanjiForm": "赤い",
         "romanji": "Akai"
     },
     {
         "meaning": "Xanh",
         "word": "あおい",
-        "kanji": "青い",
+        "kanjiForm": "青い",
         "romanji": "Aoi"
     },
     {
         "meaning": "Đen",
         "word": "くろい",
-        "kanji": "黒い",
+        "kanjiForm": "黒い",
         "romanji": "Kuroi"
     },
     {
         "meaning": "Cô đơn",
         "word": "さびしい",
-        "kanji": "寂しい",
+        "kanjiForm": "寂しい",
         "romanji": "Sabishii"
     },
     {
         "meaning": "Hoa",
         "word": "はな",
-        "kanji": "花",
+        "kanjiForm": "花",
         "romanji": "Hana"
     },
     {
         "meaning": "Hoa anh đào",
         "word": "さくら",
-        "kanji": "桜",
+        "kanjiForm": "桜",
         "romanji": "Sakura"
     },
     {
         "meaning": "Núi",
         "word": "やま",
-        "kanji": "山",
+        "kanjiForm": "山",
         "romanji": "Yama"
     },
     {
         "meaning": "Núi Phú Sĩ",
         "word": "ふじさん",
-        "kanji": "富士山",
+        "kanjiForm": "富士山",
         "romanji": "Fujisan"
     },
     {
         "meaning": "Thị trấn, thành phố",
         "word": "まち",
-        "kanji": "町",
+        "kanjiForm": "町",
         "romanji": "Machi"
     },
     {
         "meaning": "Đồ ăn",
         "word": "たべもの",
-        "kanji": "食べ物",
+        "kanjiForm": "食べ物",
         "romanji": "Tabemono"
     },
     {
         "meaning": "Kimono",
         "word": "きもの",
-        "kanji": "着物",
+        "kanjiForm": "着物",
         "romanji": "Kimono"
     },
     {
         "meaning": "Máy móc",
         "word": "きかい",
-        "kanji": "機械",
+        "kanjiForm": "機械",
         "romanji": "Kikai"
     },
     {
         "meaning": "Nơi, chỗ",
         "word": "ところ",
-        "kanji": "所",
+        "kanjiForm": "所",
         "romanji": "Tokoro"
     },
     {
         "meaning": "Học, việc học",
         "word": "べんきょう",
-        "kanji": "勉強",
+        "kanjiForm": "勉強",
         "romanji": "Benkyou"
     },
     {
         "meaning": "Cuộc sống, sinh hoạt, đời sống",
         "word": "せいかつ",
-        "kanji": "生活",
+        "kanjiForm": "生活",
         "romanji": "Seikatsu"
     },
     {
         "meaning": "Vật giá",
         "word": "ぶっか",
-        "kanji": "物価",
+        "kanjiForm": "物価",
         "romanji": "Bukka"
     },
     {
         "meaning": "Công việc",
         "word": "「お」しごと",
-        "kanji": "お仕事",
+        "kanjiForm": "お仕事",
         "romanji": "Oshigoto"
     },
     {
         "meaning": "Món ăn",
         "word": "りょうり",
-        "kanji": "料理",
+        "kanjiForm": "料理",
         "romanji": "Ryouri"
     },
     {
         "meaning": "Hộ chiếu",
         "word": "パスポート",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Pasupooto"
     },
     {
         "meaning": "Thế nào",
         "word": "どう",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Dou"
     },
     {
         "meaning": "Như thế nào",
         "word": "どんな",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Donna"
     },
     {
         "meaning": "Cái nào",
         "word": "どれ",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Dore"
     },
     {
         "meaning": "Rất",
         "word": "とても",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Totemo"
     },
     {
         "meaning": "Không ~ lắm (dùng với thể phủ định)",
         "word": "あまり",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Amari"
     },
     {
         "meaning": "Hơn nữa, và (dùng để nối 2 câu)",
         "word": "そして",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Soshite"
     },
     {
         "meaning": "~ Nhưng ~",
         "word": "～が、～",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "~ Ga, ~"
     },
     {
         "meaning": "Vất vả",
         "word": "たいへん",
-        "kanji": "大変",
+        "kanjiForm": "大変",
         "romanji": "Taihen"
     },
     {
         "meaning": "Tiếng nước ngoài",
         "word": "がいこくご",
-        "kanji": "外国語",
+        "kanjiForm": "外国語",
         "romanji": "Gaikokugo"
     },
     {
         "meaning": "Xinh xắn, đẹp đẽ",
         "word": "すてき「な」",
-        "kanji": "素敵",
+        "kanjiForm": "素敵",
         "romanji": "Suteki"
     },
     {
         "meaning": "Đắng",
         "word": "にがい",
-        "kanji": "苦い",
+        "kanjiForm": "苦い",
         "romanji": "Nigai"
     },
     {
         "meaning": "Cay",
         "word": "からい",
-        "kanji": "辛い",
+        "kanjiForm": "辛い",
         "romanji": "Karai"
     },
     {
         "meaning": "Nhẹ",
         "word": "かるい",
-        "kanji": "軽い",
+        "kanjiForm": "軽い",
         "romanji": "Karui"
     },
     {
         "meaning": "Nặng",
         "word": "おもい",
-        "kanji": "重い",
+        "kanjiForm": "重い",
         "romanji": "Omoi"
     },
     {
         "meaning": "Ngầu",
         "word": "かっこいい",
-        "kanji": "格好いい",
+        "kanjiForm": "格好いい",
         "romanji": "Kakkoii"
     },
     {
         "meaning": "Ký túc xá",
         "word": "りょう",
-        "kanji": "寮",
+        "kanjiForm": "寮",
         "romanji": "Ryou"
     },
     {
         "meaning": "Thế à/Để tôi xem",
         "word": "そうですね",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Sou desu ne"
     },
     {
         "meaning": "Anh/Chị đã quen với cuộc sống ở Nhật chưa?",
         "word": "にほんのせいかつになれましたか",
-        "kanji": "日本の生活に慣れましたか",
+        "kanjiForm": "日本の生活に慣れましたか",
         "romanji": "Nihon no seikatsu ni naremashita ka"
     },
     {
         "meaning": "Anh/Chị dùng thêm một chén [~] nữa được không ạ?",
         "word": "[～、]もういっぱいいかがですか",
-        "kanji": "[～、]もう一杯いかがですか",
+        "kanjiForm": "[～、]もう一杯いかがですか",
         "romanji": "[~], Mou ippai ikaga desu ka"
     },
     {
         "meaning": "Không, đủ rồi ạ.",
         "word": "いいえ、けっこうです",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Iie, kekkou desu"
     },
     {
         "meaning": "Đã ~ rồi nhỉ./Đã ~ rồi, đúng không ạ?",
         "word": "もう～です[ね]",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Mou ~ desu [ne]"
     },
     {
         "meaning": "Sắp đến lúc tôi phải xin phép rồi./Đã đến lúc tôi phải về.",
         "word": "そろそろしつれいします",
-        "kanji": "そろそろ失礼します",
+        "kanjiForm": "そろそろ失礼します",
         "romanji": "Sorosoro shitsurei shimasu"
     },
     {
         "meaning": "Lần sau anh/chị lại đến chơi nhé.",
         "word": "またいらっしゃってください",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Mata irasshatte kudasai"
     },
     {
         "meaning": "Hồ Biwa",
         "word": "びわこ",
-        "kanji": "琵琶湖",
+        "kanjiForm": "琵琶湖",
         "romanji": "Biwako"
     },
     {
         "meaning": "Thượng Hải",
         "word": "シャンハイ",
-        "kanji": null,
+        "kanjiForm": "",
         "romanji": "Shanghai"
     },
     {
         "meaning": "Chùa Kinkaku-ji",
         "word": "きんかくじ",
-        "kanji": "金閣寺",
+        "kanjiForm": "金閣寺",
         "romanji": "Kinkakuji"
     }
 ]
