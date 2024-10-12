@@ -88,6 +88,7 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/delete_lesso
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_jlpt/edit_jlpt_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_kanji/edit_kanji_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/edit_lesson/edit_lesson_cubit.dart';
+import 'package:note_book_app/presentation/web_version/admin/cubits/import_word_data/import_word_data_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/jlpt_manager/jlpt_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/lesson_manager/lesson_manager_cubit.dart';
@@ -474,4 +475,6 @@ Future<void> initializeDependencies() async {
   getIt.registerFactory(() => EditLessonCubit());
 
   getIt.registerFactory(() => DeleteLessonCubit());
+
+  getIt.registerFactory(() => ImportWordDataCubit());
 }

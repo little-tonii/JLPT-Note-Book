@@ -7,6 +7,7 @@ abstract class WordRepository {
     required String levelId,
     required int pageSize,
     required int pageNumber,
+    required String searchKey,
   });
 
   Future<Either<Failure, List<WordEntity>>> getAllWordsByLevelIdAndLessonId({
@@ -14,6 +15,7 @@ abstract class WordRepository {
     required String levelId,
     required int pageSize,
     required int pageNumber,
+    required String searchKey,
   });
 
   Future<Either<Failure, WordEntity>> createWordByLevelIdAndLessonId({

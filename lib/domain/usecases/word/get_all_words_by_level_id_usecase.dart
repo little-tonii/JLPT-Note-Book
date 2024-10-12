@@ -12,11 +12,13 @@ class GetAllWordsByLevelIdUsecase {
     required String levelId,
     required int pageSize,
     required int pageNumber,
+    required String searchKey,
   }) async {
     return await wordRepository.getAllWordsByLevelId(
       levelId: levelId,
       pageSize: pageSize,
       pageNumber: pageNumber,
+      searchKey: searchKey,
     );
   }
 }

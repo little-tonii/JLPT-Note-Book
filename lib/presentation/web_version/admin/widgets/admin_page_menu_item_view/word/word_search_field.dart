@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_book_app/common/colors/app_colors.dart';
-import 'package:note_book_app/presentation/web_version/admin/cubits/kanji_manager/kanji_manager_cubit.dart';
 
-class SearchField extends StatelessWidget {
+class WordSearchField extends StatelessWidget {
+  final String hint;
   final TextEditingController searchController;
+  final void Function() onSearch;
 
-  const SearchField({super.key, required this.searchController});
-
-  void _handleSearch(BuildContext context) {
-    context.read<KanjiManagerCubit>().searchKanjis(
-          hanVietSearchKey: searchController.text,
-          refresh: true,
-        );
-  }
+  const WordSearchField({
+    super.key,
+    required this.searchController,
+    required this.hint,
+    required this.onSearch,
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onSubmitted: (value) => _handleSearch(context),
+      onSubmitted: (value) => onSearch(),
       cursorColor: AppColors.black,
       controller: searchController,
       decoration: InputDecoration(
@@ -47,7 +45,7 @@ class SearchField extends StatelessWidget {
           fontWeight: FontWeight.bold,
           fontSize: 16,
         ),
-        hintText: 'Tìm kiếm bằng chữ Hán Việt',
+        hintText: hint,
         suffixIcon: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: IconButton(
@@ -58,7 +56,7 @@ class SearchField extends StatelessWidget {
               Icons.search,
               color: AppColors.black.withOpacity(0.4),
             ),
-            onPressed: () => _handleSearch(context),
+            onPressed: onSearch,
           ),
         ),
       ),

@@ -14,7 +14,7 @@ import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/filter_select_box.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/kanji_data_table.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/kanji_manager_button.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/search_field.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/search_field.dart';
 
 class KanjiManager extends StatefulWidget {
   const KanjiManager({super.key});
@@ -101,7 +101,6 @@ class _KanjiManagerState extends State<KanjiManager> {
     //   reader.onLoadEnd.listen((event) {
     //     final jsonString = reader.result as String;
     //     final data = jsonDecode(jsonString);
-
     //   });
     // });
   }
@@ -152,6 +151,7 @@ class _KanjiManagerState extends State<KanjiManager> {
                     children: [
                       Expanded(
                         child: SearchField(
+                          hint: "Tìm kiếm bằng chữ Hán Việt",
                           searchController: _searchController,
                         ),
                       ),

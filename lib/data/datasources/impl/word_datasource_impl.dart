@@ -41,9 +41,66 @@ class WordDatasourceImpl implements WordDatasource {
     required String levelId,
     required int pageSize,
     required int pageNumber,
-  }) {
-    // TODO: implement getAllWordsByLevelId
-    throw UnimplementedError();
+    required String searchKey,
+  }) async {
+    try {
+      Query<Map<String, dynamic>> querySnapshot =
+          firestore.collection("words").where("levelId", isEqualTo: levelId);
+      if (searchKey.isNotEmpty) {
+        querySnapshot = querySnapshot.where(
+          Filter.or(
+            Filter('word', isEqualTo: searchKey),
+            Filter('kanjiForm', isEqualTo: searchKey),
+          ),
+        );
+      }
+      querySnapshot = querySnapshot.orderBy('createdAt');
+      if (pageNumber > 1) {
+        Query<Map<String, dynamic>> lastDocSnapshot =
+            firestore.collection("words").where("levelId", isEqualTo: levelId);
+        if (searchKey.isNotEmpty) {
+          lastDocSnapshot = lastDocSnapshot.where(
+            Filter.or(
+              Filter('word', isEqualTo: searchKey),
+              Filter('kanjiForm', isEqualTo: searchKey),
+            ),
+          );
+        }
+        lastDocSnapshot = lastDocSnapshot.orderBy('createdAt');
+        final lastDoc = await lastDocSnapshot
+            .limit((pageNumber - 1) * pageSize)
+            .get()
+            .then((snap) => snap.docs.isNotEmpty ? snap.docs.last : null);
+        if (lastDoc != null) {
+          querySnapshot = querySnapshot.startAfterDocument(lastDoc);
+        }
+      }
+      querySnapshot = querySnapshot.limit(pageSize);
+      final result = await querySnapshot.get();
+      return result.docs
+          .map(
+            (doc) => WordModel.fromJson(
+              {
+                "id": doc.id,
+                "word": doc.data()["word"],
+                "meaning": doc.data()["meaning"],
+                "kanjiForm": doc.data()["kanjiForm"],
+                "lessonId": doc.data()["lessonId"],
+                "levelId": doc.data()["levelId"],
+                "createdAt": doc.data()["createdAt"],
+              },
+            ),
+          )
+          .toList();
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(
+        message: "Có lỗi xảy ra khi lấy danh sách từ vựng theo JLPT",
+      );
+    } catch (e) {
+      log(e.toString());
+      throw Exception(e);
+    }
   }
 
   @override
@@ -52,17 +109,79 @@ class WordDatasourceImpl implements WordDatasource {
     required String levelId,
     required int pageSize,
     required int pageNumber,
-  }) {
-    // TODO: implement getAllWordsByLevelIdAndLessonId
-    throw UnimplementedError();
+    required String searchKey,
+  }) async {
+    try {
+      Query<Map<String, dynamic>> querySnapshot = firestore
+          .collection("words")
+          .where("lessonId", isEqualTo: lessonId)
+          .where("levelId", isEqualTo: levelId);
+      if (searchKey.isNotEmpty) {
+        querySnapshot = querySnapshot.where(
+          Filter.or(
+            Filter('word', isEqualTo: searchKey),
+            Filter('kanjiForm', isEqualTo: searchKey),
+          ),
+        );
+      }
+      querySnapshot = querySnapshot.orderBy('createdAt');
+      if (pageNumber > 1) {
+        Query<Map<String, dynamic>> lastDocSnapshot = firestore
+            .collection("words")
+            .where("lessonId", isEqualTo: lessonId)
+            .where("levelId", isEqualTo: levelId);
+        if (searchKey.isNotEmpty) {
+          lastDocSnapshot = lastDocSnapshot.where(
+            Filter.or(
+              Filter('word', isEqualTo: searchKey),
+              Filter('kanjiForm', isEqualTo: searchKey),
+            ),
+          );
+        }
+        lastDocSnapshot = lastDocSnapshot.orderBy('createdAt');
+        final lastDoc = await lastDocSnapshot
+            .limit((pageNumber - 1) * pageSize)
+            .get()
+            .then((snap) => snap.docs.isNotEmpty ? snap.docs.last : null);
+        if (lastDoc != null) {
+          querySnapshot = querySnapshot.startAfterDocument(lastDoc);
+        }
+      }
+      querySnapshot = querySnapshot.limit(pageSize);
+      final result = await querySnapshot.get();
+      return result.docs
+          .map(
+            (doc) => WordModel.fromJson(
+              {
+                "id": doc.id,
+                "word": doc.data()["word"],
+                "meaning": doc.data()["meaning"],
+                "kanjiForm": doc.data()["kanjiForm"],
+                "lessonId": doc.data()["lessonId"],
+                "levelId": doc.data()["levelId"],
+                "createdAt": doc.data()["createdAt"],
+              },
+            ),
+          )
+          .toList();
+    } on FirebaseException catch (e) {
+      log(e.toString());
+      throw FirestoreFailure(
+        message: "Có lỗi xảy ra khi lấy danh sách từ vựng theo JLPT và bài học",
+      );
+    } catch (e) {
+      log(e.toString());
+      throw Exception(e);
+    }
   }
 
   @override
-  Future<WordModel> updateWordById(
-      {required String id,
-      required String word,
-      required String meaning,
-      required String kanjiForm}) async {
+  Future<WordModel> updateWordById({
+    required String id,
+    required String word,
+    required String meaning,
+    required String kanjiForm,
+  }) async {
     try {
       final querySnapshot = firestore.collection("words").doc(id);
       final wordDoc = await querySnapshot.get();
