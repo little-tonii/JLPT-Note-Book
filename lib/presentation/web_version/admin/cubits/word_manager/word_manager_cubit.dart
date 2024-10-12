@@ -110,6 +110,58 @@ class WordManagerCubit extends Cubit<WordManagerState> {
     }
   }
 
+  void searchWords({required String searchKey}) async {
+    if (state is WordManagerLoaded) {
+      final currentState = state as WordManagerLoaded;
+      if (currentState.selectedLesson.isEmpty) {
+        final wordsResult = await _getAllWordsByLevelIdUsecase.call(
+          searchKey: searchKey,
+          levelId: currentState.selectedLevel,
+          pageNumber: 1,
+          pageSize: 25,
+        );
+        wordsResult.fold(
+          (failure) {
+            emit(WordManagerFailure(message: failure.message));
+          },
+          (success) {
+            emit(
+              currentState.copyWith(
+                words: success,
+                hasReachedMax:
+                    success.isEmpty || success.length < currentState.pageSize,
+                pageNumber: 1,
+              ),
+            );
+          },
+        );
+      } else {
+        final wordsResult = await _getAllWordsByLevelIdAndLessonIdUsecase.call(
+          searchKey: searchKey,
+          levelId: currentState.selectedLevel,
+          lessonId: currentState.selectedLesson,
+          pageNumber: 1,
+          pageSize: 25,
+        );
+        wordsResult.fold(
+          (failure) {
+            emit(WordManagerFailure(message: failure.message));
+          },
+          (success) {
+            emit(
+              currentState.copyWith(
+                words: success,
+                hasReachedMax:
+                    success.isEmpty || success.length < currentState.pageSize,
+                pageNumber: 1,
+              ),
+            );
+          },
+        );
+      }
+    }
+  }
+
   void loadMoreWords({required String searchKey}) async {
     if (state is WordManagerLoaded) {
       final currentState = state as WordManagerLoaded;

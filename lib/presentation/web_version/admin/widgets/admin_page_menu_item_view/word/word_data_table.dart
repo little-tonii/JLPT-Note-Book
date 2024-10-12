@@ -218,10 +218,7 @@ class _WordDataTableState extends State<WordDataTable> {
             child: Container(
               decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(
-                      color: index != length - 1
-                          ? AppColors.black
-                          : Colors.transparent),
+                  bottom: BorderSide(color: AppColors.black),
                   right: BorderSide(color: AppColors.black),
                 ),
               ),
@@ -238,10 +235,7 @@ class _WordDataTableState extends State<WordDataTable> {
             child: Container(
               decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(
-                      color: index != length - 1
-                          ? AppColors.black
-                          : Colors.transparent),
+                  bottom: BorderSide(color: AppColors.black),
                   right: BorderSide(color: AppColors.black),
                 ),
               ),
@@ -258,10 +252,7 @@ class _WordDataTableState extends State<WordDataTable> {
             child: Container(
               decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(
-                      color: index != length - 1
-                          ? AppColors.black
-                          : Colors.transparent),
+                  bottom: BorderSide(color: AppColors.black),
                   right: BorderSide(color: AppColors.black),
                 ),
               ),
@@ -278,10 +269,7 @@ class _WordDataTableState extends State<WordDataTable> {
             child: Container(
               decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(
-                      color: index != length - 1
-                          ? AppColors.black
-                          : Colors.transparent),
+                  bottom: BorderSide(color: AppColors.black),
                   right: BorderSide(color: AppColors.black),
                 ),
               ),
@@ -298,10 +286,7 @@ class _WordDataTableState extends State<WordDataTable> {
             child: Container(
               decoration: BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(
-                      color: index != length - 1
-                          ? AppColors.black
-                          : Colors.transparent),
+                  bottom: BorderSide(color: AppColors.black),
                 ),
               ),
               padding: const EdgeInsets.all(8),

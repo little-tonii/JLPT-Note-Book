@@ -8,10 +8,11 @@ import 'package:note_book_app/presentation/web_version/admin/cubits/import_word_
 import 'package:note_book_app/presentation/web_version/admin/cubits/word_manager/word_manager_cubit.dart';
 import 'package:note_book_app/presentation/web_version/admin/cubits/word_manager/word_manager_state.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/filter_select_box.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/search_field.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/search_field.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/word/import_word_data_form.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/word/word_data_table.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/word/word_manager_button.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/word/word_search_field.dart';
 
 class WordManager extends StatefulWidget {
   const WordManager({super.key});
@@ -46,13 +47,18 @@ class _WordManagerState extends State<WordManager> {
     }
   }
 
-  void _handleReload() {
+  void _handleReload() async {
     final state = context.read<WordManagerCubit>().state;
     if (state is WordManagerLoaded) {
+      _searchController.clear();
       _scrollToTop();
-      context
-          .read<WordManagerCubit>()
-          .loadMoreWords(searchKey: _searchController.text);
+      final levelId = state.selectedLevel;
+      final lessonId = state.selectedLesson;
+      if (lessonId.isNotEmpty) {
+        context.read<WordManagerCubit>().updateLessonFilter(lessonId: lessonId);
+      } else {
+        context.read<WordManagerCubit>().updateLevelFilter(levelId: levelId);
+      }
     }
   }
 
@@ -112,10 +118,14 @@ class _WordManagerState extends State<WordManager> {
                               .toList()
                           : [],
                       onChanged: (value) {
-                        _scrollToTop();
-                        context
-                            .read<WordManagerCubit>()
-                            .updateLevelFilter(levelId: value);
+                        if (state is WordManagerLoaded &&
+                            state.selectedLevel != value) {
+                          _scrollToTop();
+                          _searchController.clear();
+                          context
+                              .read<WordManagerCubit>()
+                              .updateLevelFilter(levelId: value);
+                        }
                       },
                     );
                   },
@@ -141,10 +151,14 @@ class _WordManagerState extends State<WordManager> {
                               .toList()
                           : [],
                       onChanged: (value) {
-                        _scrollToTop();
-                        context
-                            .read<WordManagerCubit>()
-                            .updateLessonFilter(lessonId: value);
+                        if (state is WordManagerLoaded &&
+                            state.selectedLesson != value) {
+                          _scrollToTop();
+                          _searchController.clear();
+                          context
+                              .read<WordManagerCubit>()
+                              .updateLessonFilter(lessonId: value);
+                        }
                       },
                     );
                   },
@@ -167,7 +181,13 @@ class _WordManagerState extends State<WordManager> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Expanded(
-                        child: SearchField(
+                        child: WordSearchField(
+                          onSearch: () {
+                            _scrollToTop();
+                            context
+                                .read<WordManagerCubit>()
+                                .searchWords(searchKey: _searchController.text);
+                          },
                           hint: "Tìm kiếm bằng tiếng Nhật",
                           searchController: _searchController,
                         ),

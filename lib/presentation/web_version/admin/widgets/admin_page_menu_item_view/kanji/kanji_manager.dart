@@ -14,7 +14,7 @@ import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/filter_select_box.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/kanji_data_table.dart';
 import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/kanji_manager_button.dart';
-import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/search_field.dart';
+import 'package:note_book_app/presentation/web_version/admin/widgets/admin_page_menu_item_view/kanji/search_field.dart';
 
 class KanjiManager extends StatefulWidget {
   const KanjiManager({super.key});
