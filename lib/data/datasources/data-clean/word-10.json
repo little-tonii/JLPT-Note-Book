@@ -7,146 +7,156 @@
     {
         "word": "おとこのひと",
         "kanjiForm": "男の人",
-        "meaning": "người đàn ông"
+        "meaning": "Người đàn ông"
     },
     {
         "word": "おんなのひと",
         "kanjiForm": "女の人",
-        "meaning": "người phụ nữ"
+        "meaning": "Người phụ nữ"
     },
     {
         "word": "おとこのこ",
         "kanjiForm": "男の子",
-        "meaning": "cậu bé"
+        "meaning": "Cậu bé"
     },
     {
         "word": "おんなのこ",
         "kanjiForm": "女の子",
-        "meaning": "cô bé"
+        "meaning": "Cô bé"
     },
     {
         "word": "いぬ",
         "kanjiForm": "犬",
-        "meaning": "chó"
+        "meaning": "Chó"
     },
     {
         "word": "ねこ",
         "kanjiForm": "猫",
-        "meaning": "mèo"
+        "meaning": "Mèo"
     },
     {
         "word": "き",
         "kanjiForm": "木",
-        "meaning": "cây, gỗ"
+        "meaning": "Cây, gỗ"
     },
     {
         "word": "もの",
         "kanjiForm": "物",
-        "meaning": "vật, đồ vật"
+        "meaning": "Vật, đồ vật"
     },
     {
         "word": "はこ",
         "kanjiForm": "箱",
-        "meaning": "hộp"
+        "meaning": "Hộp"
     },
     {
         "word": "れいぞうこ",
         "kanjiForm": "冷蔵庫",
-        "meaning": "tủ lạnh"
+        "meaning": "Tủ lạnh"
     },
     {
         "word": "テーブル",
         "kanjiForm": "",
-        "meaning": "bàn"
+        "meaning": "Bàn"
     },
     {
         "word": "ベッド",
         "kanjiForm": "",
-        "meaning": "giường"
+        "meaning": "Giường"
     },
     {
         "word": "こうえん",
         "kanjiForm": "公園",
-        "meaning": "công viên"
+        "meaning": "Công viên"
     },
     {
         "word": "ほんや",
         "kanjiForm": "本屋",
-        "meaning": "hiệu sách"
+        "meaning": "Hiệu sách"
     },
     {
         "word": "いけ",
         "kanjiForm": "池",
-        "meaning": "cái ao"
+        "meaning": "Cái ao"
+    },
+    {
+        "meaning": "Hiệu ~, cửa hàng ~",
+        "word": "～や",
+        "kanjiForm": ""
     },
     {
         "word": "ちか",
         "kanjiForm": "地下",
-        "meaning": "tầng hầm"
+        "meaning": "Tầng hầm"
     },
     {
         "word": "うえ",
         "kanjiForm": "上",
-        "meaning": "trên"
+        "meaning": "Trên"
     },
     {
         "word": "した",
         "kanjiForm": "下",
-        "meaning": "dưới"
+        "meaning": "Dưới"
     },
     {
         "word": "まえ",
         "kanjiForm": "前",
-        "meaning": "trước"
+        "meaning": "Trước"
     },
     {
         "word": "うしろ",
         "kanjiForm": "後ろ",
-        "meaning": "sau"
+        "meaning": "Sau"
     },
     {
         "word": "みぎ",
         "kanjiForm": "右",
-        "meaning": "phải"
+        "meaning": "Phải"
     },
     {
         "word": "ひだり",
         "kanjiForm": "左",
-        "meaning": "trái"
+        "meaning": "Trái"
     },
     {
         "word": "なか",
         "kanjiForm": "中",
-        "meaning": "trong, giữa"
+        "meaning": "Trong, giữa"
     },
     {
         "word": "そと",
         "kanjiForm": "外",
-        "meaning": "ngoài"
+        "meaning": "Ngoài"
     },
     {
         "word": "となり",
         "kanjiForm": "隣",
-        "meaning": "bên cạnh"
+        "meaning": "Bên cạnh"
     },
     {
         "word": "ちかく",
         "kanjiForm": "近く",
-        "meaning": "gần"
+        "meaning": "Gần"
     },
     {
         "word": "あいだ",
         "kanjiForm": "間",
-        "meaning": "giữa"
+        "meaning": "Giữa"
     },
     {
-        "word": "ある",
-        "kanjiForm": "有る",
-        "meaning": "có (tồn tại, dùng cho đồ vật)"
+        "word": "ある / あります",
+        "kanjiForm": "有る / 有ります",
+        "meaning": "Có (tồn tại, dùng cho đồ vật)"
     },
     {
-        "word": "いる",
-        "kanjiForm": "居る",
-        "meaning": "có, ở (tồn tại, dùng cho người và động vật)"
+        "word": "いる / います",
+        "kanjiForm": "居る / 居ます",
+        "meaning": "Có, ở (tồn tại, dùng cho người và động vật)"
+    },
+    {
+        "meaning": "~ và ~, [v.v]",
+        "word": "～や～など",
+        "kanjiForm": ""
     }
 ]
