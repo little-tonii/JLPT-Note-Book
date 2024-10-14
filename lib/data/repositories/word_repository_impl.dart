@@ -180,11 +180,22 @@ class WordRepositoryImpl implements WordRepository {
         }
       }).toList();
       for (var word in words) {
-        final question = questionType == 'word'
-            ? word.word
-            : questionType == 'kanjiForm'
-                ? word.kanjiForm
-                : word.meaning;
+        String lastPart = '';
+        if ((questionType == 'word' && answerType == 'kanjiForm') ||
+            (questionType == 'kanjiForm' && answerType == 'word')) {
+          lastPart = word.meaning;
+        }
+
+        if ((questionType == 'word' && answerType == 'meaning') ||
+            (questionType == 'meaning' && answerType == 'word')) {
+          lastPart = word.kanjiForm;
+        }
+        if ((questionType == 'kanjiForm' && answerType == 'meaning') ||
+            (questionType == 'meaning' && answerType == 'kanjiForm')) {
+          lastPart = word.word;
+        }
+        final question =
+            "${questionType == 'word' ? word.word : questionType == 'kanjiForm' ? word.kanjiForm : word.meaning}${lastPart.isNotEmpty ? "\n$lastPart" : ''}";
         final correctAnswer = answerType == 'word'
             ? word.word
             : answerType == 'kanjiForm'
