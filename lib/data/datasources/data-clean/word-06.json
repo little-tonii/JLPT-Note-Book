@@ -44,7 +44,7 @@
     {
         "meaning": "Xe đạp",
         "romanji": "Jitensha",
-        "kanjiForm": "",
+        "kanjiForm": "自転車",
         "word": "じてんしゃ"
     },
     {
@@ -272,20 +272,20 @@
     {
         "meaning": "Đi",
         "romanji": "Ikimasu",
-        "kanjiForm": "行きます",
-        "word": "いきます"
+        "kanjiForm": "行く / 行きます",
+        "word": "いく / いきます"
     },
     {
         "meaning": "Đến",
         "romanji": "Kimasu",
-        "kanjiForm": "来ます",
-        "word": "きます"
+        "kanjiForm": "来る / 来ます",
+        "word": "くる / きます"
     },
     {
         "meaning": "Về",
         "romanji": "Kaerimasu",
-        "kanjiForm": "帰ります",
-        "word": "かえります"
+        "kanjiForm": "帰る / 帰ります",
+        "word": "かえる / かえります"
     },
     {
         "meaning": "Nhật ký",
