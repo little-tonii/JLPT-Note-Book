@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:note_book_app/core/failures/firestore_failure.dart';
+import 'package:note_book_app/core/failures/not_enough_data_failure.dart';
 import 'package:note_book_app/data/datasources/word_datasource.dart';
 import 'package:note_book_app/data/models/word_model.dart';
 
@@ -305,6 +306,10 @@ class WordDatasourceImpl implements WordDatasource {
           .where("levelId", isEqualTo: levelId)
           .where("lessonId", isEqualTo: lessonId)
           .get();
+      if (result.docs.length < 4) {
+        throw NotEnoughDataFailure(
+            message: "Không đủ dữ liệu để tạo câu hỏi trắc nghiệm từ vựng");
+      }
       return result.docs
           .map(
             (doc) => WordModel.fromJson(
