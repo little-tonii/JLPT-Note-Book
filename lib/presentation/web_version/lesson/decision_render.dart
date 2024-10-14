@@ -281,25 +281,6 @@ class _TempState extends State<Temp> {
                                 ],
                               ),
                             ),
-                            SizedBox(height: 16),
-                            if (state.isAnswered)
-                              IntrinsicHeight(
-                                child: Row(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  children: [
-                                    Expanded(
-                                      child: _nextQuestionButton(
-                                        onPressed: () {
-                                          context
-                                              .read<TempCubit>()
-                                              .nextQuestion();
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
                           ],
                         ),
                       ),
@@ -480,57 +461,7 @@ class _TempState extends State<Temp> {
                 ],
               ),
             ),
-            SizedBox(height: 8),
-            if (state.isAnswered)
-              IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Expanded(
-                      child: _nextQuestionButton(
-                        onPressed: () {
-                          context.read<TempCubit>().nextQuestion();
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _nextQuestionButton({required void Function() onPressed}) {
-    return ElevatedButton(
-      style: ButtonStyle(
-        elevation: const WidgetStatePropertyAll(0),
-        padding: const WidgetStatePropertyAll<EdgeInsetsGeometry>(
-          EdgeInsets.symmetric(
-            horizontal: 32,
-            vertical: 18,
-          ),
-        ),
-        shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        overlayColor: WidgetStatePropertyAll(AppColors.white.withOpacity(0.04)),
-        backgroundColor:
-            WidgetStatePropertyAll(AppColors.black.withOpacity(0.4)),
-      ),
-      onPressed: onPressed,
-      child: Text(
-        "Câu tiếp theo",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: ResponsiveUtil.isDesktop(context) ||
-                  ResponsiveUtil.isTablet(context)
-              ? 20
-              : 16,
-          color: AppColors.white.withOpacity(0.2),
         ),
       ),
     );
@@ -623,6 +554,10 @@ class TempCubit extends Cubit<TempState> {
         ),
       );
     }
+
+    Future.delayed(const Duration(milliseconds: 1200), () {
+      nextQuestion();
+    });
   }
 
   void nextQuestion() {
