@@ -1,0 +1,247 @@
+[
+    {
+        "meaning": "Đơn giản, dễ",
+        "word": "かんたん 「な」",
+        "kanjiForm": "簡単"
+    },
+    {
+        "meaning": "Gần",
+        "word": "ちかい",
+        "kanjiForm": "近い"
+    },
+    {
+        "meaning": "Xa",
+        "word": "とおい",
+        "kanjiForm": "遠い"
+    },
+    {
+        "meaning": "Sớm, nhanh",
+        "word": "はやい",
+        "kanjiForm": "早い、速い"
+    },
+    {
+        "meaning": "Muộn, chậm",
+        "word": "おそい",
+        "kanjiForm": "遅い"
+    },
+    {
+        "meaning": "Nhiều [người]",
+        "word": "[ひとが～] おおい",
+        "kanjiForm": "[人が～] 多い"
+    },
+    {
+        "meaning": "Ít [người]",
+        "word": "[ひとが～] すくない",
+        "kanjiForm": "[人が～] 少ない"
+    },
+    {
+        "meaning": "Ấm",
+        "word": "あたたかい",
+        "kanjiForm": "暖かい"
+    },
+    {
+        "meaning": "Mát",
+        "word": "すずしい",
+        "kanjiForm": "涼しい"
+    },
+    {
+        "meaning": "Ngọt",
+        "word": "あまい",
+        "kanjiForm": "甘い"
+    },
+    {
+        "meaning": "Cay",
+        "word": "からい",
+        "kanjiForm": "辛い"
+    },
+    {
+        "meaning": "Nặng",
+        "word": "おもい",
+        "kanjiForm": "重い"
+    },
+    {
+        "meaning": "Nhẹ",
+        "word": "かるい",
+        "kanjiForm": "軽い"
+    },
+    {
+        "meaning": "Thích, chọn, dùng [chọn cafe, thích cafe]",
+        "word": "いい [コーヒーが～]",
+        "kanjiForm": "良い [コーヒーが～]"
+    },
+    {
+        "meaning": "Cao (dùng cho người)",
+        "word": "せがたかい",
+        "kanjiForm": "背が高い"
+    },
+    {
+        "meaning": "Mùa",
+        "word": "きせつ",
+        "kanjiForm": "季節"
+    },
+    {
+        "meaning": "Mùa xuân",
+        "word": "はる",
+        "kanjiForm": "春"
+    },
+    {
+        "meaning": "Mùa hè",
+        "word": "なつ",
+        "kanjiForm": "夏"
+    },
+    {
+        "meaning": "Mùa thu",
+        "word": "あき",
+        "kanjiForm": "秋"
+    },
+    {
+        "meaning": "Mùa đông",
+        "word": "ふゆ",
+        "kanjiForm": "冬"
+    },
+    {
+        "meaning": "Thời tiết",
+        "word": "てんき",
+        "kanjiForm": "天気"
+    },
+    {
+        "meaning": "Mưa",
+        "word": "あめ",
+        "kanjiForm": "雨"
+    },
+    {
+        "meaning": "Tuyết",
+        "word": "ゆき",
+        "kanjiForm": "雪"
+    },
+    {
+        "meaning": "Trời âm u",
+        "word": "くもり",
+        "kanjiForm": "曇り"
+    },
+    {
+        "meaning": "Táo",
+        "word": "りんご",
+        "kanjiForm": ""
+    },
+    {
+        "meaning": "Cam",
+        "word": "オレンジ",
+        "kanjiForm": ""
+    },
+    {
+        "meaning": "Quýt",
+        "word": "みかん",
+        "kanjiForm": ""
+    },
+    {
+        "meaning": "Sân bay",
+        "word": "くうこう",
+        "kanjiForm": "空港"
+    },
+    {
+        "meaning": "Biển, đại dương",
+        "word": "うみ",
+        "kanjiForm": "海"
+    },
+    {
+        "meaning": "Thế giới",
+        "word": "せかい",
+        "kanjiForm": "世界"
+    },
+    {
+        "meaning": "Tiệc",
+        "word": "パーティー",
+        "kanjiForm": ""
+    },
+    {
+        "meaning": "Lễ hội",
+        "word": "「お」まつり",
+        "kanjiForm": "「お」祭り"
+    },
+    {
+        "meaning": "Bài diễn thuyết, bài phát biểu",
+        "word": "スピーチ",
+        "kanjiForm": ""
+    },
+    {
+        "meaning": "Bài kiểm tra",
+        "word": "テスト",
+        "kanjiForm": ""
+    },
+    {
+        "meaning": "Kỳ thi, bài thi",
+        "word": "しけん",
+        "kanjiForm": "試験"
+    },
+    {
+        "meaning": "Nhất",
+        "word": "いちばん",
+        "kanjiForm": "一番"
+    },
+    {
+        "meaning": "Cái nào",
+        "word": "どちら",
+        "kanjiForm": ""
+    },
+    {
+        "meaning": "Cả hai, cái nào cũng",
+        "word": "どちらも",
+        "kanjiForm": ""
+    },
+    {
+        "meaning": "Hơn hẳn (dùng để nhấn mạnh sự khác biệt giữa hai đối tượng)",
+        "word": "ずっと",
+        "kanjiForm": ""
+    },
+    {
+        "meaning": "Lần đầu tiên",
+        "word": "はじめて",
+        "kanjiForm": "初めて"
+    },
+    {
+        "meaning": "Rượu Nhật",
+        "word": "にほんしゅ",
+        "kanjiForm": "日本酒"
+    },
+    {
+        "meaning": "Sự cố gắng hết sức",
+        "word": "いっしょうけんめい",
+        "kanjiForm": "一生懸命"
+    },
+    {
+        "meaning": "Lẩu sukiyaki",
+        "word": "すきやき",
+        "kanjiForm": ""
+    },
+    {
+        "meaning": "Thịt bò",
+        "word": "ぎゅうにく",
+        "kanjiForm": "牛肉"
+    },
+    {
+        "meaning": "Thịt lợn",
+        "word": "ぶたにく",
+        "kanjiForm": "豚肉"
+    },
+    {
+        "meaning": "Quả chanh",
+        "word": "レモン",
+        "kanjiForm": ""
+    },
+    {
+        "meaning": "Lá đỏ",
+        "word": "もみじ",
+        "kanjiForm": "紅葉"
+    },
+    {
+        "meaning": "Thịt gà",
+        "word": "とりにく",
+        "kanjiForm": "鳥肉"
+    },
+    {
+        "meaning": "Nghệ thuật cắm hoa",
+        "word": "いけばな",
+        "kanjiForm": "生け花"
+    }
+]
