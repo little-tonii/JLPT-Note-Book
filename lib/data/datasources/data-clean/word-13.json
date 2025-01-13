@@ -1,0 +1,192 @@
+[
+    {
+        "word": "ほしい",
+        "kanjiForm": "欲しい",
+        "meaning": "Muốn có"
+    },
+    {
+        "word": "さびしい",
+        "kanjiForm": "寂しい",
+        "meaning": "Buồn, có đơn"
+    },
+    {
+        "word": "ねむい",
+        "kanjiForm": "眠い",
+        "meaning": "Buồn ngủ"
+    },
+    {
+        "word": "こうちょう",
+        "kanjiForm": "校長",
+        "meaning": "Hiệu trưởng"
+    },
+    {
+        "word": "けいざい",
+        "kanjiForm": "経済",
+        "meaning": "Kinh tế"
+    },
+    {
+        "word": "びじゅつ",
+        "kanjiForm": "美術",
+        "meaning": "Mỹ thuật"
+    },
+    {
+        "word": "つり",
+        "kanjiForm": "",
+        "meaning": "Câu cá"
+    },
+    {
+        "meaning": "Trượt tuyết",
+        "kanjiForm": "",
+        "word": "スキー"
+    },
+    {
+        "word": "しやくしょ",
+        "kanjiForm": "市役所",
+        "meaning": "Tòa nhà thị chính"
+    },
+    {
+        "meaning": "Bể bơi",
+        "kanjiForm": "",
+        "word": "プール"
+    },
+    {
+        "word": "かわ",
+        "kanjiForm": "川",
+        "meaning": "Sông"
+    },
+    {
+        "word": "さしみ",
+        "kanjiForm": "刺身",
+        "meaning": "Sashimi"
+    },
+    {
+        "word": "ぎゅうどん",
+        "kanjiForm": "牛丼",
+        "meaning": "Cơm thịt bò"
+    },
+    {
+        "word": "ぎゅうにゅう",
+        "kanjiForm": "牛乳",
+        "meaning": "Sữa"
+    },
+    {
+        "meaning": "Chơi",
+        "word": "あそぶ / あそびます",
+        "kanjiForm": "遊ぶ / 遊びます"
+    },
+    {
+        "meaning": "Gửi [thư]",
+        "word": "[てがみを～] だす / だします",
+        "kanjiForm": "[手紙を～] 出す / 出します"
+    },
+    {
+        "meaning": "Vào [quán giải khát]",
+        "word": "[きっさてんに～] はいる / はいります",
+        "kanjiForm": "[喫茶店に～] 入る / 入ります"
+    },
+    {
+        "meaning": "Ra, ra khỏi [quán giải khát]",
+        "word": "[きっさてんを～] でる / でます",
+        "kanjiForm": "[喫茶店を～] 出る / 出ます"
+    },
+    {
+        "word": "むかえる / むかえます",
+        "kanjiForm": "迎える / 迎えます",
+        "meaning": "Đón"
+    },
+    {
+        "word": "けっこんする / けっこんします",
+        "kanjiForm": "結婚する / 結婚します",
+        "meaning": "Kết hôn, lập gia đình"
+    },
+    {
+        "word": "かいものする / かいものします",
+        "kanjiForm": "買い物する / 買い物します",
+        "meaning": "Mua sắm"
+    },
+    {
+        "word": "[こうえんを～] さんぽする / さんぽします",
+        "kanjiForm": "散歩する / 散歩します",
+        "meaning": "Đi dạo [ở công viên]"
+    },
+    {
+        "word": "なにか",
+        "kanjiForm": "",
+        "meaning": "Cái gì đó"
+    },
+    {
+        "word": "どこか",
+        "kanjiForm": "",
+        "meaning": "Đâu đó, chỗ nào đó"
+    },
+    {
+        "word": "また",
+        "kanjiForm": "",
+        "meaning": "Lại"
+    },
+    {
+        "meaning": "Mệt",
+        "word": "つかれます",
+        "kanjiForm": "疲れます"
+    },
+    {
+        "meaning": "Dùng bữa",
+        "word": "しょくじします",
+        "kanjiForm": "食事します"
+    },
+    {
+        "meaning": "Vất vả",
+        "word": "たいへん 「な」",
+        "kanjiForm": "大変 「な」"
+    },
+    {
+        "meaning": "Rộng",
+        "word": "ひろい",
+        "kanjiForm": "広い"
+    },
+    {
+        "meaning": "Hẹp",
+        "word": "せまい",
+        "kanjiForm": "狭い"
+    },
+    {
+        "meaning": "Cuối tuần",
+        "word": "しゅうまつ",
+        "kanjiForm": "週末"
+    },
+    {
+        "meaning": "Năm mới",
+        "word": "あしょうがつ",
+        "kanjiForm": ""
+    },
+    {
+        "meaning": "Khát",
+        "word": "のどがかわきます",
+        "kanjiForm": "喉が渇きます"
+    },
+    {
+        "meaning": "Cổ họng",
+        "word": "のど",
+        "kanjiForm": "喉"
+    },
+    {
+        "meaning": "Khô",
+        "word": "かわきます",
+        "kanjiForm": "渇きます"
+    },
+    {
+        "meaning": "Bụng",
+        "word": "おなか",
+        "kanjiForm": "お腹"
+    },
+    {
+        "meaning": "Trống rỗng",
+        "word": "すきます",
+        "kanjiForm": "空きます"
+    },
+    {
+        "meaning": "Đói bụng",
+        "word": "おなかがすきます",
+        "kanjiForm": "お腹が空きます"
+    }
+]
